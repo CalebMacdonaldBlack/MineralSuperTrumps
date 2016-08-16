@@ -1,3 +1,5 @@
+import cmblack.cards.DefaultCard;
+
 import static org.junit.Assert.*;
 
 /**

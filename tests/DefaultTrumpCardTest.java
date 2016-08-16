@@ -1,3 +1,8 @@
+import cmblack.cards.DefaultTrumpCard;
+import cmblack.category.DefaultTrumpCategory;
+import cmblack.cards.TrumpCard;
+import cmblack.category.TrumpCategory;
+
 import static org.junit.Assert.*;
 /**
  * Created by calebmacdonaldblack on 16/08/2016.

@@ -1,3 +1,7 @@
+package cmblack.cards;
+
+import cmblack.category.TrumpCategory;
+
 /**
  * Created by calebmacdonaldblack on 16/08/2016.
  */

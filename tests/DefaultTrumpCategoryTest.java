@@ -1,3 +1,6 @@
+import cmblack.category.DefaultTrumpCategory;
+import cmblack.category.TrumpCategory;
+
 import static org.junit.Assert.*;
 /**
  * Created by calebmacdonaldblack on 16/08/2016.
