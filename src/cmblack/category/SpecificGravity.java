@@ -12,6 +12,10 @@ public class SpecificGravity extends Category {
         this.rangeHigh = rangeHigh;
     }
 
+    public SpecificGravity(String name, double rangeLow, double rangeHigh){
+        super("");
+    }
+
     public double getRangeLow() {
         return rangeLow;
     }
