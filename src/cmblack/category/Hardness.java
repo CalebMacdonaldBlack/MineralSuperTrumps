@@ -10,13 +10,13 @@ public class Hardness extends Category {
     private double rangeHigh;
 
     public Hardness(double rangeLow, double rangeHigh) {
-        super("Hardness");
-        this.rangeLow = rangeLow;
-        this.rangeHigh = rangeHigh;
+        this("Hardness", rangeLow, rangeHigh);
     }
 
-    public Hardness(String s, double v, double v1) {
-        super("");
+    public Hardness(String name, double rangeLow, double rangeHigh) {
+        super(name);
+        this.rangeLow = rangeLow;
+        this.rangeHigh = rangeHigh;
     }
 
     public double getRangeLow() {
