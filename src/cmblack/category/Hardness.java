@@ -10,7 +10,7 @@ public class Hardness extends Category {
     private double rangeHigh;
 
     public Hardness(double rangeLow, double rangeHigh) {
-        super("Hardness");
+        super("hardness");
         this.rangeLow = rangeLow;
         this.rangeHigh = rangeHigh;
     }

@@ -19,4 +19,9 @@ public class HardnessTest {
     public void testGetRangeHigh() throws Exception {
         assertEquals(1.7, new Hardness(1.3, 1.7).getRangeHigh(), 0.1);
     }
+
+    @Test
+    public void testGetName() {
+        assertEquals("Hardness", new Hardness(1.3, 1.7).getName());
+    }
 }
