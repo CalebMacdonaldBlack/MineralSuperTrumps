@@ -4,14 +4,19 @@ package cmblack.category;
  * Created by calebmacdonaldblack on 22/08/2016.
  */
 public class SpecificGravity extends Category {
-    private CategoryValueRange range;
+    private final double rangeLow, rangeHigh;
 
-    public SpecificGravity(String name, CategoryValueRange range) {
-        super(name);
-        this.range = range;
+    public SpecificGravity(double rangeLow, double rangeHigh) {
+        super("");
+        this.rangeLow = 0;
+        this.rangeHigh = 0;
     }
 
-    public CategoryValueRange getRange() {
-        return range;
+    public double getRangeLow() {
+        return rangeLow;
+    }
+
+    public double getRangeHigh() {
+        return rangeHigh;
     }
 }
