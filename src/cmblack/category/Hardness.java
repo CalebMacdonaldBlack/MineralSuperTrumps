@@ -6,8 +6,7 @@ import cmblack.category.Category;
  * Created by calebmacdonaldblack on 22/08/2016.
  */
 public class Hardness extends Category {
-    private double rangeLow;
-    private double rangeHigh;
+    private final double rangeLow, rangeHigh;
 
     public Hardness(double rangeLow, double rangeHigh) {
         this("Hardness", rangeLow, rangeHigh);
