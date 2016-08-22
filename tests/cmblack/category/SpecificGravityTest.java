@@ -18,4 +18,9 @@ public class SpecificGravityTest {
     public void testGetRangeHigh() throws Exception {
         assertEquals(1.5, new SpecificGravity(1.2, 1.5).getRangeHigh(), .1);
     }
+
+    @Test
+    public void testGetName() throws Exception {
+        assertEquals("Specific gravity", new SpecificGravity(1.2, 1.5));
+    }
 }
