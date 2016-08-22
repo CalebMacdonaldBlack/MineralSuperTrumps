@@ -24,4 +24,9 @@ public class HardnessTest {
     public void testGetName() {
         assertEquals("Hardness", new Hardness(1.3, 1.7).getName());
     }
+
+    @Test
+    public void testGetName1() {
+        assertEquals("My Hardness", new Hardness("My Hardness", 1.3, 1.7).getName());
+    }
 }

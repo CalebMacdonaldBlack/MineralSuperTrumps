@@ -15,6 +15,10 @@ public class Hardness extends Category {
         this.rangeHigh = rangeHigh;
     }
 
+    public Hardness(String s, double v, double v1) {
+        super("");
+    }
+
     public double getRangeLow() {
         return rangeLow;
     }
