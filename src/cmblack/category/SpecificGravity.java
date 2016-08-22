@@ -7,7 +7,7 @@ public class SpecificGravity extends Category {
     private final double rangeLow, rangeHigh;
 
     public SpecificGravity(double rangeLow, double rangeHigh) {
-        super("");
+        super("Specific gravity");
         this.rangeLow = rangeLow;
         this.rangeHigh = rangeHigh;
     }
