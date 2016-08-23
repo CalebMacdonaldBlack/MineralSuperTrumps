@@ -21,6 +21,6 @@ public class TrumpCardTest {
 
     @Test
     public void testGetImageFilename() throws Exception {
-        assertEquals("filename.png", new TrumpCard("", "", "filename.png"));
+        assertEquals("filename.png", new TrumpCard("", "", "filename.png").getImageFilename());
     }
 }
