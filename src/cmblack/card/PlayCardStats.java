@@ -13,11 +13,11 @@ public class PlayCardStats {
     private final SpecificGravity specificGravity;
 
     public PlayCardStats(Cleavage cleavage, CrustalAbundance crustalAbundance, EconomicValue economicValue, Hardness hardness, SpecificGravity specificGravity) {
-        this.cleavage = null;
-        this.crustalAbundance = null;
-        this.economicValue = null;
-        this.hardness = null;
-        this.specificGravity = null;
+        this.cleavage = cleavage;
+        this.crustalAbundance = crustalAbundance;
+        this.economicValue = economicValue;
+        this.hardness = hardness;
+        this.specificGravity = specificGravity;
     }
 
     public Cleavage getCleavage() {
