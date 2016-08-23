@@ -11,6 +11,11 @@ public class Cleavage extends Category{
         this.value = value;
     }
 
+    public Cleavage(String clvg, CleavageOptions good1) {
+        super("");
+        this.value = null;
+    }
+
     public CleavageOptions getValue() {
         return value;
     }
