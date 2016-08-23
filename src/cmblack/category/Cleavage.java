@@ -7,7 +7,7 @@ public class Cleavage extends Category{
     private final CleavageOptions value;
 
     public Cleavage(CleavageOptions value) {
-        super("");
+        super("Cleavage");
         this.value = value;
     }
 
