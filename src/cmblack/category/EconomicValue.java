@@ -3,10 +3,11 @@ package cmblack.category;
 /**
  * Created by calebmacdonaldblack on 23/08/2016.
  */
-public class EconomicValue {
+public class EconomicValue extends Category{
     private final EconomicValueOptions value;
 
     public EconomicValue(EconomicValueOptions value) {
+        super("");
         this.value = value;
     }
 
