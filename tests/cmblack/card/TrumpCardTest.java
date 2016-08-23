@@ -29,7 +29,7 @@ public class TrumpCardTest {
     @Test
     public void testGetCategories() throws Exception {
         Category[] categories = {new Category("Cleavage"),new Category("Cleavage"),new Category("Cleavage")};
-        assertEquals(categories, new TrumpCard("", "", "", categories));
-        
+        assertEquals(categories, new TrumpCard("", "", "", categories).getCategories());
+
     }
 }

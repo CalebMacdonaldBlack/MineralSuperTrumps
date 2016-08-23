@@ -11,7 +11,7 @@ public class TrumpCard extends Card {
 
     public TrumpCard(String title, String subTitle, String imageFilename, Category[] categories) {
         super(title, subTitle, imageFilename);
-        this.categories = null;
+        this.categories = categories;
     }
 
     public Category[] getCategories() {
