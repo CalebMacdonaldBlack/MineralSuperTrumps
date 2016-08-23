@@ -7,7 +7,7 @@ public class Cleavage {
     private final CleavageOptions value;
 
     public Cleavage(CleavageOptions value) {
-        this.value = null;
+        this.value = value;
     }
 
     public CleavageOptions getValue() {
