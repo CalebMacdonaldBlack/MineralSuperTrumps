@@ -7,9 +7,9 @@ public abstract class Card {
     private final String title, subTitle, imageFilename;
 
     public Card(String title, String subTitle, String imageFilename) {
-        this.title = null;
-        this.subTitle = null;
-        this.imageFilename = null;
+        this.title = title;
+        this.subTitle = subTitle;
+        this.imageFilename = imageFilename;
     }
 
     public String getTitle() {
