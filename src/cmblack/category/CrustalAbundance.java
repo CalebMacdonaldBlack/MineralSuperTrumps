@@ -19,7 +19,7 @@ public class CrustalAbundance extends Category {
         return value;
     }
 
-    enum CrustalAbundanceOptions {
+    public enum CrustalAbundanceOptions {
         ULTRATRACE(0, "ultratrace"),
         TRACE(1, "trace"),
         LOW(2, "low"),

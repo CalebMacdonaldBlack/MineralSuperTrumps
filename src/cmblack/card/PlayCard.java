@@ -1,5 +1,7 @@
 package cmblack.card;
 
+import cmblack.category.Cleavage;
+
 /**
  * Created by calebmacdonaldblack on 23/08/2016.
  */

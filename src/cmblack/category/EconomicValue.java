@@ -19,7 +19,7 @@ public class EconomicValue extends Category{
         return this.value;
     }
 
-    enum EconomicValueOptions {
+    public enum EconomicValueOptions {
         TRIVIAL(0, "trivial"),
         LOW(1, "low"),
         MODERATE(2, "moderate"),

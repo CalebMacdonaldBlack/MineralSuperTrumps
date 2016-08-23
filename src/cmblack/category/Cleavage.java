@@ -20,7 +20,7 @@ public class Cleavage extends Category{
     }
 
 
-    enum CleavageOptions {
+    public enum CleavageOptions {
         NONE(0, "none"),
         POOR_NONE(1, "poor/none"),
         POOR1(2, "1 poor"),
