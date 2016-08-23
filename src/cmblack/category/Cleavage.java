@@ -3,10 +3,11 @@ package cmblack.category;
 /**
  * Created by calebmacdonaldblack on 23/08/2016.
  */
-public class Cleavage {
+public class Cleavage extends Category{
     private final CleavageOptions value;
 
     public Cleavage(CleavageOptions value) {
+        super("");
         this.value = value;
     }
 

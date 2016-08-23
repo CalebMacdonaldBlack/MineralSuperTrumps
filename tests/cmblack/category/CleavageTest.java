@@ -14,4 +14,9 @@ public class CleavageTest {
         Cleavage.CleavageOptions value = Cleavage.CleavageOptions.GOOD1;
         assertEquals(value, new Cleavage(value).getValue());
     }
+
+    @Test
+    public void testGetName() throws Exception {
+        assertEquals("Cleavage", new Cleavage(Cleavage.CleavageOptions.GOOD1));
+    }
 }
