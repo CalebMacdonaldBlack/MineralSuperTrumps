@@ -16,7 +16,7 @@ public class PlayCardTest {
 
     @Test
     public void testGetClassification() throws Exception {
-        assertEquals("hydroxide", new PlayCard("","","","","hydroxide","",null).getOccurrences());
+        assertEquals("hydroxide", new PlayCard("","","","","hydroxide","",null).getClassification());
     }
 
     @Test
