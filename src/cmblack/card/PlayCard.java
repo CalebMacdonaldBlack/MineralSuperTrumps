@@ -9,10 +9,10 @@ public class PlayCard extends Card{
 
     public PlayCard(String title, String subTitle, String imageFilename, String chemicalCompound, String classification, String crystalSystem, String[] occurrences) {
         super(title, subTitle, imageFilename);
-        this.chemicalCompound = null;
-        this.classification = null;
-        this.crystalSystem = null;
-        this.occurrences = null;
+        this.chemicalCompound = chemicalCompound;
+        this.classification = classification;
+        this.crystalSystem = crystalSystem;
+        this.occurrences = occurrences;
     }
 
     public String getChemicalCompound() {
