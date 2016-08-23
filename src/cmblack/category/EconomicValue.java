@@ -11,7 +11,7 @@ public class EconomicValue {
     }
 
     public EconomicValueOptions getValue() {
-        return null;
+        return this.value;
     }
 
     enum EconomicValueOptions {
