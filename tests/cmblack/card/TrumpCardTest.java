@@ -13,23 +13,26 @@ public class TrumpCardTest {
 
     @Test
     public void testGetTitle() throws Exception {
-        assertEquals("title", new TrumpCard("title", "", "", null).getTitle());
+        Category[] categories = {new Category("Cleavage"),new Category("Cleavage"),new Category("Cleavage")};
+        assertEquals("title", new TrumpCard("title", "subTitle", "filename.png", categories).getTitle());
     }
 
     @Test
     public void testGetSubTitle() throws Exception {
-        assertEquals("subTitle", new TrumpCard("", "subTitle", "", null).getSubTitle());
+        Category[] categories = {new Category("Cleavage"),new Category("Cleavage"),new Category("Cleavage")};
+        assertEquals("subTitle", new TrumpCard("title", "subTitle", "filename.png", categories).getSubTitle());
     }
 
     @Test
     public void testGetImageFilename() throws Exception {
-        assertEquals("filename.png", new TrumpCard("", "", "filename.png", null).getImageFilename());
+        Category[] categories = {new Category("Cleavage"),new Category("Cleavage"),new Category("Cleavage")};
+        assertEquals("filename.png", new TrumpCard("title", "subTitle", "filename.png", categories).getImageFilename());
     }
 
     @Test
     public void testGetCategories() throws Exception {
         Category[] categories = {new Category("Cleavage"),new Category("Cleavage"),new Category("Cleavage")};
-        assertEquals(categories, new TrumpCard("", "", "", categories).getCategories());
+        assertEquals(categories, new TrumpCard("title", "subTitle", "filename.png", categories).getCategories());
 
     }
 }
