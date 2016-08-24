@@ -1,5 +1,9 @@
-package cmblack.card;
+package cmblack.deck;
 
+import cmblack.card.Card;
+import cmblack.card.PlayCard;
+import cmblack.card.PlayCardStats;
+import cmblack.card.TrumpCard;
 import cmblack.deck.Deck;
 import cmblack.category.*;
 import org.junit.Test;
