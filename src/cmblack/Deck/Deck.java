@@ -1,4 +1,6 @@
-package cmblack.card;
+package cmblack.deck;
+
+import cmblack.card.Card;
 
 /**
  * Created by calebmacdonaldblack on 24/08/2016.

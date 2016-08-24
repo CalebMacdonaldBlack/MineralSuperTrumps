@@ -1,4 +1,4 @@
-package cmblack.card;
+package cmblack.deck;
 
 /**
  * Created by calebmacdonaldblack on 24/08/2016.

@@ -1,5 +1,6 @@
 package cmblack.card;
 
+import cmblack.deck.Deck;
 import cmblack.category.*;
 import org.junit.Test;
 
