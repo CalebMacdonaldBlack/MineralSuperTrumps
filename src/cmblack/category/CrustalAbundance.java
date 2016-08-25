@@ -1,5 +1,8 @@
 package cmblack.category;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by calebmacdonaldblack on 22/08/2016.
  */
@@ -30,6 +33,14 @@ public class CrustalAbundance extends Category {
         private final int value;
         private final String label;
 
+        private static Map<String, CrustalAbundanceOptions> crustalAbundanceOptionsMap = new HashMap<String, CrustalAbundanceOptions>();
+
+        static {
+            for (CrustalAbundanceOptions crustalAbundanceOptions : CrustalAbundanceOptions.values()) {
+                crustalAbundanceOptionsMap.put(crustalAbundanceOptions.getLabel(), crustalAbundanceOptions);
+            }
+        }
+
         CrustalAbundanceOptions(int value, String label) {
             this.value = value;
             this.label = label;
@@ -41,6 +52,10 @@ public class CrustalAbundance extends Category {
 
         public String getLabel() {
             return label;
+        }
+
+        public static CrustalAbundanceOptions getWithLabel(String label) {
+            return crustalAbundanceOptionsMap.get(label);
         }
     }
 }

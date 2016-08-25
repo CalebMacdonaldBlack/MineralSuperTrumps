@@ -2,42 +2,77 @@ package cmblack.deck;
 
 import cmblack.card.Card;
 import cmblack.card.PlayCard;
+import cmblack.card.PlayCardStats;
+import cmblack.category.*;
 import com.google.gson.Gson;
-import com.google.gson.stream.JsonReader;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
-import java.io.Reader;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by calebmacdonaldblack on 24/08/2016.
  */
 public class JSONDeckBuilder implements DeckBuilder{
 
+    private final ParsedCardsArray parsedCardsArray;
+
+    public JSONDeckBuilder(ParsedCardsArray parsedCardsArray){
+        this.parsedCardsArray = parsedCardsArray;
+
+    }
+
+    public JSONDeckBuilder(String fileName) throws FileNotFoundException {
+        //TODO this looks dodgy as hell
+        this((ParsedCardsArray) new Gson().fromJson(new Gson().newJsonReader(new FileReader(fileName)), ParsedCardsArray.class));
+    }
 
     @Override
     public Deck getDeck() {
-
-
-        Gson gson = new Gson();
         ArrayList<Card> cards = new ArrayList<Card>();
 
-        try {
+        //TODO error handing the crap out of this
 
-            ParsedCardsArray parsedCardsArray = gson.fromJson(gson.newJsonReader(new FileReader("cards.json")), ParsedCardsArray.class);
+        for(ParsedCard parsedCard: parsedCardsArray.getCards()){
+            if(parsedCard.getChemistry() != null){
+                cards.add(new PlayCard(
+                        parsedCard.getTitle(),
+                        parsedCard.getFileName(),
+                        parsedCard.getChemistry(),
+                        parsedCard.getClassification(),
+                        parsedCard.getCrystal_system(),
+                        parsedCard.getOccurrence(),
+                        new PlayCardStats(
+                                new Cleavage(Cleavage.CleavageOptions.getWithLabel(parsedCard.getCleavage())),
+                                new CrustalAbundance(CrustalAbundance.CrustalAbundanceOptions.getWithLabel(parsedCard.getCrustal_abundance())),
+                                new EconomicValue(EconomicValue.EconomicValueOptions.getWithLabel(parsedCard.getEconomic_value())),
+                                new Hardness(this.getLowFromRangeString(parsedCard.getHardness()), this.getHighFromRangeString(parsedCard.getHardness())),
+                                new SpecificGravity(this.getLowFromRangeString(parsedCard.getSpecific_gravity()), this.getHighFromRangeString(parsedCard.getSpecific_gravity()))
 
-            for(ParsedCard parsedCard: parsedCardsArray.getCards()){
-                if(parsedCard.chemistry != null){
-                    cards.add(new PlayCard(parsedCard.title, parsedCard.))
-                }
+                        )
+                ));
             }
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         }
-        return null;
+
+        return new Deck(cards.toArray(new Card[cards.size()]));
+    }
+
+    /**
+     * get the lowest value in the string range
+     * @param doubleRange
+     * @return lowest value in the range
+     */
+    private Double getLowFromRangeString(String doubleRange){
+        return Double.parseDouble(doubleRange.split("-")[0]);
+    }
+
+    /**
+     * get the highest value in the range from string
+     * @param doubleRange
+     * @return highest value in the range
+     */
+    private Double getHighFromRangeString(String doubleRange){
+        String[] splitDouble = doubleRange.split("-");
+        return splitDouble.length > 1 ? Double.parseDouble(splitDouble[1]) : Double.parseDouble(splitDouble[0]);
     }
 }

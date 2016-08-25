@@ -1,5 +1,8 @@
 package cmblack.category;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by calebmacdonaldblack on 23/08/2016.
  */
@@ -39,6 +42,13 @@ public class Cleavage extends Category{
 
         private final int value;
         private final String label;
+        private static Map<String, CleavageOptions> cleavageOptionsMap = new HashMap<String, CleavageOptions>();
+
+        static {
+            for (CleavageOptions cleavageOptions : CleavageOptions.values()) {
+                cleavageOptionsMap.put(cleavageOptions.getLabel(), cleavageOptions);
+            }
+        }
 
         CleavageOptions(int value, String label) {
             this.value = value;
@@ -51,6 +61,10 @@ public class Cleavage extends Category{
 
         public String getLabel() {
             return label;
+        }
+
+        public static CleavageOptions getWithLabel(String label) {
+            return cleavageOptionsMap.get(label);
         }
     }
 }

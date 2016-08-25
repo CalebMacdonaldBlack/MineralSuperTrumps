@@ -1,5 +1,8 @@
 package cmblack.category;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by calebmacdonaldblack on 23/08/2016.
  */
@@ -30,6 +33,14 @@ public class EconomicValue extends Category{
         private final int value;
         private final String label;
 
+        private static Map<String, EconomicValueOptions> economicValueOptionsMap = new HashMap<String, EconomicValueOptions>();
+
+        static {
+            for (EconomicValueOptions economicValueOptions : EconomicValueOptions.values()) {
+                economicValueOptionsMap.put(economicValueOptions.getLabel(), economicValueOptions);
+            }
+        }
+
         EconomicValueOptions(int value, String label) {
             this.value = value;
             this.label = label;
@@ -41,6 +52,10 @@ public class EconomicValue extends Category{
 
         public String getLabel() {
             return label;
+        }
+
+        public static EconomicValueOptions getWithLabel(String label) {
+            return economicValueOptionsMap.get(label);
         }
     }
 }

@@ -20,7 +20,7 @@ public class PlayCardTest {
         PlayCardStats playCardStats = new PlayCardStats(cleavage, crustalAbundance, economicValue, hardness, specificGravity);
         String[] occurrences = new String[]{"sedementry", "surface"};
 
-        assertEquals("Al(O H)3", new PlayCard("Title","SubTitle","Filename.txt","Al(O H)3","hydroxide","orthorhombic",occurrences, playCardStats).getChemicalCompound());
+        assertEquals("Al(O H)3", new PlayCard("Title","Filename.txt","Al(O H)3","hydroxide","orthorhombic",occurrences, playCardStats).getChemicalCompound());
     }
 
     @Test
@@ -33,7 +33,7 @@ public class PlayCardTest {
         PlayCardStats playCardStats = new PlayCardStats(cleavage, crustalAbundance, economicValue, hardness, specificGravity);
         String[] occurrences = new String[]{"sedementry", "surface"};
 
-        assertEquals("hydroxide", new PlayCard("Title","SubTitle","Filename.txt","Al(O H)3","hydroxide","orthorhombic",occurrences, playCardStats).getClassification());
+        assertEquals("hydroxide", new PlayCard("Title","Filename.txt","Al(O H)3","hydroxide","orthorhombic",occurrences, playCardStats).getClassification());
     }
 
     @Test
@@ -46,7 +46,7 @@ public class PlayCardTest {
         PlayCardStats playCardStats = new PlayCardStats(cleavage, crustalAbundance, economicValue, hardness, specificGravity);
         String[] occurrences = new String[]{"sedementry", "surface"};
 
-        assertEquals("orthorhombic", new PlayCard("Title","SubTitle","Filename.txt","Al(O H)3","hydroxide","orthorhombic",occurrences, playCardStats).getCrystalSystem());
+        assertEquals("orthorhombic", new PlayCard("Title","Filename.txt","Al(O H)3","hydroxide","orthorhombic",occurrences, playCardStats).getCrystalSystem());
     }
 
     @Test
@@ -58,7 +58,7 @@ public class PlayCardTest {
         Cleavage cleavage = new Cleavage(Cleavage.CleavageOptions.GOOD1);
         PlayCardStats playCardStats = new PlayCardStats(cleavage, crustalAbundance, economicValue, hardness, specificGravity);
         String[] occurrences = new String[]{"sedementry", "surface"};
-        assertEquals(occurrences, new PlayCard("Title","SubTitle","Filename.txt","Al(O H)3","hydroxide","orthorhombic",occurrences, playCardStats).getOccurrences());
+        assertEquals(occurrences, new PlayCard("Title","Filename.txt","Al(O H)3","hydroxide","orthorhombic",occurrences, playCardStats).getOccurrences());
     }
 
     @Test
@@ -71,7 +71,7 @@ public class PlayCardTest {
         PlayCardStats playCardStats = new PlayCardStats(cleavage, crustalAbundance, economicValue, hardness, specificGravity);
         String[] occurrences = new String[]{"sedementry", "surface"};
 
-        assertEquals(playCardStats, new PlayCard("Title","SubTitle","Filename.txt","Al(O H)3","hydroxide","orthorhombic",occurrences, playCardStats).getPlayCardStats());
+        assertEquals(playCardStats, new PlayCard("Title","Filename.txt","Al(O H)3","hydroxide","orthorhombic",occurrences, playCardStats).getPlayCardStats());
     }
 
 
@@ -85,20 +85,7 @@ public class PlayCardTest {
         PlayCardStats playCardStats = new PlayCardStats(cleavage, crustalAbundance, economicValue, hardness, specificGravity);
         String[] occurrences = new String[]{"sedementry", "surface"};
 
-        assertEquals("Title", new PlayCard("Title","SubTitle","Filename.txt","Al(O H)3","hydroxide","orthorhombic",occurrences, playCardStats).getTitle());
-    }
-
-    @Test
-    public void testGetSubTitle() throws Exception {
-        SpecificGravity specificGravity = new SpecificGravity(1.7, 2);
-        Hardness hardness = new Hardness(1.2, 1.5);
-        EconomicValue economicValue = new EconomicValue(EconomicValue.EconomicValueOptions.IM_RICH);
-        CrustalAbundance crustalAbundance = new CrustalAbundance(CrustalAbundance.CrustalAbundanceOptions.HIGH);
-        Cleavage cleavage = new Cleavage(Cleavage.CleavageOptions.GOOD1);
-        PlayCardStats playCardStats = new PlayCardStats(cleavage, crustalAbundance, economicValue, hardness, specificGravity);
-        String[] occurrences = new String[]{"sedementry", "surface"};
-
-        assertEquals("SubTitle", new PlayCard("Title","SubTitle","Filename.txt","Al(O H)3","hydroxide","orthorhombic",occurrences, playCardStats).getSubTitle());
+        assertEquals("Title", new PlayCard("Title","Filename.txt","Al(O H)3","hydroxide","orthorhombic",occurrences, playCardStats).getTitle());
     }
 
     @Test
@@ -111,6 +98,6 @@ public class PlayCardTest {
         PlayCardStats playCardStats = new PlayCardStats(cleavage, crustalAbundance, economicValue, hardness, specificGravity);
         String[] occurrences = new String[]{"sedementry", "surface"};
 
-        assertEquals("Filename.txt", new PlayCard("Title","SubTitle","Filename.txt","Al(O H)3","hydroxide","orthorhombic",occurrences, playCardStats).getImageFilename());
+        assertEquals("Filename.txt", new PlayCard("Title","Filename.txt","Al(O H)3","hydroxide","orthorhombic",occurrences, playCardStats).getImageFilename());
     }
 }

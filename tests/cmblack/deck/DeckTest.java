@@ -26,7 +26,7 @@ public class DeckTest {
         String[] occurrences = new String[]{"sedementry", "surface"};
         Category[] categories = {new Category("Cleavage"),new Category("Cleavage"),new Category("Cleavage")};
 
-        Card card1 = new PlayCard("Title","SubTitle","Filename.txt","Al(O H)3","hydroxide","orthorhombic",occurrences, playCardStats);
+        Card card1 = new PlayCard("Title","Filename.txt","Al(O H)3","hydroxide","orthorhombic",occurrences, playCardStats);
         Card card2 = new TrumpCard("title", "subTitle", "filename.png", categories);
         Card[] cards = {card1, card2};
         assertEquals(cards, new Deck(cards).getCards());

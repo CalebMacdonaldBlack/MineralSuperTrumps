@@ -8,8 +8,8 @@ public class PlayCard extends Card{
     private final String[] occurrences;
     private final PlayCardStats playCardStats;
 
-    public PlayCard(String title, String subTitle, String imageFilename, String chemicalCompound, String classification, String crystalSystem, String[] occurrences, PlayCardStats playCardStats) {
-        super(title, subTitle, imageFilename);
+    public PlayCard(String title, String imageFilename, String chemicalCompound, String classification, String crystalSystem, String[] occurrences, PlayCardStats playCardStats) {
+        super(title, imageFilename);
         this.chemicalCompound = chemicalCompound;
         this.classification = classification;
         this.crystalSystem = crystalSystem;
