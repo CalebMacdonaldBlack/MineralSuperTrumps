@@ -56,4 +56,27 @@ public class DeckTest {
         assertEquals(card1, deck.takeCard());
         assertEquals(card2, deck.takeCard());
     }
+
+    @Test
+    public void testShuffle() throws Exception {
+        SpecificGravity specificGravity = new SpecificGravity(1.7, 2);
+        Hardness hardness = new Hardness(1.2, 1.5);
+        EconomicValue economicValue = new EconomicValue(EconomicValue.EconomicValueOptions.IM_RICH);
+        CrustalAbundance crustalAbundance = new CrustalAbundance(CrustalAbundance.CrustalAbundanceOptions.HIGH);
+        Cleavage cleavage = new Cleavage(Cleavage.CleavageOptions.GOOD1);
+        PlayCardStats playCardStats = new PlayCardStats(cleavage, crustalAbundance, economicValue, hardness, specificGravity);
+        String[] occurrences = new String[]{"sedementry", "surface"};
+        Category[] categories = {new Category("Cleavage"),new Category("Cleavage"),new Category("Cleavage")};
+
+        Card card1 = new PlayCard("Title","Filename.txt","Al(O H)3","hydroxide","orthorhombic",occurrences, playCardStats);
+        Card card2 = new TrumpCard("title", "subTitle", "filename.png", categories);
+        ArrayList<Card> cards = new ArrayList<Card>();
+        Deck deck = new Deck(cards);
+        cards.add(card2);
+        for(int i=0;i<=100;i++){
+            cards.add(card1);
+        }
+
+        assertNotEquals(card2, deck.shuffle().takeCard());
+    }
 }

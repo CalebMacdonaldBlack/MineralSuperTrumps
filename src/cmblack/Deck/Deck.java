@@ -3,6 +3,7 @@ package cmblack.deck;
 import cmblack.card.Card;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by calebmacdonaldblack on 24/08/2016.
@@ -20,5 +21,10 @@ public class Deck {
 
     public Card takeCard(){
         return cards.remove(0);
+    }
+
+    public Deck shuffle(){
+        Collections.shuffle(cards);
+        return this;
     }
 }
