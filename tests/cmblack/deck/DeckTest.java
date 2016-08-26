@@ -8,6 +8,8 @@ import cmblack.deck.Deck;
 import cmblack.category.*;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.*;
 
 /**
@@ -28,7 +30,30 @@ public class DeckTest {
 
         Card card1 = new PlayCard("Title","Filename.txt","Al(O H)3","hydroxide","orthorhombic",occurrences, playCardStats);
         Card card2 = new TrumpCard("title", "subTitle", "filename.png", categories);
-        Card[] cards = {card1, card2};
+        ArrayList<Card> cards = new ArrayList<Card>();
+        cards.add(card1);
+        cards.add(card2);
         assertEquals(cards, new Deck(cards).getCards());
+    }
+
+    @Test
+    public void testTakeCard() throws Exception {
+        SpecificGravity specificGravity = new SpecificGravity(1.7, 2);
+        Hardness hardness = new Hardness(1.2, 1.5);
+        EconomicValue economicValue = new EconomicValue(EconomicValue.EconomicValueOptions.IM_RICH);
+        CrustalAbundance crustalAbundance = new CrustalAbundance(CrustalAbundance.CrustalAbundanceOptions.HIGH);
+        Cleavage cleavage = new Cleavage(Cleavage.CleavageOptions.GOOD1);
+        PlayCardStats playCardStats = new PlayCardStats(cleavage, crustalAbundance, economicValue, hardness, specificGravity);
+        String[] occurrences = new String[]{"sedementry", "surface"};
+        Category[] categories = {new Category("Cleavage"),new Category("Cleavage"),new Category("Cleavage")};
+
+        Card card1 = new PlayCard("Title","Filename.txt","Al(O H)3","hydroxide","orthorhombic",occurrences, playCardStats);
+        Card card2 = new TrumpCard("title", "subTitle", "filename.png", categories);
+        ArrayList<Card> cards = new ArrayList<Card>();
+        Deck deck = new Deck(cards);
+        cards.add(card1);
+        cards.add(card2);
+        assertEquals(card1, deck.takeCard());
+        assertEquals(card2, deck.takeCard());
     }
 }
