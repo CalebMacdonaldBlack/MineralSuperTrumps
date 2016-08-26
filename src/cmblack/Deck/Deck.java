@@ -10,9 +10,11 @@ import java.util.Collections;
  */
 public class Deck {
     private final ArrayList<Card> cards;
+    private final ArrayList<Card> discardedCards;
 
-    public Deck(ArrayList<Card> cards) {
+    public Deck(ArrayList<Card> cards, ArrayList<Card> discardedCards) {
         this.cards = cards;
+        this.discardedCards = discardedCards;
     }
 
     public ArrayList<Card> getCards() {
@@ -25,6 +27,15 @@ public class Deck {
 
     public Deck shuffle(){
         Collections.shuffle(cards);
+        return this;
+    }
+
+    public ArrayList<Card> getDiscardedCards() {
+        return discardedCards;
+    }
+
+    public Deck addToDiscardedPile(Card card){
+        this.discardedCards.add(card);
         return this;
     }
 }

@@ -4,7 +4,6 @@ import cmblack.card.Card;
 import cmblack.card.PlayCard;
 import cmblack.card.PlayCardStats;
 import cmblack.card.TrumpCard;
-import cmblack.deck.Deck;
 import cmblack.category.*;
 import org.junit.Test;
 
@@ -33,7 +32,7 @@ public class DeckTest {
         ArrayList<Card> cards = new ArrayList<Card>();
         cards.add(card1);
         cards.add(card2);
-        assertEquals(cards, new Deck(cards).getCards());
+        assertEquals(cards, new Deck(cards, new ArrayList<Card>()).getCards());
     }
 
     @Test
@@ -50,7 +49,7 @@ public class DeckTest {
         Card card1 = new PlayCard("Title","Filename.txt","Al(O H)3","hydroxide","orthorhombic",occurrences, playCardStats);
         Card card2 = new TrumpCard("title", "subTitle", "filename.png", categories);
         ArrayList<Card> cards = new ArrayList<Card>();
-        Deck deck = new Deck(cards);
+        Deck deck = new Deck(cards, new ArrayList<Card>());
         cards.add(card1);
         cards.add(card2);
         assertEquals(card1, deck.takeCard());
@@ -71,12 +70,50 @@ public class DeckTest {
         Card card1 = new PlayCard("Title","Filename.txt","Al(O H)3","hydroxide","orthorhombic",occurrences, playCardStats);
         Card card2 = new TrumpCard("title", "subTitle", "filename.png", categories);
         ArrayList<Card> cards = new ArrayList<Card>();
-        Deck deck = new Deck(cards);
+        Deck deck = new Deck(cards, new ArrayList<Card>());
         cards.add(card2);
         for(int i=0;i<=100;i++){
             cards.add(card1);
         }
 
         assertNotEquals(card2, deck.shuffle().takeCard());
+    }
+
+    @Test
+    public void testGetDiscardedCards() throws Exception {
+        SpecificGravity specificGravity = new SpecificGravity(1.7, 2);
+        Hardness hardness = new Hardness(1.2, 1.5);
+        EconomicValue economicValue = new EconomicValue(EconomicValue.EconomicValueOptions.IM_RICH);
+        CrustalAbundance crustalAbundance = new CrustalAbundance(CrustalAbundance.CrustalAbundanceOptions.HIGH);
+        Cleavage cleavage = new Cleavage(Cleavage.CleavageOptions.GOOD1);
+        PlayCardStats playCardStats = new PlayCardStats(cleavage, crustalAbundance, economicValue, hardness, specificGravity);
+        String[] occurrences = new String[]{"sedementry", "surface"};
+        Category[] categories = {new Category("Cleavage"),new Category("Cleavage"),new Category("Cleavage")};
+
+        Card card1 = new PlayCard("Title","Filename.txt","Al(O H)3","hydroxide","orthorhombic",occurrences, playCardStats);
+        Card card2 = new TrumpCard("title", "subTitle", "filename.png", categories);
+        ArrayList<Card> cards = new ArrayList<Card>();
+        ArrayList<Card> discardedCards = new ArrayList<Card>();
+        Deck deck = new Deck(cards, discardedCards);
+        assertEquals(discardedCards, deck.getDiscardedCards());
+    }
+
+    @Test
+    public void testAddToDiscardedPile() throws Exception {
+        SpecificGravity specificGravity = new SpecificGravity(1.7, 2);
+        Hardness hardness = new Hardness(1.2, 1.5);
+        EconomicValue economicValue = new EconomicValue(EconomicValue.EconomicValueOptions.IM_RICH);
+        CrustalAbundance crustalAbundance = new CrustalAbundance(CrustalAbundance.CrustalAbundanceOptions.HIGH);
+        Cleavage cleavage = new Cleavage(Cleavage.CleavageOptions.GOOD1);
+        PlayCardStats playCardStats = new PlayCardStats(cleavage, crustalAbundance, economicValue, hardness, specificGravity);
+        String[] occurrences = new String[]{"sedementry", "surface"};
+        Category[] categories = {new Category("Cleavage"),new Category("Cleavage"),new Category("Cleavage")};
+
+        Card card1 = new PlayCard("Title","Filename.txt","Al(O H)3","hydroxide","orthorhombic",occurrences, playCardStats);
+        Card card2 = new TrumpCard("title", "subTitle", "filename.png", categories);
+        ArrayList<Card> cards = new ArrayList<Card>();
+        ArrayList<Card> discardedCards = new ArrayList<Card>();
+        Deck deck = new Deck(cards, discardedCards);
+        assertEquals(card1, deck.addToDiscardedPile(card1).getDiscardedCards().get(0));
     }
 }

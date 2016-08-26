@@ -61,7 +61,7 @@ public class JSONDeckBuilder implements DeckBuilder {
                 cards.add(new TrumpCard(parsedCard.getTitle(), parsedCard.getSubTitle(), parsedCard.getFileName(), categories.toArray(new Category[categories.size()])));
             }
         }
-        return new Deck(cards);
+        return new Deck(cards, new ArrayList<Card>());
     }
 
     /**
