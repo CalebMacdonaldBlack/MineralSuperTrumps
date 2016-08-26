@@ -22,8 +22,10 @@ public class ParsedCardTest {
                 "Slide01.jpg",
                 "poor/none",
                 "moderate",
-                "high"
-                );
+                "high",
+                null,
+                null
+        );
             assertEquals("Slide01.jpg", parsedCard.getFileName());
     }
 
@@ -40,7 +42,9 @@ public class ParsedCardTest {
                 "Slide01.jpg",
                 "poor/none",
                 "moderate",
-                "high"
+                "high",
+                null,
+                null
         );
         assertEquals("Quartz", parsedCard.getTitle());
     }
@@ -58,7 +62,9 @@ public class ParsedCardTest {
                 "Slide01.jpg",
                 "poor/none",
                 "moderate",
-                "high"
+                "high",
+                null,
+                null
         );
         assertEquals("SiO_2", parsedCard.getChemistry());
     }
@@ -76,8 +82,9 @@ public class ParsedCardTest {
                 "Slide01.jpg",
                 "poor/none",
                 "moderate",
-                "high"
-        );
+                "high",
+                null,
+                null);
         assertEquals("tectosilicate", parsedCard.getClassification());
     }
 
@@ -94,8 +101,9 @@ public class ParsedCardTest {
                 "Slide01.jpg",
                 "poor/none",
                 "moderate",
-                "high"
-        );
+                "high",
+                null,
+                null);
         assertEquals("hexagonal", parsedCard.getCrystal_system());
     }
 
@@ -112,8 +120,9 @@ public class ParsedCardTest {
                 "Slide01.jpg",
                 "poor/none",
                 "moderate",
-                "high"
-        );
+                "high",
+                null,
+                null);
         assertEquals("7", parsedCard.getHardness());
     }
 
@@ -130,8 +139,9 @@ public class ParsedCardTest {
                 "Slide01.jpg",
                 "poor/none",
                 "moderate",
-                "high"
-        );
+                "high",
+                null,
+                null);
         assertEquals("2.65", parsedCard.getSpecific_gravity());
     }
 
@@ -148,7 +158,9 @@ public class ParsedCardTest {
                 "Slide01.jpg",
                 "poor/none",
                 "moderate",
-                "high"
+                "high",
+                null,
+                null
         );
         assertEquals("poor/none", parsedCard.getCleavage());
     }
@@ -166,7 +178,9 @@ public class ParsedCardTest {
                 "Slide01.jpg",
                 "poor/none",
                 "moderate",
-                "high"
+                "high",
+                null,
+                null
         );
         assertEquals("high", parsedCard.getCrustal_abundance());
     }
@@ -184,7 +198,9 @@ public class ParsedCardTest {
                 "Slide01.jpg",
                 "poor/none",
                 "moderate",
-                "high"
+                "high",
+                null,
+                null
         );
         assertEquals("moderate", parsedCard.getEconomic_value());
     }
@@ -203,8 +219,54 @@ public class ParsedCardTest {
                 "Slide01.jpg",
                 "poor/none",
                 "moderate",
-                "high"
+                "high",
+                null,
+                null
         );
         assertEquals(occurrence, parsedCard.getOccurrence());
+    }
+
+    @Test
+    public void testGetSubTitle() throws Exception {
+        //Trump Card
+        String[] categories = new String[]{"HARDNESS", "CLEAVAGE", "CRUSTAL_ABUNDANCE"};
+        ParsedCard parsedCard = new ParsedCard(
+                null,
+                null,
+                null,
+                "The Geologist",
+                null,
+                null,
+                null,
+                "Slide01.jpg",
+                null,
+                null,
+                null,
+                "Change to trumps category of your choice",
+                categories
+        );
+        assertEquals("Change to trumps category of your choice", parsedCard.getSubTitle());
+    }
+
+    @Test
+    public void testGetCategories() throws Exception {
+        String[] categories = new String[]{"HARDNESS", "CLEAVAGE", "CRUSTAL_ABUNDANCE"};
+        //Trump Card
+        ParsedCard parsedCard = new ParsedCard(
+                null,
+                null,
+                null,
+                "The Geologist",
+                null,
+                null,
+                null,
+                "Slide01.jpg",
+                null,
+                null,
+                null,
+                "Change to trumps category of your choice",
+                categories
+        );
+        assertEquals(categories, parsedCard.getCategories());
     }
 }

@@ -1,7 +1,5 @@
 package cmblack.deck;
 
-import java.util.List;
-
 /**
  * Created by calebmacdonaldblack on 24/08/2016.
  */
@@ -17,9 +15,11 @@ public class ParsedCard {
     private final String crustal_abundance;
     private final String economic_value;
     private final String[] occurrence;
+    private final String subTitle;
+    private final String[] categories;
 
 
-    public ParsedCard(String chemistry, String hardness, String crystal_system, String title, String classification, String specific_gravity, String[] occurrence, String fileName, String cleavage, String economic_value, String crustal_abundance) {
+    public ParsedCard(String chemistry, String hardness, String crystal_system, String title, String classification, String specific_gravity, String[] occurrence, String fileName, String cleavage, String economic_value, String crustal_abundance, String subTitle, String[] categories) {
         this.chemistry = chemistry;
         this.hardness = hardness;
         this.crystal_system = crystal_system;
@@ -31,6 +31,8 @@ public class ParsedCard {
         this.cleavage = cleavage;
         this.economic_value = economic_value;
         this.crustal_abundance = crustal_abundance;
+        this.subTitle = subTitle;
+        this.categories = categories;
     }
 
     public String getFileName() {
@@ -75,5 +77,13 @@ public class ParsedCard {
 
     public String[] getOccurrence() {
         return occurrence;
+    }
+
+    public String getSubTitle() {
+        return subTitle;
+    }
+
+    public String[] getCategories() {
+        return categories;
     }
 }

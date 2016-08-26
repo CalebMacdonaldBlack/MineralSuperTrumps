@@ -922,55 +922,59 @@
       "fileName": "Slide55.jpg",
       "imageName": "Slide55",
       "title": "The Miner",
-      "subtitle": "Economic value"
+      "subtitle": "Economic value",
+      "categories": [
+        "ECONOMIC_VALUE"
+      ]
     },
     {
       "fileName": "Slide56.jpg",
       "imageName": "Slide56",
       "title": "The Petrologist",
-      "subtitle": "Crustal abundance"
+      "subtitle": "Crustal abundance",
+      "categories": [
+        "CRUSTAL_ABUNDANCE"
+      ]
     },
     {
       "fileName": "Slide57.jpg",
       "imageName": "Slide57",
       "title": "The Gemmologist",
-      "subtitle": "Hardness"
+      "subtitle": "Hardness",
+      "categories": [
+        "HARDNESS"
+      ]
     },
     {
       "fileName": "Slide58.jpg",
       "imageName": "Slide58",
       "title": "The Mineralogist",
-      "subtitle": "Cleavage"
+      "subtitle": "Cleavage",
+      "categories": [
+        "CLEAVAGE"
+      ]
     },
     {
       "fileName": "Slide59.jpg",
       "imageName": "Slide59",
       "title": "The Geophysicist",
-      "subtitle": "Specific gravity"
+      "subtitle": "Specific gravity",
+      "categories": [
+        "SPECIFIC_GRAVITY"
+      ]
     },
     {
       "fileName": "Slide60.jpg",
       "imageName": "Slide60",
       "title": "The Geologist",
-      "subtitle": "Change to trumps category of your choice"
-    },
-    {
-      "fileName": "Slide61.jpg",
-      "imageName": "Slide61",
-      "title": "About Mineral Supertrumps",
-      "subtitle": "How to play: Rules 1 - 2"
-    },
-    {
-      "fileName": "Slide62.jpg",
-      "imageName": "Slide62",
-      "title": "How to play",
-      "subtitle": "Rules 3 - 7"
-    },
-    {
-      "fileName": "Slide63.jpg",
-      "imageName": "Slide63",
-      "title": "Trump Categories",
-      "subtitle": "Strategies"
+      "subtitle": "Change to trumps category of your choice",
+      "categories": [
+        "CLEAVAGE",
+        "CRUSTAL_ABUNDANCE",
+        "ECONOMIC_VALUE",
+        "HARDNESS",
+        "SPECIFIC_GRAVITY"
+      ]
     }
   ]
 }

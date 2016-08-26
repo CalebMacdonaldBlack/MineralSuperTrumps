@@ -3,6 +3,7 @@ package cmblack.deck;
 import cmblack.card.Card;
 import cmblack.card.PlayCard;
 import cmblack.card.PlayCardStats;
+import cmblack.card.TrumpCard;
 import cmblack.category.*;
 import com.google.gson.Gson;
 
@@ -13,11 +14,11 @@ import java.util.ArrayList;
 /**
  * Created by calebmacdonaldblack on 24/08/2016.
  */
-public class JSONDeckBuilder implements DeckBuilder{
+public class JSONDeckBuilder implements DeckBuilder {
 
     private final ParsedCardsArray parsedCardsArray;
 
-    public JSONDeckBuilder(ParsedCardsArray parsedCardsArray){
+    public JSONDeckBuilder(ParsedCardsArray parsedCardsArray) {
         this.parsedCardsArray = parsedCardsArray;
 
     }
@@ -33,8 +34,8 @@ public class JSONDeckBuilder implements DeckBuilder{
 
         //TODO error handing the crap out of this
 
-        for(ParsedCard parsedCard: parsedCardsArray.getCards()){
-            if(parsedCard.getChemistry() != null){
+        for (ParsedCard parsedCard : parsedCardsArray.getCards()) {
+            if (parsedCard.getChemistry() != null) {
                 cards.add(new PlayCard(
                         parsedCard.getTitle(),
                         parsedCard.getFileName(),
@@ -51,27 +52,35 @@ public class JSONDeckBuilder implements DeckBuilder{
 
                         )
                 ));
+            } else {
+                ArrayList<Category> categories = new ArrayList<Category>();
+                for(String categoryName: parsedCard.getCategories()){
+                    categories.add(new Category(categoryName));
+                }
+
+                cards.add(new TrumpCard(parsedCard.getTitle(), parsedCard.getSubTitle(), parsedCard.getFileName(), categories.toArray(new Category[categories.size()])));
             }
         }
-
         return new Deck(cards.toArray(new Card[cards.size()]));
     }
 
     /**
      * get the lowest value in the string range
+     *
      * @param doubleRange
      * @return lowest value in the range
      */
-    private Double getLowFromRangeString(String doubleRange){
+    private Double getLowFromRangeString(String doubleRange) {
         return Double.parseDouble(doubleRange.split("-")[0]);
     }
 
     /**
      * get the highest value in the range from string
+     *
      * @param doubleRange
      * @return highest value in the range
      */
-    private Double getHighFromRangeString(String doubleRange){
+    private Double getHighFromRangeString(String doubleRange) {
         String[] splitDouble = doubleRange.split("-");
         return splitDouble.length > 1 ? Double.parseDouble(splitDouble[1]) : Double.parseDouble(splitDouble[0]);
     }
