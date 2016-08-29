@@ -22,6 +22,12 @@ public class CrustalAbundance extends Category {
         return value;
     }
 
+    @Override
+    public boolean isBetterThan(Category category) {
+        return category instanceof CrustalAbundance
+                && ((CrustalAbundance) category).getValue().value < this.getValue().value;
+    }
+
     public enum CrustalAbundanceOptions {
         ULTRATRACE(0, "ultratrace"),
         TRACE(1, "trace"),

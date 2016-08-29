@@ -3,7 +3,7 @@ package cmblack.category;
 /**
  * Created by calebmacdonaldblack on 22/08/2016.
  */
-public class Category {
+public abstract class Category {
     private String name;
 
     public Category(String name) {
@@ -14,21 +14,24 @@ public class Category {
         return name;
     }
 
+    public abstract boolean isBetterThan(Category category);
+
+
     public enum Categories {
-        CLEAVAGE(new Category("Cleavage")),
-        CRUSTAL_ABUNDANCE(new Category("Crustal abundance")),
-        ECONOMIC_VALUE(new Category("Economic value")),
-        HARDNESS(new Category("Hardness")),
-        SPECIFIC_GRAVITY(new Category("Specific gravity"));
+        CLEAVAGE("Cleavage"),
+        CRUSTAL_ABUNDANCE("Crustal abundance"),
+        ECONOMIC_VALUE("Economic value"),
+        HARDNESS("Hardness"),
+        SPECIFIC_GRAVITY("Specific gravity");
 
-        private final Category category;
+        private final String name;
 
-        Categories(Category category) {
-            this.category = category;
+        Categories(String name) {
+            this.name = name;
         }
 
-        public Category getCategory() {
-            return category;
+        public String getName() {
+            return name;
         }
     }
 }

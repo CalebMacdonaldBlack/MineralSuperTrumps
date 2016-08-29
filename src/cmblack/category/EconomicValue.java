@@ -22,6 +22,12 @@ public class EconomicValue extends Category{
         return this.value;
     }
 
+    @Override
+    public boolean isBetterThan(Category category) {
+        return category instanceof EconomicValue
+                && ((EconomicValue) category).getValue().value < this.getValue().value;
+    }
+
     public enum EconomicValueOptions {
         TRIVIAL(0, "trivial"),
         LOW(1, "low"),

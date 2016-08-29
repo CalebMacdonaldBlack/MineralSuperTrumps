@@ -1,6 +1,7 @@
 package cmblack.player;
 
 import cmblack.card.Card;
+import cmblack.card.PlayCard;
 import cmblack.category.Category;
 import cmblack.deck.Deck;
 import cmblack.player.Player;
@@ -16,7 +17,7 @@ public class HumanPlayer extends Player {
     }
 
     @Override
-    public void haveTurn(Category category, Card currentCard, Deck deck, ArrayList<Player> playersInCurrentTurn) {
+    public void haveTurn(String selectedCategory, PlayCard currentCard, Deck deck, ArrayList<Player> playersInCurrentTurn) {
 
     }
 

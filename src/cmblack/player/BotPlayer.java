@@ -17,25 +17,27 @@ public class BotPlayer extends Player {
     }
 
     @Override
-    public void haveTurn(Category selectedCategory, Card currentCard, Deck deck, ArrayList<Player> playersInCurrentTurn) {
+    public void haveTurn(String selectedCategoryName, PlayCard currentCard, Deck deck, ArrayList<Player> playersInCurrentTurn) {
         if(currentCard == null){
-            selectedCategory = selectCategory();
+            selectedCategoryName = selectCategoryName();
         }
 
-        findCardWithHighestCategory(currentCard, selectedCategory);
+        currentCard = findValidCardToPlay(currentCard, selectedCategoryName);
     }
 
-    private Card findCardWithHighestCategory(Card currentCard, Category selectedCategory) {
-        this.getCards().stream().filter(card -> card instanceof PlayCard).forEach(card -> {
-            Category selectedCardsCategory;
-            Category comparingCategory = ((PlayCard) card).getPlayCardStats().getCategoryWithName(selectedCategory.getName());
+    private PlayCard findValidCardToPlay(PlayCard currentCard, String selectedCategory) {
+        for(Card card: this.getCards()){
 
-        });
+            if(card instanceof PlayCard && ((PlayCard) card).getPlayCardStats().getCategoryWithName(selectedCategory).isBetterThan(currentCard.getPlayCardStats().getCategoryWithName(selectedCategory))){
+                return (PlayCard) card;
+            }
+        }
         return null;
     }
 
-    private Category selectCategory() {
+
+    private String selectCategoryName() {
         Random random = new Random();
-        return Category.Categories.values()[random.nextInt(Category.Categories.values().length)].getCategory();
+        return Category.Categories.values()[random.nextInt(Category.Categories.values().length)].getName();
     }
 }

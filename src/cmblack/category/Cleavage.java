@@ -22,6 +22,12 @@ public class Cleavage extends Category{
         return value;
     }
 
+    @Override
+    public boolean isBetterThan(Category category) {
+        return category instanceof Cleavage
+            && ((Cleavage) category).getValue().value < this.getValue().value;
+    }
+
 
     public enum CleavageOptions {
         NONE(0, "none"),

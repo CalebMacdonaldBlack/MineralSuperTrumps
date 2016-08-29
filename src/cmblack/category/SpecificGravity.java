@@ -10,7 +10,7 @@ public class SpecificGravity extends Category {
         this("Specific gravity", rangeLow, rangeHigh);
     }
 
-    public SpecificGravity(String name, double rangeLow, double rangeHigh){
+    public SpecificGravity(String name, double rangeLow, double rangeHigh) {
         super(name);
         this.rangeLow = rangeLow;
         this.rangeHigh = rangeHigh;
@@ -22,5 +22,11 @@ public class SpecificGravity extends Category {
 
     public double getRangeHigh() {
         return rangeHigh;
+    }
+
+    @Override
+    public boolean isBetterThan(Category category) {
+        return category instanceof SpecificGravity
+                && ((SpecificGravity) category).rangeHigh < rangeHigh;
     }
 }

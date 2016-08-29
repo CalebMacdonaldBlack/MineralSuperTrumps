@@ -1,6 +1,7 @@
 package cmblack.player;
 
 import cmblack.card.Card;
+import cmblack.card.PlayCard;
 import cmblack.category.Category;
 import cmblack.deck.Deck;
 
@@ -34,5 +35,5 @@ public abstract class Player {
         return this.cards.size();
     }
 
-    public abstract void haveTurn(Category category, Card currentCard, Deck deck, ArrayList<Player> playersInCurrentTurn);
+    public abstract void haveTurn(String categoryName, PlayCard currentCard, Deck deck, ArrayList<Player> playersInCurrentTurn);
 }

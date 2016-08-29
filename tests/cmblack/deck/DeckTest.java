@@ -27,7 +27,7 @@ public class DeckTest {
         Cleavage cleavage = new Cleavage(Cleavage.CleavageOptions.GOOD1);
         PlayCardStats playCardStats = new PlayCardStats(cleavage, crustalAbundance, economicValue, hardness, specificGravity);
         String[] occurrences = new String[]{"sedementry", "surface"};
-        Category[] categories = {new Category("Cleavage"),new Category("Cleavage"),new Category("Cleavage")};
+        String[] categories = {"category", "category", "category", "category"};
 
         Card card1 = new PlayCard("Title","Filename.txt","Al(O H)3","hydroxide","orthorhombic",occurrences, playCardStats);
         Card card2 = new TrumpCard("title", "subTitle", "filename.png", categories);
@@ -46,7 +46,7 @@ public class DeckTest {
         Cleavage cleavage = new Cleavage(Cleavage.CleavageOptions.GOOD1);
         PlayCardStats playCardStats = new PlayCardStats(cleavage, crustalAbundance, economicValue, hardness, specificGravity);
         String[] occurrences = new String[]{"sedementry", "surface"};
-        Category[] categories = {new Category("Cleavage"),new Category("Cleavage"),new Category("Cleavage")};
+        String[] categories = {"category", "category", "category", "category"};
 
         Card card1 = new PlayCard("Title","Filename.txt","Al(O H)3","hydroxide","orthorhombic",occurrences, playCardStats);
         Card card2 = new TrumpCard("title", "subTitle", "filename.png", categories);
@@ -67,7 +67,7 @@ public class DeckTest {
         Cleavage cleavage = new Cleavage(Cleavage.CleavageOptions.GOOD1);
         PlayCardStats playCardStats = new PlayCardStats(cleavage, crustalAbundance, economicValue, hardness, specificGravity);
         String[] occurrences = new String[]{"sedementry", "surface"};
-        Category[] categories = {new Category("Cleavage"),new Category("Cleavage"),new Category("Cleavage")};
+        String[] categories = {"category", "category", "category", "category"};
 
         Card card1 = new PlayCard("Title","Filename.txt","Al(O H)3","hydroxide","orthorhombic",occurrences, playCardStats);
         Card card2 = new TrumpCard("title", "subTitle", "filename.png", categories);
@@ -90,7 +90,7 @@ public class DeckTest {
         Cleavage cleavage = new Cleavage(Cleavage.CleavageOptions.GOOD1);
         PlayCardStats playCardStats = new PlayCardStats(cleavage, crustalAbundance, economicValue, hardness, specificGravity);
         String[] occurrences = new String[]{"sedementry", "surface"};
-        Category[] categories = {new Category("Cleavage"),new Category("Cleavage"),new Category("Cleavage")};
+        String[] categories = {"category", "category", "category", "category"};
 
         Card card1 = new PlayCard("Title","Filename.txt","Al(O H)3","hydroxide","orthorhombic",occurrences, playCardStats);
         Card card2 = new TrumpCard("title", "subTitle", "filename.png", categories);
@@ -109,7 +109,7 @@ public class DeckTest {
         Cleavage cleavage = new Cleavage(Cleavage.CleavageOptions.GOOD1);
         PlayCardStats playCardStats = new PlayCardStats(cleavage, crustalAbundance, economicValue, hardness, specificGravity);
         String[] occurrences = new String[]{"sedementry", "surface"};
-        Category[] categories = {new Category("Cleavage"),new Category("Cleavage"),new Category("Cleavage")};
+        String[] categories = {"category", "category", "category", "category"};
 
         Card card1 = new PlayCard("Title","Filename.txt","Al(O H)3","hydroxide","orthorhombic",occurrences, playCardStats);
         Card card2 = new TrumpCard("title", "subTitle", "filename.png", categories);
@@ -128,7 +128,7 @@ public class DeckTest {
         Cleavage cleavage = new Cleavage(Cleavage.CleavageOptions.GOOD1);
         PlayCardStats playCardStats = new PlayCardStats(cleavage, crustalAbundance, economicValue, hardness, specificGravity);
         String[] occurrences = new String[]{"sedementry", "surface"};
-        Category[] categories = {new Category("Cleavage"),new Category("Cleavage"),new Category("Cleavage")};
+        String[] categories = {"category", "category", "category", "category"};
 
         Card card1 = new PlayCard("Title","Filename.txt","Al(O H)3","hydroxide","orthorhombic",occurrences, playCardStats);
         Card card2 = new TrumpCard("title", "subTitle", "filename.png", categories);

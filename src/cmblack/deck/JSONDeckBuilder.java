@@ -53,12 +53,8 @@ public class JSONDeckBuilder implements DeckBuilder {
                         )
                 ));
             } else {
-                ArrayList<Category> categories = new ArrayList<Category>();
-                for(String categoryName: parsedCard.getCategories()){
-                    categories.add(new Category(categoryName));
-                }
 
-                cards.add(new TrumpCard(parsedCard.getTitle(), parsedCard.getSubTitle(), parsedCard.getFileName(), categories.toArray(new Category[categories.size()])));
+                cards.add(new TrumpCard(parsedCard.getTitle(), parsedCard.getSubTitle(), parsedCard.getFileName(), parsedCard.getCategories()));
             }
         }
         return new Deck(cards, new ArrayList<Card>());

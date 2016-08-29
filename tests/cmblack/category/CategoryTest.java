@@ -11,6 +11,11 @@ public class CategoryTest {
 
     @Test
     public void testGetName() throws Exception {
-        assertEquals("Hardness",new Category("Hardness").getName());
+        assertEquals("Hardness", new Category("Hardness") {
+            @Override
+            public boolean isBetterThan(Category category) {
+                return false;
+            }
+        }.getName());
     }
 }

@@ -25,4 +25,10 @@ public class Hardness extends Category {
     public double getRangeHigh() {
         return rangeHigh;
     }
+
+    @Override
+    public boolean isBetterThan(Category category) {
+        return category instanceof Hardness
+                && ((Hardness) category).rangeHigh < rangeHigh;
+    }
 }
