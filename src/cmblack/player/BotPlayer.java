@@ -22,19 +22,21 @@ public class BotPlayer extends Player {
             selectedCategoryName = selectCategoryName();
         }
 
-        currentCard = findValidCardToPlay(currentCard, selectedCategoryName);
-        return currentCard;
+        Card foundCard = findValidCardToPlay(currentCard, selectedCategoryName);
+        if(foundCard == null){
+            playersInCurrentTurn.remove(this);
+            return currentCard;
+        }
+        return (PlayCard) foundCard;
     }
 
     private PlayCard findValidCardToPlay(PlayCard currentCard, String selectedCategory) {
         for(Card card: this.getCards()){
-            System.out.println(card instanceof PlayCard);
-            System.out.println(((PlayCard) card).getPlayCardStats().getCategoryWithName(selectedCategory).getName());
-            System.out.println(currentCard.getPlayCardStats().getCategoryWithName(selectedCategory).getName());
             if(card instanceof PlayCard && ((PlayCard) card).getPlayCardStats().getCategoryWithName(selectedCategory).isBetterThan(currentCard.getPlayCardStats().getCategoryWithName(selectedCategory))){
                 return (PlayCard) card;
             }
         }
+
         return null;
     }
 
