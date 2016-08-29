@@ -2,7 +2,6 @@ package cmblack.player;
 
 import cmblack.card.Card;
 import cmblack.card.PlayCard;
-import cmblack.category.Category;
 import cmblack.deck.Deck;
 
 import java.util.ArrayList;
@@ -35,5 +34,5 @@ public abstract class Player {
         return this.cards.size();
     }
 
-    public abstract PlayCard getCardToPlay(String categoryName, PlayCard currentCard, Deck deck, ArrayList<Player> playersInCurrentTurn);
+    public abstract Card getCardToPlay(String categoryName, PlayCard currentCard, Deck deck, ArrayList<Player> playersInCurrentTurn);
 }

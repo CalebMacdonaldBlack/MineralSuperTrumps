@@ -2,6 +2,7 @@ package cmblack.player;
 
 import cmblack.card.Card;
 import cmblack.card.PlayCard;
+import cmblack.card.TrumpCard;
 import cmblack.category.Category;
 import cmblack.deck.Deck;
 
@@ -17,7 +18,7 @@ public class BotPlayer extends Player {
     }
 
     @Override
-    public PlayCard getCardToPlay(String selectedCategoryName, PlayCard currentCard, Deck deck, ArrayList<Player> playersInCurrentTurn) {
+    public Card getCardToPlay(String selectedCategoryName, PlayCard currentCard, Deck deck, ArrayList<Player> playersInCurrentTurn) {
         if(currentCard == null){
             selectedCategoryName = selectCategoryName();
         }
@@ -28,13 +29,19 @@ public class BotPlayer extends Player {
             playersInCurrentTurn.remove(this);
             return currentCard;
         }
-        return (PlayCard) foundCard;
+        return foundCard;
     }
 
-    private PlayCard findValidCardToPlay(PlayCard currentCard, String selectedCategory) {
+    private Card findValidCardToPlay(PlayCard currentCard, String selectedCategory) {
         for(Card card: this.getCards()){
             if(card instanceof PlayCard && ((PlayCard) card).getPlayCardStats().getCategoryWithName(selectedCategory).isBetterThan(currentCard.getPlayCardStats().getCategoryWithName(selectedCategory))){
-                return (PlayCard) card;
+                return card;
+            }
+        }
+
+        for(Card card: this.getCards()){
+            if(card instanceof TrumpCard){
+                return card;
             }
         }
 

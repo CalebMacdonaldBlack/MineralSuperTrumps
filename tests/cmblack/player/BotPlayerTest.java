@@ -3,6 +3,7 @@ package cmblack.player;
 import cmblack.card.Card;
 import cmblack.card.PlayCard;
 import cmblack.card.PlayCardStats;
+import cmblack.card.TrumpCard;
 import cmblack.category.*;
 import org.junit.Test;
 
@@ -116,6 +117,37 @@ public class BotPlayerTest {
 
         Card playedCard = player.getCardToPlay("Hardness", currentCard, null, players);
         assertTrue(players.contains(player));
+    }
+
+    @Test
+    public void testHaveTurn4() throws Exception {
+        ArrayList<Card> cards = new ArrayList<>();
+        ArrayList<Player> players = new ArrayList<>();
+
+        SpecificGravity specificGravity = new SpecificGravity(1.7, 2);
+        Hardness hardness = new Hardness(1.2, 2.5);
+        EconomicValue economicValue = new EconomicValue(EconomicValue.EconomicValueOptions.IM_RICH);
+        CrustalAbundance crustalAbundance = new CrustalAbundance(CrustalAbundance.CrustalAbundanceOptions.HIGH);
+        Cleavage cleavage = new Cleavage(Cleavage.CleavageOptions.GOOD1);
+        PlayCardStats playCardStats = new PlayCardStats(cleavage, crustalAbundance, economicValue, hardness, specificGravity);
+        String[] occurrences = new String[]{"sedementry", "surface"};
+
+        Card card1 = new PlayCard("Orthopyroxene", "Slide14.jpg", "Al(O H)3", "hydroxide", "orthorhombic", occurrences, playCardStats);
+        hardness = new Hardness(0.5, 3);
+        playCardStats = new PlayCardStats(cleavage, crustalAbundance, economicValue, hardness, specificGravity);
+        Card trumpCard = new TrumpCard("title", "subTitle", "filename.png", new String[]{"category", "category", "category", "category"});
+        PlayCard currentCard = new PlayCard("Orthopyroxene", "Slide14.jpg", "Al(O H)3", "hydroxide", "orthorhombic", occurrences, playCardStats);
+
+        cards.add(card1);
+        cards.add(trumpCard);
+
+
+        Player player = new BotPlayer("SuperBot", cards);
+        players.add(player);
+
+        Card playedCard = player.getCardToPlay("Hardness", currentCard, null, players);
+        assertEquals(playedCard, trumpCard);
+
     }
 
     @Test
