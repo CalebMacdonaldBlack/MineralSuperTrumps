@@ -17,7 +17,7 @@ public class EconomicValueTest {
 
     @Test
     public void testGetName() throws Exception {
-        assertEquals("Economic Value", new EconomicValue(EconomicValue.EconomicValueOptions.HIGH).getName());
+        assertEquals("Economic value", new EconomicValue(EconomicValue.EconomicValueOptions.HIGH).getName());
     }
 
     @Test

@@ -1,6 +1,7 @@
 package cmblack;
 
 import cmblack.card.Card;
+import cmblack.player.HumanPlayer;
 import org.junit.Test;
 
 import java.util.ArrayList;

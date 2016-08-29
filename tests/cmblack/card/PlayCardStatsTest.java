@@ -64,4 +64,19 @@ public class PlayCardStatsTest {
 
         assertEquals(specificGravity, new PlayCardStats(cleavage, crustalAbundance, economicValue, hardness, specificGravity).getSpecificGravity());
     }
+
+    @Test
+    public void testGetCategoryWithLabel() throws Exception {
+        SpecificGravity specificGravity = new SpecificGravity(1.7, 2);
+        Hardness hardness = new Hardness(1.2, 1.5);
+        EconomicValue economicValue = new EconomicValue(EconomicValue.EconomicValueOptions.IM_RICH);
+        CrustalAbundance crustalAbundance = new CrustalAbundance(CrustalAbundance.CrustalAbundanceOptions.HIGH);
+        Cleavage cleavage = new Cleavage(Cleavage.CleavageOptions.GOOD1);
+
+        assertEquals(hardness, new PlayCardStats(cleavage, crustalAbundance, economicValue, hardness, specificGravity).getCategoryWithName("Hardness"));
+        assertEquals(specificGravity, new PlayCardStats(cleavage, crustalAbundance, economicValue, hardness, specificGravity).getCategoryWithName("Specific gravity"));
+        assertEquals(economicValue, new PlayCardStats(cleavage, crustalAbundance, economicValue, hardness, specificGravity).getCategoryWithName("Economic value"));
+        assertEquals(crustalAbundance, new PlayCardStats(cleavage, crustalAbundance, economicValue, hardness, specificGravity).getCategoryWithName("Crustal abundance"));
+        assertEquals(cleavage, new PlayCardStats(cleavage, crustalAbundance, economicValue, hardness, specificGravity).getCategoryWithName("Cleavage"));
+    }
 }

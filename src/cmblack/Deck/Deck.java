@@ -1,5 +1,6 @@
 package cmblack.deck;
 
+import cmblack.player.Player;
 import cmblack.card.Card;
 
 import java.util.ArrayList;
@@ -36,6 +37,15 @@ public class Deck {
 
     public Deck addToDiscardedPile(Card card){
         this.discardedCards.add(card);
+        return this;
+    }
+
+    public Deck distributeToPlayers(int amountToDistribute, Player[] players){
+        for(Player player: players){
+            for(int count = 0; count < amountToDistribute; count++){
+                player.giveCard(takeCard());
+            }
+        }
         return this;
     }
 }

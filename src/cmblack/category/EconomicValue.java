@@ -10,7 +10,7 @@ public class EconomicValue extends Category{
     private final EconomicValueOptions value;
 
     public EconomicValue(EconomicValueOptions value) {
-        this("Economic Value", value);
+        this("Economic value", value);
     }
 
     public EconomicValue(String name, EconomicValueOptions value) {

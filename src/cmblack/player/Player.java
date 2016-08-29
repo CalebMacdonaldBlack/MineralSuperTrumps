@@ -1,6 +1,8 @@
-package cmblack;
+package cmblack.player;
 
 import cmblack.card.Card;
+import cmblack.category.Category;
+import cmblack.deck.Deck;
 
 import java.util.ArrayList;
 
@@ -23,4 +25,14 @@ public abstract class Player {
     public ArrayList<Card> getCards() {
         return cards;
     }
+
+    public void giveCard(Card card){
+        this.cards.add(card);
+    }
+
+    public int getCountOfCards(){
+        return this.cards.size();
+    }
+
+    public abstract void haveTurn(Category category, Card currentCard, Deck deck, ArrayList<Player> playersInCurrentTurn);
 }
