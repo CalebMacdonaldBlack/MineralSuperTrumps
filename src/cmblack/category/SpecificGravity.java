@@ -26,7 +26,9 @@ public class SpecificGravity extends Category {
 
     @Override
     public boolean isBetterThan(Category category) {
-        return category instanceof SpecificGravity
-                && ((SpecificGravity) category).rangeHigh < rangeHigh;
+        if(category instanceof SpecificGravity){
+            return ((SpecificGravity) category).rangeHigh < rangeHigh;
+        }
+        throw new IllegalArgumentException(category.getName() + " is not an instance of " + this.getName());
     }
 }

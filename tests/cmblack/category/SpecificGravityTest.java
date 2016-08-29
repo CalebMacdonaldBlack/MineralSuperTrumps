@@ -26,6 +26,21 @@ public class SpecificGravityTest {
 
     @Test
     public void testIsBetterThan() throws Exception {
-        assertTrue(false);
+        SpecificGravity specificGravity1 = new SpecificGravity(1,2);
+        SpecificGravity specificGravity2 = new SpecificGravity(2,3);
+        assertTrue(specificGravity2.isBetterThan(specificGravity1));
+    }
+    @Test
+    public void testIsBetterThan1() throws Exception {
+        SpecificGravity specificGravity1 = new SpecificGravity(1,2);
+        SpecificGravity specificGravity2 = new SpecificGravity(2,3);
+        assertFalse(specificGravity1.isBetterThan(specificGravity2));
+    }
+
+    @Test(expected=IllegalArgumentException.class)
+    public void testIsBetterThan2() throws Exception {
+        CrustalAbundance crustalAbundance1 = new CrustalAbundance(CrustalAbundance.CrustalAbundanceOptions.HIGH);
+        SpecificGravity specificGravity = new SpecificGravity(1, 2);
+        specificGravity.isBetterThan(crustalAbundance1);
     }
 }

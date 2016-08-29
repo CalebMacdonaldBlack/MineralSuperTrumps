@@ -32,6 +32,21 @@ public class HardnessTest {
 
     @Test
     public void testIsBetterThan() throws Exception {
-        assertTrue(false);
+        Hardness hardness1 = new Hardness(1,2);
+        Hardness hardness2 = new Hardness(2,3);
+        assertTrue(hardness2.isBetterThan(hardness1));
+    }
+
+    public void testIsBetterThan1() throws Exception {
+        Hardness hardness1 = new Hardness(1,2);
+        Hardness hardness2 = new Hardness(2,3);
+        assertFalse(hardness1.isBetterThan(hardness2));
+    }
+
+    @Test(expected=IllegalArgumentException.class)
+    public void testIsBetterThan2() throws Exception {
+        Cleavage cleavage1 = new Cleavage(Cleavage.CleavageOptions.GOOD1);
+        Hardness hardness = new Hardness(1, 2);
+        hardness.isBetterThan(cleavage1);
     }
 }
