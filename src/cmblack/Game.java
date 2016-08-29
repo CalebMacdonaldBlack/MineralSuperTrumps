@@ -30,7 +30,7 @@ public class Game {
 
         ArrayList<Player> playersInCurrentTurn = new ArrayList<Player>();
         for(Player player: playersInCurrentTurn){
-           // player.haveTurn(currentCard, deck, playersInCurrentTurn);
+           // player.getCardToPlay(currentCard, deck, playersInCurrentTurn);
         }
     }
 }

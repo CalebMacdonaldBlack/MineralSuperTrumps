@@ -35,5 +35,5 @@ public abstract class Player {
         return this.cards.size();
     }
 
-    public abstract void haveTurn(String categoryName, PlayCard currentCard, Deck deck, ArrayList<Player> playersInCurrentTurn);
+    public abstract PlayCard getCardToPlay(String categoryName, PlayCard currentCard, Deck deck, ArrayList<Player> playersInCurrentTurn);
 }

@@ -17,17 +17,20 @@ public class BotPlayer extends Player {
     }
 
     @Override
-    public void haveTurn(String selectedCategoryName, PlayCard currentCard, Deck deck, ArrayList<Player> playersInCurrentTurn) {
+    public PlayCard getCardToPlay(String selectedCategoryName, PlayCard currentCard, Deck deck, ArrayList<Player> playersInCurrentTurn) {
         if(currentCard == null){
             selectedCategoryName = selectCategoryName();
         }
 
         currentCard = findValidCardToPlay(currentCard, selectedCategoryName);
+        return currentCard;
     }
 
     private PlayCard findValidCardToPlay(PlayCard currentCard, String selectedCategory) {
         for(Card card: this.getCards()){
-
+            System.out.println(card instanceof PlayCard);
+            System.out.println(((PlayCard) card).getPlayCardStats().getCategoryWithName(selectedCategory).getName());
+            System.out.println(currentCard.getPlayCardStats().getCategoryWithName(selectedCategory).getName());
             if(card instanceof PlayCard && ((PlayCard) card).getPlayCardStats().getCategoryWithName(selectedCategory).isBetterThan(currentCard.getPlayCardStats().getCategoryWithName(selectedCategory))){
                 return (PlayCard) card;
             }

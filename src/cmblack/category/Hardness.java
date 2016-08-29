@@ -29,6 +29,7 @@ public class Hardness extends Category {
     @Override
     public boolean isBetterThan(Category category) {
         if(category instanceof Hardness){
+            System.out.println("RAGNE: " + (((Hardness) category).rangeHigh < rangeHigh));
             return ((Hardness) category).rangeHigh < rangeHigh;
         }
         throw new IllegalArgumentException(category.getName() + " is not an instance of " + this.getName());

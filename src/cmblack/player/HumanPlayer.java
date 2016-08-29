@@ -5,6 +5,7 @@ import cmblack.card.PlayCard;
 import cmblack.category.Category;
 import cmblack.deck.Deck;
 import cmblack.player.Player;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;
 
@@ -17,8 +18,8 @@ public class HumanPlayer extends Player {
     }
 
     @Override
-    public void haveTurn(String selectedCategory, PlayCard currentCard, Deck deck, ArrayList<Player> playersInCurrentTurn) {
-
+    public PlayCard getCardToPlay(String selectedCategory, PlayCard currentCard, Deck deck, ArrayList<Player> playersInCurrentTurn) {
+        throw new NotImplementedException();
     }
 
     public HumanPlayer(String playerName) {
