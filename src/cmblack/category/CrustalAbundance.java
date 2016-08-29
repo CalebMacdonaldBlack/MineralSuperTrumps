@@ -24,8 +24,10 @@ public class CrustalAbundance extends Category {
 
     @Override
     public boolean isBetterThan(Category category) {
-        return category instanceof CrustalAbundance
-                && ((CrustalAbundance) category).getValue().value < this.getValue().value;
+        if(category instanceof CrustalAbundance){
+            return ((CrustalAbundance) category).getValue().value < this.getValue().value;
+        }
+        throw new IllegalArgumentException(category.getName() + " is not an instance of " + this.getName());
     }
 
     public enum CrustalAbundanceOptions {

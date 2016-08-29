@@ -24,8 +24,10 @@ public class EconomicValue extends Category{
 
     @Override
     public boolean isBetterThan(Category category) {
-        return category instanceof EconomicValue
-                && ((EconomicValue) category).getValue().value < this.getValue().value;
+        if(category instanceof EconomicValue){
+            return ((EconomicValue) category).getValue().value < this.getValue().value;
+        }
+        throw new IllegalArgumentException(category.getName() + " is not an instance of " + this.getName());
     }
 
     public enum EconomicValueOptions {

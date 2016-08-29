@@ -24,8 +24,10 @@ public class Cleavage extends Category{
 
     @Override
     public boolean isBetterThan(Category category) {
-        return category instanceof Cleavage
-            && ((Cleavage) category).getValue().value < this.getValue().value;
+        if(category instanceof Cleavage){
+            return ((Cleavage) category).getValue().value < this.getValue().value;
+        }
+        throw new IllegalArgumentException(category.getName() + " is not an instance of " + this.getName());
     }
 
 

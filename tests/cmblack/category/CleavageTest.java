@@ -24,4 +24,25 @@ public class CleavageTest {
     public void testGetName1() throws Exception {
         assertEquals("clvg", new Cleavage("clvg", Cleavage.CleavageOptions.GOOD1).getName());
     }
+
+    @Test
+    public void testIsBetterThan() throws Exception {
+        Cleavage cleavage1 = new Cleavage(Cleavage.CleavageOptions.GOOD1);
+        Cleavage cleavage2 = new Cleavage(Cleavage.CleavageOptions.GOOD2);
+        assertTrue(cleavage2.isBetterThan(cleavage1));
+    }
+
+    @Test
+    public void testIsBetterThan1() throws Exception {
+        Cleavage cleavage1 = new Cleavage(Cleavage.CleavageOptions.GOOD1);
+        Cleavage cleavage2 = new Cleavage(Cleavage.CleavageOptions.GOOD2);
+        assertFalse(cleavage1.isBetterThan(cleavage2));
+    }
+
+    @Test(expected=IllegalArgumentException.class)
+    public void testIsBetterThan2() throws Exception {
+        Cleavage cleavage1 = new Cleavage(Cleavage.CleavageOptions.GOOD1);
+        Hardness hardness = new Hardness(1, 2);
+        cleavage1.isBetterThan(hardness);
+    }
 }

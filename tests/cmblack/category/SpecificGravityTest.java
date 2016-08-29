@@ -23,4 +23,9 @@ public class SpecificGravityTest {
     public void testGetName() throws Exception {
         assertEquals("SpecificGravity", new SpecificGravity("SpecificGravity", 1.2, 1.5).getName());
     }
+
+    @Test
+    public void testIsBetterThan() throws Exception {
+        assertTrue(false);
+    }
 }
