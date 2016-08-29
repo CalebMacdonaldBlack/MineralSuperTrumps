@@ -24,6 +24,7 @@ public class BotPlayer extends Player {
 
         Card foundCard = findValidCardToPlay(currentCard, selectedCategoryName);
         if(foundCard == null){
+            //TODO refactor this out. It doesn't belong here
             playersInCurrentTurn.remove(this);
             return currentCard;
         }
