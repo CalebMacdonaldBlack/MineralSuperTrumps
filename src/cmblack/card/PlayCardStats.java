@@ -52,7 +52,7 @@ public class PlayCardStats {
         }else if (specificGravity.getName().equals(name)){
             return specificGravity;
         }else{
-            throw new NullPointerException("Cannot find category with that name!");
+            throw new NullPointerException("Cannot find category with the name: " + name);
         }
     }
 }

@@ -33,5 +33,13 @@ public abstract class Category {
         public String getName() {
             return name;
         }
+
+        public static String[] getCategoriesAsStringArray(){
+            String[] categoriesAsStringArray = new String[Categories.values().length];
+            for(int i=0;i<Categories.values().length;i++){
+                categoriesAsStringArray[i] = Categories.values()[i].getName();
+            }
+            return categoriesAsStringArray;
+        }
     }
 }

@@ -16,7 +16,17 @@ public class HumanPlayer extends Player {
     }
 
     @Override
-    public Card getCardToPlay(String selectedCategory, PlayCard currentCard, Deck deck, ArrayList<Player> playersInCurrentTurn) {
+    public Card getCardToPlay(String selectedCategory, Card currentCard, Deck deck) {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public String chooseCategory() {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public String chooseCategory(String[] categories) {
         throw new NotImplementedException();
     }
 

@@ -53,7 +53,6 @@ public class JSONDeckBuilder implements DeckBuilder {
                         )
                 ));
             } else {
-
                 cards.add(new TrumpCard(parsedCard.getTitle(), parsedCard.getSubTitle(), parsedCard.getFileName(), parsedCard.getCategories()));
             }
         }

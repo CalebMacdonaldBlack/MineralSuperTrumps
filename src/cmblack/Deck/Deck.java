@@ -23,7 +23,19 @@ public class Deck {
     }
 
     public Card takeCard(){
+        if(cards.size() < 1){
+            System.out.println("Adding discarded to deck");
+            addDiscardedPileToDeck();
+        }
         return cards.remove(0);
+    }
+
+    private void addDiscardedPileToDeck() {
+        ArrayList<Card> cardsToMove = new ArrayList<>(discardedCards);
+        for(Card card: cardsToMove){
+            this.cards.add(card);
+            this.discardedCards.remove(card);
+        }
     }
 
     public Deck shuffle(){

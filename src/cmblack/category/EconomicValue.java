@@ -36,7 +36,7 @@ public class EconomicValue extends Category{
         MODERATE(2, "moderate"),
         HIGH(3, "high"),
         VERY_HIGH(4, "very high"),
-        IM_RICH(5, "I'm Rich!");
+        IM_RICH(5, "I'm rich!");
 
         private final int value;
         private final String label;

@@ -17,30 +17,36 @@ public class BotPlayer extends Player {
         super(playerName, cards);
     }
 
-    @Override
-    public Card getCardToPlay(String selectedCategoryName, PlayCard currentCard, Deck deck, ArrayList<Player> playersInCurrentTurn) {
-        if(currentCard == null){
-            selectedCategoryName = selectCategoryName();
-        }
-
-        Card foundCard = findValidCardToPlay(currentCard, selectedCategoryName);
-        if(foundCard == null){
-            //TODO refactor this out. It doesn't belong here
-            playersInCurrentTurn.remove(this);
-            return currentCard;
-        }
-        return foundCard;
+    public BotPlayer(String bot1) {
+        this(bot1, new ArrayList<Card>());
     }
 
-    private Card findValidCardToPlay(PlayCard currentCard, String selectedCategory) {
+    @Override
+    public Card getCardToPlay(String selectedCategoryName, Card currentCard, Deck deck) {
+
+        return findValidCardToPlay(currentCard, selectedCategoryName);
+    }
+
+    private Card findValidCardToPlay(Card currentCard, String selectedCategory) {
+        if(currentCard == null){
+            for(Card card: this.getCards()){
+                if (card instanceof PlayCard){
+                    this.getCards().remove(card);
+                    return card;
+                }
+            }
+        }
+
         for(Card card: this.getCards()){
-            if(card instanceof PlayCard && ((PlayCard) card).getPlayCardStats().getCategoryWithName(selectedCategory).isBetterThan(currentCard.getPlayCardStats().getCategoryWithName(selectedCategory))){
+            if(card instanceof PlayCard && ((PlayCard) card).getPlayCardStats().getCategoryWithName(selectedCategory).isBetterThan(((PlayCard) currentCard).getPlayCardStats().getCategoryWithName(selectedCategory))){
+                this.getCards().remove(card);
                 return card;
             }
         }
 
         for(Card card: this.getCards()){
             if(card instanceof TrumpCard){
+                this.getCards().remove(card);
                 return card;
             }
         }
@@ -48,9 +54,14 @@ public class BotPlayer extends Player {
         return null;
     }
 
+    @Override
+    public String chooseCategory() {
+        return chooseCategory(Category.Categories.getCategoriesAsStringArray());
+    }
 
-    private String selectCategoryName() {
+    @Override
+    public String chooseCategory(String[] categories) {
         Random random = new Random();
-        return Category.Categories.values()[random.nextInt(Category.Categories.values().length)].getName();
+        return categories[random.nextInt(categories.length)];
     }
 }

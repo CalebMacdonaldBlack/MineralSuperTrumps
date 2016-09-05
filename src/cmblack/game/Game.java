@@ -1,4 +1,4 @@
-package cmblack;
+package cmblack.game;
 
 import cmblack.card.Card;
 import cmblack.category.Category;
@@ -28,9 +28,11 @@ public class Game {
         deck.shuffle();
         deck.distributeToPlayers(NUMBER_OF_CARDS_TO_START_WITH, players);
 
-        ArrayList<Player> playersInCurrentTurn = new ArrayList<Player>();
-        for(Player player: playersInCurrentTurn){
-           // player.getCardToPlay(currentCard, deck, playersInCurrentTurn);
+        Round round = new Round(players, deck);
+
+        while(round.getWinningPlayer() == null){
+            round.begin();
         }
+
     }
 }

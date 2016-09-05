@@ -34,5 +34,9 @@ public abstract class Player {
         return this.cards.size();
     }
 
-    public abstract Card getCardToPlay(String categoryName, PlayCard currentCard, Deck deck, ArrayList<Player> playersInCurrentTurn);
+    public abstract Card getCardToPlay(String categoryName, Card currentCard, Deck deck);
+
+    public abstract String chooseCategory();
+
+    public abstract String chooseCategory(String[] categories);
 }

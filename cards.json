@@ -924,7 +924,7 @@
       "title": "The Miner",
       "subtitle": "Economic value",
       "categories": [
-        "ECONOMIC_VALUE"
+        "Economic value"
       ]
     },
     {
@@ -933,7 +933,7 @@
       "title": "The Petrologist",
       "subtitle": "Crustal abundance",
       "categories": [
-        "CRUSTAL_ABUNDANCE"
+        "Crustal abundance"
       ]
     },
     {
@@ -942,7 +942,7 @@
       "title": "The Gemmologist",
       "subtitle": "Hardness",
       "categories": [
-        "HARDNESS"
+        "Hardness"
       ]
     },
     {
@@ -951,7 +951,7 @@
       "title": "The Mineralogist",
       "subtitle": "Cleavage",
       "categories": [
-        "CLEAVAGE"
+        "Cleavage"
       ]
     },
     {
@@ -960,7 +960,7 @@
       "title": "The Geophysicist",
       "subtitle": "Specific gravity",
       "categories": [
-        "SPECIFIC_GRAVITY"
+        "Specific gravity"
       ]
     },
     {
@@ -969,11 +969,11 @@
       "title": "The Geologist",
       "subtitle": "Change to trumps category of your choice",
       "categories": [
-        "CLEAVAGE",
-        "CRUSTAL_ABUNDANCE",
-        "ECONOMIC_VALUE",
-        "HARDNESS",
-        "SPECIFIC_GRAVITY"
+        "Cleavage",
+        "Crustal abundance",
+        "Economic value",
+        "Hardness",
+        "Specific gravity"
       ]
     }
   ]
