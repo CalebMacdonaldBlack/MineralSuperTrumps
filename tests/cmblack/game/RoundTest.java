@@ -16,20 +16,20 @@ public class RoundTest {
 
     @Test
     public void testStartRound() throws Exception {
-        JSONDeckBuilder jsonDeckBuilder = new JSONDeckBuilder("cards.json");
-        Deck deck = jsonDeckBuilder.getDeck().shuffle();
-
-        Player[] players = new Player[]{
-                new BotPlayer("bot1"),
-                new BotPlayer("bot2"),
-                new BotPlayer("bot3"),
-                new BotPlayer("bot4"),
-                new BotPlayer("bot5")
-        };
-        deck.distributeToPlayers(5, players);
-        Round round = new Round(players, deck);
-        while(round.getWinningPlayer() == null)
-            round.begin();
+//        JSONDeckBuilder jsonDeckBuilder = new JSONDeckBuilder("cards.json");
+//        Deck deck = jsonDeckBuilder.getDeck().shuffle();
+//
+//        Player[] players = new Player[]{
+//                new BotPlayer("bot1"),
+//                new BotPlayer("bot2"),
+//                new BotPlayer("bot3"),
+//                new BotPlayer("bot4"),
+//                new BotPlayer("bot5")
+//        };
+//        deck.distributeToPlayers(5, players);
+//        Round round = new Round(players, deck);
+//        while(round.getWinningPlayer() == null)
+//            round.begin();
         assertTrue(false);
     }
 }
