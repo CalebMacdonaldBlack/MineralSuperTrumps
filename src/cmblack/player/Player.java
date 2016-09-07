@@ -3,6 +3,7 @@ package cmblack.player;
 import cmblack.card.Card;
 import cmblack.card.PlayCard;
 import cmblack.deck.Deck;
+import cmblack.game.Round;
 
 import java.util.ArrayList;
 
@@ -18,6 +19,10 @@ public abstract class Player {
         this.cards = cards;
     }
 
+    public void giveCard(Card card) {
+        this.getCards().add(card);
+    }
+
     public String getPlayerName() {
         return playerName;
     }
@@ -26,17 +31,7 @@ public abstract class Player {
         return cards;
     }
 
-    public void giveCard(Card card){
-        this.cards.add(card);
-    }
+    public abstract void haveTurn(Round round);
 
-    public int getCountOfCards(){
-        return this.cards.size();
-    }
-
-    public abstract Card getCardToPlay(String categoryName, Card currentCard, Deck deck);
-
-    public abstract String chooseCategory();
-
-    public abstract String chooseCategory(String[] categories);
+    public abstract void removeCard(Card card, Round round);
 }

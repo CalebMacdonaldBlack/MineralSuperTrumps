@@ -3,6 +3,7 @@ package cmblack.player;
 import cmblack.card.Card;
 import cmblack.card.PlayCard;
 import cmblack.deck.Deck;
+import cmblack.game.Round;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;
@@ -15,18 +16,25 @@ public class HumanPlayer extends Player {
         super(playerName, cards);
     }
 
-    @Override
     public Card getCardToPlay(String selectedCategory, Card currentCard, Deck deck) {
         throw new NotImplementedException();
     }
 
-    @Override
     public String chooseCategory() {
         throw new NotImplementedException();
     }
 
-    @Override
     public String chooseCategory(String[] categories) {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public void haveTurn(Round round) {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public void removeCard(Card card, Round round) {
         throw new NotImplementedException();
     }
 

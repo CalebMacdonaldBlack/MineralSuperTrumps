@@ -1,8 +1,8 @@
 package cmblack.game;
 
 import cmblack.card.Card;
-import cmblack.card.TrumpCard;
 import cmblack.deck.Deck;
+import cmblack.player.BotPlayer;
 import cmblack.player.Player;
 
 import java.util.ArrayList;
@@ -11,110 +11,65 @@ import java.util.ArrayList;
  * Created by calebmacdonaldblack on 29/08/2016.
  */
 public class Round {
-    private final Player[] players;
     private final Deck deck;
+    private final PlayerCircle playerCircle;
+    private Card currentCard;
+    private String category;
+    private final ArrayList<Player> winningPlayers;
 
-    public Round(Player[] players, Deck deck) {
-        this.players = players;
+    public Round(Deck deck, PlayerCircle playerCircle, ArrayList<Player> winningPlayers) {
         this.deck = deck;
+        this.playerCircle = playerCircle;
+        this.winningPlayers = winningPlayers;
     }
 
-
-    public void begin() {
-        System.out.println("=========================");
-        System.out.println("Starting a new round\n");
-        ArrayList<Player> playersInRound = this.getPlayersAsList();
-        startRound(playersInRound);
-    }
-
-    //TODO break up and unit test
-    public void startRound(ArrayList<Player> playersInRound) {
-
-        Card card = null;
-        String category = null;
-        while (playersInRound.size() > 1) {
-            ArrayList<Player> currentRotation = new ArrayList<>(playersInRound);
-            System.out.println("=========================");
-            System.out.println("Starting a new rotation\n");
-            for (Player player : currentRotation) {
-                if (playersInRound.size() == 1) {
-                    System.out.println("Round Winning Player: " + playersInRound.get(0).getPlayerName());
-                    playerGoesFirstNextRound(player, playersInRound);
-                    break;
-                }
-
-                if (category == null) {
-                    System.out.println(player.getPlayerName() + " is selecting a category");
-                    category = player.chooseCategory();
-                    System.out.println(player.getPlayerName() + " selected  " + category + " as the category");
-                }
-
-                Card cardToPlay = player.getCardToPlay(category, card, deck);
-
-                if (cardToPlay == null) {
-                    System.out.println(player.getPlayerName() + " could not play a card and was removed from the game.");
-                    playersInRound.remove(player);
-                    player.giveCard(this.deck.takeCard());
-                } else if (cardToPlay instanceof TrumpCard) {
-                    System.out.println(player.getPlayerName() + "played the trump card " + card.getTitle());
-                    category = player.chooseCategory(((TrumpCard) cardToPlay).getCategories());
-                    System.out.println(player.getPlayerName() + " selected the category: " + category);
-                    playersInRound = this.getPlayersAsList();
-                    deck.addToDiscardedPile(card);
-                    card = null;
-                    nextPlayerGoesFirstNextRound(player, playersInRound);
-                    break;
-                } else {
-                    System.out.println(player.getPlayerName() + " Played the standard card " + cardToPlay.getTitle());
-                    deck.addToDiscardedPile(card);
-                    card = cardToPlay;
-                }
-                System.out.println(player.getPlayerName() + " card count: " + player.getCountOfCards() + "\n\n");
-
-                System.out.println("\nPlayers left in round: " + playersInRound.size());
-            }
+    public void begin(){
+        System.out.println("Starting Round\n==================");
+        while(playerCircle.hasNext()){
+            playerCircle.nextPlayer().haveTurn(this);
         }
     }
 
-    private void nextPlayerGoesFirstNextRound(Player player, ArrayList<Player> playersInRound) {
-        int index = playersInRound.indexOf(player) + 1;
-        index = index == playersInRound.size() ? 0 : index;
-        playerGoesFirstNextRound(playersInRound.get(index), playersInRound);
+    public Card getCurrentCard() {
+        return currentCard;
     }
 
-    private void playerGoesFirstNextRound(Player player, ArrayList<Player> playersInRound) {
-        ArrayList<Player> tempPlayersInRoundList = new ArrayList<>();
-        ArrayList<Player> temp2PlayersInRoundList = new ArrayList<>(playersInRound);
-
-        for(Player p: temp2PlayersInRoundList){
-            if(p != player){
-                tempPlayersInRoundList.add(p);
-                playersInRound.remove(p);
-            }else{
-                break;
-            }
+    public void setCurrentCard(Card currentCard) {
+        if(this.currentCard != null){
+            deck.addToDiscardedPile(this.currentCard);
         }
-
-        for(Player p: tempPlayersInRoundList){
-            playersInRound.add(p);
-        }
+        this.currentCard = currentCard;
     }
 
-    public Player getWinningPlayer(){
-        for (Player player: players){
-            if(player.getCountOfCards() == 1){
-                System.out.println("\n\n" + player.getPlayerName() + "Won the whole game");
-                return player;
-            }
-        }
-        return null;
+    public String getCategory() {
+        return category;
     }
 
-    private ArrayList<Player> getPlayersAsList() {
-        ArrayList<Player> playersInRound = new ArrayList<>();
-        for (Player player : players) {
-            playersInRound.add(player);
-        }
-        return playersInRound;
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public Deck getDeck() {
+        return deck;
+    }
+
+    public PlayerCircle getPlayerCircle() {
+        return playerCircle;
+    }
+
+
+    public void reset() {
+        playerCircle.resetRoundUsingWinningPlayer();
+        this.category = null;
+        this.currentCard = null;
+    }
+
+    public void addWinner(Player player) {
+        System.out.println(player.getPlayerName() + ": has no cards left and won! ");
+        this.winningPlayers.add(player);
+    }
+
+    public ArrayList<Player> getWinningPlayers() {
+        return winningPlayers;
     }
 }

@@ -32,6 +32,7 @@ public class Cleavage extends Category{
 
 
     public enum CleavageOptions {
+        //TODO remove all enums to their own class
         NONE(0, "none"),
         POOR_NONE(1, "poor/none"),
         POOR1(2, "1 poor"),

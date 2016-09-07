@@ -6,17 +6,15 @@ import cmblack.player.BotPlayer;
 import cmblack.player.Player;
 import org.junit.Test;
 
-import java.util.ArrayList;
-
 import static org.junit.Assert.*;
 
 /**
- * Created by calebmacdonaldblack on 2/09/2016.
+ * Created by calebmacdonaldblack on 7/09/2016.
  */
-public class RoundTest {
+public class GameTest {
 
     @Test
-    public void testStartRound() throws Exception {
+    public void TestGamePlayed() throws Exception{
         JSONDeckBuilder jsonDeckBuilder = new JSONDeckBuilder("cards.json");
         Deck deck = jsonDeckBuilder.getDeck().shuffle();
 
@@ -27,9 +25,10 @@ public class RoundTest {
                 new BotPlayer("bot4"),
                 new BotPlayer("bot5")
         };
-        deck.distributeToPlayers(5, players);
-        Round round = new Round(deck, new PlayerCircle(players), new ArrayList<Player>());
-        round.begin();
-        assertTrue(round.getPlayerCircle().getRoundWinningPlayer() != null);
+
+        Game game = new Game(players, deck);
+
+        game.start();
     }
+
 }

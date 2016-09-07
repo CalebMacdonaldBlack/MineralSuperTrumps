@@ -5,6 +5,7 @@ import cmblack.card.PlayCard;
 import cmblack.card.TrumpCard;
 import cmblack.category.Category;
 import cmblack.deck.Deck;
+import cmblack.game.Round;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -21,47 +22,80 @@ public class BotPlayer extends Player {
         this(bot1, new ArrayList<Card>());
     }
 
-    @Override
-    public Card getCardToPlay(String selectedCategoryName, Card currentCard, Deck deck) {
+    public void findValidCardToPlay(Round round) {
 
-        return findValidCardToPlay(currentCard, selectedCategoryName);
-    }
 
-    private Card findValidCardToPlay(Card currentCard, String selectedCategory) {
-        if(currentCard == null){
-            for(Card card: this.getCards()){
+        //TODO instance of is bad don't use it
+        if(round.getCurrentCard() == null || round.getCurrentCard() instanceof TrumpCard){
+            for(Card card: new ArrayList<>(this.getCards())){
+                //TODO move this functionality into a method on the interface
+                // playCard.isGoodChoice(comparingCard, Category) returns true or false
+                // trumpCard.isGoodChoice(comparingCard, Category) returns false always
+                // playCard.isGoodChoiceForLastResort() returns false always
+                // trumpCard.isGoodChoiceForLastResort() returns true always
                 if (card instanceof PlayCard){
-                    this.getCards().remove(card);
-                    return card;
+                    this.removeCard(card, round);
+                    round.setCurrentCard(card);
+                    System.out.println(getPlayerName() + ": Selecting the first card: " + card.getTitle());
+                    return;
                 }
             }
         }
 
-        for(Card card: this.getCards()){
-            if(card instanceof PlayCard && ((PlayCard) card).getPlayCardStats().getCategoryWithName(selectedCategory).isBetterThan(((PlayCard) currentCard).getPlayCardStats().getCategoryWithName(selectedCategory))){
-                this.getCards().remove(card);
-                return card;
+        for(Card card: new ArrayList<>(this.getCards())){
+            if(card instanceof PlayCard && ((PlayCard) card).getPlayCardStats().getCategoryWithName(round.getCategory()).isBetterThan(((PlayCard) round.getCurrentCard()).getPlayCardStats().getCategoryWithName(round.getCategory()))){
+                this.removeCard(card, round);
+                System.out.println("Current Card: " + round.getCurrentCard().getTitle());
+                round.setCurrentCard(card);
+                System.out.println(getPlayerName() + ": selecting better card: " + card.getTitle());
+                return;
             }
         }
 
-        for(Card card: this.getCards()){
+        for(Card card: new ArrayList<>(this.getCards())){
             if(card instanceof TrumpCard){
-                this.getCards().remove(card);
-                return card;
+                this.removeCard(card, round);
+                System.out.println("Current Card: " + round.getCurrentCard().getTitle());
+                round.setCurrentCard(card);
+                System.out.println(getPlayerName() + ": choosing trump card: " + card.getTitle());
+                return;
             }
         }
 
-        return null;
+        System.out.println(getPlayerName() + ": cannot find a card to play");
+        round.getPlayerCircle().remove(this);
+        this.getCards().add(round.getDeck().takeCard());
     }
 
-    @Override
     public String chooseCategory() {
         return chooseCategory(Category.Categories.getCategoriesAsStringArray());
     }
 
-    @Override
-    public String chooseCategory(String[] categories) {
+    private String chooseCategory(String[] categories) {
         Random random = new Random();
         return categories[random.nextInt(categories.length)];
+    }
+
+    @Override
+    public void haveTurn(Round round) {
+        initializeRound(round);
+        findValidCardToPlay(round);
+    }
+
+    @Override
+    public void removeCard(Card card, Round round) {
+        this.getCards().remove(card);
+        if(this.getCards().size() == 0){
+            round.addWinner(this);
+        }
+    }
+
+    private void initializeRound(Round round) {
+        System.out.println(this.getPlayerName() + ": Checking category");
+        if(round.getCategory() == null){
+            round.setCategory(this.chooseCategory());
+
+            System.out.println(this.getPlayerName() + ": No current category. selected: " + round.getCategory());
+        }
     }
 }
