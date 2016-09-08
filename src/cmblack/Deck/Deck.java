@@ -1,7 +1,6 @@
 package cmblack.deck;
 
-import cmblack.player.Player;
-import cmblack.card.Card;
+import cmblack.card.ICard;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -10,19 +9,19 @@ import java.util.Collections;
  * Created by calebmacdonaldblack on 24/08/2016.
  */
 public class Deck {
-    private final ArrayList<Card> cards;
-    private final ArrayList<Card> discardedCards;
+    private final ArrayList<ICard> cards;
+    private final ArrayList<ICard> discardedCards;
 
-    public Deck(ArrayList<Card> cards, ArrayList<Card> discardedCards) {
+    public Deck(ArrayList<ICard> cards, ArrayList<ICard> discardedCards) {
         this.cards = cards;
         this.discardedCards = discardedCards;
     }
 
-    public ArrayList<Card> getCards() {
+    public ArrayList<ICard> getCards() {
         return cards;
     }
 
-    public Card takeCard(){
+    public ICard takeCard(){
         if(cards.size() < 1){
             System.out.println("Adding discarded to deck");
             addDiscardedPileToDeck();
@@ -31,8 +30,8 @@ public class Deck {
     }
 
     private void addDiscardedPileToDeck() {
-        ArrayList<Card> cardsToMove = new ArrayList<>(discardedCards);
-        for(Card card: cardsToMove){
+        ArrayList<ICard> cardsToMove = new ArrayList<>(discardedCards);
+        for(ICard card: cardsToMove){
             this.cards.add(card);
             this.discardedCards.remove(card);
         }
@@ -43,21 +42,12 @@ public class Deck {
         return this;
     }
 
-    public ArrayList<Card> getDiscardedCards() {
+    public ArrayList<ICard> getDiscardedCards() {
         return discardedCards;
     }
 
-    public Deck addToDiscardedPile(Card card){
+    public Deck addToDiscardedPile(ICard card){
         this.discardedCards.add(card);
-        return this;
-    }
-
-    public Deck distributeToPlayers(int amountToDistribute, Player[] players){
-        for(Player player: players){
-            for(int count = 0; count < amountToDistribute; count++){
-                player.giveCard(takeCard());
-            }
-        }
         return this;
     }
 }

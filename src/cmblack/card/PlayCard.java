@@ -3,37 +3,42 @@ package cmblack.card;
 /**
  * Created by calebmacdonaldblack on 23/08/2016.
  */
-public class PlayCard extends Card{
+public class PlayCard implements IPlayCard {
     private final String chemicalCompound, classification, crystalSystem;
     private final String[] occurrences;
     private final PlayCardStats playCardStats;
+    private final String title;
+    private final String imageFileName;
+    private final ICardDescription cardDescription;
 
-    public PlayCard(String title, String imageFilename, String chemicalCompound, String classification, String crystalSystem, String[] occurrences, PlayCardStats playCardStats) {
-        super(title, imageFilename);
+    public PlayCard(String title, String imageFileName, String chemicalCompound, String classification, String crystalSystem, String[] occurrences, PlayCardStats playCardStats, ICardDescription cardDescription) {
+        this.title = title;
+        this.imageFileName = imageFileName;
         this.chemicalCompound = chemicalCompound;
         this.classification = classification;
         this.crystalSystem = crystalSystem;
         this.occurrences = occurrences;
         this.playCardStats = playCardStats;
+        this.cardDescription = cardDescription;
     }
 
-    public String getChemicalCompound() {
-        return chemicalCompound;
+    @Override
+    public ICardDescription getCardDescription() {
+        return null;
     }
 
-    public String getClassification() {
-        return classification;
-    }
-
-    public String getCrystalSystem() {
-        return crystalSystem;
-    }
-
-    public String[] getOccurrences() {
-        return occurrences;
-    }
-
+    @Override
     public PlayCardStats getPlayCardStats() {
-        return playCardStats;
+        return null;
+    }
+
+    @Override
+    public String getTitle() {
+        return null;
+    }
+
+    @Override
+    public String getImageFilename() {
+        return null;
     }
 }

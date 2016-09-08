@@ -21,15 +21,15 @@ public class PlayCardStats {
     }
 
     public Cleavage getCleavage() {
-        return cleavage;
+        return null;
     }
 
     public CrustalAbundance getCrustalAbundance() {
-        return crustalAbundance;
+        return null;
     }
 
     public EconomicValue getEconomicValue() {
-        return economicValue;
+        return null;
     }
 
     public Hardness getHardness() {
@@ -37,22 +37,6 @@ public class PlayCardStats {
     }
 
     public SpecificGravity getSpecificGravity() {
-        return specificGravity;
-    }
-
-    public Category getCategoryWithName(String name) {
-        if (cleavage.getName().equals(name)){
-            return cleavage;
-        }else if (crustalAbundance.getName().equals(name)){
-            return crustalAbundance;
-        }else if (economicValue.getName().equals(name)){
-            return economicValue;
-        }else if (hardness.getName().equals(name)){
-            return hardness;
-        }else if (specificGravity.getName().equals(name)){
-            return specificGravity;
-        }else{
-            throw new NullPointerException("Cannot find category with the name: " + name);
-        }
+        return null;
     }
 }

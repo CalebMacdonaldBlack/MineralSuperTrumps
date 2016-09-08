@@ -1,6 +1,6 @@
 package cmblack.deck;
 
-import cmblack.card.Card;
+import cmblack.card.ICard;
 import cmblack.card.PlayCard;
 import cmblack.card.PlayCardStats;
 import cmblack.card.TrumpCard;
@@ -30,33 +30,34 @@ public class JSONDeckBuilder implements DeckBuilder {
 
     @Override
     public Deck getDeck() {
-        ArrayList<Card> cards = new ArrayList<Card>();
-
-        //TODO error handing the crap out of this
-
-        for (ParsedCard parsedCard : parsedCardsArray.getCards()) {
-            if (parsedCard.getChemistry() != null) {
-                cards.add(new PlayCard(
-                        parsedCard.getTitle(),
-                        parsedCard.getFileName(),
-                        parsedCard.getChemistry(),
-                        parsedCard.getClassification(),
-                        parsedCard.getCrystal_system(),
-                        parsedCard.getOccurrence(),
-                        new PlayCardStats(
-                                new Cleavage(Cleavage.CleavageOptions.getWithLabel(parsedCard.getCleavage())),
-                                new CrustalAbundance(CrustalAbundance.CrustalAbundanceOptions.getWithLabel(parsedCard.getCrustal_abundance())),
-                                new EconomicValue(EconomicValue.EconomicValueOptions.getWithLabel(parsedCard.getEconomic_value())),
-                                new Hardness(this.getLowFromRangeString(parsedCard.getHardness()), this.getHighFromRangeString(parsedCard.getHardness())),
-                                new SpecificGravity(this.getLowFromRangeString(parsedCard.getSpecific_gravity()), this.getHighFromRangeString(parsedCard.getSpecific_gravity()))
-
-                        )
-                ));
-            } else {
-                cards.add(new TrumpCard(parsedCard.getTitle(), parsedCard.getSubTitle(), parsedCard.getFileName(), parsedCard.getCategories()));
-            }
-        }
-        return new Deck(cards, new ArrayList<Card>());
+//        ArrayList<ICard> cards = new ArrayList<ICard>();
+//
+//        //TODO error handing the crap out of this
+//
+//        for (ParsedCard parsedCard : parsedCardsArray.getCards()) {
+//            if (parsedCard.getChemistry() != null) {
+//                cards.add(new PlayCard(
+//                        parsedCard.getTitle(),
+//                        parsedCard.getFileName(),
+//                        parsedCard.getChemistry(),
+//                        parsedCard.getClassification(),
+//                        parsedCard.getCrystal_system(),
+//                        parsedCard.getOccurrence(),
+//                        new PlayCardStats(
+//                                new Cleavage(Cleavage.CleavageOptions.getWithLabel(parsedCard.getCleavage())),
+//                                new CrustalAbundance(CrustalAbundance.CrustalAbundanceOptions.getWithLabel(parsedCard.getCrustal_abundance())),
+//                                new EconomicValue(EconomicValue.EconomicValueOptions.getWithLabel(parsedCard.getEconomic_value())),
+//                                new Hardness(this.getLowFromRangeString(parsedCard.getHardness()), this.getHighFromRangeString(parsedCard.getHardness())),
+//                                new SpecificGravity(this.getLowFromRangeString(parsedCard.getSpecific_gravity()), this.getHighFromRangeString(parsedCard.getSpecific_gravity()))
+//
+//                        ),
+//                        cardDescription));
+//            } else {
+//                cards.add(new TrumpCard(parsedCard.getTitle(), parsedCard.getSubTitle(), parsedCard.getFileName(), parsedCard.getCategories(), title1));
+//            }
+//        }
+//        return new Deck(cards, new ArrayList<ICard>());
+        return null;
     }
 
     /**
