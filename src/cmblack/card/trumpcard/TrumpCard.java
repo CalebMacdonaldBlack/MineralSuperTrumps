@@ -1,17 +1,18 @@
 package cmblack.card.trumpcard;
 
 import cmblack.card.trumpcard.ITrumpCard;
+import cmblack.category.ICategory;
 
 /**
  * Created by calebmacdonaldblack on 22/08/2016.
  */
 public class TrumpCard implements ITrumpCard {
-    private final String[] categories;
+    private final ICategory[] categories;
     private final String subTitle;
     private final String title;
     private final String imageFileName;
 
-    public TrumpCard(String title, String subTitle, String imageFilename, String[] categories) {
+    public TrumpCard(String title, String subTitle, String imageFilename, ICategory[] categories) {
         this.categories = categories;
         this.subTitle = subTitle;
         this.title = title;
@@ -19,7 +20,7 @@ public class TrumpCard implements ITrumpCard {
     }
 
     @Override
-    public String[] getCategories() {
+    public ICategory[] getCategories() {
         return null;
     }
 
@@ -37,4 +38,5 @@ public class TrumpCard implements ITrumpCard {
     public String getImageFilename() {
         return null;
     }
+
 }

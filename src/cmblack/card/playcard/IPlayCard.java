@@ -13,6 +13,8 @@ public interface IPlayCard extends ICard {
 
     IPlayCardStats getPlayCardStats();
 
+    boolean equals(IPlayCard playCard);
+
     class FakePlayCard implements IPlayCard {
 
         @Override
@@ -23,6 +25,11 @@ public interface IPlayCard extends ICard {
         @Override
         public IPlayCardStats getPlayCardStats() {
             return new IPlayCardStats.FakePlayCardStats();
+        }
+
+        @Override
+        public boolean equals(IPlayCard playCard) {
+            return false;
         }
 
         @Override
