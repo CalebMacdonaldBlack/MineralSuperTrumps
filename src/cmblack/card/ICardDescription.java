@@ -1,5 +1,7 @@
 package cmblack.card;
 
+import java.util.Arrays;
+
 /**
  * Created by calebmacdonaldblack on 9/09/2016.
  */
@@ -12,7 +14,9 @@ public interface ICardDescription {
 
     String[] getOccurrences();
 
-    public class FakeCardDescription implements ICardDescription
+    boolean equals(ICardDescription cardDescription);
+
+    class FakeCardDescription implements ICardDescription
     {
 
         @Override
@@ -33,6 +37,14 @@ public interface ICardDescription {
         @Override
         public String[] getOccurrences() {
             return new String[]{"metamorphic", "sedimentry"};
+        }
+
+        @Override
+        public boolean equals(ICardDescription cardDescription) {
+            return cardDescription.getChemicalCompound().equals(this.getChemicalCompound())
+                && cardDescription.getClassification().equals(this.getClassification())
+                && cardDescription.getCrystalSystem().equals(this.getCrystalSystem())
+                && Arrays.equals(cardDescription.getOccurrences(), this.getOccurrences());
         }
     }
 }

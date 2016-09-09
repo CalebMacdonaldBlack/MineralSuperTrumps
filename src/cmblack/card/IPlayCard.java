@@ -8,11 +8,11 @@ public interface IPlayCard extends ICard {
 
     PlayCardStats getPlayCardStats();
 
-    public class FakePlayCard implements IPlayCard {
+    class FakePlayCard implements IPlayCard {
 
         @Override
         public ICardDescription getCardDescription(){
-            return null;
+            return new ICardDescription.FakeCardDescription();
         }
 
         @Override
@@ -22,12 +22,12 @@ public interface IPlayCard extends ICard {
 
         @Override
         public String getTitle() {
-            return null;
+            return "Gold";
         }
 
         @Override
         public String getImageFilename() {
-            return null;
+            return "Slide33.jpg";
         }
     }
 }

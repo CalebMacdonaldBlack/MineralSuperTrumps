@@ -1,36 +1,47 @@
 package cmblack.category;
 
-import cmblack.category.Category;
-
 /**
- * Created by calebmacdonaldblack on 22/08/2016.
+ * Created by calebmacdonaldblack on 9/09/2016.
  */
-public class Hardness extends Category {
-    private final double rangeLow, rangeHigh;
+public class Hardness implements IHardness {
 
-    public Hardness(double rangeLow, double rangeHigh) {
-        this("Hardness", rangeLow, rangeHigh);
+    private final double minimumValue, maximumValue;
+    private final ICategory category;
+
+    public Hardness(double minimumValue, double maximumValue, ICategory category) {
+        this.minimumValue = minimumValue;
+        this.maximumValue = maximumValue;
+        this.category = category;
     }
 
-    public Hardness(String name, double rangeLow, double rangeHigh) {
-        super(name);
-        this.rangeLow = rangeLow;
-        this.rangeHigh = rangeHigh;
-    }
-
-    public double getRangeLow() {
-        return rangeLow;
-    }
-
-    public double getRangeHigh() {
-        return rangeHigh;
+    public Hardness(double minimumValue, double maximumValue) {
+        this(minimumValue, maximumValue, new Category("Hardness"));
     }
 
     @Override
-    public boolean isBetterThan(Category category) {
-        if(category instanceof Hardness){
-            return ((Hardness) category).rangeHigh < rangeHigh;
-        }
-        throw new IllegalArgumentException(category.getName() + " is not an instance of " + this.getName());
+    public double getMinimumValue() {
+        return this.minimumValue;
+    }
+
+    @Override
+    public double getMaximumValue() {
+        return this.maximumValue;
+    }
+
+    @Override
+    public ICategory getCategory() {
+        return this.category;
+    }
+
+    @Override
+    public boolean isBetterThan(IStat stat) {
+        return false;
+    }
+
+    @Override
+    public boolean equals(IHardness hardness) {
+        return this.maximumValue == hardness.getMaximumValue()
+            && this.minimumValue == hardness.getMinimumValue()
+            && this.category.equals(hardness.getCategory());
     }
 }

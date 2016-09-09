@@ -1,69 +1,47 @@
 package cmblack.category;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
- * Created by calebmacdonaldblack on 22/08/2016.
+ * Created by calebmacdonaldblack on 9/09/2016.
  */
-public class CrustalAbundance extends Category {
-    private CrustalAbundanceOptions value;
+public class CrustalAbundance implements ICrustalAbundance {
+    private final int value;
+    private final String valueName;
+    private final ICategory category;
 
-    public CrustalAbundance(String name, CrustalAbundanceOptions value) {
-        super(name);
+    public CrustalAbundance(int value, String valueName, ICategory category) {
         this.value = value;
+        this.valueName = valueName;
+        this.category = category;
     }
 
-    public CrustalAbundance(CrustalAbundanceOptions value){
-        this("Crustal abundance", value);
-    }
-
-    public CrustalAbundanceOptions getValue() {
-        return value;
+    public CrustalAbundance(int value, String valueName) {
+        this(value, valueName, new Category("Crustal abundance"));
     }
 
     @Override
-    public boolean isBetterThan(Category category) {
-        if(category instanceof CrustalAbundance){
-            return ((CrustalAbundance) category).getValue().value < this.getValue().value;
-        }
-        throw new IllegalArgumentException(category.getName() + " is not an instance of " + this.getName());
+    public int getValue() {
+        return this.value;
     }
 
-    public enum CrustalAbundanceOptions {
-        ULTRATRACE(0, "ultratrace"),
-        TRACE(1, "trace"),
-        LOW(2, "low"),
-        MODERATE(3, "moderate"),
-        HIGH(4, "high"),
-        VERY_HIGH(5, "very high");
+    @Override
+    public String getValueName() {
+        return this.valueName;
+    }
 
-        private final int value;
-        private final String label;
+    @Override
+    public boolean equals(ICrustalAbundance crustalAbundance) {
+        return this.value == crustalAbundance.getValue()
+            && this.valueName.equals(crustalAbundance.getValueName())
+            && this.category.equals(crustalAbundance.getCategory());
+    }
 
-        private static Map<String, CrustalAbundanceOptions> crustalAbundanceOptionsMap = new HashMap<String, CrustalAbundanceOptions>();
+    @Override
+    public ICategory getCategory() {
+        return this.category;
+    }
 
-        static {
-            for (CrustalAbundanceOptions crustalAbundanceOptions : CrustalAbundanceOptions.values()) {
-                crustalAbundanceOptionsMap.put(crustalAbundanceOptions.getLabel(), crustalAbundanceOptions);
-            }
-        }
-
-        CrustalAbundanceOptions(int value, String label) {
-            this.value = value;
-            this.label = label;
-        }
-
-        public int getValue() {
-            return value;
-        }
-
-        public String getLabel() {
-            return label;
-        }
-
-        public static CrustalAbundanceOptions getWithLabel(String label) {
-            return crustalAbundanceOptionsMap.get(label);
-        }
+    @Override
+    public boolean isBetterThan(IStat stat) {
+        return false;
     }
 }

@@ -33,4 +33,11 @@ public class FakeCardDescriptionTest {
         assertEquals("metamorphic", cardDescription.getOccurrences()[0]);
         assertEquals("sedimentry", cardDescription.getOccurrences()[1]);
     }
+
+    @Test
+    public void testEquals() throws Exception {
+        ICardDescription cardDescription = new ICardDescription.FakeCardDescription();
+        ICardDescription cardDescription2 = new ICardDescription.FakeCardDescription();
+        assertTrue(cardDescription.equals(cardDescription2));
+    }
 }

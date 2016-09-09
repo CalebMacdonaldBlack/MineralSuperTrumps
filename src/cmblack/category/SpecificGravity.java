@@ -1,34 +1,47 @@
 package cmblack.category;
 
 /**
- * Created by calebmacdonaldblack on 22/08/2016.
+ * Created by calebmacdonaldblack on 9/09/2016.
  */
-public class SpecificGravity extends Category {
-    private final double rangeLow, rangeHigh;
+public class SpecificGravity implements ISpecificGravity {
 
-    public SpecificGravity(double rangeLow, double rangeHigh) {
-        this("Specific gravity", rangeLow, rangeHigh);
+    private final double minimumValue, maximumValue;
+    private final ICategory category;
+
+    public SpecificGravity(double minimumValue, double maximumValue, ICategory category) {
+        this.minimumValue = minimumValue;
+        this.maximumValue = maximumValue;
+        this.category = category;
     }
 
-    public SpecificGravity(String name, double rangeLow, double rangeHigh) {
-        super(name);
-        this.rangeLow = rangeLow;
-        this.rangeHigh = rangeHigh;
-    }
-
-    public double getRangeLow() {
-        return rangeLow;
-    }
-
-    public double getRangeHigh() {
-        return rangeHigh;
+    public SpecificGravity(double minimumValue, double maximumValue) {
+        this(minimumValue, maximumValue, new Category("Specific gravity"));
     }
 
     @Override
-    public boolean isBetterThan(Category category) {
-        if(category instanceof SpecificGravity){
-            return ((SpecificGravity) category).rangeHigh < rangeHigh;
-        }
-        throw new IllegalArgumentException(category.getName() + " is not an instance of " + this.getName());
+    public double getMinimumValue() {
+        return this.minimumValue;
+    }
+
+    @Override
+    public double getMaximumValue() {
+        return this.maximumValue;
+    }
+
+    @Override
+    public ICategory getCategory() {
+        return this.category;
+    }
+
+    @Override
+    public boolean equals(ISpecificGravity specificGravity) {
+        return this.getMinimumValue() == specificGravity.getMinimumValue()
+            && this.getMaximumValue() == specificGravity.getMaximumValue()
+            && this.category.equals(specificGravity.getCategory());
+    }
+
+    @Override
+    public boolean isBetterThan(IStat stat) {
+        return false;
     }
 }
