@@ -1,5 +1,6 @@
 package cmblack.card;
 
+import cmblack.card.playcard.IPlayCard;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

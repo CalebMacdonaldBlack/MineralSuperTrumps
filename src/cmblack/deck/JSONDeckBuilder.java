@@ -1,15 +1,9 @@
 package cmblack.deck;
 
-import cmblack.card.ICard;
-import cmblack.card.PlayCard;
-import cmblack.card.PlayCardStats;
-import cmblack.card.TrumpCard;
-import cmblack.category.*;
 import com.google.gson.Gson;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.util.ArrayList;
 
 /**
  * Created by calebmacdonaldblack on 24/08/2016.

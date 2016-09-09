@@ -7,7 +7,7 @@ public interface ICategory {
     String getCategoryName();
     boolean equals(ICategory category);
 
-    public class FakeCategory implements ICategory {
+    public class FakeHardnessCategory implements ICategory {
 
         @Override
         public String getCategoryName() {
