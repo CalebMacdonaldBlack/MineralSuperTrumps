@@ -1,6 +1,7 @@
 package cmblack.card;
 
 import cmblack.card.playcard.IPlayCard;
+import cmblack.card.playcard.playcardstats.IPlayCardStats;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -10,25 +11,25 @@ import static org.junit.Assert.*;
  */
 public class FakePlayCardTest {
 
+    IPlayCard playCard = new IPlayCard.FakePlayCard();
+
     @Test
     public void testGetCardDescription() throws Exception {
-        IPlayCard playCard = new IPlayCard.FakePlayCard();
         assertTrue(playCard.getCardDescription().equals(new ICardDescription.FakeCardDescription()));
     }
 
     @Test
     public void testGetPlayCardStats() throws Exception {
+        assertTrue(playCard.getPlayCardStats().equals(new IPlayCardStats.FakePlayCardStats()));
     }
 
     @Test
     public void testGetTitle() throws Exception {
-        IPlayCard playCard = new IPlayCard.FakePlayCard();
         assertEquals("Gold", playCard.getTitle());
     }
 
     @Test
     public void testGetImageFilename() throws Exception {
-        IPlayCard playCard = new IPlayCard.FakePlayCard();
         assertEquals("Slide33.jpg", playCard.getImageFilename());
     }
 }

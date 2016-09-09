@@ -2,6 +2,7 @@ package cmblack.card.playcard;
 
 import cmblack.card.ICard;
 import cmblack.card.ICardDescription;
+import cmblack.card.playcard.playcardstats.IPlayCardStats;
 import cmblack.card.playcard.playcardstats.PlayCardStats;
 
 /**
@@ -10,7 +11,7 @@ import cmblack.card.playcard.playcardstats.PlayCardStats;
 public interface IPlayCard extends ICard {
     ICardDescription getCardDescription();
 
-    PlayCardStats getPlayCardStats();
+    IPlayCardStats getPlayCardStats();
 
     class FakePlayCard implements IPlayCard {
 
@@ -20,8 +21,8 @@ public interface IPlayCard extends ICard {
         }
 
         @Override
-        public PlayCardStats getPlayCardStats() {
-            return null;
+        public IPlayCardStats getPlayCardStats() {
+            return new IPlayCardStats.FakePlayCardStats();
         }
 
         @Override
