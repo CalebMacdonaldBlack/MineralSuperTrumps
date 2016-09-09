@@ -8,34 +8,26 @@ import cmblack.category.IStat;
  * Created by calebmacdonaldblack on 9/09/2016.
  */
 public class CrustalAbundance implements ICrustalAbundance {
-    private final int value;
-    private final String valueName;
     private final ICategory category;
+    private final CrustalAbundanceValue value;
 
-    public CrustalAbundance(int value, String valueName, ICategory category) {
-        this.value = value;
-        this.valueName = valueName;
+    public CrustalAbundance(ICategory category, CrustalAbundanceValue value) {
         this.category = category;
+        this.value = value;
     }
 
-    public CrustalAbundance(int value, String valueName) {
-        this(value, valueName, new Category("Crustal abundance"));
+    public CrustalAbundance(CrustalAbundanceValue value) {
+        this(new Category("Crustal abundance"), value);
     }
 
     @Override
-    public int getValue() {
+    public CrustalAbundanceValue getValue() {
         return this.value;
-    }
-
-    @Override
-    public String getValueName() {
-        return this.valueName;
     }
 
     @Override
     public boolean equals(ICrustalAbundance crustalAbundance) {
         return this.value == crustalAbundance.getValue()
-            && this.valueName.equals(crustalAbundance.getValueName())
             && this.category.equals(crustalAbundance.getCategory());
     }
 

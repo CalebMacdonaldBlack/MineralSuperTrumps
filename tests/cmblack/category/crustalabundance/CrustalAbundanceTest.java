@@ -10,21 +10,16 @@ import static org.junit.Assert.*;
  */
 public class CrustalAbundanceTest {
 
-    ICrustalAbundance crustalAbundance = new CrustalAbundance(4, "high");
+    ICrustalAbundance crustalAbundance = new CrustalAbundance(CrustalAbundanceValue.HIGH);
 
     @Test
     public void testGetValue() throws Exception {
-        assertEquals(4, crustalAbundance.getValue());
-    }
-
-    @Test
-    public void testGetValueName() throws Exception {
-        assertEquals("high", crustalAbundance.getValueName());
+        assertEquals(CrustalAbundanceValue.HIGH, crustalAbundance.getValue());
     }
 
     @Test
     public void testEquals() throws Exception {
-        assertTrue(crustalAbundance.equals(new CrustalAbundance(4, "high")));
+        assertTrue(crustalAbundance.equals(new CrustalAbundance(CrustalAbundanceValue.HIGH)));
     }
 
     @Test

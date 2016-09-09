@@ -7,26 +7,19 @@ import cmblack.category.IStat;
  * Created by calebmacdonaldblack on 9/09/2016.
  */
 public interface ICrustalAbundance extends IStat {
-    int getValue();
-    String getValueName();
+    CrustalAbundanceValue getValue();
     boolean equals(ICrustalAbundance crustalAbundance);
 
     class FakeCrustalAbundance implements ICrustalAbundance {
 
         @Override
-        public int getValue() {
-            return 4;
-        }
-
-        @Override
-        public String getValueName() {
-            return "high";
+        public CrustalAbundanceValue getValue() {
+            return CrustalAbundanceValue.HIGH;
         }
 
         @Override
         public boolean equals(ICrustalAbundance crustalAbundance) {
             return this.getValue() == crustalAbundance.getValue()
-                && this.getValueName().equals(crustalAbundance.getValueName())
                 && this.getCategory().equals(crustalAbundance.getCategory());
         }
 
@@ -44,19 +37,13 @@ public interface ICrustalAbundance extends IStat {
     class FakeCrustalAbundance2 implements ICrustalAbundance {
 
         @Override
-        public int getValue() {
-            return 4;
-        }
-
-        @Override
-        public String getValueName() {
-            return "high";
+        public CrustalAbundanceValue getValue() {
+            return null;
         }
 
         @Override
         public boolean equals(ICrustalAbundance crustalAbundance) {
             return this.getValue() == crustalAbundance.getValue()
-                    && this.getValueName().equals(crustalAbundance.getValueName())
                     && this.getCategory().equals(crustalAbundance.getCategory());
         }
 

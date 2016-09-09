@@ -14,12 +14,7 @@ public class FakeCrustalAbundanceTest {
 
     @Test
     public void testGetValue() throws Exception {
-        assertEquals(4, crustalAbundance.getValue());
-    }
-
-    @Test
-    public void testGetValueName() throws Exception {
-        assertEquals("high", crustalAbundance.getValueName());
+        assertEquals(CrustalAbundanceValue.HIGH, crustalAbundance.getValue());
     }
 
     @Test

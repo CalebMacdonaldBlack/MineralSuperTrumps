@@ -12,6 +12,7 @@ import cmblack.category.ICategory;
 import cmblack.category.cleavage.Cleavage;
 import cmblack.category.cleavage.CleavageValue;
 import cmblack.category.crustalabundance.CrustalAbundance;
+import cmblack.category.crustalabundance.CrustalAbundanceValue;
 import cmblack.category.economicvalue.EconomicValue;
 import cmblack.category.hardness.Hardness;
 import cmblack.category.specificgravity.SpecificGravity;
@@ -131,17 +132,17 @@ public class JSONDeckBuilder implements IDeckBuilder {
     private CrustalAbundance createCrustalAbundance(String valueText) {
         switch (valueText){
             case "ultratrace":
-                return new CrustalAbundance(0, valueText);
+                return new CrustalAbundance(CrustalAbundanceValue.ULTRATRACE);
             case "trace":
-                return new CrustalAbundance(1, valueText);
+                return new CrustalAbundance(CrustalAbundanceValue.TRACE);
             case "low":
-                return new CrustalAbundance(2, valueText);
+                return new CrustalAbundance(CrustalAbundanceValue.LOW);
             case "moderate":
-                return new CrustalAbundance(3, valueText);
+                return new CrustalAbundance(CrustalAbundanceValue.MODERATE);
             case "high":
-                return new CrustalAbundance(4, valueText);
+                return new CrustalAbundance(CrustalAbundanceValue.HIGH);
             case "very high":
-                return new CrustalAbundance(5, valueText);
+                return new CrustalAbundance(CrustalAbundanceValue.VERY_HIGH);
             default:
                 throw new NullPointerException("CrustalAbundance getValue for " + valueText + " is not found");
         }
