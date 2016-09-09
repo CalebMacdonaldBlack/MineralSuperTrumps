@@ -1,7 +1,8 @@
 package cmblack.card.trumpcard;
 
 import cmblack.card.ICard;
-import cmblack.category.Category;
+import cmblack.card.playcard.CardType;
+import cmblack.card.playcard.CategoryComparisonResult;
 import cmblack.category.ICategory;
 
 /**
@@ -31,6 +32,16 @@ public interface ITrumpCard extends ICard {
         @Override
         public String getImageFilename() {
             return "slide58.jpg";
+        }
+
+        @Override
+        public CardType type() {
+            return null;
+        }
+
+        @Override
+        public CategoryComparisonResult compareWith(ICard card) {
+            return null;
         }
     }
 }

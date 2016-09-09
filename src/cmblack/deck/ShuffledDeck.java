@@ -4,26 +4,31 @@ import cmblack.card.ICard;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Random;
 
 /**
  * Created by calebmacdonaldblack on 9/09/2016.
  */
 public class ShuffledDeck implements IDeck{
 
-    private final ArrayList<ICard> cards;
+    private final IDeck deck;
 
     public ShuffledDeck(IDeck deck){
-        this.cards = deck.getCards();
-        Collections.shuffle(this.cards);
-    }
-
-    @Override
-    public ArrayList<ICard> getCards() {
-        return null;
+        this.deck = deck;
     }
 
     @Override
     public ICard takeCard() {
-        return null;
+        return deck.takeCardAt(new Random().nextInt(deck.length()));
+    }
+
+    @Override
+    public ICard takeCardAt(int index) {
+        return deck.takeCardAt(index);
+    }
+
+    @Override
+    public int length() {
+        return deck.length();
     }
 }

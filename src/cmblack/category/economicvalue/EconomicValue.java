@@ -22,7 +22,7 @@ public class EconomicValue implements IEconomicValue {
     public EconomicValue(int value, String valueName) {
         this.value = value;
         this.valueName = valueName;
-        this.category = new Category("Economic value");
+        this.category = new Category("Economic getValue");
     }
 
 
@@ -53,26 +53,26 @@ public class EconomicValue implements IEconomicValue {
         throw new NotImplementedException();
     }
 
-//    private final EconomicValueOptions value;
+//    private final EconomicValueOptions getValue;
 //
-//    public EconomicValue(EconomicValueOptions value) {
+//    public EconomicValue(EconomicValueOptions getValue) {
 //        super(category);
-//        this("Economic value", value);
+//        this("Economic getValue", getValue);
 //    }
 //
-//    public EconomicValue(String name, EconomicValueOptions value) {
+//    public EconomicValue(String name, EconomicValueOptions getValue) {
 //        super(name);
-//        this.value = value;
+//        this.getValue = getValue;
 //    }
 //
 //    public EconomicValueOptions getValue() {
-//        return this.value;
+//        return this.getValue;
 //    }
 //
 //    @Override
 //    public boolean isBetterThan(Category category) {
 //        if(category instanceof EconomicValue){
-//            return ((EconomicValue) category).getValue().value < this.getValue().value;
+//            return ((EconomicValue) category).getValue().getValue < this.getValue().getValue;
 //        }
 //        throw new IllegalArgumentException(category.getName() + " is not an instance of " + this.getName());
 //    }
@@ -85,7 +85,7 @@ public class EconomicValue implements IEconomicValue {
 //        VERY_HIGH(4, "very high"),
 //        IM_RICH(5, "I'm rich!");
 //
-//        private final int value;
+//        private final int getValue;
 //        private final String label;
 //
 //        private static Map<String, EconomicValueOptions> economicValueOptionsMap = new HashMap<String, EconomicValueOptions>();
@@ -96,13 +96,13 @@ public class EconomicValue implements IEconomicValue {
 //            }
 //        }
 //
-//        EconomicValueOptions(int value, String label) {
-//            this.value = value;
+//        EconomicValueOptions(int getValue, String label) {
+//            this.getValue = getValue;
 //            this.label = label;
 //        }
 //
 //        public int getValue() {
-//            return value;
+//            return getValue;
 //        }
 //
 //        public String getLabel() {

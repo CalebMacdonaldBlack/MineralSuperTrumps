@@ -1,8 +1,8 @@
 package cmblack.card.playcard;
 
+import cmblack.card.ICard;
 import cmblack.card.ICardDescription;
 import cmblack.card.playcard.playcardstats.IPlayCardStats;
-import cmblack.card.playcard.playcardstats.PlayCardStats;
 
 /**
  * Created by calebmacdonaldblack on 23/08/2016.
@@ -46,5 +46,15 @@ public class PlayCard implements IPlayCard {
     @Override
     public String getImageFilename() {
         return this.imageFileName;
+    }
+
+    @Override
+    public CardType type() {
+        return CardType.PLAY_CARD;
+    }
+
+    @Override
+    public CategoryComparisonResult compareWith(ICard card) {
+        return null;
     }
 }

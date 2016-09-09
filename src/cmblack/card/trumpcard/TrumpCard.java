@@ -1,6 +1,8 @@
 package cmblack.card.trumpcard;
 
-import cmblack.card.trumpcard.ITrumpCard;
+import cmblack.card.ICard;
+import cmblack.card.playcard.CardType;
+import cmblack.card.playcard.CategoryComparisonResult;
 import cmblack.category.ICategory;
 
 /**
@@ -37,6 +39,16 @@ public class TrumpCard implements ITrumpCard {
     @Override
     public String getImageFilename() {
         return this.imageFileName;
+    }
+
+    @Override
+    public CardType type() {
+        return null;
+    }
+
+    @Override
+    public CategoryComparisonResult compareWith(ICard card) {
+        return null;
     }
 
 }

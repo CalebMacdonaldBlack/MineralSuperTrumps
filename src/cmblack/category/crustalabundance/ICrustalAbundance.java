@@ -40,4 +40,34 @@ public interface ICrustalAbundance extends IStat {
             return false;
         }
     }
+
+    class FakeCrustalAbundance2 implements ICrustalAbundance {
+
+        @Override
+        public int getValue() {
+            return 4;
+        }
+
+        @Override
+        public String getValueName() {
+            return "high";
+        }
+
+        @Override
+        public boolean equals(ICrustalAbundance crustalAbundance) {
+            return this.getValue() == crustalAbundance.getValue()
+                    && this.getValueName().equals(crustalAbundance.getValueName())
+                    && this.getCategory().equals(crustalAbundance.getCategory());
+        }
+
+        @Override
+        public ICategory getCategory() {
+            return new ICategory.FakeCrustalAbundanceCategory();
+        }
+
+        @Override
+        public boolean isBetterThan(IStat stat) {
+            return false;
+        }
+    }
 }

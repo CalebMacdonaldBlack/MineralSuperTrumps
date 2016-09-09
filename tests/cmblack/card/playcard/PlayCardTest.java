@@ -16,7 +16,7 @@ public class PlayCardTest {
             "Slide33.jpg",
             new IPlayCardStats.FakePlayCardStats(),
             new ICardDescription.FakeCardDescription()
-    );
+            );
 
     @Test
     public void testGetCardDescription() throws Exception {
@@ -41,5 +41,16 @@ public class PlayCardTest {
     @Test
     public void testEquals() throws Exception {
         assertTrue(playCard.equals(new IPlayCard.FakePlayCard()));
+    }
+
+    @Test
+    public void testType() throws Exception {
+        assertEquals(this.playCard.type(), CardType.PLAY_CARD);
+        assertNotEquals(this.playCard.type(), CardType.TRUMP_CARD);
+    }
+
+    @Test
+    public void testCompareWith() throws Exception {
+
     }
 }

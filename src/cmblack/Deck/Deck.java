@@ -16,12 +16,17 @@ public class Deck implements IDeck {
     }
 
     @Override
-    public ArrayList<ICard> getCards() {
-        return null;
+    public ICard takeCard() {
+        return cards.get(0);
     }
 
     @Override
-    public ICard takeCard() {
-        return null;
+    public ICard takeCardAt(int index) {
+        return cards.get(index);
+    }
+
+    @Override
+    public int length() {
+        return cards.size();
     }
 }

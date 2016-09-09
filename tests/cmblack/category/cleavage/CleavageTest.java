@@ -10,21 +10,11 @@ import static org.junit.Assert.*;
  */
 public class CleavageTest {
 
-    private ICleavage cleavage = new Cleavage(2, "none");
-
-    @Test
-    public void testGetValue() throws Exception {
-        assertEquals(2, cleavage.getValue());
-    }
-
-    @Test
-    public void testGetValueName() throws Exception {
-        assertEquals("none", cleavage.getValueName());
-    }
+    private ICleavage cleavage = new Cleavage(CleavageValue.GOOD1);
 
     @Test
     public void testEquals() throws Exception {
-        assertTrue(cleavage.equals(new Cleavage(2, "none")));
+        assertTrue(cleavage.equals(new Cleavage(CleavageValue.GOOD1)));
     }
 
     @Test
@@ -35,5 +25,10 @@ public class CleavageTest {
     @Test
     public void testIsBetterThan() throws Exception {
 
+    }
+
+    @Test
+    public void testValue() throws Exception {
+        assertEquals(CleavageValue.GOOD1, cleavage.getValue());
     }
 }

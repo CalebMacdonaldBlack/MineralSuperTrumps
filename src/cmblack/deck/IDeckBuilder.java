@@ -3,6 +3,6 @@ package cmblack.deck;
 /**
  * Created by calebmacdonaldblack on 24/08/2016.
  */
-public interface DeckBuilder {
-    oldDeck getDeck();
+public interface IDeckBuilder {
+    IDeck getDeck();
 }

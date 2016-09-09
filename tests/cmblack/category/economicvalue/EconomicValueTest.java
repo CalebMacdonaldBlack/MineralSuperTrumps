@@ -29,7 +29,7 @@ public class EconomicValueTest {
 
     @Test
     public void testGetCategory() throws Exception {
-        assertTrue(economicValue.getCategory().equals(new Category("Economic value")));
+        assertTrue(economicValue.getCategory().equals(new Category("Economic getValue")));
     }
 
     @Test

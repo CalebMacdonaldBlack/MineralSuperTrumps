@@ -8,26 +8,19 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
  * Created by calebmacdonaldblack on 9/09/2016.
  */
 public interface ICleavage extends IStat {
-    int getValue();
-    String getValueName();
+    CleavageValue getValue();
     boolean equals(ICleavage cleavage);
 
     class FakeCleavage implements ICleavage{
 
         @Override
-        public int getValue() {
-            return 3;
-        }
-
-        @Override
-        public String getValueName() {
-            return "2 poor";
+        public CleavageValue getValue() {
+            return CleavageValue.GOOD2;
         }
 
         @Override
         public boolean equals(ICleavage cleavage) {
-            return cleavage.getValue() == this.getValue()
-                && cleavage.getValueName().equals(this.getValueName());
+            return cleavage.getValue() == this.getValue();
         }
 
         @Override

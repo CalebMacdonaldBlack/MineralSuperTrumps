@@ -8,19 +8,25 @@ import java.util.ArrayList;
  * Created by calebmacdonaldblack on 9/09/2016.
  */
 public interface IDeck {
-    ArrayList<ICard> getCards();
     ICard takeCard();
+    ICard takeCardAt(int index);
+    int length();
 
     class FakeDeck implements IDeck {
 
         @Override
-        public ArrayList<ICard> getCards() {
+        public ICard takeCard() {
             return null;
         }
 
         @Override
-        public ICard takeCard() {
+        public ICard takeCardAt(int index) {
             return null;
+        }
+
+        @Override
+        public int length() {
+            return 0;
         }
     }
 }

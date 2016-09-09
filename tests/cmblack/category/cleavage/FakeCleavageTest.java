@@ -14,12 +14,7 @@ public class FakeCleavageTest {
 
     @Test
     public void testGetValue() throws Exception {
-        assertEquals(3, cleavage.getValue());
-    }
-
-    @Test
-    public void testGetValueName() throws Exception {
-        assertEquals("2 poor", cleavage.getValueName());
+        assertEquals(CleavageValue.GOOD2, cleavage.getValue());
     }
 
     @Test

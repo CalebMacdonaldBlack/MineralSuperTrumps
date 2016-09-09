@@ -58,4 +58,41 @@ public interface IPlayCardStats {
                 && this.getCrustalAbundance().equals(playCardStats.getCrustalAbundance());
         }
     }
+
+    class FakePlayCardStats2 implements IPlayCardStats {
+
+        @Override
+        public ICrustalAbundance getCrustalAbundance() {
+            return new ICrustalAbundance.FakeCrustalAbundance();
+        }
+
+        @Override
+        public IHardness getHardness() {
+            return new IHardness.FakeHardness();
+        }
+
+        @Override
+        public IEconomicValue getEconomicValue() {
+            return new IEconomicValue.FakeEconomicValue();
+        }
+
+        @Override
+        public ISpecificGravity getSpecificGravity() {
+            return new ISpecificGravity.FakeSpecificGravity();
+        }
+
+        @Override
+        public ICleavage getCleavage() {
+            return new ICleavage.FakeCleavage();
+        }
+
+        @Override
+        public boolean equals(IPlayCardStats playCardStats) {
+            return this.getCleavage().equals(playCardStats.getCleavage())
+                    && this.getSpecificGravity().equals(playCardStats.getSpecificGravity())
+                    && this.getEconomicValue().equals(playCardStats.getEconomicValue())
+                    && this.getHardness().equals(playCardStats.getHardness())
+                    && this.getCrustalAbundance().equals(playCardStats.getCrustalAbundance());
+        }
+    }
 }
