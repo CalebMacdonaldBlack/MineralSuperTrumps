@@ -10,21 +10,16 @@ import static org.junit.Assert.*;
  */
 public class EconomicValueTest {
 
-    IEconomicValue economicValue = new EconomicValue(1, "trivial");
+    IEconomicValue economicValue = new EconomicValue(EconomicValueValue.TRIVIAL);
 
     @Test
     public void testGetValue() throws Exception {
-        assertEquals(1, economicValue.getValue());
-    }
-
-    @Test
-    public void testGetValueName() throws Exception {
-        assertEquals("trivial", economicValue.getValueName());
+        assertEquals(EconomicValueValue.TRIVIAL, economicValue.getValue());
     }
 
     @Test
     public void testEquals() throws Exception {
-        assertTrue(economicValue.equals(new EconomicValue(1, "trivial")));
+        assertTrue(economicValue.equals(new EconomicValue(EconomicValueValue.TRIVIAL)));
     }
 
     @Test

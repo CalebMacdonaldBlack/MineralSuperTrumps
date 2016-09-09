@@ -9,37 +9,28 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
  * Created by calebmacdonaldblack on 23/08/2016.
  */
 public class EconomicValue implements IEconomicValue {
-    private final int value;
-    private final String valueName;
+    private final EconomicValueValue value;
     private final ICategory category;
 
-    public EconomicValue(int value, String valueName, ICategory category) {
+    public EconomicValue(EconomicValueValue value, ICategory category) {
         this.value = value;
-        this.valueName = valueName;
         this.category = category;
     }
 
-    public EconomicValue(int value, String valueName) {
+    public EconomicValue(EconomicValueValue value) {
         this.value = value;
-        this.valueName = valueName;
         this.category = new Category("Economic getValue");
     }
 
 
     @Override
-    public int getValue() {
+    public EconomicValueValue getValue() {
         return this.value;
-    }
-
-    @Override
-    public String getValueName() {
-        return this.valueName;
     }
 
     @Override
     public boolean equals(IEconomicValue economicValue) {
         return this.value == economicValue.getValue()
-            && this.valueName.equals(economicValue.getValueName())
             && this.category.equals(economicValue.getCategory());
     }
 

@@ -13,12 +13,7 @@ public class FakeEconomicValueTest {
 
     @Test
     public void testGetValue() throws Exception {
-        assertEquals(2, economicValue.getValue());
-    }
-
-    @Test
-    public void testGetValueName() throws Exception {
-        assertEquals("moderate", economicValue.getValueName());
+        assertEquals(EconomicValueValue.HIGH, economicValue.getValue());
     }
 
     @Test

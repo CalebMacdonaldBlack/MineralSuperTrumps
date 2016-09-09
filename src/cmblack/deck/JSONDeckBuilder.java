@@ -14,6 +14,7 @@ import cmblack.category.cleavage.CleavageValue;
 import cmblack.category.crustalabundance.CrustalAbundance;
 import cmblack.category.crustalabundance.CrustalAbundanceValue;
 import cmblack.category.economicvalue.EconomicValue;
+import cmblack.category.economicvalue.EconomicValueValue;
 import cmblack.category.hardness.Hardness;
 import cmblack.category.specificgravity.SpecificGravity;
 import com.google.gson.Gson;
@@ -151,17 +152,17 @@ public class JSONDeckBuilder implements IDeckBuilder {
     private EconomicValue createEconomicValue(String valueText) {
         switch (valueText){
             case "trivial":
-                return new EconomicValue(0, valueText);
+                return new EconomicValue(EconomicValueValue.TRIVIAL);
             case "low":
-                return new EconomicValue(1, valueText);
+                return new EconomicValue(EconomicValueValue.LOW);
             case "moderate":
-                return new EconomicValue(2, valueText);
+                return new EconomicValue(EconomicValueValue.MODERATE);
             case "high":
-                return new EconomicValue(3, valueText);
+                return new EconomicValue(EconomicValueValue.HIGH);
             case "very high":
-                return new EconomicValue(4, valueText);
+                return new EconomicValue(EconomicValueValue.VERY_HIGH);
             case "I'm rich!":
-                return new EconomicValue(5, valueText);
+                return new EconomicValue(EconomicValueValue.IM_RICH);
             default:
                 throw new NullPointerException("EconomicValue getValue for " + valueText + " is not found");
         }
