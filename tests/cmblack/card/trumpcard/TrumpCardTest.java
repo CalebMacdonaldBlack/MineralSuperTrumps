@@ -40,7 +40,7 @@ public class TrumpCardTest {
             return false;
 
         for (int i=0; i<length; i++)
-            if (a[i].equals(a2[i]))
+            if (!a[i].equals(a2[i]))
                 return false;
 
         return true;

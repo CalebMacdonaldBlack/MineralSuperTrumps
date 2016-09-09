@@ -21,22 +21,22 @@ public class TrumpCard implements ITrumpCard {
 
     @Override
     public ICategory[] getCategories() {
-        return null;
+        return this.categories;
     }
 
     @Override
     public String getSubTitle() {
-        return null;
+        return this.subTitle;
     }
 
     @Override
     public String getTitle() {
-        return null;
+        return this.title;
     }
 
     @Override
     public String getImageFilename() {
-        return null;
+        return this.imageFileName;
     }
 
 }
