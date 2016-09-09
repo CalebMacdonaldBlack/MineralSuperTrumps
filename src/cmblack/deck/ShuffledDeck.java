@@ -3,16 +3,18 @@ package cmblack.deck;
 import cmblack.card.ICard;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by calebmacdonaldblack on 9/09/2016.
  */
-public class Deck implements IDeck {
+public class ShuffledDeck implements IDeck{
 
     private final ArrayList<ICard> cards;
 
-    public Deck(ArrayList<ICard> cards) {
-        this.cards = cards;
+    public ShuffledDeck(IDeck deck){
+        this.cards = deck.getCards();
+        Collections.shuffle(this.cards);
     }
 
     @Override

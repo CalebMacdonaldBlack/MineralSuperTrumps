@@ -16,8 +16,7 @@ public class CleavageEnumTest {
     }
 
     @Test
-    public void testEquals() throws Exception {
-        Cleavage cleavage = new Cleavage(0, "none");
-        assertTrue(CleavageEnum.NONE.equals(cleavage));
+    public void testFindWithValueName() throws Exception {
+        assertTrue(CleavageEnum.NONE.getCleavage().equals(CleavageEnum.findWithValueName("none").getCleavage()));
     }
 }

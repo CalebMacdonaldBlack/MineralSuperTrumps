@@ -33,7 +33,13 @@ public enum CleavageEnum {
         return cleavage;
     }
 
-    public boolean equals(ICleavage cleavage) {
-        return this.cleavage.equals(cleavage);
+    //TODO check if this is ok with alex or lachlan
+    public static CleavageEnum findWithValueName(String valueName){
+        for(CleavageEnum cleavageEnum: CleavageEnum.values()){
+            if(valueName.equals(cleavageEnum.getCleavage().getValueName())){
+                return cleavageEnum;
+            }
+        }
+        throw new NullPointerException();
     }
 }

@@ -1,9 +1,21 @@
 package cmblack.deck;
 
+import cmblack.card.ICard;
+import cmblack.card.playcard.PlayCard;
+import cmblack.card.playcard.playcardstats.IPlayCardStats;
+import cmblack.card.playcard.playcardstats.PlayCardStats;
+import cmblack.card.trumpcard.TrumpCard;
+import cmblack.category.cleavage.Cleavage;
+import cmblack.category.cleavage.CleavageEnum;
+import cmblack.category.crustalabundance.CrustalAbundance;
+import cmblack.category.economicvalue.EconomicValue;
+import cmblack.category.hardness.Hardness;
+import cmblack.category.specificgravity.SpecificGravity;
 import com.google.gson.Gson;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.util.ArrayList;
 
 /**
  * Created by calebmacdonaldblack on 24/08/2016.
@@ -23,13 +35,27 @@ public class JSONDeckBuilder implements DeckBuilder {
     }
 
     @Override
-    public Deck getDeck() {
-//        ArrayList<ICard> cards = new ArrayList<ICard>();
+    public oldDeck getDeck() {
+        ArrayList<ICard> cards = new ArrayList<ICard>();
+
+        //TODO error handing the crap out of this
+
+        for (ParsedCard parsedCard : parsedCardsArray.getCards()) {
+            if (parsedCard.getChemistry() != null) {
+
+                IPlayCardStats playCardStats = new PlayCardStats(
+
+                );
+
+                cards.add(new PlayCard(
+                        parsedCard.getTitle(),
+                        parsedCard.getFileName(),
+                        new PlayCardStats(
+                                CleavageEnum.findWithValueName(parsedCard.getCleavage()),
+
+                        )
+                        ));
 //
-//        //TODO error handing the crap out of this
-//
-//        for (ParsedCard parsedCard : parsedCardsArray.getCards()) {
-//            if (parsedCard.getChemistry() != null) {
 //                cards.add(new PlayCard(
 //                        parsedCard.getTitle(),
 //                        parsedCard.getFileName(),
@@ -46,12 +72,11 @@ public class JSONDeckBuilder implements DeckBuilder {
 //
 //                        ),
 //                        cardDescription));
-//            } else {
+            } else {
 //                cards.add(new TrumpCard(parsedCard.getTitle(), parsedCard.getSubTitle(), parsedCard.getFileName(), parsedCard.getCategories(), title1));
-//            }
-//        }
-//        return new Deck(cards, new ArrayList<ICard>());
-        return null;
+            }
+        }
+        return new oldDeck(cards, new ArrayList<ICard>());
     }
 
     /**
