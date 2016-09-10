@@ -4,21 +4,12 @@ import cmblack.card.CardDescription;
 import cmblack.card.ICardDescription;
 import cmblack.card.stats.IStats;
 import cmblack.card.stats.Stats;
-import cmblack.category.cleavage.Cleavage;
-import cmblack.category.cleavage.CleavageValue;
 import cmblack.category.cleavage.ICleavageBuilder;
-import cmblack.category.crustalabundance.CrustalAbundance;
-import cmblack.category.crustalabundance.CrustalAbundanceValue;
 import cmblack.category.crustalabundance.ICrustalAbundanceBuilder;
-import cmblack.category.economicvalue.EconomicValue;
-import cmblack.category.economicvalue.EconomicValueValue;
 import cmblack.category.economicvalue.IEconomicValueBuilder;
-import cmblack.category.hardness.Hardness;
 import cmblack.category.hardness.IHardnessBuilder;
 import cmblack.category.specificgravity.ISpecificGravityBuilder;
-import cmblack.category.specificgravity.SpecificGravity;
 import cmblack.deck.IParsedCard;
-import cmblack.deck.ParsedCard;
 
 /**
  * Created by calebmacdonaldblack on 10/09/2016.
