@@ -61,7 +61,7 @@ public class EconomicValue implements IEconomicValue {
 //    }
 //
 //    @Override
-//    public boolean isBetterThan(Category category) {
+//    public boolean compareWith(Category category) {
 //        if(category instanceof EconomicValue){
 //            return ((EconomicValue) category).getValue().getValue < this.getValue().getValue;
 //        }

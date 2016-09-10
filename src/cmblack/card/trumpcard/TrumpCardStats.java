@@ -56,7 +56,7 @@ public class TrumpCardStats implements IStats {
     }
 
     @Override
-    public CategoryComparisonResult isBetterThan(IStats stats) {
+    public CategoryComparisonResult compareWith(IStats stats) {
         return null;
     }
 }

@@ -32,21 +32,6 @@ public class Stats implements IStats {
     }
 
     @Override
-    public boolean equals(IStats playCardStats) {
-
-        return this.cleavage.equals(playCardStats.getCleavage())
-            && this.crustalAbundance.equals(playCardStats.getCrustalAbundance())
-            && this.economicValue.equals(playCardStats.getEconomicValue())
-            && this.hardness.equals(playCardStats.getHardness())
-            && this.specificGravity.equals(playCardStats.getSpecificGravity());
-    }
-
-    @Override
-    public CategoryComparisonResult isBetterThan(IStats stats) {
-        throw new NotImplementedException();
-    }
-
-    @Override
     public ICrustalAbundance getCrustalAbundance() {
         return this.crustalAbundance;
     }
@@ -64,5 +49,20 @@ public class Stats implements IStats {
     @Override
     public ISpecificGravity getSpecificGravity() {
         return this.specificGravity;
+    }
+
+    @Override
+    public boolean equals(IStats playCardStats) {
+
+        return this.cleavage.equals(playCardStats.getCleavage())
+                && this.crustalAbundance.equals(playCardStats.getCrustalAbundance())
+                && this.economicValue.equals(playCardStats.getEconomicValue())
+                && this.hardness.equals(playCardStats.getHardness())
+                && this.specificGravity.equals(playCardStats.getSpecificGravity());
+    }
+
+    @Override
+    public CategoryComparisonResult compareWith(IStats stats) {
+        throw new NotImplementedException();
     }
 }

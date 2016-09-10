@@ -1,5 +1,6 @@
 package cmblack.card.stats;
 
+import cmblack.card.CategoryComparisonResult;
 import cmblack.card.trumpcard.TrumpCardStats;
 import cmblack.category.cleavage.ICleavage;
 import cmblack.category.crustalabundance.ICrustalAbundance;
@@ -60,6 +61,11 @@ public class StatsTest {
 
     @Test
     public void testIsBetterThan() throws Exception {
-
+        CategoryComparisonResult categoryComparisonResult = stats.compareWith(stats);
+        assertEquals(0, categoryComparisonResult.cleavage());
+        assertEquals(0, categoryComparisonResult.specificGravity(), .001);
+        assertEquals(0, categoryComparisonResult.hardness(), .001);
+        assertEquals(0, categoryComparisonResult.crustalAbundance());
+        assertEquals(0, categoryComparisonResult.economicValue());
     }
 }

@@ -20,7 +20,7 @@ public interface IStats {
     ICleavage getCleavage();
     boolean equals(IStats playCardStats);
 
-    CategoryComparisonResult isBetterThan(IStats stats);
+    CategoryComparisonResult compareWith(IStats stats);
 
     class FakePlayCardStats implements IStats {
 
@@ -59,7 +59,7 @@ public interface IStats {
         }
 
         @Override
-        public CategoryComparisonResult isBetterThan(IStats stats) {
+        public CategoryComparisonResult compareWith(IStats stats) {
             return null;
         }
     }
@@ -101,7 +101,7 @@ public interface IStats {
         }
 
         @Override
-        public CategoryComparisonResult isBetterThan(IStats stats) {
+        public CategoryComparisonResult compareWith(IStats stats) {
             throw new NotImplementedException();
         }
     }
