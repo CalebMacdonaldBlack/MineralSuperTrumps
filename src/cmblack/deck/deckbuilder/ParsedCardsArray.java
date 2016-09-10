@@ -1,4 +1,4 @@
-package cmblack.deck;
+package cmblack.deck.deckbuilder;
 
 /**
  * Created by calebmacdonaldblack on 24/08/2016.

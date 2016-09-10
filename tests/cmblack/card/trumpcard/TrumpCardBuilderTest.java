@@ -1,10 +1,8 @@
 package cmblack.card.trumpcard;
 
 import cmblack.category.Category;
-import cmblack.deck.IParsedCard;
+import cmblack.deck.deckbuilder.IParsedCard;
 import org.junit.Test;
-
-import java.util.Arrays;
 
 import static org.junit.Assert.*;
 

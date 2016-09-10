@@ -1,15 +1,16 @@
-package cmblack.deck;
+package cmblack.deck.deckbuilder;
 
 import cmblack.card.ICard;
 import cmblack.card.playcard.IPlayCardBuilder;
 import cmblack.card.playcard.PlayCardBuilder;
 import cmblack.card.trumpcard.ITrumpCardBuilder;
 import cmblack.card.trumpcard.TrumpCardBuilder;
+import cmblack.deck.Deck;
+import cmblack.deck.IDeck;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 
 import java.io.FileNotFoundException;
-import java.io.StringReader;
 import java.util.ArrayList;
 
 /**

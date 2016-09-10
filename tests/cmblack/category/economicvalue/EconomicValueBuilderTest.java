@@ -1,6 +1,6 @@
 package cmblack.category.economicvalue;
 
-import cmblack.deck.IParsedCard;
+import cmblack.deck.deckbuilder.IParsedCard;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

@@ -1,4 +1,4 @@
-package cmblack.deck;
+package cmblack.deck.deckbuilder;
 
 import com.google.gson.stream.JsonReader;
 

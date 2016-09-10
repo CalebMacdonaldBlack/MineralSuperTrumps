@@ -1,12 +1,10 @@
 package cmblack.card.playcard;
 
-import cmblack.card.CardDescription;
 import cmblack.card.playcard.carddescription.CardDescriptionBuilder;
-import cmblack.card.playcard.carddescription.ICardDescription;
 import cmblack.card.playcard.carddescription.ICardDescriptionBuilder;
 import cmblack.card.stats.IStatsBuilder;
 import cmblack.card.stats.StatsBuilder;
-import cmblack.deck.IParsedCard;
+import cmblack.deck.deckbuilder.IParsedCard;
 
 /**
  * Created by calebmacdonaldblack on 10/09/2016.

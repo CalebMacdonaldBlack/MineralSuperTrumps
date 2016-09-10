@@ -1,10 +1,9 @@
 package cmblack.deck;
 
+import cmblack.deck.deckbuilder.IDeckBuilder;
+import cmblack.deck.deckbuilder.IJsonReaderWrapper;
+import cmblack.deck.deckbuilder.JSONDeckBuilder;
 import org.junit.Test;
-
-import java.io.StringReader;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by calebmacdonaldblack on 10/09/2016.

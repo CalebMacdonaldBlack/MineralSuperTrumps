@@ -1,8 +1,7 @@
 package cmblack.card.playcard.carddescription;
 
 import cmblack.card.CardDescription;
-import cmblack.deck.IParsedCard;
-import cmblack.deck.ParsedCard;
+import cmblack.deck.deckbuilder.IParsedCard;
 
 /**
  * Created by calebmacdonaldblack on 10/09/2016.

@@ -10,7 +10,7 @@ import cmblack.category.hardness.HardnessBuilder;
 import cmblack.category.hardness.IHardnessBuilder;
 import cmblack.category.specificgravity.ISpecificGravityBuilder;
 import cmblack.category.specificgravity.SpecificGravityBuilder;
-import cmblack.deck.IParsedCard;
+import cmblack.deck.deckbuilder.IParsedCard;
 
 /**
  * Created by calebmacdonaldblack on 10/09/2016.
