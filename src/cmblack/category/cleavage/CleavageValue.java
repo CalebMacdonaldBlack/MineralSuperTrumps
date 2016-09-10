@@ -4,6 +4,7 @@ package cmblack.category.cleavage;
  * Created by calebmacdonaldblack on 10/09/2016.
  */
 public enum CleavageValue {
+    TRUMPCARD("trumpcard"),
     NONE("none"),
     POOR_NONE("poor/none"),
     POOR1("1 poor"),

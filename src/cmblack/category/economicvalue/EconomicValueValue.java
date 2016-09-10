@@ -4,6 +4,7 @@ package cmblack.category.economicvalue;
  * Created by calebmacdonaldblack on 10/09/2016.
  */
 public enum EconomicValueValue {
+    TRUMPCARD("trumpcard"),
     TRIVIAL("trivial"),
     LOW("low"),
     MODERATE("moderate"),
