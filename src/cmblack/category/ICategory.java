@@ -49,7 +49,7 @@ public interface ICategory {
     class FakeEconomicValueCategory implements ICategory {
         @Override
         public String getCategoryName() {
-            return "Economic Value";
+            return "Economic value";
         }
 
         @Override

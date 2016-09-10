@@ -3,6 +3,7 @@ package cmblack.player;
 import cmblack.card.CategoryComparisonResult;
 import cmblack.card.ICard;
 import cmblack.category.Category;
+import cmblack.category.ICategory;
 
 import java.util.ArrayList;
 
@@ -24,9 +25,12 @@ public class BotPlayer implements IPlayer {
     }
 
     @Override
-    public ICard playCard(ICard cardToBeat, Category currentTrumpCategory) {
+    public ICard playCard(ICard cardToBeat, ICategory currentTrumpCategory) {
         for(ICard card: cards){
             CategoryComparisonResult categoryComparisonResult = card.getStats().compareWith(cardToBeat.getStats());
+            if(categoryComparisonResult.valueForCategory(currentTrumpCategory) > 0){
+                return card;
+            }
 
         }
         return null;

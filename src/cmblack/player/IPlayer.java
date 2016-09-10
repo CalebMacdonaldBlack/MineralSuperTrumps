@@ -3,6 +3,7 @@ package cmblack.player;
 import cmblack.card.ICard;
 import cmblack.card.trumpcard.ITrumpCard;
 import cmblack.category.Category;
+import cmblack.category.ICategory;
 
 import java.util.ArrayList;
 
@@ -11,7 +12,7 @@ import java.util.ArrayList;
  */
 public interface IPlayer {
     IPlayer addCard(ICard card);
-    ICard playCard(ICard cardToBeat, Category currentTrumpCategory);
+    ICard playCard(ICard cardToBeat, ICategory currentTrumpCategory);
     String getName();
 
     class FakePlayer implements IPlayer {
@@ -25,7 +26,7 @@ public interface IPlayer {
         }
 
         @Override
-        public ICard playCard(ICard cardToBeat, Category currentTrumpCategory) {
+        public ICard playCard(ICard cardToBeat, ICategory currentTrumpCategory) {
             return new ITrumpCard.FakeTrumpCard();
         }
 

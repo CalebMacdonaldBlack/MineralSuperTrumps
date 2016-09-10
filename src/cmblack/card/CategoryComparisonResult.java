@@ -54,6 +54,20 @@ public class CategoryComparisonResult implements ICategoryComparisonResult {
 
     @Override
     public double valueForCategory(ICategory category) {
-        return 0;
+        //todo dodgyness happening here
+        switch(category.getCategoryName()){
+            case "Hardness":
+                return this.hardness;
+            case "Specific gravity":
+                return this.specificGravity;
+            case "Economic value":
+                return this.economicValue;
+            case "Cleavage":
+                return this.cleavage;
+            case "Crustal abundance":
+                return this.crustalAbundance;
+            default:
+                throw new NullPointerException("Cannot find value for the category named: " + category.getCategoryName());
+        }
     }
 }
