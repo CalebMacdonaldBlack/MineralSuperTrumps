@@ -1,7 +1,9 @@
 package cmblack.card.playcard;
 
 import cmblack.card.CardDescription;
+import cmblack.card.playcard.carddescription.CardDescriptionBuilder;
 import cmblack.card.playcard.carddescription.ICardDescription;
+import cmblack.card.playcard.carddescription.ICardDescriptionBuilder;
 import cmblack.card.stats.IStatsBuilder;
 import cmblack.card.stats.StatsBuilder;
 import cmblack.deck.IParsedCard;
@@ -13,13 +15,15 @@ public class PlayCardBuilder implements IPlayCardBuilder{
 
 
     private final IStatsBuilder statsBuilder;
+    private final ICardDescriptionBuilder cardDescriptionBuilder;
 
     public PlayCardBuilder() {
-        this(new StatsBuilder());
+        this(new StatsBuilder(), new CardDescriptionBuilder());
     }
 
-    public PlayCardBuilder(IStatsBuilder statsBuilder) {
+    public PlayCardBuilder(IStatsBuilder statsBuilder, ICardDescriptionBuilder cardDescriptionBuilder) {
         this.statsBuilder = statsBuilder;
+        this.cardDescriptionBuilder = cardDescriptionBuilder;
     }
 
     @Override
@@ -28,17 +32,7 @@ public class PlayCardBuilder implements IPlayCardBuilder{
                 parsedCard.getTitle(),
                 parsedCard.getFileName(),
                 this.statsBuilder.build(parsedCard),
-                this.createCardDescription(parsedCard)
-        );
-    }
-
-
-    private ICardDescription createCardDescription(IParsedCard parsedCard) {
-        return new CardDescription(
-                parsedCard.getChemistry(),
-                parsedCard.getClassification(),
-                parsedCard.getCrystal_system(),
-                parsedCard.getOccurrence()
+                this.cardDescriptionBuilder.build(parsedCard)
         );
     }
 }
