@@ -42,7 +42,6 @@ public class JSONDeckBuilder implements IDeckBuilder {
         ArrayList<ICard> cards = new ArrayList<ICard>();
 
         //TODO error handing the crap out of this
-
         for (ParsedCard parsedCard : ((ParsedCardsArray) new Gson().fromJson(jsonReader, ParsedCardsArray.class)).getCards()) {
             if (parsedCard.getChemistry() != null) {
                 cards.add(this.playCardBuilder.build(parsedCard));
