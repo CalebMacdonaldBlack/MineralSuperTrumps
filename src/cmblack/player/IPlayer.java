@@ -12,6 +12,7 @@ import java.util.ArrayList;
 public interface IPlayer {
     IPlayer addCard(ICard card);
     ICard playCard(ICard cardToBeat, Category currentTrumpCategory);
+    String getName();
 
     class FakePlayer implements IPlayer {
 
@@ -26,6 +27,11 @@ public interface IPlayer {
         @Override
         public ICard playCard(ICard cardToBeat, Category currentTrumpCategory) {
             return new ITrumpCard.FakeTrumpCard();
+        }
+
+        @Override
+        public String getName() {
+            return "Bot 1";
         }
     }
 }
