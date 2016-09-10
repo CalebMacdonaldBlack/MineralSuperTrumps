@@ -1,5 +1,6 @@
 package cmblack.card.playcard.carddescription;
 
+import cmblack.card.CardDescription;
 import cmblack.deck.IParsedCard;
 import cmblack.deck.ParsedCard;
 
@@ -9,6 +10,11 @@ import cmblack.deck.ParsedCard;
 public class CardDescriptionBuilder implements ICardDescriptionBuilder {
     @Override
     public ICardDescription build(IParsedCard parsedCard) {
-        return null;
+        return new CardDescription(
+                parsedCard.getChemistry(),
+                parsedCard.getClassification(),
+                parsedCard.getCrystal_system(),
+                parsedCard.getOccurrence()
+        );
     }
 }
