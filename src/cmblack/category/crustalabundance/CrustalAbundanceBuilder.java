@@ -21,7 +21,7 @@ public class CrustalAbundanceBuilder implements ICrustalAbundanceBuilder {
                 return new CrustalAbundance(category, CrustalAbundanceValue.MODERATE);
             case "high":
                 return new CrustalAbundance(category, CrustalAbundanceValue.HIGH);
-            case "very high":C
+            case "very high":
                 return new CrustalAbundance(category, CrustalAbundanceValue.VERY_HIGH);
             default:
                 throw new NullPointerException("CrustalAbundance getValue for " + value + " is not found");

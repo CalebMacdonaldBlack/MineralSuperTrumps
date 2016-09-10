@@ -10,18 +10,18 @@ import static org.junit.Assert.*;
  */
 public class CrustalAbundanceBuilderTest {
 
-    ICrustalAbundanceBuilder cleavageBuilder = new CrustalAbundanceBuilder();
+    ICrustalAbundanceBuilder crustalAbundanceBuilder = new CrustalAbundanceBuilder();
     IParsedCard parsedCard = new IParsedCard.FakeParsedCard();
 
     @Test
     public void testBuild() throws Exception {
-        ICrustalAbundance crustalAbundance = cleavageBuilder.build(parsedCard.getCrustal_abundance());
+        ICrustalAbundance crustalAbundance = crustalAbundanceBuilder.build(parsedCard.getCrustal_abundance());
         assertEquals("low", crustalAbundance.getValue().getText());
     }
 
     @Test
     public void testBuild1() throws Exception {
-        ICrustalAbundance crustalAbundance = cleavageBuilder.build(parsedCard.getCrustal_abundance(), "crustAbund");
+        ICrustalAbundance crustalAbundance = crustalAbundanceBuilder.build(parsedCard.getCrustal_abundance(), "crustAbund");
         assertEquals("crustAbund", crustalAbundance.getCategory().getCategoryName());
     }
 }
