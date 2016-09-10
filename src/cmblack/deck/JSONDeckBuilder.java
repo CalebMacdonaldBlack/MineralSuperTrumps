@@ -3,10 +3,13 @@ package cmblack.deck;
 import cmblack.card.ICard;
 import cmblack.card.playcard.IPlayCardBuilder;
 import cmblack.card.playcard.PlayCardBuilder;
+import cmblack.card.trumpcard.ITrumpCardBuilder;
+import cmblack.card.trumpcard.TrumpCardBuilder;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 
 import java.io.FileNotFoundException;
+import java.io.StringReader;
 import java.util.ArrayList;
 
 /**
@@ -16,14 +19,21 @@ public class JSONDeckBuilder implements IDeckBuilder {
 
     private final JsonReader jsonReader;
     private final IPlayCardBuilder playCardBuilder;
+    private final ITrumpCardBuilder trumpCardBuilder;
 
-    public JSONDeckBuilder(JsonReader jsonReader, IPlayCardBuilder playCardBuilder) throws FileNotFoundException {
+    public JSONDeckBuilder(
+            JsonReader jsonReader,
+            IPlayCardBuilder playCardBuilder,
+            ITrumpCardBuilder trumpCardBuilder
+    ) throws FileNotFoundException {
+
         this.jsonReader = jsonReader;
         this.playCardBuilder = playCardBuilder;
+        this.trumpCardBuilder = trumpCardBuilder;
     }
 
     public JSONDeckBuilder(JsonReader jsonReader) throws FileNotFoundException {
-        this(jsonReader, new PlayCardBuilder());
+        this(jsonReader, new PlayCardBuilder(), new TrumpCardBuilder());
     }
 
     @Override
@@ -36,7 +46,7 @@ public class JSONDeckBuilder implements IDeckBuilder {
             if (parsedCard.getChemistry() != null) {
                 cards.add(this.playCardBuilder.build(parsedCard));
             } else {
-                //cards.add(new TrumpCard(parsedCard.getTitle(), parsedCard.getSubTitle(), parsedCard.getFileName(), this.createCategories(parsedCard)));
+                cards.add(this.trumpCardBuilder.build(parsedCard));
             }
         }
         return new Deck(cards);
