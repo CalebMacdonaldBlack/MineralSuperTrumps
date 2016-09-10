@@ -37,7 +37,7 @@ public class JSONDeckBuilder implements IDeckBuilder {
     }
 
     @Override
-    public IDeck getDeck() {
+    public IDeck build() {
         ArrayList<ICard> cards = new ArrayList<ICard>();
 
         //TODO error handing the crap out of this
