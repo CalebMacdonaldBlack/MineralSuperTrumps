@@ -63,6 +63,12 @@ public class Stats implements IStats {
 
     @Override
     public CategoryComparisonResult compareWith(IStats stats) {
-        throw new NotImplementedException();
+        return new CategoryComparisonResult(
+                stats.getCleavage().getValue().compareTo(this.cleavage.getValue()),
+                stats.getCrustalAbundance().getValue().compareTo(this.crustalAbundance.getValue()),
+                stats.getEconomicValue().getValue().compareTo(this.economicValue.getValue()),
+                this.hardness.getMaximumValue() - stats.getHardness().getMaximumValue(),
+                this.specificGravity.getMaximumValue() - stats.getSpecificGravity().getMaximumValue()
+        );
     }
 }
