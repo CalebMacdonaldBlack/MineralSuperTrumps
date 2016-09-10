@@ -1,6 +1,8 @@
 package cmblack.deck;
 
 import cmblack.card.ICard;
+import cmblack.card.playcard.IPlayCardBuilder;
+import cmblack.card.playcard.PlayCardBuilder;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 
@@ -13,14 +15,17 @@ import java.util.ArrayList;
 public class JSONDeckBuilder implements IDeckBuilder {
 
     private final JsonReader jsonReader;
-    //private final IPlayCardBuilder playCardBuilder;
+    private final IPlayCardBuilder playCardBuilder;
 
-    public JSONDeckBuilder(JsonReader jsonReader) throws FileNotFoundException {
+    public JSONDeckBuilder(JsonReader jsonReader, IPlayCardBuilder playCardBuilder) throws FileNotFoundException {
         this.jsonReader = jsonReader;
+        this.playCardBuilder = playCardBuilder;
     }
 
-    // TODO break up into playCardBuilder and TrumpCardBuilder.
-    // TODO playCardBuilder with have a builder for each category
+    public JSONDeckBuilder(JsonReader jsonReader) throws FileNotFoundException {
+        this(jsonReader, new PlayCardBuilder());
+    }
+
     @Override
     public IDeck getDeck() {
         ArrayList<ICard> cards = new ArrayList<ICard>();
@@ -29,13 +34,7 @@ public class JSONDeckBuilder implements IDeckBuilder {
 
         for (ParsedCard parsedCard : ((ParsedCardsArray) new Gson().fromJson(jsonReader, ParsedCardsArray.class)).getCards()) {
             if (parsedCard.getChemistry() != null) {
-
-//                cards.add(new PlayCard(
-//                        parsedCard.getTitle(),
-//                        parsedCard.getFileName(),
-//                        this.createPlayCardStats(parsedCard),
-//                        this.createCardDescription(parsedCard)
-//                        ));
+                cards.add(this.playCardBuilder.build(parsedCard));
             } else {
                 //cards.add(new TrumpCard(parsedCard.getTitle(), parsedCard.getSubTitle(), parsedCard.getFileName(), this.createCategories(parsedCard)));
             }
