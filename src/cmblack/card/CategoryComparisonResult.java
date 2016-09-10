@@ -1,6 +1,4 @@
-package cmblack.card.playcard;
-
-import cmblack.card.ICategoryComparisonResult;
+package cmblack.card;
 
 /**
  * Created by calebmacdonaldblack on 10/09/2016.

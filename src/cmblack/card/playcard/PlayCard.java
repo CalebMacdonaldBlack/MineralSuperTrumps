@@ -1,5 +1,6 @@
 package cmblack.card.playcard;
 
+import cmblack.card.CategoryComparisonResult;
 import cmblack.card.ICard;
 import cmblack.card.ICardDescription;
 import cmblack.card.playcard.playcardstats.IPlayCardStats;

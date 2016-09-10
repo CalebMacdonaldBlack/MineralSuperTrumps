@@ -1,7 +1,6 @@
 package cmblack.card;
 
 import cmblack.card.playcard.CardType;
-import cmblack.card.playcard.CategoryComparisonResult;
 
 /**
  * Created by calebmacdonaldblack on 23/08/2016.

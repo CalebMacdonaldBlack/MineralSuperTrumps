@@ -2,7 +2,7 @@ package cmblack.card.trumpcard;
 
 import cmblack.card.ICard;
 import cmblack.card.playcard.CardType;
-import cmblack.card.playcard.CategoryComparisonResult;
+import cmblack.card.CategoryComparisonResult;
 import cmblack.category.ICategory;
 
 /**

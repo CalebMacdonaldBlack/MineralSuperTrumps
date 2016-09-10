@@ -1,11 +1,5 @@
 package cmblack.card;
 
-import cmblack.category.cleavage.ICleavage;
-import cmblack.category.crustalabundance.ICrustalAbundance;
-import cmblack.category.economicvalue.IEconomicValue;
-import cmblack.category.hardness.IHardness;
-import cmblack.category.specificgravity.ISpecificGravity;
-
 /**
  * Created by calebmacdonaldblack on 10/09/2016.
  */
