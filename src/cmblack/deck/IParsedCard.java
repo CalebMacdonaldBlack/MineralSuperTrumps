@@ -100,4 +100,72 @@ public interface IParsedCard {
             return null;
         }
     }
+
+    class FakeParsedCard2 implements IParsedCard {
+
+        @Override
+        public String getFileName() {
+            return "slide59.jpg";
+        }
+
+        @Override
+        public String getTitle() {
+            return "The Geophysist";
+        }
+
+        @Override
+        public String getChemistry() {
+            return null;
+        }
+
+        @Override
+        public String getClassification() {
+            return null;
+        }
+
+        @Override
+        public String getCrystal_system() {
+            return null;
+        }
+
+        @Override
+        public String getHardness() {
+            return null;
+        }
+
+        @Override
+        public String getSpecific_gravity() {
+            return null;
+        }
+
+        @Override
+        public String getCleavage() {
+            return null;
+        }
+
+        @Override
+        public String getCrustal_abundance() {
+            return null;
+        }
+
+        @Override
+        public String getEconomic_value() {
+            return null;
+        }
+
+        @Override
+        public String[] getOccurrence() {
+            return null;
+        }
+
+        @Override
+        public String getSubTitle() {
+            return "Changed the trump category to Specific gravity";
+        }
+
+        @Override
+        public String[] getCategories() {
+            return new String[]{"Specific gravity"};
+        }
+    }
 }
