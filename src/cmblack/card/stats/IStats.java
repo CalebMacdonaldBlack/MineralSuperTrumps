@@ -60,7 +60,21 @@ public interface IStats {
 
         @Override
         public CategoryComparisonResult compareWith(IStats stats) {
-            return null;
+            double hardness = new IHardness.FakeHardness().getMaximumValue() - stats.getHardness().getMaximumValue();
+            hardness = Math.round(hardness * 100);
+            hardness = hardness/100;
+
+            double specificGravity = new ISpecificGravity.FakeSpecificGravity().getMaximumValue() - stats.getSpecificGravity().getMaximumValue();
+            specificGravity = Math.round(specificGravity * 100);
+            specificGravity = specificGravity/100;
+
+            return new CategoryComparisonResult(
+                    new ICleavage.FakeCleavage().getValue().compareTo(stats.getCleavage().getValue()),
+                    new ICrustalAbundance.FakeCrustalAbundance().getValue().compareTo(stats.getCrustalAbundance().getValue()),
+                    new IEconomicValue.FakeEconomicValue().getValue().compareTo(stats.getEconomicValue().getValue()),
+                    hardness,
+                    specificGravity
+            );
         }
     }
 
@@ -102,7 +116,21 @@ public interface IStats {
 
         @Override
         public CategoryComparisonResult compareWith(IStats stats) {
-            throw new NotImplementedException();
+            double hardness = new IHardness.FakeHardness2().getMaximumValue() - stats.getHardness().getMaximumValue();
+            hardness = Math.round(hardness * 100);
+            hardness = hardness/100;
+
+            double specificGravity = new ISpecificGravity.FakeSpecificGravity2().getMaximumValue() - stats.getSpecificGravity().getMaximumValue();
+            specificGravity = Math.round(specificGravity * 100);
+            specificGravity = specificGravity/100;
+
+            return new CategoryComparisonResult(
+                    new ICleavage.FakeCleavage2().getValue().compareTo(stats.getCleavage().getValue()),
+                    new ICrustalAbundance.FakeCrustalAbundance2().getValue().compareTo(stats.getCrustalAbundance().getValue()),
+                    new IEconomicValue.FakeEconomicValue2().getValue().compareTo(stats.getEconomicValue().getValue()),
+                    hardness,
+                    specificGravity
+            );
         }
     }
 }

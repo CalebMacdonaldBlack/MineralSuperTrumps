@@ -27,7 +27,7 @@ public class BotPlayer implements IPlayer {
     public ICard playCard(ICard cardToBeat, Category currentTrumpCategory) {
         for(ICard card: cards){
             CategoryComparisonResult categoryComparisonResult = card.getStats().compareWith(cardToBeat.getStats());
-            
+
         }
         return null;
     }

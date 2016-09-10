@@ -14,27 +14,27 @@ public class CategoryComparisonResultTest {
 
     @Test
     public void testCleavage() throws Exception {
-        assertEquals(0, categoryComparisonResult.cleavage());
+        assertEquals(-6, categoryComparisonResult.cleavage());
     }
 
     @Test
     public void testCrustalAbundance() throws Exception {
-        assertEquals(0, categoryComparisonResult.cleavage());
+        assertEquals(2, categoryComparisonResult.crustalAbundance());
     }
 
     @Test
     public void testEconomicValue() throws Exception {
-        assertEquals(0, categoryComparisonResult.cleavage());
+        assertEquals(2, categoryComparisonResult.economicValue());
     }
 
     @Test
     public void testHardness() throws Exception {
-        assertEquals(0, categoryComparisonResult.cleavage());
+        assertEquals(-0.4, categoryComparisonResult.hardness(), 0);
     }
 
     @Test
     public void testSpecificGravity() throws Exception {
-        assertEquals(0, categoryComparisonResult.cleavage());
+        assertEquals(-0.7, categoryComparisonResult.specificGravity(), 0);
     }
 
     @Test
