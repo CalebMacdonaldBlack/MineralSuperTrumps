@@ -1,10 +1,13 @@
 package cmblack.card.stats;
 
+import cmblack.card.CategoryComparisonResult;
+import cmblack.category.IStat;
 import cmblack.category.cleavage.ICleavage;
 import cmblack.category.crustalabundance.ICrustalAbundance;
 import cmblack.category.economicvalue.IEconomicValue;
 import cmblack.category.hardness.IHardness;
 import cmblack.category.specificgravity.ISpecificGravity;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  * Created by calebmacdonaldblack on 9/09/2016.
@@ -16,6 +19,8 @@ public interface IStats {
     ISpecificGravity getSpecificGravity();
     ICleavage getCleavage();
     boolean equals(IStats playCardStats);
+
+    CategoryComparisonResult isBetterThan(IStats stats);
 
     class FakePlayCardStats implements IStats {
 
@@ -51,6 +56,11 @@ public interface IStats {
                 && this.getEconomicValue().equals(playCardStats.getEconomicValue())
                 && this.getHardness().equals(playCardStats.getHardness())
                 && this.getCrustalAbundance().equals(playCardStats.getCrustalAbundance());
+        }
+
+        @Override
+        public CategoryComparisonResult isBetterThan(IStats stats) {
+            return null;
         }
     }
 
@@ -88,6 +98,11 @@ public interface IStats {
                     && this.getEconomicValue().equals(playCardStats.getEconomicValue())
                     && this.getHardness().equals(playCardStats.getHardness())
                     && this.getCrustalAbundance().equals(playCardStats.getCrustalAbundance());
+        }
+
+        @Override
+        public CategoryComparisonResult isBetterThan(IStats stats) {
+            throw new NotImplementedException();
         }
     }
 }

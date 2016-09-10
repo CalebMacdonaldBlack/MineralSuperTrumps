@@ -1,5 +1,6 @@
 package cmblack.card.trumpcard;
 
+import cmblack.card.CategoryComparisonResult;
 import cmblack.card.stats.IStats;
 import cmblack.category.Category;
 import cmblack.category.cleavage.Cleavage;
@@ -52,5 +53,10 @@ public class TrumpCardStats implements IStats {
             && playCardStats.getEconomicValue().equals(this.getEconomicValue())
             && playCardStats.getSpecificGravity().equals(this.getSpecificGravity())
             && playCardStats.getCleavage().equals(this.getCleavage());
+    }
+
+    @Override
+    public CategoryComparisonResult isBetterThan(IStats stats) {
+        return null;
     }
 }

@@ -5,9 +5,10 @@ package cmblack.card;
  */
 public class CategoryComparisonResult implements ICategoryComparisonResult {
 
-    private final boolean cleavage, crustalAbundance, economicValue, hardness, specificGravity;
+    private final int cleavage, crustalAbundance, economicValue;
+    private final double hardness, specificGravity;
 
-    public CategoryComparisonResult(boolean cleavage, boolean crustalAbundance, boolean economicValue, boolean hardness, boolean specificGravity) {
+    public CategoryComparisonResult(int cleavage, int crustalAbundance, int economicValue, double hardness, double specificGravity) {
         this.cleavage = cleavage;
         this.crustalAbundance = crustalAbundance;
         this.economicValue = economicValue;
@@ -16,32 +17,36 @@ public class CategoryComparisonResult implements ICategoryComparisonResult {
     }
 
     @Override
-    public boolean cleavage() {
+    public int cleavage() {
         return this.cleavage;
     }
 
     @Override
-    public boolean crustalAbundance() {
+    public int crustalAbundance() {
         return this.crustalAbundance;
     }
 
     @Override
-    public boolean economicValue() {
+    public int economicValue() {
         return this.economicValue;
     }
 
     @Override
-    public boolean hardness() {
+    public double hardness() {
         return this.hardness;
     }
 
     @Override
-    public boolean specificGravity() {
+    public double specificGravity() {
         return this.specificGravity;
     }
 
     @Override
     public boolean equals(ICategoryComparisonResult categoryComparisonResult) {
-        return false;
+        return categoryComparisonResult.cleavage() == this.cleavage()
+                && categoryComparisonResult.crustalAbundance() == this.crustalAbundance()
+                && categoryComparisonResult.economicValue() == this.economicValue()
+                && categoryComparisonResult.hardness() == this.hardness()
+                && categoryComparisonResult.specificGravity() == this.specificGravity();
     }
 }

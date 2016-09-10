@@ -10,30 +10,30 @@ import static org.junit.Assert.*;
  */
 public class CategoryComparisonResultTest {
 
-    CategoryComparisonResult categoryComparisonResult = new CategoryComparisonResult(true, true, true, true, true);
+    CategoryComparisonResult categoryComparisonResult = new CategoryComparisonResult(1, 2, -2, 1.2, 1.4);
 
     @Test
     public void testCleavage() throws Exception {
-        assertEquals(true, categoryComparisonResult.cleavage());
+        assertEquals(1, categoryComparisonResult.cleavage());
     }
 
     @Test
     public void testCrustalAbundance() throws Exception {
-        assertEquals(true, categoryComparisonResult.crustalAbundance());
+        assertEquals(2, categoryComparisonResult.crustalAbundance());
     }
 
     @Test
     public void testEconomicValue() throws Exception {
-        assertEquals(true, categoryComparisonResult.economicValue());
+        assertEquals(-2, categoryComparisonResult.economicValue());
     }
 
     @Test
     public void testHardness() throws Exception {
-        assertEquals(true, categoryComparisonResult.hardness());
+        assertEquals(1.2, categoryComparisonResult.hardness(), .001);
     }
 
     @Test
     public void testSpecificGravity() throws Exception {
-        assertEquals(true, categoryComparisonResult.specificGravity());
+        assertEquals(1.4, categoryComparisonResult.specificGravity(), .001);
     }
 }

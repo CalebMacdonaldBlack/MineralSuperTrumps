@@ -1,10 +1,12 @@
 package cmblack.card.stats;
 
+import cmblack.card.CategoryComparisonResult;
 import cmblack.category.cleavage.ICleavage;
 import cmblack.category.crustalabundance.ICrustalAbundance;
 import cmblack.category.economicvalue.IEconomicValue;
 import cmblack.category.hardness.IHardness;
 import cmblack.category.specificgravity.ISpecificGravity;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  * Created by calebmacdonaldblack on 23/08/2016.
@@ -36,6 +38,11 @@ public class Stats implements IStats {
             && this.economicValue.equals(playCardStats.getEconomicValue())
             && this.hardness.equals(playCardStats.getHardness())
             && this.specificGravity.equals(playCardStats.getHardness());
+    }
+
+    @Override
+    public CategoryComparisonResult isBetterThan(IStats stats) {
+        throw new NotImplementedException();
     }
 
     @Override

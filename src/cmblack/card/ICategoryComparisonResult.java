@@ -4,38 +4,38 @@ package cmblack.card;
  * Created by calebmacdonaldblack on 10/09/2016.
  */
 public interface ICategoryComparisonResult {
-    boolean cleavage();
-    boolean crustalAbundance();
-    boolean economicValue();
-    boolean hardness();
-    boolean specificGravity();
+    int cleavage();
+    int crustalAbundance();
+    int economicValue();
+    double hardness();
+    double specificGravity();
     boolean equals(ICategoryComparisonResult categoryComparisonResult);
 
     class FakeCategoryComparisonResult implements ICategoryComparisonResult{
 
         @Override
-        public boolean cleavage() {
-            return false;
+        public int cleavage() {
+            return 0;
         }
 
         @Override
-        public boolean crustalAbundance() {
-            return false;
+        public int crustalAbundance() {
+            return 1;
         }
 
         @Override
-        public boolean economicValue() {
-            return false;
+        public int economicValue() {
+            return -1;
         }
 
         @Override
-        public boolean hardness() {
-            return false;
+        public double hardness() {
+            return 2;
         }
 
         @Override
-        public boolean specificGravity() {
-            return false;
+        public double specificGravity() {
+            return -2;
         }
 
         @Override
