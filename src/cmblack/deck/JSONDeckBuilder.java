@@ -29,6 +29,7 @@ import java.util.ArrayList;
 public class JSONDeckBuilder implements IDeckBuilder {
 
     private final JsonReader jsonReader;
+    //private final IPlayCardBuilder playCardBuilder;
 
     public JSONDeckBuilder(JsonReader jsonReader) throws FileNotFoundException {
         this.jsonReader = jsonReader;

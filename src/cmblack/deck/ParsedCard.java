@@ -3,7 +3,7 @@ package cmblack.deck;
 /**
  * Created by calebmacdonaldblack on 24/08/2016.
  */
-public class ParsedCard {
+public class ParsedCard implements IParsedCard{
     private final String fileName;
     private final String title;
     private final String chemistry;

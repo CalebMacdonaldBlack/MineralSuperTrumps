@@ -27,7 +27,7 @@ public enum CleavageValue {
         this.text = text;
     }
 
-    public String text(){
+    public String getText(){
         return this.text;
     }
 }
