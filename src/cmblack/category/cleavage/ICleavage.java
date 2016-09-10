@@ -33,4 +33,27 @@ public interface ICleavage extends IStat {
             throw new NotImplementedException();
         }
     }
+
+    class FakeCleavage2 implements ICleavage{
+
+        @Override
+        public CleavageValue getValue() {
+            return CleavageValue.PERFECT3;
+        }
+
+        @Override
+        public boolean equals(ICleavage cleavage) {
+            return cleavage.getValue() == this.getValue();
+        }
+
+        @Override
+        public ICategory getCategory() {
+            return new ICategory.FakeCleavageCategory();
+        }
+
+        @Override
+        public boolean isBetterThan(IStat stat) {
+            throw new NotImplementedException();
+        }
+    }
 }

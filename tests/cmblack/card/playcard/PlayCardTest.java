@@ -1,6 +1,7 @@
 package cmblack.card.playcard;
 
 import cmblack.card.ICardDescription;
+import cmblack.card.ICategoryComparisonResult;
 import cmblack.card.playcard.playcardstats.IPlayCardStats;
 import org.junit.Test;
 
@@ -51,6 +52,11 @@ public class PlayCardTest {
 
     @Test
     public void testCompareWith() throws Exception {
-
+        ICategoryComparisonResult categoryComparisonResult = playCard.compareWith(new IPlayCard.FakePlayCard1());
+        assertEquals(false, categoryComparisonResult.cleavage());
+        assertEquals(true, categoryComparisonResult.crustalAbundance());
+        assertEquals(true, categoryComparisonResult.economicValue());
+        assertEquals(false, categoryComparisonResult.hardness());
+        assertEquals(false, categoryComparisonResult.specificGravity());
     }
 }

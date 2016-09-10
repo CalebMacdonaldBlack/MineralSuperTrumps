@@ -39,4 +39,9 @@ public class CategoryComparisonResult implements ICategoryComparisonResult {
     public boolean specificGravity() {
         return this.specificGravity;
     }
+
+    @Override
+    public boolean equals(ICategoryComparisonResult categoryComparisonResult) {
+        return false;
+    }
 }

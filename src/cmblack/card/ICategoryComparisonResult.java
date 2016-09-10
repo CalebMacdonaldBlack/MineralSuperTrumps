@@ -9,6 +9,7 @@ public interface ICategoryComparisonResult {
     boolean economicValue();
     boolean hardness();
     boolean specificGravity();
+    boolean equals(ICategoryComparisonResult categoryComparisonResult);
 
     class FakeCategoryComparisonResult implements ICategoryComparisonResult{
 
@@ -35,6 +36,15 @@ public interface ICategoryComparisonResult {
         @Override
         public boolean specificGravity() {
             return false;
+        }
+
+        @Override
+        public boolean equals(ICategoryComparisonResult categoryComparisonResult) {
+            return categoryComparisonResult.cleavage() == this.cleavage()
+                && categoryComparisonResult.crustalAbundance() == this.crustalAbundance()
+                && categoryComparisonResult.economicValue() == this.economicValue()
+                && categoryComparisonResult.hardness() == this.hardness()
+                && categoryComparisonResult.specificGravity() == this.specificGravity();
         }
     }
 }

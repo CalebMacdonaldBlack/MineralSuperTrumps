@@ -33,4 +33,27 @@ public interface IEconomicValue extends IStat {
             return false;
         }
     }
+    class FakeEconomicValue2 implements IEconomicValue {
+
+        @Override
+        public EconomicValueValue getValue() {
+            return EconomicValueValue.LOW;
+        }
+
+        @Override
+        public boolean equals(IEconomicValue economicValue) {
+            return this.getValue() == economicValue.getValue()
+                    && this.getCategory().equals(economicValue.getCategory());
+        }
+
+        @Override
+        public ICategory getCategory() {
+            return new ICategory.FakeEconomicValueCategory();
+        }
+
+        @Override
+        public boolean isBetterThan(IStat stat) {
+            return false;
+        }
+    }
 }

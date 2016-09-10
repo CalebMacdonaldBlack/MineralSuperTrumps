@@ -63,27 +63,27 @@ public interface IPlayCardStats {
 
         @Override
         public ICrustalAbundance getCrustalAbundance() {
-            return new ICrustalAbundance.FakeCrustalAbundance();
+            return new ICrustalAbundance.FakeCrustalAbundance2();
         }
 
         @Override
         public IHardness getHardness() {
-            return new IHardness.FakeHardness();
+            return new IHardness.FakeHardness2();
         }
 
         @Override
         public IEconomicValue getEconomicValue() {
-            return new IEconomicValue.FakeEconomicValue();
+            return new IEconomicValue.FakeEconomicValue2();
         }
 
         @Override
         public ISpecificGravity getSpecificGravity() {
-            return new ISpecificGravity.FakeSpecificGravity();
+            return new ISpecificGravity.FakeSpecificGravity2();
         }
 
         @Override
         public ICleavage getCleavage() {
-            return new ICleavage.FakeCleavage();
+            return new ICleavage.FakeCleavage2();
         }
 
         @Override

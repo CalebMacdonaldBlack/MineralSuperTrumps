@@ -38,7 +38,7 @@ public interface ICrustalAbundance extends IStat {
 
         @Override
         public CrustalAbundanceValue getValue() {
-            return null;
+            return CrustalAbundanceValue.LOW;
         }
 
         @Override

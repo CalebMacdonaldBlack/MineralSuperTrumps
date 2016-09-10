@@ -61,7 +61,7 @@ public interface IPlayCard extends ICard {
 
         @Override
         public IPlayCardStats getPlayCardStats() {
-            return new IPlayCardStats.FakePlayCardStats();
+            return new IPlayCardStats.FakePlayCardStats2();
         }
 
         @Override
