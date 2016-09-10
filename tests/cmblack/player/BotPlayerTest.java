@@ -3,6 +3,7 @@ package cmblack.player;
 import cmblack.card.EmptyCard;
 import cmblack.card.ICard;
 import cmblack.card.playcard.IPlayCard;
+import cmblack.card.trumpcard.ITrumpCard;
 import cmblack.category.Category;
 import cmblack.category.ICategory;
 import org.junit.Assert;
@@ -41,5 +42,12 @@ public class BotPlayerTest {
         ICard card = new IPlayCard.FakePlayCard1();
         ICard card2 = new IPlayCard.FakePlayCard();
         assertTrue(new EmptyCard().equals(player.addCard(card2).playCard(card, new ICategory.FakeHardnessCategory())));
+    }
+
+    @Test
+    public void testPlayCard2() throws Exception {
+        IPlayer player = new BotPlayer("bot 11");
+        ICard card = new IPlayCard.FakePlayCard1();
+        assertTrue(new ITrumpCard.FakeTrumpCard().equals(player.addCard(new ITrumpCard.FakeTrumpCard()).playCard(card, new ICategory.FakeHardnessCategory())));
     }
 }

@@ -36,12 +36,12 @@ public interface ITrumpCard extends ICard {
 
         @Override
         public CardType getType() {
-            return null;
+            return CardType.TRUMP_CARD;
         }
 
         @Override
         public IStats getStats() {
-            return null;
+            return new TrumpCardStats();
         }
 
         @Override

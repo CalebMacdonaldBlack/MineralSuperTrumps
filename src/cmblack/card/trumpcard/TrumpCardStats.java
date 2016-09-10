@@ -57,18 +57,18 @@ public class TrumpCardStats implements IStats {
 
     @Override
     public CategoryComparisonResult compareWith(IStats stats) {
-        double hardness = new IHardness.FakeHardness2().getMaximumValue() - stats.getHardness().getMaximumValue();
+        double hardness = new Hardness(0,0).getMaximumValue() - stats.getHardness().getMaximumValue();
         hardness = Math.round(hardness * 100);
         hardness = hardness/100;
 
-        double specificGravity = new ISpecificGravity.FakeSpecificGravity2().getMaximumValue() - stats.getSpecificGravity().getMaximumValue();
+        double specificGravity = new SpecificGravity(0,0).getMaximumValue() - stats.getSpecificGravity().getMaximumValue();
         specificGravity = Math.round(specificGravity * 100);
         specificGravity = specificGravity/100;
 
         return new CategoryComparisonResult(
-                new ICleavage.FakeCleavage2().getValue().compareTo(stats.getCleavage().getValue()),
-                new ICrustalAbundance.FakeCrustalAbundance2().getValue().compareTo(stats.getCrustalAbundance().getValue()),
-                new IEconomicValue.FakeEconomicValue2().getValue().compareTo(stats.getEconomicValue().getValue()),
+                new Cleavage(CleavageValue.TRUMPCARD).getValue().compareTo(stats.getCleavage().getValue()),
+                new CrustalAbundance(CrustalAbundanceValue.TRUMPCARD).getValue().compareTo(stats.getCrustalAbundance().getValue()),
+                new EconomicValue(EconomicValueValue.TRUMPCARD).getValue().compareTo(stats.getEconomicValue().getValue()),
                 hardness,
                 specificGravity
         );
