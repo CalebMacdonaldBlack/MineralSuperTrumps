@@ -1,5 +1,7 @@
 package cmblack.card;
 
+import cmblack.card.playcard.carddescription.ICardDescription;
+
 import java.util.Arrays;
 
 /**

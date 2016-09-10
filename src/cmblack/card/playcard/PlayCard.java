@@ -1,6 +1,6 @@
 package cmblack.card.playcard;
 
-import cmblack.card.ICardDescription;
+import cmblack.card.playcard.carddescription.ICardDescription;
 import cmblack.card.stats.IStats;
 
 /**

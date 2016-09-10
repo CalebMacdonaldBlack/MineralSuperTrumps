@@ -1,24 +1,6 @@
 package cmblack.deck;
 
-import cmblack.card.CardDescription;
 import cmblack.card.ICard;
-import cmblack.card.ICardDescription;
-import cmblack.card.playcard.PlayCard;
-import cmblack.card.stats.IStats;
-import cmblack.card.stats.Stats;
-import cmblack.card.trumpcard.TrumpCard;
-import cmblack.category.Category;
-import cmblack.category.ICategory;
-import cmblack.category.cleavage.Cleavage;
-import cmblack.category.cleavage.CleavageValue;
-import cmblack.category.cleavage.ICleavageBuilder;
-import cmblack.category.crustalabundance.CrustalAbundance;
-import cmblack.category.crustalabundance.CrustalAbundanceValue;
-import cmblack.category.crustalabundance.ICrustalAbundanceBuilder;
-import cmblack.category.economicvalue.EconomicValue;
-import cmblack.category.economicvalue.EconomicValueValue;
-import cmblack.category.hardness.Hardness;
-import cmblack.category.specificgravity.SpecificGravity;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 

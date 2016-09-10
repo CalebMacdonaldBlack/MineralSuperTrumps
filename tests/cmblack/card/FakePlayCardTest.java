@@ -1,5 +1,6 @@
 package cmblack.card;
 
+import cmblack.card.playcard.carddescription.ICardDescription;
 import cmblack.card.playcard.IPlayCard;
 import cmblack.card.stats.IStats;
 import org.junit.Test;

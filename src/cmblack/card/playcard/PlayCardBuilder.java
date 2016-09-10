@@ -1,16 +1,9 @@
 package cmblack.card.playcard;
 
 import cmblack.card.CardDescription;
-import cmblack.card.ICardDescription;
-import cmblack.card.stats.IStats;
+import cmblack.card.playcard.carddescription.ICardDescription;
 import cmblack.card.stats.IStatsBuilder;
-import cmblack.card.stats.Stats;
 import cmblack.card.stats.StatsBuilder;
-import cmblack.category.cleavage.ICleavageBuilder;
-import cmblack.category.crustalabundance.ICrustalAbundanceBuilder;
-import cmblack.category.economicvalue.IEconomicValueBuilder;
-import cmblack.category.hardness.IHardnessBuilder;
-import cmblack.category.specificgravity.ISpecificGravityBuilder;
 import cmblack.deck.IParsedCard;
 
 /**

@@ -1,4 +1,4 @@
-package cmblack.card;
+package cmblack.card.playcard.carddescription;
 
 import java.util.Arrays;
 
