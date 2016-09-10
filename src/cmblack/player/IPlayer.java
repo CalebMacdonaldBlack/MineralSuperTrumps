@@ -1,4 +1,4 @@
-package cmblack;
+package cmblack.player;
 
 import cmblack.card.ICard;
 import cmblack.card.trumpcard.ITrumpCard;
