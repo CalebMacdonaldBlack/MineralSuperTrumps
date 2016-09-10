@@ -44,9 +44,4 @@ public class SpecificGravity implements ISpecificGravity {
             && this.getMaximumValue() == specificGravity.getMaximumValue()
             && this.category.equals(specificGravity.getCategory());
     }
-
-    @Override
-    public boolean isBetterThan(IStat stat) {
-        return false;
-    }
 }

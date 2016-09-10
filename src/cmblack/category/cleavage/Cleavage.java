@@ -37,9 +37,4 @@ public class Cleavage implements ICleavage {
     public ICategory getCategory() {
         return this.category;
     }
-
-    @Override
-    public boolean isBetterThan(IStat stat) {
-        return false;
-    }
 }

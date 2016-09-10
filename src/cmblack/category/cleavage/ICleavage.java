@@ -27,11 +27,6 @@ public interface ICleavage extends IStat {
         public ICategory getCategory() {
             return new ICategory.FakeCleavageCategory();
         }
-
-        @Override
-        public boolean isBetterThan(IStat stat) {
-            throw new NotImplementedException();
-        }
     }
 
     class FakeCleavage2 implements ICleavage{
@@ -49,11 +44,6 @@ public interface ICleavage extends IStat {
         @Override
         public ICategory getCategory() {
             return new ICategory.FakeCleavageCategory();
-        }
-
-        @Override
-        public boolean isBetterThan(IStat stat) {
-            throw new NotImplementedException();
         }
     }
 }

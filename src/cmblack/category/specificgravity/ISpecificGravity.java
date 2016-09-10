@@ -35,11 +35,6 @@ public interface ISpecificGravity extends IStat {
                 && this.getMaximumValue() == specificGravity.getMaximumValue()
                 && this.getCategory().equals(specificGravity.getCategory());
         }
-
-        @Override
-        public boolean isBetterThan(IStat stat) {
-            return false;
-        }
     }
 
     class FakeSpecificGravity2 implements ISpecificGravity {
@@ -64,11 +59,6 @@ public interface ISpecificGravity extends IStat {
             return this.getMinimumValue() == specificGravity.getMinimumValue()
                     && this.getMaximumValue() == specificGravity.getMaximumValue()
                     && this.getCategory().equals(specificGravity.getCategory());
-        }
-
-        @Override
-        public boolean isBetterThan(IStat stat) {
-            return false;
         }
     }
 }

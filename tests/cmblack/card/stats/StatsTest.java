@@ -60,12 +60,22 @@ public class StatsTest {
     }
 
     @Test
-    public void testIsBetterThan() throws Exception {
+    public void testCompareWith1() throws Exception {
         CategoryComparisonResult categoryComparisonResult = stats.compareWith(stats);
         assertEquals(0, categoryComparisonResult.cleavage());
         assertEquals(0, categoryComparisonResult.specificGravity(), .001);
         assertEquals(0, categoryComparisonResult.hardness(), .001);
         assertEquals(0, categoryComparisonResult.crustalAbundance());
         assertEquals(0, categoryComparisonResult.economicValue());
+    }
+
+    @Test
+    public void testCompareWith() throws Exception {
+        CategoryComparisonResult categoryComparisonResult = stats.compareWith(new IStats.FakePlayCardStats2());
+        assertEquals(-6, categoryComparisonResult.cleavage());
+        assertEquals(-0.7, categoryComparisonResult.specificGravity(), 0.1);
+        assertEquals(-0.4, categoryComparisonResult.hardness(), .001);
+        assertEquals(2, categoryComparisonResult.crustalAbundance());
+        assertEquals(2, categoryComparisonResult.economicValue());
     }
 }

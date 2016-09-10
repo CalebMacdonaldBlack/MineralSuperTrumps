@@ -5,5 +5,4 @@ package cmblack.category;
  */
 public interface IStat {
     ICategory getCategory();
-    boolean isBetterThan(IStat stat);
 }

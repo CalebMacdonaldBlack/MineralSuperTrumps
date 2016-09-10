@@ -29,12 +29,6 @@ public class FakeHardnessTest {
     }
 
     @Test
-    public void testIsBetterThan() throws Exception {
-        assertTrue(hardness.isBetterThan(new IHardness.FakeHardness2()));
-        assertFalse(hardness.isBetterThan(hardness));
-    }
-
-    @Test
     public void testEquals() throws Exception {
         assertTrue(hardness.equals(new IHardness.FakeHardness()));
     }

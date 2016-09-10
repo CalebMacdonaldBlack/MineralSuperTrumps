@@ -27,11 +27,6 @@ public interface ICrustalAbundance extends IStat {
         public ICategory getCategory() {
             return new ICategory.FakeCrustalAbundanceCategory();
         }
-
-        @Override
-        public boolean isBetterThan(IStat stat) {
-            return false;
-        }
     }
 
     class FakeCrustalAbundance2 implements ICrustalAbundance {
@@ -50,11 +45,6 @@ public interface ICrustalAbundance extends IStat {
         @Override
         public ICategory getCategory() {
             return new ICategory.FakeCrustalAbundanceCategory();
-        }
-
-        @Override
-        public boolean isBetterThan(IStat stat) {
-            return false;
         }
     }
 }

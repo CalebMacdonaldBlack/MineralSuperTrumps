@@ -27,11 +27,6 @@ public interface IEconomicValue extends IStat {
         public ICategory getCategory() {
             return new ICategory.FakeEconomicValueCategory();
         }
-
-        @Override
-        public boolean isBetterThan(IStat stat) {
-            return false;
-        }
     }
     class FakeEconomicValue2 implements IEconomicValue {
 
@@ -49,11 +44,6 @@ public interface IEconomicValue extends IStat {
         @Override
         public ICategory getCategory() {
             return new ICategory.FakeEconomicValueCategory();
-        }
-
-        @Override
-        public boolean isBetterThan(IStat stat) {
-            return false;
         }
     }
 }

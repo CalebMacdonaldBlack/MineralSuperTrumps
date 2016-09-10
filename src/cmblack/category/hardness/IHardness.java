@@ -36,11 +36,6 @@ public interface IHardness extends IStat {
                 && this.getMaximumValue() == hardness.getMaximumValue()
                 && this.getCategory().equals(hardness.getCategory());
         }
-
-        @Override
-        public boolean isBetterThan(IStat stat) {
-            throw new NotImplementedException();
-        }
     }
 
     class FakeHardness2 implements IHardness {
@@ -65,11 +60,6 @@ public interface IHardness extends IStat {
             return this.getMinimumValue() == hardness.getMinimumValue()
                     && this.getMaximumValue() == hardness.getMaximumValue()
                     && this.getCategory().equals(hardness.getCategory());
-        }
-
-        @Override
-        public boolean isBetterThan(IStat stat) {
-            throw new NotImplementedException();
         }
     }
 }

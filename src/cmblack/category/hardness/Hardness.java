@@ -38,11 +38,6 @@ public class Hardness implements IHardness {
     }
 
     @Override
-    public boolean isBetterThan(IStat stat) {
-        return false;
-    }
-
-    @Override
     public boolean equals(IHardness hardness) {
         return this.maximumValue == hardness.getMaximumValue()
             && this.minimumValue == hardness.getMinimumValue()

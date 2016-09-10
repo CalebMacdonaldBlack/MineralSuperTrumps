@@ -63,12 +63,20 @@ public class Stats implements IStats {
 
     @Override
     public CategoryComparisonResult compareWith(IStats stats) {
+        double hardness = this.hardness.getMaximumValue() - stats.getHardness().getMaximumValue();
+        hardness = Math.round(hardness * 100);
+        hardness = hardness/100;
+
+        double specificGravity = this.specificGravity.getMaximumValue() - stats.getSpecificGravity().getMaximumValue();
+        specificGravity = Math.round(specificGravity * 100);
+        specificGravity = specificGravity/100;
+
         return new CategoryComparisonResult(
-                stats.getCleavage().getValue().compareTo(this.cleavage.getValue()),
-                stats.getCrustalAbundance().getValue().compareTo(this.crustalAbundance.getValue()),
-                stats.getEconomicValue().getValue().compareTo(this.economicValue.getValue()),
-                this.hardness.getMaximumValue() - stats.getHardness().getMaximumValue(),
-                this.specificGravity.getMaximumValue() - stats.getSpecificGravity().getMaximumValue()
+                this.cleavage.getValue().compareTo(stats.getCleavage().getValue()),
+                this.crustalAbundance.getValue().compareTo(stats.getCrustalAbundance().getValue()),
+                this.economicValue.getValue().compareTo(stats.getEconomicValue().getValue()),
+                hardness,
+                specificGravity
         );
     }
 }
