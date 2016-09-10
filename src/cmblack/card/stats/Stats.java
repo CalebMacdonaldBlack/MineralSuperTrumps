@@ -53,7 +53,6 @@ public class Stats implements IStats {
 
     @Override
     public boolean equals(IStats playCardStats) {
-
         return this.cleavage.equals(playCardStats.getCleavage())
                 && this.crustalAbundance.equals(playCardStats.getCrustalAbundance())
                 && this.economicValue.equals(playCardStats.getEconomicValue())

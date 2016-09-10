@@ -43,5 +43,10 @@ public interface ITrumpCard extends ICard {
         public IStats getStats() {
             return null;
         }
+
+        @Override
+        public boolean equals(ICard card) {
+            return false;
+        }
     }
 }

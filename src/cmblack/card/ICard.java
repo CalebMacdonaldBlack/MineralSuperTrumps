@@ -20,4 +20,6 @@ public interface ICard {
 
 
     IStats getStats();
+
+    boolean equals(ICard card);
 }

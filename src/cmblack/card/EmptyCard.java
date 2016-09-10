@@ -26,4 +26,12 @@ public class EmptyCard implements ICard {
     public IStats getStats() {
         return new EmptyStats();
     }
+
+    @Override
+    public boolean equals(ICard card) {
+        return card.getTitle().equals("")
+            && card.getType().equals(CardType.EMPTY_CARD)
+            && card.getImageFilename().equals("")
+            && card.getStats().equals(new EmptyStats());
+    }
 }

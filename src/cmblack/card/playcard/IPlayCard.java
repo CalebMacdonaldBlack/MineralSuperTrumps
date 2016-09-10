@@ -11,8 +11,6 @@ import cmblack.card.stats.IStats;
 public interface IPlayCard extends ICard {
     ICardDescription getCardDescription();
 
-    boolean equals(IPlayCard playCard);
-
     class FakePlayCard implements IPlayCard {
 
         @Override
@@ -26,7 +24,7 @@ public interface IPlayCard extends ICard {
         }
 
         @Override
-        public boolean equals(IPlayCard playCard) {
+        public boolean equals(ICard playCard) {
             return false;
         }
 
@@ -58,7 +56,7 @@ public interface IPlayCard extends ICard {
         }
 
         @Override
-        public boolean equals(IPlayCard playCard) {
+        public boolean equals(ICard playCard) {
             return false;
         }
 

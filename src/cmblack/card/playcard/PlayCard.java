@@ -1,6 +1,7 @@
 package cmblack.card.playcard;
 
 import cmblack.card.CardType;
+import cmblack.card.ICard;
 import cmblack.card.playcard.carddescription.ICardDescription;
 import cmblack.card.stats.IStats;
 
@@ -31,11 +32,11 @@ public class PlayCard implements IPlayCard {
     }
 
     @Override
-    public boolean equals(IPlayCard playCard) {
-        return this.title.equals(playCard.getTitle())
-            && this.imageFileName.equals(playCard.getImageFilename())
-            && this.playCardStats.equals(playCard.getStats())
-            && this.cardDescription.equals(playCard.getCardDescription());
+    public boolean equals(ICard card) {
+        return this.title.equals(card.getTitle())
+            && this.imageFileName.equals(card.getImageFilename())
+            && this.playCardStats.equals(card.getStats())
+            && card.getType().equals(CardType.PLAY_CARD);
     }
 
     @Override

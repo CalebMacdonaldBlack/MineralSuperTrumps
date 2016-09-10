@@ -1,5 +1,6 @@
 package cmblack.player;
 
+import cmblack.card.EmptyCard;
 import cmblack.card.ICard;
 import cmblack.card.playcard.IPlayCard;
 import cmblack.category.Category;
@@ -39,6 +40,6 @@ public class BotPlayerTest {
         IPlayer player = new BotPlayer("bot 11");
         ICard card = new IPlayCard.FakePlayCard1();
         ICard card2 = new IPlayCard.FakePlayCard();
-        assertEquals(card, player.addCard(card2).playCard(card, new ICategory.FakeHardnessCategory()));
+        assertTrue(new EmptyCard().equals(player.addCard(card2).playCard(card, new ICategory.FakeHardnessCategory())));
     }
 }

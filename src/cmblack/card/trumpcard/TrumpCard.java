@@ -1,6 +1,7 @@
 package cmblack.card.trumpcard;
 
 import cmblack.card.CardType;
+import cmblack.card.ICard;
 import cmblack.card.stats.IStats;
 import cmblack.category.ICategory;
 
@@ -48,6 +49,14 @@ public class TrumpCard implements ITrumpCard {
     @Override
     public IStats getStats() {
         return new TrumpCardStats();
+    }
+
+    @Override
+    public boolean equals(ICard card) {
+        return card.getImageFilename().equals(this.imageFileName)
+            && card.getTitle().equals(this.title)
+            && card.getType().equals(CardType.TRUMP_CARD)
+            && card.getStats().equals(this.getStats());
     }
 
 }

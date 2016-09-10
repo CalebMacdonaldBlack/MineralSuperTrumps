@@ -47,8 +47,12 @@ public class EmptyStats implements IStats {
     }
 
     @Override
-    public boolean equals(IStats playCardStats) {
-        return false;
+    public boolean equals(IStats stats) {
+        return new EmptyCleavage().equals(stats.getCleavage())
+                && new EmptyCrustalAbundance().equals(stats.getCrustalAbundance())
+                && new EmptyEconomicValue().equals(stats.getEconomicValue())
+                && new EmptyHardness().equals(stats.getHardness())
+                && new EmptySpecificGravity().equals(stats.getSpecificGravity());
     }
 
     @Override

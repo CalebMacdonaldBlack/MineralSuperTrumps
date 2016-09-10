@@ -1,6 +1,7 @@
 package cmblack.player;
 
 import cmblack.card.CategoryComparisonResult;
+import cmblack.card.EmptyCard;
 import cmblack.card.ICard;
 import cmblack.category.Category;
 import cmblack.category.ICategory;
@@ -33,7 +34,7 @@ public class BotPlayer implements IPlayer {
             }
 
         }
-        return null;
+        return new EmptyCard();
     }
 
     @Override
