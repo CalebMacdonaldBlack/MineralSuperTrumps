@@ -92,12 +92,12 @@ public interface IStats {
         }
 
         @Override
-        public boolean equals(IStats playCardStats) {
-            return this.getCleavage().equals(playCardStats.getCleavage())
-                    && this.getSpecificGravity().equals(playCardStats.getSpecificGravity())
-                    && this.getEconomicValue().equals(playCardStats.getEconomicValue())
-                    && this.getHardness().equals(playCardStats.getHardness())
-                    && this.getCrustalAbundance().equals(playCardStats.getCrustalAbundance());
+        public boolean equals(IStats stats) {
+            return this.getCleavage().equals(stats.getCleavage())
+                    && this.getSpecificGravity().equals(stats.getSpecificGravity())
+                    && this.getEconomicValue().equals(stats.getEconomicValue())
+                    && this.getHardness().equals(stats.getHardness())
+                    && this.getCrustalAbundance().equals(stats.getCrustalAbundance());
         }
 
         @Override
