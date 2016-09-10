@@ -19,26 +19,26 @@ public class CategoryComparisonResult implements ICategoryComparisonResult {
 
     @Override
     public boolean cleavage() {
-        return false;
+        return this.cleavage;
     }
 
     @Override
     public boolean crustalAbundance() {
-        return false;
+        return this.crustalAbundance;
     }
 
     @Override
     public boolean economicValue() {
-        return false;
+        return this.economicValue;
     }
 
     @Override
     public boolean hardness() {
-        return false;
+        return this.hardness;
     }
 
     @Override
     public boolean specificGravity() {
-        return false;
+        return this.specificGravity;
     }
 }
