@@ -25,7 +25,7 @@ public class PlayCardBuilderTest {
         assertTrue(Arrays.equals(playCard.getCardDescription().getOccurrences(), new String[]{"metamorphic", "sedimentary"}));
         assertEquals("3 good", playCard.getStats().getCleavage().getValue().getText());
         assertEquals("low", playCard.getStats().getEconomicValue().getValue().getText());
-        assertEquals("low", playCard.getStats().getCleavage().getValue().getText());
+        assertEquals("low", playCard.getStats().getCrustalAbundance().getValue().getText());
         assertEquals(5.5, playCard.getStats().getHardness().getMaximumValue(), 0);
         assertEquals(5, playCard.getStats().getHardness().getMinimumValue(), 0);
         assertEquals(5.5, playCard.getStats().getSpecificGravity().getMaximumValue(), 0);
