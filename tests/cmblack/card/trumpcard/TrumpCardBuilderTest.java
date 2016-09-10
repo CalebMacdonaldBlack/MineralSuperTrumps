@@ -1,5 +1,6 @@
 package cmblack.card.trumpcard;
 
+import cmblack.category.Category;
 import cmblack.deck.IParsedCard;
 import org.junit.Test;
 
@@ -20,7 +21,7 @@ public class TrumpCardBuilderTest {
         ITrumpCard trumpCard = trumpCardBuilder.build(parsedCard);
         assertEquals("The Geophysist", trumpCard.getTitle());
         assertEquals("Changed the trump category to Specific gravity", trumpCard.getSubTitle());
-        assertTrue(Arrays.equals(trumpCard.getCategories(), new String[]{"Specific gravity"}));
+        assertTrue(trumpCard.getCategories()[0].equals(new Category("Specific gravity")));
         assertEquals("slide59.jpg", trumpCard.getImageFilename());
     }
 }
