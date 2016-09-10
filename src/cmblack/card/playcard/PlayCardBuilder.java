@@ -3,7 +3,9 @@ package cmblack.card.playcard;
 import cmblack.card.CardDescription;
 import cmblack.card.ICardDescription;
 import cmblack.card.stats.IStats;
+import cmblack.card.stats.IStatsBuilder;
 import cmblack.card.stats.Stats;
+import cmblack.card.stats.StatsBuilder;
 import cmblack.category.cleavage.ICleavageBuilder;
 import cmblack.category.crustalabundance.ICrustalAbundanceBuilder;
 import cmblack.category.economicvalue.IEconomicValueBuilder;
@@ -16,24 +18,15 @@ import cmblack.deck.IParsedCard;
  */
 public class PlayCardBuilder implements IPlayCardBuilder{
 
-    private final ICleavageBuilder cleavageBuilder;
-    private final ICrustalAbundanceBuilder crustalAbundanceBuilder;
-    private final IEconomicValueBuilder economicValueBuilder;
-    private final IHardnessBuilder hardnessBuilder;
-    private final ISpecificGravityBuilder specificGravityBuilder;
 
-    public PlayCardBuilder(
-            ICleavageBuilder cleavageBuilder,
-            ICrustalAbundanceBuilder crustalAbundanceBuilder,
-            IEconomicValueBuilder economicValueBuilder,
-            IHardnessBuilder hardnessBuilder,
-            ISpecificGravityBuilder specificGravityBuilder
-    ){
-        this.cleavageBuilder = cleavageBuilder;
-        this.crustalAbundanceBuilder = crustalAbundanceBuilder;
-        this.economicValueBuilder = economicValueBuilder;
-        this.hardnessBuilder = hardnessBuilder;
-        this.specificGravityBuilder = specificGravityBuilder;
+    private final IStatsBuilder statsBuilder;
+
+    public PlayCardBuilder() {
+        this(new StatsBuilder());
+    }
+
+    public PlayCardBuilder(IStatsBuilder statsBuilder) {
+        this.statsBuilder = statsBuilder;
     }
 
     @Override
@@ -41,7 +34,7 @@ public class PlayCardBuilder implements IPlayCardBuilder{
         return new PlayCard(
                 parsedCard.getTitle(),
                 parsedCard.getFileName(),
-                this.createPlayCardStats(parsedCard),
+                this.statsBuilder.build(parsedCard),
                 this.createCardDescription(parsedCard)
         );
     }
@@ -53,17 +46,6 @@ public class PlayCardBuilder implements IPlayCardBuilder{
                 parsedCard.getClassification(),
                 parsedCard.getCrystal_system(),
                 parsedCard.getOccurrence()
-        );
-    }
-
-    private IStats createPlayCardStats(IParsedCard parsedCard) {
-        return new Stats(
-                this.cleavageBuilder.build(parsedCard.getCleavage()),
-                this.crustalAbundanceBuilder.build(parsedCard.getCrustal_abundance()),
-                this.economicValueBuilder.build(parsedCard.getEconomic_value()),
-                this.hardnessBuilder.build(parsedCard.getHardness()),
-                this.specificGravityBuilder.build(parsedCard.getSpecific_gravity())
-
         );
     }
 }
