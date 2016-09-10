@@ -1,17 +1,14 @@
 package cmblack.card.playcard;
 
-import cmblack.card.CategoryComparisonResult;
 import cmblack.card.ICard;
 import cmblack.card.ICardDescription;
-import cmblack.card.playcard.playcardstats.IPlayCardStats;
+import cmblack.card.stats.IStats;
 
 /**
  * Created by calebmacdonaldblack on 9/09/2016.
  */
 public interface IPlayCard extends ICard {
     ICardDescription getCardDescription();
-
-    IPlayCardStats getPlayCardStats();
 
     boolean equals(IPlayCard playCard);
 
@@ -23,8 +20,8 @@ public interface IPlayCard extends ICard {
         }
 
         @Override
-        public IPlayCardStats getPlayCardStats() {
-            return new IPlayCardStats.FakePlayCardStats();
+        public IStats getPlayCardStats() {
+            return new IStats.FakePlayCardStats();
         }
 
         @Override
@@ -45,11 +42,6 @@ public interface IPlayCard extends ICard {
         @Override
         public CardType type() {
             return CardType.PLAY_CARD;
-        }
-
-        @Override
-        public CategoryComparisonResult compareWith(ICard card) {
-            return null;
         }
     }
     class FakePlayCard1 implements IPlayCard {
@@ -60,8 +52,8 @@ public interface IPlayCard extends ICard {
         }
 
         @Override
-        public IPlayCardStats getPlayCardStats() {
-            return new IPlayCardStats.FakePlayCardStats2();
+        public IStats getPlayCardStats() {
+            return new IStats.FakePlayCardStats2();
         }
 
         @Override
@@ -82,11 +74,6 @@ public interface IPlayCard extends ICard {
         @Override
         public CardType type() {
             return CardType.PLAY_CARD;
-        }
-
-        @Override
-        public CategoryComparisonResult compareWith(ICard card) {
-            return null;
         }
     }
 }

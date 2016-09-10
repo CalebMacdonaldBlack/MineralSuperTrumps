@@ -1,7 +1,7 @@
 package cmblack.card;
 
 import cmblack.card.playcard.IPlayCard;
-import cmblack.card.playcard.playcardstats.IPlayCardStats;
+import cmblack.card.stats.IStats;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -20,7 +20,7 @@ public class FakePlayCardTest {
 
     @Test
     public void testGetPlayCardStats() throws Exception {
-        assertTrue(playCard.getPlayCardStats().equals(new IPlayCardStats.FakePlayCardStats()));
+        assertTrue(playCard.getPlayCardStats().equals(new IStats.FakePlayCardStats()));
     }
 
     @Test

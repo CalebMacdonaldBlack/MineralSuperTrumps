@@ -1,8 +1,7 @@
 package cmblack.card.trumpcard;
 
-import cmblack.card.ICard;
 import cmblack.card.playcard.CardType;
-import cmblack.card.CategoryComparisonResult;
+import cmblack.card.stats.IStats;
 import cmblack.category.ICategory;
 
 /**
@@ -47,7 +46,7 @@ public class TrumpCard implements ITrumpCard {
     }
 
     @Override
-    public CategoryComparisonResult compareWith(ICard card) {
+    public IStats getPlayCardStats() {
         return null;
     }
 

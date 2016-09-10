@@ -1,6 +1,7 @@
 package cmblack.card;
 
 import cmblack.card.playcard.CardType;
+import cmblack.card.stats.IStats;
 
 /**
  * Created by calebmacdonaldblack on 23/08/2016.
@@ -18,5 +19,6 @@ public interface ICard {
 
     CardType type();
 
-    CategoryComparisonResult compareWith(ICard card);
+
+    IStats getPlayCardStats();
 }

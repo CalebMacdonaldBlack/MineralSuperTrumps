@@ -4,8 +4,8 @@ import cmblack.card.CardDescription;
 import cmblack.card.ICard;
 import cmblack.card.ICardDescription;
 import cmblack.card.playcard.PlayCard;
-import cmblack.card.playcard.playcardstats.IPlayCardStats;
-import cmblack.card.playcard.playcardstats.PlayCardStats;
+import cmblack.card.stats.IStats;
+import cmblack.card.stats.Stats;
 import cmblack.card.trumpcard.TrumpCard;
 import cmblack.category.Category;
 import cmblack.category.ICategory;
@@ -76,8 +76,8 @@ public class JSONDeckBuilder implements IDeckBuilder {
         );
     }
 
-    private IPlayCardStats createPlayCardStats(ParsedCard parsedCard) {
-        return new PlayCardStats(
+    private IStats createPlayCardStats(ParsedCard parsedCard) {
+        return new Stats(
                 this.createCleavage(parsedCard.getCleavage()),
                 this.createCrustalAbundance(parsedCard.getCrustal_abundance()),
                 this.createEconomicValue(parsedCard.getEconomic_value()),

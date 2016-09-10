@@ -2,7 +2,7 @@ package cmblack.card.playcard;
 
 import cmblack.card.ICardDescription;
 import cmblack.card.ICategoryComparisonResult;
-import cmblack.card.playcard.playcardstats.IPlayCardStats;
+import cmblack.card.stats.IStats;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -15,7 +15,7 @@ public class PlayCardTest {
     IPlayCard playCard = new PlayCard(
             "Gold",
             "Slide33.jpg",
-            new IPlayCardStats.FakePlayCardStats(),
+            new IStats.FakePlayCardStats(),
             new ICardDescription.FakeCardDescription()
             );
 
@@ -26,7 +26,7 @@ public class PlayCardTest {
 
     @Test
     public void testGetPlayCardStats() throws Exception {
-        assertTrue(playCard.getPlayCardStats().equals(new IPlayCardStats.FakePlayCardStats()));
+        assertTrue(playCard.getPlayCardStats().equals(new IStats.FakePlayCardStats()));
     }
 
     @Test
@@ -48,15 +48,5 @@ public class PlayCardTest {
     public void testType() throws Exception {
         assertEquals(this.playCard.type(), CardType.PLAY_CARD);
         assertNotEquals(this.playCard.type(), CardType.TRUMP_CARD);
-    }
-
-    @Test
-    public void testCompareWith() throws Exception {
-        ICategoryComparisonResult categoryComparisonResult = playCard.compareWith(new IPlayCard.FakePlayCard1());
-        assertEquals(false, categoryComparisonResult.cleavage());
-        assertEquals(true, categoryComparisonResult.crustalAbundance());
-        assertEquals(true, categoryComparisonResult.economicValue());
-        assertEquals(false, categoryComparisonResult.hardness());
-        assertEquals(false, categoryComparisonResult.specificGravity());
     }
 }

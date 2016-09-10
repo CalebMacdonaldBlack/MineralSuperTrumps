@@ -2,7 +2,7 @@ package cmblack.card.trumpcard;
 
 import cmblack.card.ICard;
 import cmblack.card.playcard.CardType;
-import cmblack.card.CategoryComparisonResult;
+import cmblack.card.stats.IStats;
 import cmblack.category.ICategory;
 
 /**
@@ -40,7 +40,7 @@ public interface ITrumpCard extends ICard {
         }
 
         @Override
-        public CategoryComparisonResult compareWith(ICard card) {
+        public IStats getPlayCardStats() {
             return null;
         }
     }

@@ -1,5 +1,6 @@
-package cmblack.card.playcard.playcardstats;
+package cmblack.card.playcard.stats;
 
+import cmblack.card.stats.IStats;
 import cmblack.category.cleavage.ICleavage;
 import cmblack.category.crustalabundance.ICrustalAbundance;
 import cmblack.category.economicvalue.IEconomicValue;
@@ -14,7 +15,7 @@ import static org.junit.Assert.*;
  */
 public class FakePlayCardStatsTest {
 
-    IPlayCardStats playCardStats = new IPlayCardStats.FakePlayCardStats();
+    IStats playCardStats = new IStats.FakePlayCardStats();
 
     @Test
     public void testGetCrustalAbundance() throws Exception {
@@ -43,6 +44,6 @@ public class FakePlayCardStatsTest {
 
     @Test
     public void testEquals() throws Exception {
-        assertTrue(playCardStats.equals(new IPlayCardStats.FakePlayCardStats()));
+        assertTrue(playCardStats.equals(new IStats.FakePlayCardStats()));
     }
 }

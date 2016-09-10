@@ -1,5 +1,7 @@
-package cmblack.card.playcard.playcardstats;
+package cmblack.card.playcard.stats;
 
+import cmblack.card.stats.IStats;
+import cmblack.card.stats.Stats;
 import cmblack.category.cleavage.ICleavage;
 import cmblack.category.crustalabundance.ICrustalAbundance;
 import cmblack.category.economicvalue.IEconomicValue;
@@ -14,7 +16,7 @@ import static org.junit.Assert.*;
  */
 public class PlayCardStatsTest {
 
-    IPlayCardStats playCardStats = new PlayCardStats(
+    IStats playCardStats = new Stats(
         new ICleavage.FakeCleavage(),
         new ICrustalAbundance.FakeCrustalAbundance(),
         new IEconomicValue.FakeEconomicValue(),

@@ -1,28 +1,23 @@
-package cmblack.card.playcard.playcardstats;
+package cmblack.card.stats;
 
-import cmblack.category.cleavage.Cleavage;
 import cmblack.category.cleavage.ICleavage;
-import cmblack.category.crustalabundance.CrustalAbundance;
 import cmblack.category.crustalabundance.ICrustalAbundance;
-import cmblack.category.economicvalue.EconomicValue;
 import cmblack.category.economicvalue.IEconomicValue;
-import cmblack.category.hardness.Hardness;
 import cmblack.category.hardness.IHardness;
 import cmblack.category.specificgravity.ISpecificGravity;
-import cmblack.category.specificgravity.SpecificGravity;
 
 /**
  * Created by calebmacdonaldblack on 9/09/2016.
  */
-public interface IPlayCardStats {
+public interface IStats {
     ICrustalAbundance getCrustalAbundance();
     IHardness getHardness();
     IEconomicValue getEconomicValue();
     ISpecificGravity getSpecificGravity();
     ICleavage getCleavage();
-    boolean equals(IPlayCardStats playCardStats);
+    boolean equals(IStats playCardStats);
 
-    class FakePlayCardStats implements IPlayCardStats {
+    class FakePlayCardStats implements IStats {
 
         @Override
         public ICrustalAbundance getCrustalAbundance() {
@@ -50,7 +45,7 @@ public interface IPlayCardStats {
         }
 
         @Override
-        public boolean equals(IPlayCardStats playCardStats) {
+        public boolean equals(IStats playCardStats) {
             return this.getCleavage().equals(playCardStats.getCleavage())
                 && this.getSpecificGravity().equals(playCardStats.getSpecificGravity())
                 && this.getEconomicValue().equals(playCardStats.getEconomicValue())
@@ -59,7 +54,7 @@ public interface IPlayCardStats {
         }
     }
 
-    class FakePlayCardStats2 implements IPlayCardStats {
+    class FakePlayCardStats2 implements IStats {
 
         @Override
         public ICrustalAbundance getCrustalAbundance() {
@@ -87,7 +82,7 @@ public interface IPlayCardStats {
         }
 
         @Override
-        public boolean equals(IPlayCardStats playCardStats) {
+        public boolean equals(IStats playCardStats) {
             return this.getCleavage().equals(playCardStats.getCleavage())
                     && this.getSpecificGravity().equals(playCardStats.getSpecificGravity())
                     && this.getEconomicValue().equals(playCardStats.getEconomicValue())
