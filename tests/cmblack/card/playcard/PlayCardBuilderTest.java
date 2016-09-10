@@ -12,7 +12,8 @@ import static org.junit.Assert.*;
  */
 public class PlayCardBuilderTest {
 
-    IPlayCardBuilder playCardBuilder = new PlayCardBuilder();
+    //TODO change this
+    IPlayCardBuilder playCardBuilder = new PlayCardBuilder(null, null, null, null, null);
 
     @Test
     public void testBuild() throws Exception {
