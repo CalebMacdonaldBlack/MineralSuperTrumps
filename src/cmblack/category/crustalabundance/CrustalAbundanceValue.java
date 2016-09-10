@@ -4,6 +4,7 @@ package cmblack.category.crustalabundance;
  * Created by calebmacdonaldblack on 10/09/2016.
  */
 public enum CrustalAbundanceValue {
+    EMPTYCARD(""),
     TRUMPCARD("trumpcard"),
     ULTRATRACE("ultratrace"),
     TRACE("trace"),

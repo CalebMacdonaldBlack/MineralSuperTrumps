@@ -1,6 +1,6 @@
 package cmblack.card.trumpcard;
 
-import cmblack.card.playcard.CardType;
+import cmblack.card.CardType;
 import cmblack.category.ICategory;
 import org.junit.Test;
 

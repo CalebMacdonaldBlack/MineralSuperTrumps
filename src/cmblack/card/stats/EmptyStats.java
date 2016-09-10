@@ -1,0 +1,58 @@
+package cmblack.card.stats;
+
+import cmblack.card.CategoryComparisonResult;
+import cmblack.category.cleavage.Cleavage;
+import cmblack.category.cleavage.EmptyCleavage;
+import cmblack.category.cleavage.ICleavage;
+import cmblack.category.crustalabundance.CrustalAbundance;
+import cmblack.category.crustalabundance.EmptyCrustalAbundance;
+import cmblack.category.crustalabundance.ICrustalAbundance;
+import cmblack.category.economicvalue.EconomicValue;
+import cmblack.category.economicvalue.EmptyEconomicValue;
+import cmblack.category.economicvalue.IEconomicValue;
+import cmblack.category.hardness.EmptyHardness;
+import cmblack.category.hardness.Hardness;
+import cmblack.category.hardness.IHardness;
+import cmblack.category.specificgravity.EmptySpecificGravity;
+import cmblack.category.specificgravity.ISpecificGravity;
+import cmblack.category.specificgravity.SpecificGravity;
+
+/**
+ * Created by calebmacdonaldblack on 10/09/2016.
+ */
+public class EmptyStats implements IStats {
+    @Override
+    public ICrustalAbundance getCrustalAbundance() {
+        return new EmptyCrustalAbundance();
+    }
+
+    @Override
+    public IHardness getHardness() {
+        return new EmptyHardness();
+    }
+
+    @Override
+    public IEconomicValue getEconomicValue() {
+        return new EmptyEconomicValue();
+    }
+
+    @Override
+    public ISpecificGravity getSpecificGravity() {
+        return new EmptySpecificGravity();
+    }
+
+    @Override
+    public ICleavage getCleavage() {
+        return new EmptyCleavage();
+    }
+
+    @Override
+    public boolean equals(IStats playCardStats) {
+        return false;
+    }
+
+    @Override
+    public CategoryComparisonResult compareWith(IStats stats) {
+        return null;
+    }
+}

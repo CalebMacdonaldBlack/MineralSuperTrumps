@@ -1,6 +1,5 @@
 package cmblack.card;
 
-import cmblack.card.playcard.CardType;
 import cmblack.card.stats.IStats;
 
 /**
