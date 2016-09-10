@@ -46,7 +46,10 @@ public interface ITrumpCard extends ICard {
 
         @Override
         public boolean equals(ICard card) {
-            return false;
+            return card.getImageFilename().equals(this.getImageFilename())
+                    && card.getTitle().equals(this.getTitle())
+                    && card.getType().equals(CardType.TRUMP_CARD)
+                    && card.getStats().equals(this.getStats());
         }
     }
 }
