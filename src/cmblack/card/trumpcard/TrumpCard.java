@@ -41,12 +41,12 @@ public class TrumpCard implements ITrumpCard {
     }
 
     @Override
-    public CardType type() {
+    public CardType getType() {
         return null;
     }
 
     @Override
-    public IStats getPlayCardStats() {
+    public IStats getStats() {
         return null;
     }
 

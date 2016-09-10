@@ -25,7 +25,7 @@ public class PlayCard implements IPlayCard {
     }
 
     @Override
-    public IStats getPlayCardStats() {
+    public IStats getStats() {
         return this.playCardStats;
     }
 
@@ -33,7 +33,7 @@ public class PlayCard implements IPlayCard {
     public boolean equals(IPlayCard playCard) {
         return this.title.equals(playCard.getTitle())
             && this.imageFileName.equals(playCard.getImageFilename())
-            && this.playCardStats.equals(playCard.getPlayCardStats())
+            && this.playCardStats.equals(playCard.getStats())
             && this.cardDescription.equals(playCard.getCardDescription());
     }
 
@@ -48,7 +48,7 @@ public class PlayCard implements IPlayCard {
     }
 
     @Override
-    public CardType type() {
+    public CardType getType() {
         return CardType.PLAY_CARD;
     }
 }

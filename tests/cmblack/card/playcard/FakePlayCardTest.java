@@ -25,7 +25,7 @@ public class FakePlayCardTest {
 
     @Test
     public void testGetPlayCardStats() throws Exception {
-        assertTrue(playCard.getPlayCardStats().equals(new IStats.FakePlayCardStats()));
+        assertTrue(playCard.getStats().equals(new IStats.FakePlayCardStats()));
     }
 
     @Test

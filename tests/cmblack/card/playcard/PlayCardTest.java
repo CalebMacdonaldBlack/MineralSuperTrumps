@@ -1,7 +1,6 @@
 package cmblack.card.playcard;
 
 import cmblack.card.ICardDescription;
-import cmblack.card.ICategoryComparisonResult;
 import cmblack.card.stats.IStats;
 import org.junit.Test;
 
@@ -26,7 +25,7 @@ public class PlayCardTest {
 
     @Test
     public void testGetPlayCardStats() throws Exception {
-        assertTrue(playCard.getPlayCardStats().equals(new IStats.FakePlayCardStats()));
+        assertTrue(playCard.getStats().equals(new IStats.FakePlayCardStats()));
     }
 
     @Test
@@ -46,7 +45,7 @@ public class PlayCardTest {
 
     @Test
     public void testType() throws Exception {
-        assertEquals(this.playCard.type(), CardType.PLAY_CARD);
-        assertNotEquals(this.playCard.type(), CardType.TRUMP_CARD);
+        assertEquals(this.playCard.getType(), CardType.PLAY_CARD);
+        assertNotEquals(this.playCard.getType(), CardType.TRUMP_CARD);
     }
 }

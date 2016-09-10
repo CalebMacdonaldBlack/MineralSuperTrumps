@@ -20,7 +20,7 @@ public interface IPlayCard extends ICard {
         }
 
         @Override
-        public IStats getPlayCardStats() {
+        public IStats getStats() {
             return new IStats.FakePlayCardStats();
         }
 
@@ -40,7 +40,7 @@ public interface IPlayCard extends ICard {
         }
 
         @Override
-        public CardType type() {
+        public CardType getType() {
             return CardType.PLAY_CARD;
         }
     }
@@ -52,7 +52,7 @@ public interface IPlayCard extends ICard {
         }
 
         @Override
-        public IStats getPlayCardStats() {
+        public IStats getStats() {
             return new IStats.FakePlayCardStats2();
         }
 
@@ -72,7 +72,7 @@ public interface IPlayCard extends ICard {
         }
 
         @Override
-        public CardType type() {
+        public CardType getType() {
             return CardType.PLAY_CARD;
         }
     }

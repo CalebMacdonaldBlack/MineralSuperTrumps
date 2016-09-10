@@ -1,9 +1,8 @@
 package cmblack.card.trumpcard;
 
+import cmblack.card.playcard.CardType;
 import cmblack.category.ICategory;
 import org.junit.Test;
-
-import java.util.Arrays;
 
 import static org.junit.Assert.*;
 
@@ -59,5 +58,15 @@ public class TrumpCardTest {
     @Test
     public void testGetImageFilename() throws Exception {
         assertEquals("Slide59.jpg", trumpCard.getImageFilename());
+    }
+
+    @Test
+    public void testType() throws Exception {
+        assertEquals(CardType.TRUMP_CARD, trumpCard.getType());
+    }
+
+    @Test
+    public void testGetPlayCardStats() throws Exception {
+        assertTrue(new TrumpCardStats().equals(trumpCard.getStats()));
     }
 }

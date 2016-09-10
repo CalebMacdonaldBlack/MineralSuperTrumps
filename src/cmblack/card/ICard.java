@@ -17,8 +17,8 @@ public interface ICard {
     //TODO comparing stats returns a statsResult with all comparison
     //TODO return the comparingStats as an object
 
-    CardType type();
+    CardType getType();
 
 
-    IStats getPlayCardStats();
+    IStats getStats();
 }
