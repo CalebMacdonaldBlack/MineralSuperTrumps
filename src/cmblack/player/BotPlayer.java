@@ -1,5 +1,6 @@
 package cmblack.player;
 
+import cmblack.card.CategoryComparisonResult;
 import cmblack.card.ICard;
 import cmblack.category.Category;
 
@@ -18,16 +19,21 @@ public class BotPlayer implements IPlayer {
 
     @Override
     public IPlayer addCard(ICard card) {
-        return null;
+        this.cards.add(card);
+        return this;
     }
 
     @Override
     public ICard playCard(ICard cardToBeat, Category currentTrumpCategory) {
+        for(ICard card: cards){
+            CategoryComparisonResult categoryComparisonResult = card.getStats().compareWith(cardToBeat.getStats());
+            
+        }
         return null;
     }
 
     @Override
     public String getName() {
-        return null;
+        return this.name;
     }
 }

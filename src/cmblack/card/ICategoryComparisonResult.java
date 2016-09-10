@@ -1,5 +1,7 @@
 package cmblack.card;
 
+import cmblack.category.ICategory;
+
 /**
  * Created by calebmacdonaldblack on 10/09/2016.
  */
@@ -10,6 +12,7 @@ public interface ICategoryComparisonResult {
     double hardness();
     double specificGravity();
     boolean equals(ICategoryComparisonResult categoryComparisonResult);
+    double valueForCategory(ICategory category);
 
     class FakeCategoryComparisonResult implements ICategoryComparisonResult{
 
@@ -45,6 +48,11 @@ public interface ICategoryComparisonResult {
                 && categoryComparisonResult.economicValue() == this.economicValue()
                 && categoryComparisonResult.hardness() == this.hardness()
                 && categoryComparisonResult.specificGravity() == this.specificGravity();
+        }
+
+        @Override
+        public double valueForCategory(ICategory category) {
+            return 0;
         }
     }
 }
