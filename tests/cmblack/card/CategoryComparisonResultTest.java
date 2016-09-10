@@ -2,6 +2,8 @@ package cmblack.card;
 
 import cmblack.card.stats.IStats;
 import cmblack.card.trumpcard.TrumpCardStats;
+import cmblack.category.Category;
+import cmblack.category.ICategory;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -45,6 +47,10 @@ public class CategoryComparisonResultTest {
 
     @Test
     public void testValueForCategory() throws Exception {
-
+        assertEquals(-6, categoryComparisonResult.valueForCategory(new ICategory.FakeCleavageCategory()), 0);
+        assertEquals(2, categoryComparisonResult.valueForCategory(new ICategory.FakeCrustalAbundanceCategory()), 0);
+        assertEquals(2, categoryComparisonResult.valueForCategory(new ICategory.FakeEconomicValueCategory()), 0);
+        assertEquals(-0.4, categoryComparisonResult.valueForCategory(new ICategory.FakeHardnessCategory()), 0);
+        assertEquals(-0.7, categoryComparisonResult.valueForCategory(new ICategory.FakeSpecificGravityCategory()), 0);
     }
 }
