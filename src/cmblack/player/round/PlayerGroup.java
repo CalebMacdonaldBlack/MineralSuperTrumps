@@ -66,6 +66,6 @@ public class PlayerGroup implements IPlayerGroup {
 
     @Override
     public IPlayer getRoundWinningPlayer() {
-        return null;
+        return remainingPlayers.size() > 1 ? new EmptyPlayer() : remainingPlayers.get(0);
     }
 }
