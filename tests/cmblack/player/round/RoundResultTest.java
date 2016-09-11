@@ -15,7 +15,6 @@ public class RoundResultTest {
 
     IRoundResult roundResult = new RoundResult(
             new IPlayer[]{new IPlayer.FakePlayer()},
-            new IPlayer[]{new IPlayer.FakePlayer(), new IPlayer.FakePlayer()},
             new IPlayer.FakePlayer());
 
 
@@ -28,10 +27,5 @@ public class RoundResultTest {
     public void testPlayersWhoWon() throws Exception {
         assertEquals(1, roundResult.playersWhoWon().length);
         assertTrue(new IPlayer.FakePlayer().equals(roundResult.playersWhoWon()[0]));
-    }
-
-    @Test
-    public void testPlayersLeft() throws Exception {
-        assertEquals(2, roundResult.playersLeft().length);
     }
 }

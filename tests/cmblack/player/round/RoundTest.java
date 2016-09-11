@@ -51,7 +51,7 @@ public class RoundTest {
                 new EmptyPlayer());
 
         IRoundResult roundResult = round.haveRound();
-        assertTrue(roundResult.roundWinningPlayer().equals(bot1));
+        assertTrue(roundResult.roundWinningPlayer().equals(bot2));
     }
 
     @Test
@@ -70,6 +70,6 @@ public class RoundTest {
                 bot1);
 
         IRoundResult roundResult = round.haveRound();
-        assertTrue(roundResult.playersWhoWon()[0].equals(bot1));
+        assertTrue(roundResult.playersWhoWon()[0].equals(bot2));
     }
 }

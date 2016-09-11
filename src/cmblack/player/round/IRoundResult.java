@@ -11,7 +11,6 @@ import java.io.FileNotFoundException;
 public interface IRoundResult {
     IPlayer roundWinningPlayer();
     IPlayer[] playersWhoWon();
-    IPlayer[] playersLeft();
 
     class FakeRoundResult implements IRoundResult {
 
@@ -22,11 +21,6 @@ public interface IRoundResult {
 
         @Override
         public IPlayer[] playersWhoWon() {
-            return new IPlayer[]{new IPlayer.FakePlayer()};
-        }
-
-        @Override
-        public IPlayer[] playersLeft() {
             return new IPlayer[]{new IPlayer.FakePlayer()};
         }
     }
