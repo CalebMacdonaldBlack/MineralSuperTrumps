@@ -6,6 +6,7 @@ import cmblack.card.playcard.IPlayCard;
 import cmblack.card.trumpcard.ITrumpCard;
 import cmblack.category.Category;
 import cmblack.category.ICategory;
+import cmblack.category.cleavage.CleavageCategory;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -63,7 +64,7 @@ public class BotPlayerTest {
         player.addCard(new IPlayCard.FakeGoodPlayCard());
         player.addCard(new IPlayCard.FakeGoodPlayCard());
         ICategory category = player.chooseCategory();
-        assertTrue(false);
+        assertTrue(category.equals(new CleavageCategory()));
     }
 
     @Test
