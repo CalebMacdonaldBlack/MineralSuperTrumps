@@ -8,8 +8,7 @@ import cmblack.category.ICategory;
  */
 public class CrustalAbundanceBuilder implements ICrustalAbundanceBuilder {
     @Override
-    public ICrustalAbundance build(String value, String categoryName) {
-        ICategory category = new Category(categoryName);
+    public ICrustalAbundance build(String value, ICategory category) {
         switch (value){
             case "ultratrace":
                 return new CrustalAbundance(category, CrustalAbundanceValue.ULTRATRACE);
@@ -30,6 +29,6 @@ public class CrustalAbundanceBuilder implements ICrustalAbundanceBuilder {
 
     @Override
     public ICrustalAbundance build(String value) {
-        return this.build(value, "Crustal abundance");
+        return this.build(value, new CrustalAbundanceCategory());
     }
 }

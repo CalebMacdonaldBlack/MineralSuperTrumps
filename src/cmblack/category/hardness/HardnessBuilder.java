@@ -8,8 +8,7 @@ import cmblack.category.ICategory;
  */
 public class HardnessBuilder implements IHardnessBuilder {
     @Override
-    public IHardness build(String value, String categoryName) {
-        ICategory category = new Category(categoryName);
+    public IHardness build(String value, ICategory category) {
         return new Hardness(
                 this.getLowFromRangeString(value),
                 this.getHighFromRangeString(value),
@@ -19,7 +18,7 @@ public class HardnessBuilder implements IHardnessBuilder {
 
     @Override
     public IHardness build(String value) {
-        return this.build(value, "Hardness");
+        return this.build(value, new HardnessCategory());
     }
 
     //TODO duplicate code: remove this

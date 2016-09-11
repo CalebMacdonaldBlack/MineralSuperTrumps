@@ -2,8 +2,6 @@ package cmblack.category.cleavage;
 
 import cmblack.category.Category;
 import cmblack.category.ICategory;
-import cmblack.category.crustalabundance.CrustalAbundance;
-import cmblack.category.crustalabundance.CrustalAbundanceValue;
 
 /**
  * Created by calebmacdonaldblack on 10/09/2016.
@@ -11,12 +9,11 @@ import cmblack.category.crustalabundance.CrustalAbundanceValue;
 public class CleavageBuilder implements ICleavageBuilder {
     @Override
     public ICleavage build(String value) {
-        return this.build(value, "Cleavage");
+        return this.build(value, new CleavageCategory());
     }
 
     @Override
-    public ICleavage build(String value, String categoryName) {
-        ICategory category = new Category(categoryName);
+    public ICleavage build(String value, ICategory category) {;
         switch(value){
             case "none":
                 return new Cleavage(category, CleavageValue.NONE);

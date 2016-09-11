@@ -2,7 +2,6 @@ package cmblack.category.cleavage;
 
 import cmblack.category.Category;
 import cmblack.category.ICategory;
-import cmblack.category.IStat;
 
 /**
  * Created by calebmacdonaldblack on 9/09/2016.
@@ -19,7 +18,7 @@ public class Cleavage implements ICleavage {
     }
 
     public Cleavage(CleavageValue cleavageValue) {
-        this(new Category("Cleavage"), cleavageValue);
+        this(new CleavageCategory(), cleavageValue);
     }
 
     @Override

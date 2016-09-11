@@ -1,5 +1,7 @@
 package cmblack.category.crustalabundance;
 
+import cmblack.EmptyRange;
+import cmblack.category.Category;
 import cmblack.deck.deckbuilder.IParsedCard;
 import org.junit.Test;
 
@@ -21,7 +23,7 @@ public class CrustalAbundanceBuilderTest {
 
     @Test
     public void testBuild1() throws Exception {
-        ICrustalAbundance crustalAbundance = crustalAbundanceBuilder.build(parsedCard.getCrustal_abundance(), "crustAbund");
+        ICrustalAbundance crustalAbundance = crustalAbundanceBuilder.build(parsedCard.getCrustal_abundance(), new Category("crustAbund", new EmptyRange()));
         assertEquals("crustAbund", crustalAbundance.getCategory().getCategoryName());
     }
 }

@@ -1,5 +1,7 @@
 package cmblack.category.cleavage;
 
+import cmblack.EmptyRange;
+import cmblack.category.Category;
 import cmblack.deck.deckbuilder.IParsedCard;
 import org.junit.Test;
 
@@ -21,7 +23,7 @@ public class CleavageBuilderTest {
 
     @Test
     public void testBuild1() throws Exception {
-        ICleavage cleavage = cleavageBuilder.build(parsedCard.getCleavage(), "cleav");
+        ICleavage cleavage = cleavageBuilder.build(parsedCard.getCleavage(), new Category("cleav", new EmptyRange()));
         assertEquals("cleav", cleavage.getCategory().getCategoryName());
     }
 }

@@ -14,16 +14,22 @@ public class Range implements IRange {
 
     @Override
     public double minValue() {
-        return 0;
+        return this.min;
     }
 
     @Override
     public double maxValue() {
-        return 0;
+        return this.max;
     }
 
     @Override
     public double percentageOfValueInRange(double value) {
-        return 0;
+        return ((value - min) * 100) / (max - min);
+    }
+
+    @Override
+    public boolean equals(IRange range) {
+        return min == range.minValue()
+            && max == range.maxValue();
     }
 }

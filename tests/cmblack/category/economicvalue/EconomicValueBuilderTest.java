@@ -1,5 +1,7 @@
 package cmblack.category.economicvalue;
 
+import cmblack.EmptyRange;
+import cmblack.category.Category;
 import cmblack.deck.deckbuilder.IParsedCard;
 import org.junit.Test;
 
@@ -21,7 +23,7 @@ public class EconomicValueBuilderTest {
 
     @Test
     public void testBuild1() throws Exception {
-        IEconomicValue economicValue = economicValueBuilder.build(parsedCard.getEconomic_value(), "ecoval");
+        IEconomicValue economicValue = economicValueBuilder.build(parsedCard.getEconomic_value(), new Category("ecoval", new EmptyRange()));
         assertEquals("ecoval", economicValue.getCategory().getCategoryName());
     }
 }

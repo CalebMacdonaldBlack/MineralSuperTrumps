@@ -1,5 +1,7 @@
 package cmblack.category.hardness;
 
+import cmblack.EmptyRange;
+import cmblack.category.Category;
 import cmblack.deck.deckbuilder.IParsedCard;
 import org.junit.Test;
 
@@ -22,7 +24,7 @@ public class HardnessBuilderTest {
 
     @Test
     public void testBuild1() throws Exception {
-        IHardness hardness = hardnessBuilder.build(parsedCard.getHardness(), "hard");
+        IHardness hardness = hardnessBuilder.build(parsedCard.getHardness(), new Category("hard", new EmptyRange()));
         assertEquals("hard", hardness.getCategory().getCategoryName());
     }
 }

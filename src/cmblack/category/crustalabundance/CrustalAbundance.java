@@ -2,7 +2,6 @@ package cmblack.category.crustalabundance;
 
 import cmblack.category.Category;
 import cmblack.category.ICategory;
-import cmblack.category.IStat;
 
 /**
  * Created by calebmacdonaldblack on 9/09/2016.
@@ -17,7 +16,7 @@ public class CrustalAbundance implements ICrustalAbundance {
     }
 
     public CrustalAbundance(CrustalAbundanceValue value) {
-        this(new Category("Crustal abundance"), value);
+        this(new CrustalAbundanceCategory(), value);
     }
 
     @Override

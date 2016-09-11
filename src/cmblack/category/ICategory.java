@@ -1,10 +1,14 @@
 package cmblack.category;
 
+import cmblack.IRange;
+import cmblack.Range;
+
 /**
  * Created by calebmacdonaldblack on 9/09/2016.
  */
 public interface ICategory {
     String getCategoryName();
+    IRange getValueRange();
     boolean equals(ICategory category);
 
     public class FakeHardnessCategory implements ICategory {
@@ -12,6 +16,11 @@ public interface ICategory {
         @Override
         public String getCategoryName() {
             return "Hardness";
+        }
+
+        @Override
+        public IRange getValueRange() {
+            return new Range(1, 10);
         }
 
         @Override
@@ -28,12 +37,22 @@ public interface ICategory {
         }
 
         @Override
+        public IRange getValueRange() {
+            return new Range(1, 15);
+        }
+
+        @Override
         public boolean equals(ICategory category) {
             return this.getCategoryName().equals(category.getCategoryName());
         }
     }
 
     class FakeCleavageCategory implements ICategory {
+
+        @Override
+        public IRange getValueRange() {
+            return new Range(1, 15);
+        }
 
         @Override
         public String getCategoryName() {
@@ -47,6 +66,11 @@ public interface ICategory {
     }
 
     class FakeEconomicValueCategory implements ICategory {
+
+        @Override
+        public IRange getValueRange() {
+            return new Range(1, 7);
+        }
         @Override
         public String getCategoryName() {
             return "Economic value";
@@ -61,6 +85,11 @@ public interface ICategory {
     class FakeCrustalAbundanceCategory implements ICategory {
 
         @Override
+        public IRange getValueRange() {
+            return new Range(1, 7);
+        }
+
+        @Override
         public String getCategoryName() {
             return "Crustal abundance";
         }
@@ -72,6 +101,11 @@ public interface ICategory {
     }
 
     class FakeSpecificGravityCategory implements ICategory {
+
+        @Override
+        public IRange getValueRange() {
+            return new Range(2.2, 19.3);
+        }
 
         @Override
         public String getCategoryName() {

@@ -1,6 +1,7 @@
 package cmblack.category.specificgravity;
 
 import cmblack.category.Category;
+import cmblack.category.ICategory;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -24,7 +25,7 @@ public class SpecificGravityTest {
 
     @Test
     public void testGetCategory() throws Exception {
-        assertTrue(specificGravity.getCategory().equals(new Category("Specific gravity")));
+        assertTrue(specificGravity.getCategory().equals(new ICategory.FakeSpecificGravityCategory()));
     }
 
     @Test

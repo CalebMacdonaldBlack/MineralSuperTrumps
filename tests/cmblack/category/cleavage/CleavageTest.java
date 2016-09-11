@@ -1,6 +1,7 @@
 package cmblack.category.cleavage;
 
 import cmblack.category.Category;
+import cmblack.category.ICategory;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -19,7 +20,7 @@ public class CleavageTest {
 
     @Test
     public void testGetCategory() throws Exception {
-        assertTrue(cleavage.getCategory().equals(new Category("Cleavage")));
+        assertTrue(cleavage.getCategory().equals(new ICategory.FakeCleavageCategory()));
     }
 
     @Test

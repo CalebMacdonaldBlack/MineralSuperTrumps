@@ -2,8 +2,6 @@ package cmblack.category.economicvalue;
 
 import cmblack.category.Category;
 import cmblack.category.ICategory;
-import cmblack.category.IStat;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  * Created by calebmacdonaldblack on 23/08/2016.
@@ -18,8 +16,7 @@ public class EconomicValue implements IEconomicValue {
     }
 
     public EconomicValue(EconomicValueValue value) {
-        this.value = value;
-        this.category = new Category("Economic getValue");
+        this(value, new EconomicValueCategory());
     }
 
 

@@ -2,7 +2,6 @@ package cmblack.category.hardness;
 
 import cmblack.category.Category;
 import cmblack.category.ICategory;
-import cmblack.category.IStat;
 
 /**
  * Created by calebmacdonaldblack on 9/09/2016.
@@ -19,7 +18,7 @@ public class Hardness implements IHardness {
     }
 
     public Hardness(double minimumValue, double maximumValue) {
-        this(minimumValue, maximumValue, new Category("Hardness"));
+        this(minimumValue, maximumValue, new HardnessCategory());
     }
 
     @Override

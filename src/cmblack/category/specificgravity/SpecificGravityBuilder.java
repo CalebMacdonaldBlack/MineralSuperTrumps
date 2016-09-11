@@ -1,5 +1,7 @@
 package cmblack.category.specificgravity;
 
+import cmblack.IRange;
+import cmblack.Range;
 import cmblack.category.Category;
 import cmblack.category.ICategory;
 
@@ -8,8 +10,7 @@ import cmblack.category.ICategory;
  */
 public class SpecificGravityBuilder implements ISpecificGravityBuilder {
     @Override
-    public ISpecificGravity build(String value, String categoryName) {
-        ICategory category = new Category(categoryName);
+    public ISpecificGravity build(String value, ICategory category) {
         return new SpecificGravity(
                 this.getLowFromRangeString(value),
                 this.getHighFromRangeString(value),
@@ -19,7 +20,7 @@ public class SpecificGravityBuilder implements ISpecificGravityBuilder {
 
     @Override
     public ISpecificGravity build(String value) {
-        return this.build(value, "Specific gravity");
+        return this.build(value, new SpecificGravityCategory());
     }
 
     //TODO duplicate code: remove this

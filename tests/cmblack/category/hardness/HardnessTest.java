@@ -1,6 +1,7 @@
 package cmblack.category.hardness;
 
 import cmblack.category.Category;
+import cmblack.category.ICategory;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -23,7 +24,7 @@ public class HardnessTest {
 
     @Test
     public void testGetCategory() throws Exception {
-        assertTrue(hardness.getCategory().equals(new Category("Hardness")));
+        assertTrue(hardness.getCategory().equals(new ICategory.FakeHardnessCategory()));
     }
 
     @Test

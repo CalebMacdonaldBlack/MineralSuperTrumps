@@ -8,8 +8,7 @@ import cmblack.category.ICategory;
  */
 public class EconomicValueBuilder implements IEconomicValueBuilder {
     @Override
-    public IEconomicValue build(String value, String categoryName) {
-        ICategory category = new Category(categoryName);
+    public IEconomicValue build(String value, ICategory category) {
         switch (value){
             case "trivial":
                 return new EconomicValue(EconomicValueValue.TRIVIAL, category);
@@ -30,6 +29,6 @@ public class EconomicValueBuilder implements IEconomicValueBuilder {
 
     @Override
     public IEconomicValue build(String value) {
-        return this.build(value, "Economic value");
+        return this.build(value, new EconomicValueCategory());
     }
 }

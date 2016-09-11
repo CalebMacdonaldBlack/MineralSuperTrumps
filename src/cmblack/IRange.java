@@ -7,6 +7,7 @@ public interface IRange {
     double minValue();
     double maxValue();
     double percentageOfValueInRange(double value);
+    boolean equals(IRange range);
 
     class FakeRange implements IRange {
 
@@ -23,6 +24,12 @@ public interface IRange {
         @Override
         public double percentageOfValueInRange(double value) {
             return ((value - minValue()) * 100) / (maxValue() - minValue());
+        }
+
+        @Override
+        public boolean equals(IRange range) {
+            return this.minValue() == range.minValue()
+                && this.maxValue() == range.maxValue();
         }
     }
 }

@@ -1,6 +1,7 @@
 package cmblack.category.economicvalue;
 
 import cmblack.category.Category;
+import cmblack.category.ICategory;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -24,7 +25,7 @@ public class EconomicValueTest {
 
     @Test
     public void testGetCategory() throws Exception {
-        assertTrue(economicValue.getCategory().equals(new Category("Economic getValue")));
+        assertTrue(economicValue.getCategory().equals(new ICategory.FakeEconomicValueCategory()));
     }
 
     @Test

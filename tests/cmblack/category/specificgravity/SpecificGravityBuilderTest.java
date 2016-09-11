@@ -1,5 +1,7 @@
 package cmblack.category.specificgravity;
 
+import cmblack.EmptyRange;
+import cmblack.category.Category;
 import cmblack.deck.deckbuilder.IParsedCard;
 import org.junit.Test;
 
@@ -22,7 +24,7 @@ public class SpecificGravityBuilderTest {
 
     @Test
     public void testBuild1() throws Exception {
-        ISpecificGravity specificGravity = specificGravityBuilder.build(parsedCard.getSpecific_gravity(), "specGrav");
+        ISpecificGravity specificGravity = specificGravityBuilder.build(parsedCard.getSpecific_gravity(), new Category("specGrav", new EmptyRange()));
         assertEquals("specGrav", specificGravity.getCategory().getCategoryName());
     }
 }

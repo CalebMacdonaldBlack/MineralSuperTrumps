@@ -1,6 +1,7 @@
 package cmblack.category.crustalabundance;
 
 import cmblack.category.Category;
+import cmblack.category.ICategory;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -24,7 +25,7 @@ public class CrustalAbundanceTest {
 
     @Test
     public void testGetCategory() throws Exception {
-        assertTrue(new Category("Crustal abundance").equals(crustalAbundance.getCategory()));
+        assertTrue(new ICategory.FakeCrustalAbundanceCategory().equals(crustalAbundance.getCategory()));
     }
 
     @Test

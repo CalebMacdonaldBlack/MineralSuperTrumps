@@ -2,8 +2,6 @@ package cmblack.category.specificgravity;
 
 import cmblack.category.Category;
 import cmblack.category.ICategory;
-import cmblack.category.IStat;
-import cmblack.category.specificgravity.ISpecificGravity;
 
 /**
  * Created by calebmacdonaldblack on 9/09/2016.
@@ -20,7 +18,7 @@ public class SpecificGravity implements ISpecificGravity {
     }
 
     public SpecificGravity(double minimumValue, double maximumValue) {
-        this(minimumValue, maximumValue, new Category("Specific gravity"));
+        this(minimumValue, maximumValue, new SpecificGravityCategory());
     }
 
     @Override
