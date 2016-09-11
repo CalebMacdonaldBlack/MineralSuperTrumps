@@ -18,7 +18,7 @@ public interface IPlayer {
 
     ICategory chooseCategory();
 
-    int getCountOfCard();
+    int getCountOfCards();
 
     void giveCard(ICard card);
 
@@ -54,7 +54,7 @@ public interface IPlayer {
         }
 
         @Override
-        public int getCountOfCard() {
+        public int getCountOfCards() {
             return 1;
         }
 

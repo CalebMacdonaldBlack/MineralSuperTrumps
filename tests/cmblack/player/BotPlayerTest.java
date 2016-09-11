@@ -4,10 +4,8 @@ import cmblack.card.EmptyCard;
 import cmblack.card.ICard;
 import cmblack.card.playcard.IPlayCard;
 import cmblack.card.trumpcard.ITrumpCard;
-import cmblack.category.Category;
 import cmblack.category.ICategory;
 import cmblack.category.cleavage.CleavageCategory;
-import org.junit.Assert;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -72,7 +70,7 @@ public class BotPlayerTest {
         IPlayer player = new BotPlayer("bot1");
         player.addCard(new IPlayCard.FakeGoodPlayCard());
         player.addCard(new IPlayCard.FakeGoodPlayCard());
-        assertEquals(2, player.getCountOfCard());
+        assertEquals(2, player.getCountOfCards());
     }
 
     @Test
@@ -80,8 +78,8 @@ public class BotPlayerTest {
         IPlayer player = new BotPlayer("bot1");
         player.addCard(new IPlayCard.FakeGoodPlayCard());
         player.addCard(new IPlayCard.FakeGoodPlayCard());
-        assertEquals(2, player.getCountOfCard());
+        assertEquals(2, player.getCountOfCards());
         player.addCard(new IPlayCard.FakeGoodPlayCard());
-        assertEquals(3, player.getCountOfCard());
+        assertEquals(3, player.getCountOfCards());
     }
 }

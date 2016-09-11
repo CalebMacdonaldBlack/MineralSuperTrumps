@@ -7,6 +7,7 @@ import cmblack.card.ICard;
 import cmblack.card.stats.statscalculator.AveragePercentOfRangeCalculator;
 import cmblack.card.stats.statscalculator.IAveragePercentOfRangeCalculator;
 import cmblack.card.stats.statscalculator.IAveragePercentOfRangeResult;
+import cmblack.category.EmptyCategory;
 import cmblack.category.ICategory;
 
 import java.util.ArrayList;
@@ -30,16 +31,23 @@ public class BotPlayer implements IPlayer {
 
     @Override
     public ICard playCard(ICard cardToBeat, ICategory currentTrumpCategory) {
+
+        if(currentTrumpCategory.equals(new EmptyCategory())){
+            currentTrumpCategory = this.chooseCategory();
+        }
+
         ICard possibleTrumpCard = new EmptyCard();
         for(ICard card: cards){
             CategoryComparisonResult categoryComparisonResult = card.getStats().compareWith(cardToBeat.getStats());
             if(categoryComparisonResult.valueForCategory(currentTrumpCategory) > 0){
+                this.cards.remove(card);
                 return card;
             }else if(card.getType().equals(CardType.TRUMP_CARD)){
                 possibleTrumpCard = card;
             }
 
         }
+        this.cards.remove(possibleTrumpCard);
         return possibleTrumpCard;
     }
 
@@ -60,7 +68,7 @@ public class BotPlayer implements IPlayer {
     }
 
     @Override
-    public int getCountOfCard() {
+    public int getCountOfCards() {
         return this.cards.size();
     }
 

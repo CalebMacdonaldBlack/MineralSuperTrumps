@@ -70,9 +70,9 @@ public class PlayerTurnTest {
         player.addCard(goodCard);
 
         IPlayerTurn turn = new PlayerTurn(goodCard, player, new ICategory.FakeCleavageCategory(), new IDeckBuilder.FakeDeckBuilder().build());
-        assertEquals(2, player.getCountOfCard());
+        assertEquals(2, player.getCountOfCards());
         IPlayerTurnResult playerTurnResult = turn.haveTurn();
-        assertEquals(3, player.getCountOfCard());
+        assertEquals(3, player.getCountOfCards());
     }
 
 }
