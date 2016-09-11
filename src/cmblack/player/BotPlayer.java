@@ -54,6 +54,7 @@ public class BotPlayer implements IPlayer {
 
     @Override
     public ICategory chooseCategory() {
+//        IAverageCategoryValueCalculator averageCategoryValueCalculator = new AverageCategoryValueCalculator();
         return new EmptyCategory();
     }
 }
