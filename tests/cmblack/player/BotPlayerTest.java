@@ -63,5 +63,14 @@ public class BotPlayerTest {
         player.addCard(new IPlayCard.FakeGoodPlayCard());
         player.addCard(new IPlayCard.FakeGoodPlayCard());
         ICategory category = player.chooseCategory();
+        assertTrue(false);
+    }
+
+    @Test
+    public void testGetCountOfCard() throws Exception {
+        IPlayer player = new BotPlayer("bot1");
+        player.addCard(new IPlayCard.FakeGoodPlayCard());
+        player.addCard(new IPlayCard.FakeGoodPlayCard());
+        assertEquals(2, player.getCountOfCard());
     }
 }

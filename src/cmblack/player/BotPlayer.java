@@ -61,6 +61,11 @@ public class BotPlayer implements IPlayer {
         return this.pickCategoryWherePlayerHasHighestAverage();
     }
 
+    @Override
+    public int getCountOfCard() {
+        return this.cards.size();
+    }
+
     private ICategory pickCategoryWherePlayerHasHighestAverage() {
         IAveragePercentOfRangeCalculator averagePercentOfRangeCalculator = new AveragePercentOfRangeCalculator();
         for(ICard card: cards){

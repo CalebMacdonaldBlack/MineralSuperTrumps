@@ -18,6 +18,8 @@ public interface IPlayer {
 
     ICategory chooseCategory();
 
+    int getCountOfCard();
+
     class FakePlayer implements IPlayer {
 
         private ArrayList<ICard> cards;
@@ -47,6 +49,11 @@ public interface IPlayer {
         @Override
         public ICategory chooseCategory() {
             return new ICategory.FakeCleavageCategory();
+        }
+
+        @Override
+        public int getCountOfCard() {
+            return 1;
         }
     }
 }

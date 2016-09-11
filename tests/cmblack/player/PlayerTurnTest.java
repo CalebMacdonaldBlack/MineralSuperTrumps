@@ -52,11 +52,24 @@ public class PlayerTurnTest {
         player.addCard(goodCard);
         player.addCard(goodCard);
 
-        System.out.println("\nStarting");
         IPlayerTurn turn = new PlayerTurn(goodCard, player,  new ICategory.FakeCleavageCategory());
         IPlayerTurnResult playerTurnResult = turn.haveTurn();
         assertTrue(trumpCard.equals(playerTurnResult.getCurrentCard()));
         assertTrue(new CleavageCategory().equals(playerTurnResult.getCurrentCategory()));
+    }
+
+    @Test
+    public void haveTurn4() throws FileNotFoundException {
+        IPlayer player = new BotPlayer("Bot 1");
+        ICard goodCard = new IPlayCard.FakeGoodPlayCard();
+
+        player.addCard(goodCard);
+        player.addCard(goodCard);
+
+        IPlayerTurn turn = new PlayerTurn(goodCard, player,  new ICategory.FakeCleavageCategory());
+        assertEquals(2, player.getCountOfCard());
+        IPlayerTurnResult playerTurnResult = turn.haveTurn();
+        assertEquals(3, player.getCountOfCard());
     }
 
 }
