@@ -73,4 +73,14 @@ public class BotPlayerTest {
         player.addCard(new IPlayCard.FakeGoodPlayCard());
         assertEquals(2, player.getCountOfCard());
     }
+
+    @Test
+    public void testGiveCard() throws Exception {
+        IPlayer player = new BotPlayer("bot1");
+        player.addCard(new IPlayCard.FakeGoodPlayCard());
+        player.addCard(new IPlayCard.FakeGoodPlayCard());
+        assertEquals(2, player.getCountOfCard());
+        player.addCard(new IPlayCard.FakeGoodPlayCard());
+        assertEquals(3, player.getCountOfCard());
+    }
 }

@@ -5,7 +5,7 @@ import cmblack.card.playcard.IPlayCard;
 import cmblack.card.trumpcard.ITrumpCard;
 import cmblack.category.ICategory;
 import cmblack.category.cleavage.CleavageCategory;
-import cmblack.deck.IDeck;
+import cmblack.deck.deckbuilder.IDeckBuilder;
 import org.junit.Test;
 
 import java.io.FileNotFoundException;
@@ -24,7 +24,7 @@ public class PlayerTurnTest {
 
         player.addCard(goodCard);
 
-        IPlayerTurn turn = new PlayerTurn(new IPlayCard.FakeBadPlayCard(), player,  new ICategory.FakeCleavageCategory());
+        IPlayerTurn turn = new PlayerTurn(new IPlayCard.FakeBadPlayCard(), player,  new ICategory.FakeCleavageCategory(), new IDeckBuilder.FakeDeckBuilder().build());
         IPlayerTurnResult playerTurnResult = turn.haveTurn();
         assertTrue(goodCard.equals(playerTurnResult.getCurrentCard()));
     }
@@ -37,7 +37,7 @@ public class PlayerTurnTest {
 
         player.addCard(badCard);
 
-        IPlayerTurn turn = new PlayerTurn(goodCard, player,  new ICategory.FakeCleavageCategory());
+        IPlayerTurn turn = new PlayerTurn(goodCard, player,  new ICategory.FakeCleavageCategory(), new IDeckBuilder.FakeDeckBuilder().build());
         IPlayerTurnResult playerTurnResult = turn.haveTurn();
         assertTrue(goodCard.equals(playerTurnResult.getCurrentCard()));
     }
@@ -52,7 +52,7 @@ public class PlayerTurnTest {
         player.addCard(goodCard);
         player.addCard(goodCard);
 
-        IPlayerTurn turn = new PlayerTurn(goodCard, player,  new ICategory.FakeCleavageCategory());
+        IPlayerTurn turn = new PlayerTurn(goodCard, player,  new ICategory.FakeCleavageCategory(), new IDeckBuilder.FakeDeckBuilder().build());
         IPlayerTurnResult playerTurnResult = turn.haveTurn();
         assertTrue(trumpCard.equals(playerTurnResult.getCurrentCard()));
         assertTrue(new CleavageCategory().equals(playerTurnResult.getCurrentCategory()));
@@ -66,7 +66,7 @@ public class PlayerTurnTest {
         player.addCard(goodCard);
         player.addCard(goodCard);
 
-        IPlayerTurn turn = new PlayerTurn(goodCard, player,  new ICategory.FakeCleavageCategory());
+        IPlayerTurn turn = new PlayerTurn(goodCard, player, new ICategory.FakeCleavageCategory(), new IDeckBuilder.FakeDeckBuilder().build());
         assertEquals(2, player.getCountOfCard());
         IPlayerTurnResult playerTurnResult = turn.haveTurn();
         assertEquals(3, player.getCountOfCard());

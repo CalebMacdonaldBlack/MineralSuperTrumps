@@ -66,6 +66,11 @@ public class BotPlayer implements IPlayer {
         return this.cards.size();
     }
 
+    @Override
+    public void giveCard(ICard card) {
+
+    }
+
     private ICategory pickCategoryWherePlayerHasHighestAverage() {
         IAveragePercentOfRangeCalculator averagePercentOfRangeCalculator = new AveragePercentOfRangeCalculator();
         for(ICard card: cards){

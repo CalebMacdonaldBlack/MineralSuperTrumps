@@ -20,6 +20,8 @@ public interface IPlayer {
 
     int getCountOfCard();
 
+    void giveCard(ICard card);
+
     class FakePlayer implements IPlayer {
 
         private ArrayList<ICard> cards;
@@ -54,6 +56,11 @@ public interface IPlayer {
         @Override
         public int getCountOfCard() {
             return 1;
+        }
+
+        @Override
+        public void giveCard(ICard card) {
+
         }
     }
 }
