@@ -29,11 +29,29 @@ public interface ICleavage extends IStat {
         }
     }
 
-    class FakeCleavage2 implements ICleavage{
+    class FakeGoodCleavage implements ICleavage{
 
         @Override
         public CleavageValue getValue() {
             return CleavageValue.PERFECT3;
+        }
+
+        @Override
+        public boolean equals(ICleavage cleavage) {
+            return cleavage.getValue() == this.getValue();
+        }
+
+        @Override
+        public ICategory getCategory() {
+            return new ICategory.FakeCleavageCategory();
+        }
+    }
+
+    class FakeBadCleavage implements ICleavage{
+
+        @Override
+        public CleavageValue getValue() {
+            return CleavageValue.POOR_NONE;
         }
 
         @Override

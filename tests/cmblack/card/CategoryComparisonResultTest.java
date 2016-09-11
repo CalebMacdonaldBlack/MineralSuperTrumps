@@ -31,7 +31,7 @@ public class CategoryComparisonResultTest {
 
     @Test
     public void testHardness() throws Exception {
-        assertEquals(-0.4, categoryComparisonResult.hardness(), 0);
+        assertEquals(-2.4, categoryComparisonResult.hardness(), 0);
     }
 
     @Test
@@ -50,7 +50,7 @@ public class CategoryComparisonResultTest {
         assertEquals(-6, categoryComparisonResult.valueForCategory(new ICategory.FakeCleavageCategory()), 0);
         assertEquals(2, categoryComparisonResult.valueForCategory(new ICategory.FakeCrustalAbundanceCategory()), 0);
         assertEquals(2, categoryComparisonResult.valueForCategory(new ICategory.FakeEconomicValueCategory()), 0);
-        assertEquals(-0.4, categoryComparisonResult.valueForCategory(new ICategory.FakeHardnessCategory()), 0);
+        assertEquals(-2.4, categoryComparisonResult.valueForCategory(new ICategory.FakeHardnessCategory()), 0);
         assertEquals(-0.7, categoryComparisonResult.valueForCategory(new ICategory.FakeSpecificGravityCategory()), 0);
     }
 }

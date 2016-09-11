@@ -11,7 +11,7 @@ public interface ICrustalAbundanceBuilder {
 
         @Override
         public ICrustalAbundance build(String value, String categoryName) {
-            return new ICrustalAbundance.FakeCrustalAbundance();
+            return new ICrustalAbundance.FakeGoodCrustalAbundance();
         }
 
         @Override

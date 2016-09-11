@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
  */
 public class FakeEconomicValueTest {
 
-    IEconomicValue economicValue = new IEconomicValue.FakeEconomicValue();
+    IEconomicValue economicValue = new IEconomicValue.FakeGoodEconomicValue();
 
     @Test
     public void testGetValue() throws Exception {
@@ -18,12 +18,12 @@ public class FakeEconomicValueTest {
 
     @Test
     public void testEquals() throws Exception {
-        assertTrue(economicValue.equals(new IEconomicValue.FakeEconomicValue()));
+        assertTrue(economicValue.equals(new IEconomicValue.FakeGoodEconomicValue()));
     }
 
     @Test
     public void testGetCategory() throws Exception {
-        assertTrue(economicValue.getCategory().equals(new IEconomicValue.FakeEconomicValue().getCategory()));
+        assertTrue(economicValue.getCategory().equals(new IEconomicValue.FakeGoodEconomicValue().getCategory()));
     }
 
     @Test

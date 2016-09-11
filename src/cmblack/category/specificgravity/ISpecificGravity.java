@@ -37,7 +37,7 @@ public interface ISpecificGravity extends IStat {
         }
     }
 
-    class FakeSpecificGravity2 implements ISpecificGravity {
+    class FakeGoodSpecificGravity implements ISpecificGravity {
 
         @Override
         public double getMinimumValue() {
@@ -47,6 +47,31 @@ public interface ISpecificGravity extends IStat {
         @Override
         public double getMaximumValue() {
             return 3.4;
+        }
+
+        @Override
+        public ICategory getCategory() {
+            return new ICategory.FakeSpecificGravityCategory();
+        }
+
+        @Override
+        public boolean equals(ISpecificGravity specificGravity) {
+            return this.getMinimumValue() == specificGravity.getMinimumValue()
+                    && this.getMaximumValue() == specificGravity.getMaximumValue()
+                    && this.getCategory().equals(specificGravity.getCategory());
+        }
+    }
+
+    class FakeBadSpecificGravity implements ISpecificGravity {
+
+        @Override
+        public double getMinimumValue() {
+            return .5;
+        }
+
+        @Override
+        public double getMaximumValue() {
+            return 1;
         }
 
         @Override

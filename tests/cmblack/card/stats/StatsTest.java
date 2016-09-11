@@ -18,8 +18,8 @@ public class StatsTest {
 
     IStats stats = new Stats(
             new ICleavage.FakeCleavage(),
-            new ICrustalAbundance.FakeCrustalAbundance(),
-            new IEconomicValue.FakeEconomicValue(),
+            new ICrustalAbundance.FakeGoodCrustalAbundance(),
+            new IEconomicValue.FakeGoodEconomicValue(),
             new IHardness.FakeHardness(),
             new ISpecificGravity.FakeSpecificGravity());
 
@@ -30,12 +30,12 @@ public class StatsTest {
 
     @Test
     public void testGetCrustalAbundance() throws Exception {
-        assertTrue(stats.getCrustalAbundance().equals(new ICrustalAbundance.FakeCrustalAbundance()));
+        assertTrue(stats.getCrustalAbundance().equals(new ICrustalAbundance.FakeGoodCrustalAbundance()));
     }
 
     @Test
     public void testGetEconomicValue() throws Exception {
-        assertTrue(stats.getEconomicValue().equals(new IEconomicValue.FakeEconomicValue()));
+        assertTrue(stats.getEconomicValue().equals(new IEconomicValue.FakeGoodEconomicValue()));
     }
 
     @Test
@@ -52,8 +52,8 @@ public class StatsTest {
     public void testEquals() throws Exception {
         assertTrue(stats.equals(new Stats(
                 new ICleavage.FakeCleavage(),
-                new ICrustalAbundance.FakeCrustalAbundance(),
-                new IEconomicValue.FakeEconomicValue(),
+                new ICrustalAbundance.FakeGoodCrustalAbundance(),
+                new IEconomicValue.FakeGoodEconomicValue(),
                 new IHardness.FakeHardness(),
                 new ISpecificGravity.FakeSpecificGravity())));
         assertFalse(stats.equals(new TrumpCardStats()));
@@ -74,7 +74,7 @@ public class StatsTest {
         CategoryComparisonResult categoryComparisonResult = stats.compareWith(new IStats.FakePlayCardStats2());
         assertEquals(-6, categoryComparisonResult.cleavage());
         assertEquals(-0.7, categoryComparisonResult.specificGravity(), 0.1);
-        assertEquals(-0.4, categoryComparisonResult.hardness(), .001);
+        assertEquals(-2.4, categoryComparisonResult.hardness(), .001);
         assertEquals(2, categoryComparisonResult.crustalAbundance());
         assertEquals(2, categoryComparisonResult.economicValue());
     }

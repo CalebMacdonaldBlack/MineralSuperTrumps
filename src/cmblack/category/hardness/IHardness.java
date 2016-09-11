@@ -38,16 +38,41 @@ public interface IHardness extends IStat {
         }
     }
 
-    class FakeHardness2 implements IHardness {
+    class FakeGoodHardness implements IHardness {
 
         @Override
         public double getMinimumValue() {
-            return 1.5;
+            return 3.5;
         }
 
         @Override
         public double getMaximumValue() {
-            return 2.1;
+            return 4.1;
+        }
+
+        @Override
+        public ICategory getCategory() {
+            return new ICategory.FakeHardnessCategory();
+        }
+
+        @Override
+        public boolean equals(IHardness hardness) {
+            return this.getMinimumValue() == hardness.getMinimumValue()
+                    && this.getMaximumValue() == hardness.getMaximumValue()
+                    && this.getCategory().equals(hardness.getCategory());
+        }
+    }
+
+    class FakeBadHardness implements IHardness {
+
+        @Override
+        public double getMinimumValue() {
+            return 0.5;
+        }
+
+        @Override
+        public double getMaximumValue() {
+            return 1;
         }
 
         @Override

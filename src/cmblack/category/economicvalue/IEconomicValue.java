@@ -10,7 +10,7 @@ public interface IEconomicValue extends IStat {
     EconomicValueValue getValue();
     boolean equals(IEconomicValue economicValue);
 
-    class FakeEconomicValue implements IEconomicValue {
+    class FakeGoodEconomicValue implements IEconomicValue {
 
         @Override
         public EconomicValueValue getValue() {
@@ -29,6 +29,25 @@ public interface IEconomicValue extends IStat {
         }
     }
     class FakeEconomicValue2 implements IEconomicValue {
+
+        @Override
+        public EconomicValueValue getValue() {
+            return EconomicValueValue.LOW;
+        }
+
+        @Override
+        public boolean equals(IEconomicValue economicValue) {
+            return this.getValue() == economicValue.getValue()
+                    && this.getCategory().equals(economicValue.getCategory());
+        }
+
+        @Override
+        public ICategory getCategory() {
+            return new ICategory.FakeEconomicValueCategory();
+        }
+    }
+
+    class FakeBadEconomicValue implements IEconomicValue {
 
         @Override
         public EconomicValueValue getValue() {

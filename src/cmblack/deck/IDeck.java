@@ -1,7 +1,10 @@
 package cmblack.deck;
 
 import cmblack.card.ICard;
+import cmblack.deck.deckbuilder.IJsonReaderWrapper;
+import cmblack.deck.deckbuilder.JSONDeckBuilder;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 /**
@@ -14,19 +17,28 @@ public interface IDeck {
 
     class FakeDeck implements IDeck {
 
+        ArrayList<ICard> cards = new ArrayList<>();
+
+        public FakeDeck() throws FileNotFoundException {
+            IDeck deck = new JSONDeckBuilder(new IJsonReaderWrapper.FakeJsonReaderWrapper().getReader()).build();
+            for(int i=0;i<deck.length();i++){
+                cards.add(deck.takeCard());
+            }
+        }
+
         @Override
         public ICard takeCard() {
-            return null;
+            return cards.get(0);
         }
 
         @Override
         public ICard takeCardAt(int index) {
-            return null;
+            return cards.get(index);
         }
 
         @Override
         public int length() {
-            return 0;
+            return cards.size();
         }
     }
 }

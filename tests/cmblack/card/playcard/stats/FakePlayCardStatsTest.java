@@ -19,7 +19,7 @@ public class FakePlayCardStatsTest {
 
     @Test
     public void testGetCrustalAbundance() throws Exception {
-        assertTrue(playCardStats.getCrustalAbundance().equals(new ICrustalAbundance.FakeCrustalAbundance()));
+        assertTrue(playCardStats.getCrustalAbundance().equals(new ICrustalAbundance.FakeGoodCrustalAbundance()));
     }
 
     @Test
@@ -29,7 +29,7 @@ public class FakePlayCardStatsTest {
 
     @Test
     public void testGetEconomicValue() throws Exception {
-        assertTrue(playCardStats.getEconomicValue().equals(new IEconomicValue.FakeEconomicValue()));
+        assertTrue(playCardStats.getEconomicValue().equals(new IEconomicValue.FakeGoodEconomicValue()));
     }
 
     @Test

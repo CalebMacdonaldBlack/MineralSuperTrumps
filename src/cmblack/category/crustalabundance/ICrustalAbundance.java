@@ -10,7 +10,7 @@ public interface ICrustalAbundance extends IStat {
     CrustalAbundanceValue getValue();
     boolean equals(ICrustalAbundance crustalAbundance);
 
-    class FakeCrustalAbundance implements ICrustalAbundance {
+    class FakeGoodCrustalAbundance implements ICrustalAbundance {
 
         @Override
         public CrustalAbundanceValue getValue() {
@@ -30,6 +30,25 @@ public interface ICrustalAbundance extends IStat {
     }
 
     class FakeCrustalAbundance2 implements ICrustalAbundance {
+
+        @Override
+        public CrustalAbundanceValue getValue() {
+            return CrustalAbundanceValue.LOW;
+        }
+
+        @Override
+        public boolean equals(ICrustalAbundance crustalAbundance) {
+            return this.getValue() == crustalAbundance.getValue()
+                    && this.getCategory().equals(crustalAbundance.getCategory());
+        }
+
+        @Override
+        public ICategory getCategory() {
+            return new ICategory.FakeCrustalAbundanceCategory();
+        }
+    }
+
+    class FakeBadCrustalAbundance implements ICrustalAbundance {
 
         @Override
         public CrustalAbundanceValue getValue() {

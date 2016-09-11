@@ -18,8 +18,8 @@ public class PlayCardStatsTest {
 
     IStats playCardStats = new Stats(
         new ICleavage.FakeCleavage(),
-        new ICrustalAbundance.FakeCrustalAbundance(),
-        new IEconomicValue.FakeEconomicValue(),
+        new ICrustalAbundance.FakeGoodCrustalAbundance(),
+        new IEconomicValue.FakeGoodEconomicValue(),
         new IHardness.FakeHardness(),
         new ISpecificGravity.FakeSpecificGravity()
     );
@@ -31,17 +31,17 @@ public class PlayCardStatsTest {
 
     @Test
     public void testEquals() throws Exception {
-        assertTrue(playCardStats.getCrustalAbundance().equals(new ICrustalAbundance.FakeCrustalAbundance()));
+        assertTrue(playCardStats.getCrustalAbundance().equals(new ICrustalAbundance.FakeGoodCrustalAbundance()));
     }
 
     @Test
     public void testGetCrustalAbundance() throws Exception {
-        assertTrue(playCardStats.getCrustalAbundance().equals(new ICrustalAbundance.FakeCrustalAbundance()));
+        assertTrue(playCardStats.getCrustalAbundance().equals(new ICrustalAbundance.FakeGoodCrustalAbundance()));
     }
 
     @Test
     public void testGetEconomicValue() throws Exception {
-        assertTrue(playCardStats.getEconomicValue().equals(new IEconomicValue.FakeEconomicValue()));
+        assertTrue(playCardStats.getEconomicValue().equals(new IEconomicValue.FakeGoodEconomicValue()));
     }
 
     @Test

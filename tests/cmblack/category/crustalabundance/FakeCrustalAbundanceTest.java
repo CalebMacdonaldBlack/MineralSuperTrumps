@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
  */
 public class FakeCrustalAbundanceTest {
 
-    ICrustalAbundance crustalAbundance = new ICrustalAbundance.FakeCrustalAbundance();
+    ICrustalAbundance crustalAbundance = new ICrustalAbundance.FakeGoodCrustalAbundance();
 
     @Test
     public void testGetValue() throws Exception {
@@ -19,7 +19,7 @@ public class FakeCrustalAbundanceTest {
 
     @Test
     public void testEquals() throws Exception {
-        assertTrue(crustalAbundance.equals(new ICrustalAbundance.FakeCrustalAbundance()));
+        assertTrue(crustalAbundance.equals(new ICrustalAbundance.FakeGoodCrustalAbundance()));
     }
 
     @Test

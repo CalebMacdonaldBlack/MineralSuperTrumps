@@ -75,4 +75,70 @@ public interface IPlayCard extends ICard {
             return CardType.PLAY_CARD;
         }
     }
+
+    class FakeBadPlayCard implements IPlayCard {
+
+        @Override
+        public ICardDescription getCardDescription(){
+            return new ICardDescription.FakeCardDescription();
+        }
+
+        @Override
+        public IStats getStats() {
+            return new IStats.FakeBadPlayCardStats();
+        }
+
+        @Override
+        public boolean equals(ICard playCard) {
+            return false;
+        }
+
+        @Override
+        public String getTitle() {
+            return "Gold";
+        }
+
+        @Override
+        public String getImageFilename() {
+            return "Slide33.jpg";
+        }
+
+        @Override
+        public CardType getType() {
+            return CardType.PLAY_CARD;
+        }
+    }
+
+    class FakeGoodPlayCard implements IPlayCard {
+
+        @Override
+        public ICardDescription getCardDescription(){
+            return new ICardDescription.FakeCardDescription();
+        }
+
+        @Override
+        public IStats getStats() {
+            return new IStats.FakeGoodPlayCardStats();
+        }
+
+        @Override
+        public boolean equals(ICard playCard) {
+            return false;
+        }
+
+        @Override
+        public String getTitle() {
+            return "Gold";
+        }
+
+        @Override
+        public String getImageFilename() {
+            return "Slide33.jpg";
+        }
+
+        @Override
+        public CardType getType() {
+            return CardType.PLAY_CARD;
+        }
+    }
 }

@@ -11,7 +11,7 @@ public interface IEconomicValueBuilder {
 
         @Override
         public IEconomicValue build(String value, String categoryName) {
-            return new IEconomicValue.FakeEconomicValue();
+            return new IEconomicValue.FakeGoodEconomicValue();
         }
 
         @Override
