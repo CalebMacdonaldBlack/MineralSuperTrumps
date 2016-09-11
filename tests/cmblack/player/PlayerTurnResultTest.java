@@ -2,8 +2,8 @@ package cmblack.player;
 
 import cmblack.card.playcard.IPlayCard;
 import cmblack.category.ICategory;
-import cmblack.player.turn.IPlayerTurnResult;
-import cmblack.player.turn.PlayerTurnResult;
+import cmblack.player.round.turn.IPlayerTurnResult;
+import cmblack.player.round.turn.PlayerTurnResult;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

@@ -6,9 +6,9 @@ import cmblack.card.trumpcard.ITrumpCard;
 import cmblack.category.ICategory;
 import cmblack.category.cleavage.CleavageCategory;
 import cmblack.deck.deckbuilder.IDeckBuilder;
-import cmblack.player.turn.IPlayerTurn;
-import cmblack.player.turn.IPlayerTurnResult;
-import cmblack.player.turn.PlayerTurn;
+import cmblack.player.round.turn.IPlayerTurn;
+import cmblack.player.round.turn.IPlayerTurnResult;
+import cmblack.player.round.turn.PlayerTurn;
 import org.junit.Test;
 
 import java.io.FileNotFoundException;
