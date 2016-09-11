@@ -1,5 +1,6 @@
 package cmblack.player;
 
+import cmblack.card.CardType;
 import cmblack.card.ICard;
 import cmblack.category.ICategory;
 
@@ -21,6 +22,9 @@ public class PlayerTurn implements IPlayerTurn {
     @Override
     public IPlayerTurnResult haveTurn() {
         ICard playedCard = this.currentPlayer.playCard(this.currentCard, this.currentCategory);
-        return new PlayerTurnResult(playedCard, this.currentPlayer, this.currentCategory);
+        if(playedCard.getType() == CardType.PLAY_CARD){
+           return new PlayerTurnResult(playedCard, this.currentPlayer, this.currentCategory);
+        }
+        return new PlayerTurnResult(this.currentCard, this.currentPlayer, this.currentCategory);
     }
 }
