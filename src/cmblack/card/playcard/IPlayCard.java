@@ -24,8 +24,11 @@ public interface IPlayCard extends ICard {
         }
 
         @Override
-        public boolean equals(ICard playCard) {
-            return false;
+        public boolean equals(ICard card) {
+            return this.getTitle().equals(card.getTitle())
+                    && this.getImageFilename().equals(card.getImageFilename())
+                    && this.getStats().equals(card.getStats())
+                    && card.getType().equals(CardType.PLAY_CARD);
         }
 
         @Override
@@ -56,8 +59,11 @@ public interface IPlayCard extends ICard {
         }
 
         @Override
-        public boolean equals(ICard playCard) {
-            return false;
+        public boolean equals(ICard card) {
+            return this.getTitle().equals(card.getTitle())
+                    && this.getImageFilename().equals(card.getImageFilename())
+                    && this.getStats().equals(card.getStats())
+                    && card.getType().equals(CardType.PLAY_CARD);
         }
 
         @Override
@@ -89,8 +95,11 @@ public interface IPlayCard extends ICard {
         }
 
         @Override
-        public boolean equals(ICard playCard) {
-            return false;
+        public boolean equals(ICard card) {
+            return this.getTitle().equals(card.getTitle())
+                    && this.getImageFilename().equals(card.getImageFilename())
+                    && this.getStats().equals(card.getStats())
+                    && card.getType().equals(CardType.PLAY_CARD);
         }
 
         @Override
@@ -122,8 +131,11 @@ public interface IPlayCard extends ICard {
         }
 
         @Override
-        public boolean equals(ICard playCard) {
-            return false;
+        public boolean equals(ICard card) {
+            return this.getTitle().equals(card.getTitle())
+                    && this.getImageFilename().equals(card.getImageFilename())
+                    && this.getStats().equals(card.getStats())
+                    && card.getType().equals(CardType.PLAY_CARD);
         }
 
         @Override

@@ -50,4 +50,10 @@ public class BotPlayerTest {
         ICard card = new IPlayCard.FakePlayCard1();
         assertTrue(new ITrumpCard.FakeTrumpCard().equals(player.addCard(new ITrumpCard.FakeTrumpCard()).playCard(card, new ICategory.FakeHardnessCategory())));
     }
+
+    @Test
+    public void testEquals() throws Exception {
+        assertTrue(new BotPlayer("bot1").equals(new BotPlayer("bot1")));
+        assertFalse(new BotPlayer("bot2").equals(new BotPlayer("bot1")));
+    }
 }

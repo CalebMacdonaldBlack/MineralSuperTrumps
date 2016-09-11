@@ -14,6 +14,7 @@ public interface IPlayer {
     IPlayer addCard(ICard card);
     ICard playCard(ICard cardToBeat, ICategory currentTrumpCategory);
     String getName();
+    boolean equals(IPlayer player);
 
     class FakePlayer implements IPlayer {
 
@@ -33,6 +34,12 @@ public interface IPlayer {
         @Override
         public String getName() {
             return "Bot 1";
+        }
+
+        @Override
+        public boolean equals(IPlayer player) {
+            // TODO not very accurate
+            return this.getName().equals(player.getName());
         }
     }
 }

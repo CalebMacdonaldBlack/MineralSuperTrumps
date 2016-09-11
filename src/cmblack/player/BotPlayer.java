@@ -45,4 +45,9 @@ public class BotPlayer implements IPlayer {
     public String getName() {
         return this.name;
     }
+
+    @Override
+    public boolean equals(IPlayer player) {
+        return this.name.equals(player.getName());
+    }
 }
