@@ -22,21 +22,21 @@ public class RoundResult implements IRoundResult {
 
     @Override
     public IPlayer[] players() {
-        return new IPlayer[0];
+        return this.players;
     }
 
     @Override
     public IDeck deck() throws FileNotFoundException {
-        return null;
+        return this.deck;
     }
 
     @Override
     public IPlayer roundWinningPlayer() {
-        return null;
+        return this.roundWinningPlayer;
     }
 
     @Override
     public IPlayer[] playersWhoWon() {
-        return new IPlayer[0];
+        return this.playersWhoWon;
     }
 }
