@@ -1,5 +1,6 @@
 package cmblack.player.round;
 
+import cmblack.player.EmptyPlayer;
 import cmblack.player.IPlayer;
 
 import java.util.ArrayList;
@@ -9,9 +10,11 @@ import java.util.ArrayList;
  */
 public interface IPlayerGroup {
     IPlayer getNextPlayer(IPlayer player);
-    IPlayer removePlayer(IPlayer player);
+    IPlayerGroup removePlayer(IPlayer player);
     ArrayList<IPlayer> getRemainingPlayers();
     ArrayList<IPlayer> getRemovedPlayers();
+    IPlayer getRoundWinningPlayer();
+
 
     class FakePlayerGroup implements IPlayerGroup {
 
@@ -21,8 +24,8 @@ public interface IPlayerGroup {
         }
 
         @Override
-        public IPlayer removePlayer(IPlayer player) {
-            return player;
+        public IPlayerGroup removePlayer(IPlayer player) {
+            return this;
         }
 
         @Override
@@ -33,6 +36,11 @@ public interface IPlayerGroup {
         @Override
         public ArrayList<IPlayer> getRemovedPlayers() {
             return new ArrayList<IPlayer>();
+        }
+
+        @Override
+        public IPlayer getRoundWinningPlayer() {
+            return new EmptyPlayer();
         }
     }
 }

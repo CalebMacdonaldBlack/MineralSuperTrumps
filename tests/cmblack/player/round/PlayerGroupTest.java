@@ -58,4 +58,12 @@ public class PlayerGroupTest {
         playerGroup.removePlayer(player2);
         assertEquals(1, playerGroup.getRemovedPlayers().size());
     }
+
+    @Test
+    public void testGetRoundWinningPlayer() throws Exception {
+        IPlayer player = new BotPlayer("bot1"), player2 = new BotPlayer("bot2"), player3 = new BotPlayer("bot3");
+        IPlayerGroup playerGroup = new PlayerGroup(new IPlayer[]{player, player2, player3});
+        assertTrue(playerGroup.getRoundWinningPlayer().equals(new EmptyPlayer()));
+        assertTrue(playerGroup.removePlayer(player).removePlayer(player2).getRoundWinningPlayer().equals(player3));
+    }
 }

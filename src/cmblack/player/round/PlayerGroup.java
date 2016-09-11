@@ -48,10 +48,10 @@ public class PlayerGroup implements IPlayerGroup {
     }
 
     @Override
-    public IPlayer removePlayer(IPlayer player) {
+    public IPlayerGroup removePlayer(IPlayer player) {
         this.remainingPlayers.remove(player);
         this.removedPlayers.add(player);
-        return player;
+        return this;
     }
 
     @Override
@@ -62,5 +62,10 @@ public class PlayerGroup implements IPlayerGroup {
     @Override
     public ArrayList<IPlayer> getRemovedPlayers() {
         return this.removedPlayers;
+    }
+
+    @Override
+    public IPlayer getRoundWinningPlayer() {
+        return null;
     }
 }
