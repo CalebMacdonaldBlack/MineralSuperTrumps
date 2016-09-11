@@ -4,6 +4,7 @@ import cmblack.card.ICard;
 import cmblack.card.playcard.IPlayCard;
 import cmblack.card.trumpcard.ITrumpCard;
 import cmblack.category.ICategory;
+import cmblack.category.cleavage.CleavageCategory;
 import cmblack.deck.IDeck;
 import org.junit.Test;
 
@@ -48,10 +49,14 @@ public class PlayerTurnTest {
         ICard trumpCard = new ITrumpCard.FakeTrumpCard();
 
         player.addCard(trumpCard);
+        player.addCard(goodCard);
+        player.addCard(goodCard);
 
+        System.out.println("\nStarting");
         IPlayerTurn turn = new PlayerTurn(goodCard, player,  new ICategory.FakeCleavageCategory());
         IPlayerTurnResult playerTurnResult = turn.haveTurn();
         assertTrue(trumpCard.equals(playerTurnResult.getCurrentCard()));
+        assertTrue(new CleavageCategory().equals(playerTurnResult.getCurrentCategory()));
     }
 
 }

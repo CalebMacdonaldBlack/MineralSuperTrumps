@@ -1,5 +1,7 @@
 package cmblack.card.stats;
 
+import cmblack.category.ICategory;
+
 /**
  * Created by calebmacdonaldblack on 11/09/2016.
  */
@@ -9,6 +11,7 @@ public interface IAveragePercentOfRangeResult {
     double crustalAbundanceAveragePercentOfRange();
     double economicValueAveragePercentOfRange();
     double specificGravityAveragePercentOfRange();
+    ICategory getCategoryOfHighestPercentage();
 
     class FakeAveragePercentOfRangeResult implements IAveragePercentOfRangeResult {
 
@@ -35,6 +38,11 @@ public interface IAveragePercentOfRangeResult {
         @Override
         public double specificGravityAveragePercentOfRange() {
             return 40;
+        }
+
+        @Override
+        public ICategory getCategoryOfHighestPercentage() {
+            return new ICategory.FakeEconomicValueCategory();
         }
     }
 }

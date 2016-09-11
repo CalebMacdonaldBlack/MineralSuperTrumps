@@ -18,13 +18,13 @@ public class SpecificGravityCategoryTest {
 
     @Test
     public void testGetValueRange() throws Exception {
-        assertTrue(new SpecificGravityCategory().getValueRange().equals(new Range(2.2, 19.3)));
+        assertTrue(new SpecificGravityCategory().getValueRange().equals(new Range(2.2, 7.6)));
     }
 
     @Test
     public void testEquals() throws Exception {
-        assertTrue(new SpecificGravityCategory().equals(new Category("Specific gravity", new Range(2.2, 19.3))));
-        assertFalse(new SpecificGravityCategory().equals(new Category("Specific grav", new Range(2.2, 19.3))));
-        assertFalse(new SpecificGravityCategory().equals(new Category("Specific gravity", new Range(2.2, 19))));
+        assertTrue(new SpecificGravityCategory().equals(new Category("Specific gravity", new Range(2.2, 7.6))));
+        assertFalse(new SpecificGravityCategory().equals(new Category("Specific grav", new Range(2.2, 7.6))));
+        assertFalse(new SpecificGravityCategory().equals(new Category("Specific gravity", new Range(2.2, 7))));
     }
 }

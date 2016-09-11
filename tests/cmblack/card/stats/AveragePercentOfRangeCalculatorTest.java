@@ -23,10 +23,10 @@ public class AveragePercentOfRangeCalculatorTest {
 
         IAveragePercentOfRangeResult averagePercentOfRangeResult = averagePercentOfRangeCalculator.calculateAverage();
 
-        assertEquals(0, averagePercentOfRangeResult.specificGravityAveragePercentOfRange(), 0);
-        assertEquals(0, averagePercentOfRangeResult.economicValueAveragePercentOfRange(), 0);
-        assertEquals(0, averagePercentOfRangeResult.crustalAbundanceAveragePercentOfRange(), 0);
-        assertEquals(0, averagePercentOfRangeResult.cleavageAveragePercentOfRange(), 0);
-        assertEquals(0, averagePercentOfRangeResult.hardnessAveragePercentOfRange(), 0);
+        assertEquals(22, (int)averagePercentOfRangeResult.specificGravityAveragePercentOfRange());
+        assertEquals(66, (int)averagePercentOfRangeResult.economicValueAveragePercentOfRange());
+        assertEquals(83, (int)averagePercentOfRangeResult.crustalAbundanceAveragePercentOfRange());
+        assertEquals(92, (int)averagePercentOfRangeResult.cleavageAveragePercentOfRange());
+        assertEquals(34, (int)averagePercentOfRangeResult.hardnessAveragePercentOfRange());
     }
 }

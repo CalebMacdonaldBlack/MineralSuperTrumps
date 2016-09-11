@@ -4,6 +4,9 @@ import cmblack.card.CardType;
 import cmblack.card.CategoryComparisonResult;
 import cmblack.card.EmptyCard;
 import cmblack.card.ICard;
+import cmblack.card.stats.AveragePercentOfRangeCalculator;
+import cmblack.card.stats.IAveragePercentOfRangeCalculator;
+import cmblack.card.stats.IAveragePercentOfRangeResult;
 import cmblack.category.Category;
 import cmblack.category.EmptyCategory;
 import cmblack.category.ICategory;
@@ -54,7 +57,20 @@ public class BotPlayer implements IPlayer {
 
     @Override
     public ICategory chooseCategory() {
-//        IAverageCategoryValueCalculator averageCategoryValueCalculator = new AverageCategoryValueCalculator();
-        return new EmptyCategory();
+
+        return this.pickCategoryWherePlayerHasHighestAverage();
+    }
+
+    private ICategory pickCategoryWherePlayerHasHighestAverage() {
+        IAveragePercentOfRangeCalculator averagePercentOfRangeCalculator = new AveragePercentOfRangeCalculator();
+        for(ICard card: cards){
+            if(card.getType().equals(CardType.PLAY_CARD)){
+                averagePercentOfRangeCalculator.addStats(card.getStats());
+            }
+        }
+        IAveragePercentOfRangeResult averagePercentOfRangeResult = averagePercentOfRangeCalculator.calculateAverage();
+
+
+        return averagePercentOfRangeResult.getCategoryOfHighestPercentage();
     }
 }

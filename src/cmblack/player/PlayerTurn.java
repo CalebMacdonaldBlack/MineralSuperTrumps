@@ -28,7 +28,7 @@ public class PlayerTurn implements IPlayerTurn {
             case EMPTY_CARD:
                 return new PlayerTurnResult(this.currentCard, this.currentPlayer, this.currentCategory);
             case TRUMP_CARD:
-                return new PlayerTurnResult(this.currentCard, this.currentPlayer, this.currentPlayer.chooseCategory());
+                return new PlayerTurnResult(playedCard, this.currentPlayer, this.currentPlayer.chooseCategory());
             default:
                 throw new NullPointerException();
         }

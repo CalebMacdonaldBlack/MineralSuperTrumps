@@ -104,7 +104,7 @@ public interface ICategory {
 
         @Override
         public IRange getValueRange() {
-            return new Range(2.2, 19.3);
+            return new Range(2.2, 7.6);
         }
 
         @Override
