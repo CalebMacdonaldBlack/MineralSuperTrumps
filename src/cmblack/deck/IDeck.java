@@ -19,10 +19,15 @@ public interface IDeck {
 
         ArrayList<ICard> cards = new ArrayList<>();
 
-        public FakeDeck() throws FileNotFoundException {
-            IDeck deck = new JSONDeckBuilder(new IJsonReaderWrapper.FakeJsonReaderWrapper().getReader()).build();
-            for(int i=0;i<deck.length();i++){
-                cards.add(deck.takeCard());
+        public FakeDeck() {
+            try{
+                IDeck deck = new JSONDeckBuilder(new IJsonReaderWrapper.FakeJsonReaderWrapper().getReader()).build();
+
+                for(int i=0;i<deck.length();i++){
+                    cards.add(deck.takeCard());
+                }
+            }catch(FileNotFoundException e){
+                throw new NullPointerException();
             }
         }
 
