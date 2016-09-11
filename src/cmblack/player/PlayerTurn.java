@@ -20,6 +20,7 @@ public class PlayerTurn implements IPlayerTurn {
 
     @Override
     public IPlayerTurnResult haveTurn() {
-        return null;
+        ICard playedCard = this.currentPlayer.playCard(this.currentCard, this.currentCategory);
+        return new PlayerTurnResult(playedCard, this.currentPlayer, this.currentCategory);
     }
 }
