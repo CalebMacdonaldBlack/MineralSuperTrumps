@@ -2,6 +2,7 @@ package cmblack.player;
 
 import cmblack.card.ICard;
 import cmblack.card.playcard.IPlayCard;
+import cmblack.card.trumpcard.ITrumpCard;
 import cmblack.category.ICategory;
 import cmblack.deck.IDeck;
 import org.junit.Test;
@@ -38,6 +39,19 @@ public class PlayerTurnTest {
         IPlayerTurn turn = new PlayerTurn(goodCard, player,  new ICategory.FakeCleavageCategory());
         IPlayerTurnResult playerTurnResult = turn.haveTurn();
         assertTrue(goodCard.equals(playerTurnResult.getCurrentCard()));
+    }
+
+    @Test
+    public void haveTurn3() throws FileNotFoundException {
+        IPlayer player = new BotPlayer("Bot 1");
+        ICard goodCard = new IPlayCard.FakeGoodPlayCard();
+        ICard trumpCard = new ITrumpCard.FakeTrumpCard();
+
+        player.addCard(trumpCard);
+
+        IPlayerTurn turn = new PlayerTurn(goodCard, player,  new ICategory.FakeCleavageCategory());
+        IPlayerTurnResult playerTurnResult = turn.haveTurn();
+        assertTrue(trumpCard.equals(playerTurnResult.getCurrentCard()));
     }
 
 }
