@@ -10,26 +10,17 @@ import java.util.ArrayList;
  */
 public interface IAveragePercentOfRangeCalculator {
     void addStats(IStats stat);
-    IAveragePercentOfRangeResult calculateAverage(IStat stat);
+    IAveragePercentOfRangeResult calculateAverage();
 
     class FakeAveragePercentOfRangeCalculator implements IAveragePercentOfRangeCalculator {
 
-        ArrayList<IStats> listOfStats = new ArrayList<>();
-
         @Override
         public void addStats(IStats stats) {
-//            listOfStats.add(stats);
-            throw new NotImplementedException();
         }
 
         @Override
-        public IAveragePercentOfRangeResult calculateAverage(IStat stat) {
-            throw new NotImplementedException();
-        }
-
-        public IStats getLastStatsAdded(){
-            // return listOfStats.get(0);
-            throw new NotImplementedException();
+        public IAveragePercentOfRangeResult calculateAverage() {
+            return new IAveragePercentOfRangeResult.FakeAveragePercentOfRangeResult();
         }
     }
 }

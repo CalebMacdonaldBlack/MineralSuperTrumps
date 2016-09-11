@@ -22,26 +22,26 @@ public class AveragePercentOfRangeResult implements IAveragePercentOfRangeResult
 
     @Override
     public double hardnessAveragePercentOfRange() {
-        return 0;
+        return this.hardnessAveragePercentOfRange;
     }
 
     @Override
     public double cleavageAveragePercentOfRange() {
-        return 0;
+        return this.cleavageAveragePercentOfRange;
     }
 
     @Override
     public double crustalAbundanceAveragePercentOfRange() {
-        return 0;
+        return this.crustalAbundanceAveragePercentOfRange;
     }
 
     @Override
     public double economicValueAveragePercentOfRange() {
-        return 0;
+        return this.economicValueAveragePercentOfRange;
     }
 
     @Override
     public double specificGravityAveragePercentOfRange() {
-        return 0;
+        return this.specificGravityAveragePercentOfRange;
     }
 }

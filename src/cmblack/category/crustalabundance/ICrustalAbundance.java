@@ -66,4 +66,21 @@ public interface ICrustalAbundance extends IStat {
             return new ICategory.FakeCrustalAbundanceCategory();
         }
     }
+
+    public static class FakeCrustalAbundance50percentvalue implements ICrustalAbundance {
+        @Override
+        public CrustalAbundanceValue getValue() {
+            return CrustalAbundanceValue.LOW;
+        }
+
+        @Override
+        public boolean equals(ICrustalAbundance crustalAbundance) {
+            return false;
+        }
+
+        @Override
+        public ICategory getCategory() {
+            return null;
+        }
+    }
 }
