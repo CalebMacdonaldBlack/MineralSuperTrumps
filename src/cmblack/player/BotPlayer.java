@@ -5,6 +5,7 @@ import cmblack.card.CategoryComparisonResult;
 import cmblack.card.EmptyCard;
 import cmblack.card.ICard;
 import cmblack.category.Category;
+import cmblack.category.EmptyCategory;
 import cmblack.category.ICategory;
 
 import java.util.ArrayList;
@@ -49,5 +50,10 @@ public class BotPlayer implements IPlayer {
     @Override
     public boolean equals(IPlayer player) {
         return this.name.equals(player.getName());
+    }
+
+    @Override
+    public ICategory chooseCategory() {
+        return new EmptyCategory();
     }
 }

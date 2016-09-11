@@ -56,4 +56,12 @@ public class BotPlayerTest {
         assertTrue(new BotPlayer("bot1").equals(new BotPlayer("bot1")));
         assertFalse(new BotPlayer("bot2").equals(new BotPlayer("bot1")));
     }
+
+    @Test
+    public void testChooseCategory() throws Exception {
+        IPlayer player = new BotPlayer("bot1");
+        player.addCard(new IPlayCard.FakeGoodPlayCard());
+        player.addCard(new IPlayCard.FakeGoodPlayCard());
+        ICategory category = player.chooseCategory();
+    }
 }

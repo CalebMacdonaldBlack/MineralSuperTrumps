@@ -16,6 +16,8 @@ public interface IPlayer {
     String getName();
     boolean equals(IPlayer player);
 
+    ICategory chooseCategory();
+
     class FakePlayer implements IPlayer {
 
         private ArrayList<ICard> cards;
@@ -40,6 +42,11 @@ public interface IPlayer {
         public boolean equals(IPlayer player) {
             // TODO not very accurate
             return this.getName().equals(player.getName());
+        }
+
+        @Override
+        public ICategory chooseCategory() {
+            return new ICategory.FakeCleavageCategory();
         }
     }
 }

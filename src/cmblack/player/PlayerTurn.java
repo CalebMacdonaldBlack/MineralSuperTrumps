@@ -22,9 +22,16 @@ public class PlayerTurn implements IPlayerTurn {
     @Override
     public IPlayerTurnResult haveTurn() {
         ICard playedCard = this.currentPlayer.playCard(this.currentCard, this.currentCategory);
-        if(playedCard.getType() == CardType.PLAY_CARD){
-           return new PlayerTurnResult(playedCard, this.currentPlayer, this.currentCategory);
+        switch(playedCard.getType()){
+            case PLAY_CARD:
+                return new PlayerTurnResult(playedCard, this.currentPlayer, this.currentCategory);
+            case EMPTY_CARD:
+                return new PlayerTurnResult(this.currentCard, this.currentPlayer, this.currentCategory);
+            case TRUMP_CARD:
+                return new PlayerTurnResult(this.currentCard, this.currentPlayer, this.currentPlayer.chooseCategory());
+            default:
+                throw new NullPointerException();
         }
-        return new PlayerTurnResult(this.currentCard, this.currentPlayer, this.currentCategory);
+
     }
 }
