@@ -1,6 +1,4 @@
-package cmblack.card;
-
-import cmblack.category.ICategory;
+package cmblack.category;
 
 /**
  * Created by calebmacdonaldblack on 10/09/2016.

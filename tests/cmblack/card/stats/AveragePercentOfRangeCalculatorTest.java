@@ -1,5 +1,8 @@
 package cmblack.card.stats;
 
+import cmblack.card.stats.statscalculator.AveragePercentOfRangeCalculator;
+import cmblack.card.stats.statscalculator.IAveragePercentOfRangeCalculator;
+import cmblack.card.stats.statscalculator.IAveragePercentOfRangeResult;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

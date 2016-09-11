@@ -1,6 +1,6 @@
 package cmblack.category.hardness;
 
-import cmblack.Range;
+import cmblack.range.Range;
 import cmblack.category.Category;
 import org.junit.Test;
 

@@ -1,9 +1,6 @@
-package cmblack.card.stats;
+package cmblack.card.stats.statscalculator;
 
-import cmblack.category.IStat;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
-import java.util.ArrayList;
+import cmblack.card.stats.IStats;
 
 /**
  * Created by calebmacdonaldblack on 11/09/2016.

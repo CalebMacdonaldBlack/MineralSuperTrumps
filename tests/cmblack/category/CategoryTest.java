@@ -1,6 +1,6 @@
 package cmblack.category;
 
-import cmblack.Range;
+import cmblack.range.Range;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

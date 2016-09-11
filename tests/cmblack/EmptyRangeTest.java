@@ -1,5 +1,6 @@
 package cmblack;
 
+import cmblack.range.EmptyRange;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

@@ -1,14 +1,12 @@
 package cmblack.player;
 
 import cmblack.card.CardType;
-import cmblack.card.CategoryComparisonResult;
+import cmblack.category.CategoryComparisonResult;
 import cmblack.card.EmptyCard;
 import cmblack.card.ICard;
-import cmblack.card.stats.AveragePercentOfRangeCalculator;
-import cmblack.card.stats.IAveragePercentOfRangeCalculator;
-import cmblack.card.stats.IAveragePercentOfRangeResult;
-import cmblack.category.Category;
-import cmblack.category.EmptyCategory;
+import cmblack.card.stats.statscalculator.AveragePercentOfRangeCalculator;
+import cmblack.card.stats.statscalculator.IAveragePercentOfRangeCalculator;
+import cmblack.card.stats.statscalculator.IAveragePercentOfRangeResult;
 import cmblack.category.ICategory;
 
 import java.util.ArrayList;

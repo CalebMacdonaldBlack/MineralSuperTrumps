@@ -1,7 +1,7 @@
 package cmblack.category.cleavage;
 
-import cmblack.IRange;
-import cmblack.Range;
+import cmblack.range.IRange;
+import cmblack.range.Range;
 import cmblack.category.ICategory;
 
 /**

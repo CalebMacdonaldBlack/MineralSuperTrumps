@@ -1,8 +1,7 @@
 package cmblack.card.trumpcard;
 
-import cmblack.card.CategoryComparisonResult;
+import cmblack.category.CategoryComparisonResult;
 import cmblack.card.stats.IStats;
-import cmblack.category.Category;
 import cmblack.category.cleavage.Cleavage;
 import cmblack.category.cleavage.CleavageValue;
 import cmblack.category.cleavage.ICleavage;

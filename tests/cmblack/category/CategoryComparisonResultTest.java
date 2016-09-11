@@ -1,8 +1,8 @@
-package cmblack.card;
+package cmblack.category;
 
 import cmblack.card.stats.IStats;
 import cmblack.card.trumpcard.TrumpCardStats;
-import cmblack.category.Category;
+import cmblack.category.CategoryComparisonResult;
 import cmblack.category.ICategory;
 import org.junit.Test;
 

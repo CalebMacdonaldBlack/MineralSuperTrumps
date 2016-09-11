@@ -1,9 +1,6 @@
 package cmblack.category.specificgravity;
 
-import cmblack.IRange;
-import cmblack.Range;
 import cmblack.category.ICategory;
-import cmblack.category.hardness.IHardness;
 
 /**
  * Created by calebmacdonaldblack on 10/09/2016.

@@ -1,7 +1,7 @@
 package cmblack.category;
 
-import cmblack.EmptyRange;
-import cmblack.IRange;
+import cmblack.range.EmptyRange;
+import cmblack.range.IRange;
 
 /**
  * Created by calebmacdonaldblack on 10/09/2016.

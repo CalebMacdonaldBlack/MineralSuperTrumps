@@ -1,4 +1,4 @@
-package cmblack;
+package cmblack.range;
 
 /**
  * Created by calebmacdonaldblack on 11/09/2016.

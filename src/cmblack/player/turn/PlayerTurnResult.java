@@ -1,8 +1,8 @@
-package cmblack.player;
+package cmblack.player.turn;
 
 import cmblack.card.ICard;
-import cmblack.card.playcard.IPlayCard;
 import cmblack.category.ICategory;
+import cmblack.player.IPlayer;
 
 /**
  * Created by calebmacdonaldblack on 11/09/2016.

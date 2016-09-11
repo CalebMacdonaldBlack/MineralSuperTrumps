@@ -1,4 +1,4 @@
-package cmblack.card.stats;
+package cmblack.card.stats.statscalculator;
 
 import cmblack.category.ICategory;
 

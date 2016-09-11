@@ -1,6 +1,6 @@
 package cmblack.card.stats;
 
-import cmblack.card.CategoryComparisonResult;
+import cmblack.category.CategoryComparisonResult;
 import cmblack.card.trumpcard.TrumpCardStats;
 import cmblack.category.cleavage.ICleavage;
 import cmblack.category.crustalabundance.ICrustalAbundance;

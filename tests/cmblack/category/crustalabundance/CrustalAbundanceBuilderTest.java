@@ -1,6 +1,6 @@
 package cmblack.category.crustalabundance;
 
-import cmblack.EmptyRange;
+import cmblack.range.EmptyRange;
 import cmblack.category.Category;
 import cmblack.deck.deckbuilder.IParsedCard;
 import org.junit.Test;

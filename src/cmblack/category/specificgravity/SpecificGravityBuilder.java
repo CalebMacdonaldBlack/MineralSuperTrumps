@@ -1,8 +1,5 @@
 package cmblack.category.specificgravity;
 
-import cmblack.IRange;
-import cmblack.Range;
-import cmblack.category.Category;
 import cmblack.category.ICategory;
 
 /**

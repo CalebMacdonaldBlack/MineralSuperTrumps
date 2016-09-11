@@ -1,7 +1,7 @@
-package cmblack.card.stats;
+package cmblack.card.stats.statscalculator;
 
-import cmblack.IRange;
-import cmblack.category.IStat;
+import cmblack.range.IRange;
+import cmblack.card.stats.IStats;
 
 import java.util.ArrayList;
 

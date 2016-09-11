@@ -1,21 +1,16 @@
 package cmblack.card.stats;
 
-import cmblack.card.CategoryComparisonResult;
-import cmblack.category.cleavage.Cleavage;
+import cmblack.category.CategoryComparisonResult;
 import cmblack.category.cleavage.EmptyCleavage;
 import cmblack.category.cleavage.ICleavage;
-import cmblack.category.crustalabundance.CrustalAbundance;
 import cmblack.category.crustalabundance.EmptyCrustalAbundance;
 import cmblack.category.crustalabundance.ICrustalAbundance;
-import cmblack.category.economicvalue.EconomicValue;
 import cmblack.category.economicvalue.EmptyEconomicValue;
 import cmblack.category.economicvalue.IEconomicValue;
 import cmblack.category.hardness.EmptyHardness;
-import cmblack.category.hardness.Hardness;
 import cmblack.category.hardness.IHardness;
 import cmblack.category.specificgravity.EmptySpecificGravity;
 import cmblack.category.specificgravity.ISpecificGravity;
-import cmblack.category.specificgravity.SpecificGravity;
 
 /**
  * Created by calebmacdonaldblack on 10/09/2016.
