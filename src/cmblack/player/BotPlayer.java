@@ -74,7 +74,9 @@ public class BotPlayer implements IPlayer {
 
     @Override
     public void giveCard(ICard card) {
-        this.cards.add(card);
+        if(!card.equals(new EmptyCard())){
+            this.cards.add(card);
+        }
     }
 
     private ICategory pickCategoryWherePlayerHasHighestAverage() {

@@ -21,7 +21,7 @@ public class CleavageTest {
     @Test
     public void testGetCategory() throws Exception {
         assertTrue(cleavage.getCategory().equals(new ICategory.FakeCleavageCategory()));
-    }
+}
 
     @Test
     public void testIsBetterThan() throws Exception {

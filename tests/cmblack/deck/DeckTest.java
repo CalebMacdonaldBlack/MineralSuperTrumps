@@ -24,7 +24,9 @@ public class DeckTest {
 
     @Test
     public void testTakeCard() throws Exception {
+        assertEquals(2, deck.length());
         assertEquals("Gold", this.deck.takeCard().getTitle());
+        assertEquals(1, deck.length());
     }
 
     @Test

@@ -1,5 +1,6 @@
 package cmblack.deck;
 
+import cmblack.card.EmptyCard;
 import cmblack.card.ICard;
 import cmblack.deck.deckbuilder.IJsonReaderWrapper;
 import cmblack.deck.deckbuilder.JSONDeckBuilder;
@@ -33,12 +34,20 @@ public interface IDeck {
 
         @Override
         public ICard takeCard() {
-            return cards.get(0);
+            try{
+                ICard card = cards.get(0);
+                cards.remove(card);
+                return card;
+            }catch(IndexOutOfBoundsException e){
+                return new EmptyCard();
+            }
         }
 
         @Override
         public ICard takeCardAt(int index) {
-            return cards.get(index);
+            ICard card = cards.get(index);
+            cards.remove(card);
+            return card;
         }
 
         @Override

@@ -55,17 +55,17 @@ public class Round implements IRound {
 
             if(currentCard.equals(playerTurnResult.getCurrentCard())){
                 playerGroup.removePlayer(playerTurnResult.getCurrentPlayer());
-                System.out.println(currentPlayer.getName() + " could not beat " + playerTurnResult.getCurrentCard().getTitle() + " and was removed");
+                System.out.println(playerTurnResult.getCurrentPlayer().getName() + " could not beat " + playerTurnResult.getCurrentCard().getTitle() + " and was removed");
                 playerTurnResult.getCurrentPlayer().giveCard(deck.takeCard());
             }else{
-                System.out.println(currentPlayer.getName() + " played " + playerTurnResult.getCurrentCard().getTitle());
+                System.out.println(playerTurnResult.getCurrentPlayer().getName() + " played " + playerTurnResult.getCurrentCard().getTitle());
 
                 currentCard = playerTurnResult.getCurrentCard();
                 currentCategory = playerTurnResult.getCurrentCategory();
                 if(playerTurnResult.getCurrentPlayer().getCountOfCards() == 0){
-                    System.out.println(currentPlayer.getName() + " has no cards left and wins");
-                    winners.add(currentPlayer);
-                    playerGroup.removePlayer(currentPlayer);
+                    System.out.println(playerTurnResult.getCurrentPlayer().getName() + " has no cards left and wins");
+                    winners.add(playerTurnResult.getCurrentPlayer());
+                    playerGroup.removePlayer(playerTurnResult.getCurrentPlayer());
                 }
             }
             System.out.println(playerTurnResult.getCurrentPlayer().getName() + "'s card count: " + playerTurnResult.getCurrentPlayer().getCountOfCards());

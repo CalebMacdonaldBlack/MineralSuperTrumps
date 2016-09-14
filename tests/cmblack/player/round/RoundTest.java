@@ -70,6 +70,6 @@ public class RoundTest {
                 bot1);
 
         IRoundResult roundResult = round.haveRound();
-        assertTrue(roundResult.playersWhoWon()[0].equals(bot2));
+        assertTrue(roundResult.playersWhoWon()[0].equals(bot1));
     }
 }
