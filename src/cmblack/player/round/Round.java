@@ -40,9 +40,9 @@ public class Round implements IRound {
         ICategory currentCategory = new EmptyCategory();
         ICard currentCard = new EmptyCard();
 
-        System.out.println("\n==============");
-        System.out.println("Starting round with " + playerGroup.getRemainingPlayers().size() + " players");
-        System.out.println("==============");
+//        System.out.println("\n==============");
+//        System.out.println("Starting round with " + playerGroup.getRemainingPlayers().size() + " players");
+//        System.out.println("==============");
 
         while(playerGroup.getRoundWinningPlayer().equals(new EmptyPlayer())){
             if(currentPlayer.equals(new EmptyPlayer())){
@@ -55,24 +55,24 @@ public class Round implements IRound {
 
             if(currentCard.equals(playerTurnResult.getCurrentCard())){
                 playerGroup.removePlayer(playerTurnResult.getCurrentPlayer());
-                System.out.println(playerTurnResult.getCurrentPlayer().getName() + " could not beat " + playerTurnResult.getCurrentCard().getTitle() + " and was removed");
+//                System.out.println(playerTurnResult.getCurrentPlayer().getName() + " could not beat " + playerTurnResult.getCurrentCard().getTitle() + " and was removed");
                 playerTurnResult.getCurrentPlayer().giveCard(deck.takeCard());
             }else{
-                System.out.println(playerTurnResult.getCurrentPlayer().getName() + " played " + playerTurnResult.getCurrentCard().getTitle());
+//                System.out.println(playerTurnResult.getCurrentPlayer().getName() + " played " + playerTurnResult.getCurrentCard().getTitle());
 
                 currentCard = playerTurnResult.getCurrentCard();
                 currentCategory = playerTurnResult.getCurrentCategory();
                 if(playerTurnResult.getCurrentPlayer().getCountOfCards() == 0){
-                    System.out.println(playerTurnResult.getCurrentPlayer().getName() + " has no cards left and wins");
+//                    System.out.println(playerTurnResult.getCurrentPlayer().getName() + " has no cards left and wins");
                     winners.add(playerTurnResult.getCurrentPlayer());
                     playerGroup.removePlayer(playerTurnResult.getCurrentPlayer());
                 }
             }
-            System.out.println(playerTurnResult.getCurrentPlayer().getName() + "'s card count: " + playerTurnResult.getCurrentPlayer().getCountOfCards());
+//            System.out.println(playerTurnResult.getCurrentPlayer().getName() + "'s card count: " + playerTurnResult.getCurrentPlayer().getCountOfCards());
 
         }
 
-        System.out.println(playerGroup.getRoundWinningPlayer().getName() + "Won the round!");
+//        System.out.println(playerGroup.getRoundWinningPlayer().getName() + "Won the round!");
 
         return new RoundResult(
                 winners.toArray(new IPlayer[winners.size()]),

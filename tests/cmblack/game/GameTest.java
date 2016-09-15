@@ -1,12 +1,12 @@
 package cmblack.game;
 
-import cmblack.deck.IDeck;
+import cmblack.UserInterface;
 import cmblack.deck.deckbuilder.IDeckBuilder;
 import cmblack.player.BotPlayer;
 import cmblack.player.IPlayer;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import java.util.ArrayList;
 
 /**
  * Created by calebmacdonaldblack on 12/09/2016.
@@ -22,7 +22,8 @@ public class GameTest {
                 new BotPlayer("bot4")
         };
 
-
-        new Game(players, new IDeckBuilder.FakeDeckBuilder().build()).startGame();
+        ArrayList<IGameObserver> gameObservers = new ArrayList<>();
+        gameObservers.add(new UserInterface());
+        new Game(players, new IDeckBuilder.FakeDeckBuilder().build(), gameObservers).startGame();
     }
 }
