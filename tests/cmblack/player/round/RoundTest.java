@@ -7,6 +7,8 @@ import cmblack.player.EmptyPlayer;
 import cmblack.player.IPlayer;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.*;
 
 /**
@@ -28,7 +30,7 @@ public class RoundTest {
         IRound round = new Round(
                 new IDeck.FakeDeck(),
                 new IPlayer[]{bot1, bot2},
-                bot2);
+                bot2, new ArrayList<>());
 
         IRoundResult roundResult = round.haveRound();
         assertTrue(roundResult.roundWinningPlayer().equals(bot1));
@@ -48,7 +50,7 @@ public class RoundTest {
         IRound round = new Round(
                 new IDeck.FakeDeck(),
                 new IPlayer[]{bot1, bot2},
-                new EmptyPlayer());
+                new EmptyPlayer(), new ArrayList<>());
 
         IRoundResult roundResult = round.haveRound();
         assertTrue(roundResult.roundWinningPlayer().equals(bot2));
@@ -67,7 +69,7 @@ public class RoundTest {
         IRound round = new Round(
                 new IDeck.FakeDeck(),
                 new IPlayer[]{bot1, bot2},
-                bot1);
+                bot1, new ArrayList<>());
 
         IRoundResult roundResult = round.haveRound();
         assertTrue(roundResult.playersWhoWon()[0].equals(bot1));

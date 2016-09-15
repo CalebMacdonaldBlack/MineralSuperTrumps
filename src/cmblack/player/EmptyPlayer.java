@@ -5,6 +5,8 @@ import cmblack.card.ICard;
 import cmblack.category.EmptyCategory;
 import cmblack.category.ICategory;
 
+import java.util.ArrayList;
+
 /**
  * Created by calebmacdonaldblack on 11/09/2016.
  */
@@ -42,5 +44,10 @@ public class EmptyPlayer implements IPlayer {
     @Override
     public void giveCard(ICard card) {
 
+    }
+
+    @Override
+    public ArrayList<ICard> getCards() {
+        return new ArrayList<>();
     }
 }

@@ -22,6 +22,8 @@ public interface IPlayer {
 
     void giveCard(ICard card);
 
+    ArrayList<ICard> getCards();
+
     class FakePlayer implements IPlayer {
 
         private ArrayList<ICard> cards;
@@ -61,6 +63,11 @@ public interface IPlayer {
         @Override
         public void giveCard(ICard card) {
 
+        }
+
+        @Override
+        public ArrayList<ICard> getCards() {
+            return new ArrayList<>();
         }
     }
 }

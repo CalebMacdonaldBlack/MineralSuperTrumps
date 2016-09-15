@@ -15,16 +15,24 @@ import java.util.ArrayList;
 /**
  * Created by calebmacdonaldblack on 11/09/2016.
  */
-public class Round implements IRound {
+public class Round implements IRound, IObservableRound {
 
     private final IDeck deck;
     private final IPlayer[] players;
     private final IPlayer winnerOfLastRound;
+    private final ArrayList<IRoundObserver> roundObservers;
 
-    public Round(IDeck deck, IPlayer[] players, IPlayer winnerOfLastRound) {
+    // TODO: 15/09/2016 these should be final fix
+    private RoundState roundState = RoundState.START;
+    private IPlayer currentPlayer;
+    private IPlayerTurnResult playerTurnResult;
+    ArrayList<IPlayer> winners = new ArrayList<>();
+
+    public Round(IDeck deck, IPlayer[] players, IPlayer winnerOfLastRound, ArrayList<IRoundObserver> roundObservers) {
         this.deck = deck;
         this.players = players;
         this.winnerOfLastRound = winnerOfLastRound;
+        this.roundObservers = roundObservers;
     }
 
 
@@ -34,48 +42,84 @@ public class Round implements IRound {
 
         IPlayerGroup playerGroup = new PlayerGroup(players);
 
-        ArrayList<IPlayer> winners = new ArrayList<>();
+        currentPlayer = this.winnerOfLastRound;
 
-        IPlayer currentPlayer = this.winnerOfLastRound;
         ICategory currentCategory = new EmptyCategory();
         ICard currentCard = new EmptyCard();
-
-//        System.out.println("\n==============");
-//        System.out.println("Starting round with " + playerGroup.getRemainingPlayers().size() + " players");
-//        System.out.println("==============");
 
         while(playerGroup.getRoundWinningPlayer().equals(new EmptyPlayer())){
             if(currentPlayer.equals(new EmptyPlayer())){
                 currentPlayer = playerGroup.getNextPlayer(currentPlayer);
             }
+            changeState(RoundState.PLAYER_TURN);
 
-            IPlayerTurnResult playerTurnResult = new PlayerTurn(currentCard, currentPlayer, currentCategory, deck).haveTurn();
+            playerTurnResult = new PlayerTurn(currentCard, currentPlayer, currentCategory, deck).haveTurn();
 
             currentPlayer = playerGroup.getNextPlayer(currentPlayer);
 
             if(currentCard.equals(playerTurnResult.getCurrentCard())){
                 playerGroup.removePlayer(playerTurnResult.getCurrentPlayer());
-//                System.out.println(playerTurnResult.getCurrentPlayer().getName() + " could not beat " + playerTurnResult.getCurrentCard().getTitle() + " and was removed");
+                changeState(RoundState.PLAYER_REMOVED);
+
                 playerTurnResult.getCurrentPlayer().giveCard(deck.takeCard());
+                changeState(RoundState.PLAYER_DREW_CARD);
             }else{
-//                System.out.println(playerTurnResult.getCurrentPlayer().getName() + " played " + playerTurnResult.getCurrentCard().getTitle());
 
                 currentCard = playerTurnResult.getCurrentCard();
+                changeState(RoundState.PLAYER_PLAYED_CARD);
                 currentCategory = playerTurnResult.getCurrentCategory();
+                changeState(RoundState.CATEGORY_UPDATED);
                 if(playerTurnResult.getCurrentPlayer().getCountOfCards() == 0){
-//                    System.out.println(playerTurnResult.getCurrentPlayer().getName() + " has no cards left and wins");
                     winners.add(playerTurnResult.getCurrentPlayer());
                     playerGroup.removePlayer(playerTurnResult.getCurrentPlayer());
+                    changeState(RoundState.PLAYER_WON_GAME);
                 }
             }
-//            System.out.println(playerTurnResult.getCurrentPlayer().getName() + "'s card count: " + playerTurnResult.getCurrentPlayer().getCountOfCards());
 
         }
 
-//        System.out.println(playerGroup.getRoundWinningPlayer().getName() + "Won the round!");
 
         return new RoundResult(
                 winners.toArray(new IPlayer[winners.size()]),
                 playerGroup.getRoundWinningPlayer());
+    }
+
+    @Override
+    public RoundState getRoundState() {
+        return this.roundState;
+    }
+
+    @Override
+    public IPlayer getCurrentPlayer() {
+        return this.currentPlayer;
+    }
+
+    @Override
+    public IPlayerTurnResult getPlayerTurnResult() {
+        return this.playerTurnResult;
+    }
+
+    @Override
+    public ArrayList<IPlayer> getWinners() {
+        return this.winners;
+    }
+
+    private void changeState(RoundState roundState) {
+        this.roundState = roundState;
+        this.notifyRoundObservers();
+    }
+
+    @Override
+    public void notifyRoundObservers() {
+        //TODO unit test this
+        for(IRoundObserver roundObserver: roundObservers){
+            roundObserver.update(this);
+        }
+    }
+
+    @Override
+    public void addRoundObserver(IRoundObserver roundObserver) {
+        //TODO unit test this
+        this.roundObservers.add(roundObserver);
     }
 }
