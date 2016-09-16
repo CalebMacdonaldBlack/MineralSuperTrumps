@@ -1,7 +1,8 @@
-package cmblack.player;
+package cmblack.player.round.turn;
 
 import cmblack.card.playcard.IPlayCard;
 import cmblack.category.ICategory;
+import cmblack.player.IPlayer;
 import cmblack.player.round.turn.IPlayerTurnResult;
 import cmblack.player.round.turn.PlayerTurnResult;
 import org.junit.Test;
@@ -28,5 +29,12 @@ public class PlayerTurnResultTest {
     @Test
     public void testGetCurrentCategory() throws Exception {
         assertTrue(playerTurnResult.getCurrentCategory().equals(new ICategory.FakeCleavageCategory()));
+    }
+
+    @Test
+    public void testEquals() throws Exception {
+        IPlayerTurnResult playerTurnResult2 = new PlayerTurnResult(new IPlayCard.FakePlayCard(), new IPlayer.FakePlayer(), new ICategory.FakeCleavageCategory());
+        assertTrue(playerTurnResult2.equals(playerTurnResult));
+        assertFalse(new EmptyTurnResult().equals(playerTurnResult2));
     }
 }

@@ -2,6 +2,7 @@ package cmblack.player.round;
 
 import cmblack.deck.IDeck;
 import cmblack.player.IPlayer;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.io.FileNotFoundException;
 
@@ -11,6 +12,7 @@ import java.io.FileNotFoundException;
 public interface IRoundResult {
     IPlayer roundWinningPlayer();
     IPlayer[] playersWhoWon();
+    boolean equals(IRoundResult roundResult);
 
     class FakeRoundResult implements IRoundResult {
 
@@ -22,6 +24,11 @@ public interface IRoundResult {
         @Override
         public IPlayer[] playersWhoWon() {
             return new IPlayer[]{new IPlayer.FakePlayer()};
+        }
+
+        @Override
+        public boolean equals(IRoundResult roundResult) {
+            throw new NotImplementedException();
         }
     }
 }

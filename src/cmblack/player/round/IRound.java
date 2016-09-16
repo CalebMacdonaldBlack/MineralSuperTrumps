@@ -2,6 +2,7 @@ package cmblack.player.round;
 
 import cmblack.player.IPlayer;
 import cmblack.player.round.turn.IPlayerTurnResult;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;
 
@@ -14,6 +15,7 @@ public interface IRound {
     IPlayer getCurrentPlayer();
     IPlayerTurnResult getPlayerTurnResult();
     ArrayList<IPlayer> getWinners();
+    boolean equals(IRound round);
 
     class FakeRound implements IRound {
 
@@ -40,6 +42,11 @@ public interface IRound {
         @Override
         public ArrayList<IPlayer> getWinners() {
             return new ArrayList<>();
+        }
+
+        @Override
+        public boolean equals(IRound round) {
+            throw new NotImplementedException();
         }
     }
 }

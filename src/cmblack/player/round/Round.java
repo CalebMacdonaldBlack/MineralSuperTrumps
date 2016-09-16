@@ -7,8 +7,10 @@ import cmblack.category.ICategory;
 import cmblack.deck.IDeck;
 import cmblack.player.EmptyPlayer;
 import cmblack.player.IPlayer;
+import cmblack.player.round.turn.EmptyTurnResult;
 import cmblack.player.round.turn.IPlayerTurnResult;
 import cmblack.player.round.turn.PlayerTurn;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;
 
@@ -25,7 +27,7 @@ public class Round implements IRound, IObservableRound {
     // TODO: 15/09/2016 these should be final fix
     private RoundState roundState = RoundState.START;
     private IPlayer currentPlayer;
-    private IPlayerTurnResult playerTurnResult;
+    private IPlayerTurnResult playerTurnResult = new EmptyTurnResult();
     ArrayList<IPlayer> winners = new ArrayList<>();
 
     public Round(IDeck deck, IPlayer[] players, IPlayer winnerOfLastRound, ArrayList<IRoundObserver> roundObservers) {
@@ -52,6 +54,10 @@ public class Round implements IRound, IObservableRound {
                 currentPlayer = playerGroup.getNextPlayer(currentPlayer);
             }
             changeState(RoundState.PLAYER_TURN);
+
+            if(currentCategory.equals(new EmptyCategory())){
+                currentCategory = currentPlayer.chooseCategory();
+            }
 
             playerTurnResult = new PlayerTurn(currentCard, currentPlayer, currentCategory, deck).haveTurn();
 
@@ -102,6 +108,11 @@ public class Round implements IRound, IObservableRound {
     @Override
     public ArrayList<IPlayer> getWinners() {
         return this.winners;
+    }
+
+    @Override
+    public boolean equals(IRound round) {
+        throw new NotImplementedException();
     }
 
     private void changeState(RoundState roundState) {

@@ -74,4 +74,17 @@ public class RoundTest {
         IRoundResult roundResult = round.haveRound();
         assertTrue(roundResult.playersWhoWon()[0].equals(bot1));
     }
+
+    @Test
+    public void testEquals() throws Exception {
+        IRound round = new Round(
+                new IDeck.FakeDeck(),
+                new IPlayer[]{},
+                new EmptyPlayer(), new ArrayList<>());
+        IRound round2 = new Round(
+                new IDeck.FakeDeck(),
+                new IPlayer[]{},
+                new EmptyPlayer(), new ArrayList<>());
+        assertTrue(round.equals(round2));
+    }
 }

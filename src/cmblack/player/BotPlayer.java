@@ -33,7 +33,7 @@ public class BotPlayer implements IPlayer {
     public ICard playCard(ICard cardToBeat, ICategory currentTrumpCategory) {
 
         if(currentTrumpCategory.equals(new EmptyCategory())){
-            currentTrumpCategory = this.chooseCategory();
+            throw new NullPointerException("Cannot not choose card with empty category");
         }
 
         ICard possibleTrumpCard = new EmptyCard();

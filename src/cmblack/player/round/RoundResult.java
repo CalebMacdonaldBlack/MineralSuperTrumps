@@ -1,6 +1,7 @@
 package cmblack.player.round;
 
 import cmblack.player.IPlayer;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  * Created by calebmacdonaldblack on 11/09/2016.
@@ -22,5 +23,10 @@ public class RoundResult implements IRoundResult {
     @Override
     public IPlayer[] playersWhoWon() {
         return this.playersWhoWon;
+    }
+
+    @Override
+    public boolean equals(IRoundResult roundResult) {
+        throw new NotImplementedException();
     }
 }

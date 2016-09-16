@@ -12,6 +12,7 @@ public interface IPlayerTurnResult {
     ICard getCurrentCard();
     IPlayer getCurrentPlayer();
     ICategory getCurrentCategory();
+    boolean equals(IPlayerTurnResult playerTurnResult);
 
     class FakePlayerTurnResult implements IPlayerTurnResult {
 
@@ -28,6 +29,13 @@ public interface IPlayerTurnResult {
         @Override
         public ICategory getCurrentCategory() {
             return new ICategory.FakeCleavageCategory();
+        }
+
+        @Override
+        public boolean equals(IPlayerTurnResult playerTurnResult) {
+            return getCurrentCard().equals(playerTurnResult.getCurrentCard())
+                && getCurrentPlayer().equals(playerTurnResult.getCurrentPlayer())
+                && getCurrentCategory().equals(playerTurnResult.getCurrentCategory());
         }
     }
 }

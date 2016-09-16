@@ -3,10 +3,7 @@ package cmblack.game;
 import cmblack.deck.IDeck;
 import cmblack.player.EmptyPlayer;
 import cmblack.player.IPlayer;
-import cmblack.player.round.IRound;
-import cmblack.player.round.IRoundObserver;
-import cmblack.player.round.IRoundResult;
-import cmblack.player.round.Round;
+import cmblack.player.round.*;
 
 import java.util.ArrayList;
 
@@ -23,7 +20,8 @@ public class Game implements IGame, IObservableGame, IRoundObserver {
     //TODO these aren't final. fix this
     IPlayer currentPlayer = new EmptyPlayer();
     GameState gameState = GameState.START;
-    private IRound round;
+    private IRound round = new EmptyRound();
+    private IRoundResult roundResult = new EmptyRoundResult();
 
     public IRound getRound() {
         return round;
@@ -44,11 +42,8 @@ public class Game implements IGame, IObservableGame, IRoundObserver {
         roundObservers.add(this);
         while(winners.size() < players.length - 1){
 
-
-            IRoundResult roundResult = new Round(deck, players, currentPlayer, roundObservers).haveRound();
             changeState(GameState.PLAYER_ROUND);
-            if(true)
-                throw new NullPointerException("NOTE FOR CALEB: make new emptyRoundResult and set player_round state before haveRound and aafter new Round()");
+            roundResult = new Round(deck, players, currentPlayer, roundObservers).haveRound();
 
             addWinningPlayersToList(roundResult.playersWhoWon(), winners);
 

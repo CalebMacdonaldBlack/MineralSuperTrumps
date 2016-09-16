@@ -33,4 +33,11 @@ public class PlayerTurnResult implements IPlayerTurnResult {
     public ICategory getCurrentCategory() {
         return this.currentCategory;
     }
+
+    @Override
+    public boolean equals(IPlayerTurnResult playerTurnResult) {
+        return getCurrentCard().equals(playerTurnResult.getCurrentCard())
+                && getCurrentPlayer().equals(playerTurnResult.getCurrentPlayer())
+                && getCurrentCategory().equals(playerTurnResult.getCurrentCategory());
+    }
 }

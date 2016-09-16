@@ -4,6 +4,7 @@ import cmblack.card.EmptyCard;
 import cmblack.card.ICard;
 import cmblack.card.playcard.IPlayCard;
 import cmblack.card.trumpcard.ITrumpCard;
+import cmblack.category.EmptyCategory;
 import cmblack.category.ICategory;
 import cmblack.category.cleavage.CleavageCategory;
 import org.junit.Test;
@@ -89,5 +90,10 @@ public class BotPlayerTest {
         assertEquals(0, player.getCountOfCards());
         player.giveCard(new EmptyCard());
         assertEquals(0, player.getCountOfCards());
+    }
+
+    @Test(expected=NullPointerException.class)
+    public void testPlayCard3() throws Exception {
+        new BotPlayer("bot1").playCard(new IPlayCard.FakePlayCard(), new EmptyCategory());
     }
 }
