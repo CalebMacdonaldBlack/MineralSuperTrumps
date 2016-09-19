@@ -61,4 +61,9 @@ public class Round implements IRound {
     public IRound setRoundState(RoundState roundState) {
         return new Round(this.playerGroup, this.currentCard, this.deck, this.currentCategory, roundState);
     }
+
+    @Override
+    public IRound setPlayerGroup(IPlayerGroup playerGroup) {
+        return new Round(playerGroup, this.currentCard, this.deck, this.currentCategory, this.roundState);
+    }
 }

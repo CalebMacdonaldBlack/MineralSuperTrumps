@@ -2,66 +2,37 @@ package cmblack.player.round;
 
 import cmblack.player.EmptyPlayer;
 import cmblack.player.IPlayer;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by calebmacdonaldblack on 12/09/2016.
  */
 public interface IPlayerGroup {
-    IPlayer getNextPlayer(IPlayer player);
-    IPlayerGroup removePlayer(IPlayer player);
-    ArrayList<IPlayer> getRemainingPlayers();
-    ArrayList<IPlayer> getRemovedPlayers();
-    IPlayer getRoundWinningPlayer();
-    IPlayer getPlayerAt(int index);
-    boolean equals(IPlayerGroup playerGroup);
+    IPlayer[] getAllPlayers();
+    IPlayer[] getPlayersStillIn();
     IPlayer getCurrentPlayer();
-    IPlayerGroup setCurrentPlayer(IPlayer player);
+    IPlayerGroup nextPlayerTurn();
+    boolean equals(IPlayerGroup playerGroup);
+    IPlayerGroup removePlayerFromRound(IPlayer player);
+
+
 
 
     class FakePlayerGroup implements IPlayerGroup {
 
-        private IPlayer removedPlayer;
-        private IPlayer nextPlayer;
-
         @Override
-        public IPlayer getNextPlayer(IPlayer player) {
-            this.nextPlayer = player;
-            return new IPlayer.FakePlayer();
+        public IPlayer[] getAllPlayers() {
+            return new IPlayer[0];
         }
 
         @Override
-        public IPlayerGroup removePlayer(IPlayer player) {
-            this.removedPlayer = player;
-            return this;
-        }
-
-        @Override
-        public ArrayList<IPlayer> getRemainingPlayers() {
-            return new ArrayList<IPlayer>();
-        }
-
-        @Override
-        public ArrayList<IPlayer> getRemovedPlayers() {
-            return new ArrayList<IPlayer>();
-        }
-
-        @Override
-        public IPlayer getRoundWinningPlayer() {
-            return new EmptyPlayer();
-        }
-
-        @Override
-        public IPlayer getPlayerAt(int index) {
-            return new IPlayer.FakePlayer();
-        }
-
-        @Override
-        public boolean equals(IPlayerGroup playerGroup) {
-            return playerGroup.getRemainingPlayers().size() == 0
-                && playerGroup.getRemovedPlayers().size() == 0;
+        public IPlayer[] getPlayersStillIn() {
+            return new IPlayer[0];
         }
 
         @Override
@@ -70,16 +41,19 @@ public interface IPlayerGroup {
         }
 
         @Override
-        public IPlayerGroup setCurrentPlayer(IPlayer player) {
+        public IPlayerGroup nextPlayerTurn() {
             return this;
         }
 
-        public IPlayer getRemovedPlayer() {
-            return removedPlayer;
+        @Override
+        public boolean equals(IPlayerGroup playerGroup) {
+            return playerGroup.getPlayersStillIn().length == 0
+                && playerGroup.getAllPlayers().length == 0;
         }
 
-        public IPlayer getNextPlayer() {
-            return nextPlayer;
+        @Override
+        public IPlayerGroup removePlayerFromRound(IPlayer player) {
+            return this;
         }
     }
 }

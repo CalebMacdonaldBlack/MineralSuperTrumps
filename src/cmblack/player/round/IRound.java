@@ -4,6 +4,7 @@ import cmblack.card.ICard;
 import cmblack.card.playcard.IPlayCard;
 import cmblack.category.ICategory;
 import cmblack.deck.IDeck;
+import cmblack.player.IPlayer;
 
 import java.util.ArrayList;
 
@@ -20,6 +21,8 @@ public interface IRound {
     IRound setCurrentCard(ICard card);
     IRound setCurrentCategory(ICategory category);
     IRound setRoundState(RoundState roundState);
+
+    IRound setPlayerGroup(IPlayerGroup playerGroup);
 
     class FakeRound implements IRound {
         ICard currentCard = new IPlayCard.FakePlayCard();
@@ -67,6 +70,12 @@ public interface IRound {
         @Override
         public IRound setRoundState(RoundState roundState) {
             this.roundState = roundState;
+            return this;
+        }
+
+        @Override
+        public IRound setPlayerGroup(IPlayerGroup playerGroup) {
+            this.playerGroup = playerGroup;
             return this;
         }
     }

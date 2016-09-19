@@ -25,12 +25,17 @@ public class Game implements IGame {
 
     @Override
     public void startGame() throws FileNotFoundException {
-        IPlayer startPlayer = playerGroup.getPlayerAt(0);
-        ICategory startCategory = startPlayer.chooseCategory();
+        ICategory startCategory = playerGroup.getAllPlayers()[0].chooseCategory();
+
+        for(IPlayer player: playerGroup.getAllPlayers()){
+            for(int count=1;count<=5;count++){
+                player.giveCard(deck.takeCard());
+            }
+        }
 
         IRound round = new Round(playerGroup, new EmptyCard(), deck, startCategory, RoundState.START);
         RoundController roundController = new RoundController(round, this.roundView);
-        startPlayer.playCard(round.getCurrentCard(), round.getCurrentCategory(), roundController);
+        playerGroup.getAllPlayers()[0].playCard(round.getCurrentCard(), round.getCurrentCategory(), roundController);
     }
 
     @Override

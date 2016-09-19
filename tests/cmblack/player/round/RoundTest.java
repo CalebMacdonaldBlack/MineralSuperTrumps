@@ -57,4 +57,10 @@ public class RoundTest {
         IRound newRound = round.setRoundState(RoundState.CATEGORY_UPDATED);
         assertTrue(newRound.getRoundState().equals(RoundState.CATEGORY_UPDATED));
     }
+
+    @Test
+    public void testSetPlayerGroup() throws Exception {
+        IPlayerGroup playerGroup = new IPlayerGroup.FakePlayerGroup();
+        assertTrue(round.setPlayerGroup(playerGroup).getPlayerGroup().equals(playerGroup));
+    }
 }

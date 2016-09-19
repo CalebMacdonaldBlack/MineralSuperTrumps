@@ -33,23 +33,32 @@ public class BotPlayer implements IPlayer {
     @Override
     public void playCard(ICard cardToBeat, ICategory currentTrumpCategory, IRoundActions roundActions) {
 
+        boolean cardPlayed = false;
+
         if(currentTrumpCategory.equals(new EmptyCategory())){
             throw new NullPointerException("Cannot not choose card with empty category");
         }
-        for(ICard card: cards){
+        for(ICard card: cards.toArray(new ICard[cards.size()])){
             CategoryComparisonResult categoryComparisonResult = card.getStats().compareWith(cardToBeat.getStats());
             if(categoryComparisonResult.valueForCategory(currentTrumpCategory) > 0){
+
                 this.cards.remove(card);
                 roundActions.playACard(card);
-                return;
+                cardPlayed = true;
+                break;
             }else if(card.getType().equals(CardType.TRUMP_CARD)){
                 roundActions.playACard(card);
                 roundActions.changeCategory(chooseCategory());
-                return;
+                cardPlayed = true;
+                break;
             }
 
         }
-        roundActions.removeAPlayer(this);
+        if(!cardPlayed){
+            roundActions.removeAPlayer(this);
+            roundActions.drawACard(this);
+        }
+        roundActions.turnEnded(this);
     }
 
     @Override

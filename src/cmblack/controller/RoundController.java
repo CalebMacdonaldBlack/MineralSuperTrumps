@@ -9,7 +9,7 @@ import cmblack.player.round.*;
  * Created by calebmacdonaldblack on 16/09/2016.
  */
 public class RoundController implements IRoundActions{
-    // TODO: 19/09/2016 Make final
+    // TODO: 19/09/2016 Make final and unit test whole controller
     private IRound round;
     private final IRoundView roundView;
 
@@ -20,34 +20,46 @@ public class RoundController implements IRoundActions{
 
     @Override
     public void changeCategory(ICategory category) {
-        this.round = round.setCurrentCategory(category).setRoundState(RoundState.CATEGORY_UPDATED);
+        round = round.setCurrentCategory(category).setRoundState(RoundState.CATEGORY_UPDATED);
         roundView.update(this.round);
     }
 
     @Override
     public void playACard(ICard card) {
-        this.round = round.setCurrentCard(card).setRoundState(RoundState.PLAYER_PLAYED_CARD);
-        roundView.update(this.round);
+        round = round.setCurrentCard(card).setRoundState(RoundState.PLAYER_PLAYED_CARD);
+        roundView.update(round);
     }
 
     @Override
     public void removeAPlayer(IPlayer player) {
-        round.getPlayerGroup().removePlayer(player);
-        this.round = round.setRoundState(RoundState.PLAYER_REMOVED);
-        roundView.update(this.round);
-    }
-
-    @Override
-    public void nextPlayerTurn(IPlayer player) {
-        round.getPlayerGroup().getNextPlayer(player).playCard(round.getCurrentCard(), round.getCurrentCategory(), this);
-        this.round = round.setRoundState(RoundState.PLAYER_FINISHED_TURN);
-        roundView.update(this.round);
+        round = round.setPlayerGroup(round.getPlayerGroup().removePlayerFromRound(player));
+        round = round.setRoundState(RoundState.PLAYER_REMOVED);
+        roundView.update(round);
     }
 
     @Override
     public void drawACard(IPlayer player) {
         player.giveCard(round.getDeck().takeCard());
-        this.round.setRoundState(RoundState.PLAYER_DREW_CARD);
-        roundView.update(this.round);
+        round = round.setRoundState(RoundState.PLAYER_DREW_CARD);
+        roundView.update(round);
+    }
+
+    // TODO: 19/09/2016 remove player parameter 
+    @Override
+    public void turnEnded(IPlayer player) {
+        round = round.setRoundState(RoundState.PLAYER_FINISHED_TURN);
+        roundView.update(round);
+        if(round.getPlayerGroup().getPlayersStillIn().length > 1){
+            round = new Round(round.getPlayerGroup().nextPlayerTurn(), round.getCurrentCard(), round.getDeck(), round.getCurrentCategory(), round.getRoundState());
+            round.getPlayerGroup().getCurrentPlayer().playCard(round.getCurrentCard(), round.getCurrentCategory(), this);
+        } else {
+            round = round.setRoundState(RoundState.ROUND_OVER);
+            roundView.update(round);
+        }
+    }
+
+    @Override
+    public IRound getRound() {
+        return round;
     }
 }

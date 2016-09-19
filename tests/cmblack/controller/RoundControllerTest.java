@@ -37,14 +37,6 @@ public class RoundControllerTest {
     @Test
     public void testRemoveAPlayer() throws Exception {
         roundActions.removeAPlayer(new IPlayer.FakePlayer());
-        assertTrue(new IPlayer.FakePlayer().equals(((IPlayerGroup.FakePlayerGroup)round.getPlayerGroup()).getRemovedPlayer()));
         assertTrue(round.getRoundState().equals(RoundState.PLAYER_REMOVED));
-    }
-
-    @Test
-    public void testNextPlayerTurn() throws Exception {
-        roundActions.nextPlayerTurn(new IPlayer.FakePlayer());
-        assertTrue(((IPlayerGroup.FakePlayerGroup)round.getPlayerGroup()).getNextPlayer().equals(new IPlayer.FakePlayer()));
-        assertTrue(round.getRoundState().equals(RoundState.PLAYER_FINISHED_TURN));
     }
 }

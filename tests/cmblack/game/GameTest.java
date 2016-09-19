@@ -5,6 +5,7 @@ import cmblack.player.BotPlayer;
 import cmblack.player.IPlayer;
 import cmblack.player.round.IRoundView;
 import cmblack.player.round.PlayerGroup;
+import cmblack.player.round.RoundView;
 import org.junit.Test;
 
 /**
@@ -13,7 +14,8 @@ import org.junit.Test;
 public class GameTest {
     @Test
     public void testStartGame() throws Exception {
-        IGame game = new Game(new PlayerGroup(new IPlayer[]{new BotPlayer("bot1"),new BotPlayer("bot2"),new BotPlayer("bot3")}), new IDeck.FakeDeck(), new IRoundView.FakeRoundView());
+        IPlayer[] players = new IPlayer[]{new BotPlayer("bot1"),new BotPlayer("bot2"),new BotPlayer("bot3")};
+        IGame game = new Game(new PlayerGroup(players), new IDeck.FakeDeck(), new RoundView());
         game.startGame();
     }
 }

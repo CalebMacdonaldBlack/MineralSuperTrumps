@@ -4,6 +4,7 @@ import cmblack.card.ICard;
 import cmblack.card.playcard.IPlayCard;
 import cmblack.category.ICategory;
 import cmblack.player.IPlayer;
+import cmblack.player.round.IRound;
 
 /**
  * Created by calebmacdonaldblack on 16/09/2016.
@@ -12,8 +13,9 @@ public interface IRoundActions {
     void changeCategory(ICategory category);
     void playACard(ICard card);
     void removeAPlayer(IPlayer player);
-    void nextPlayerTurn(IPlayer player);
     void drawACard(IPlayer player);
+    void turnEnded(IPlayer player);
+    IRound getRound();
 
     class FakeRoundActions implements IRoundActions {
 
@@ -38,13 +40,18 @@ public interface IRoundActions {
         }
 
         @Override
-        public void nextPlayerTurn(IPlayer player) {
-            this.currentPlayer = player;
+        public void drawACard(IPlayer player) {
+            player.giveCard(new IPlayCard.FakePlayCard());
         }
 
         @Override
-        public void drawACard(IPlayer player) {
-            player.giveCard(new IPlayCard.FakePlayCard());
+        public void turnEnded(IPlayer player) {
+
+        }
+
+        @Override
+        public IRound getRound() {
+            return new IRound.FakeRound();
         }
 
         public ICategory getCategory() {
