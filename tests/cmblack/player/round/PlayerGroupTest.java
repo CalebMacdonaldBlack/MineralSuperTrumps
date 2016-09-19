@@ -5,6 +5,8 @@ import cmblack.player.EmptyPlayer;
 import cmblack.player.IPlayer;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.*;
 
 /**
@@ -58,7 +60,30 @@ public class PlayerGroupTest {
 
     @Test
     public void testEquals() throws Exception {
-        assertTrue(playerGroup.equals(new PlayerGroup(new IPlayer[]{player, player2})));
+        assertTrue(playerGroup.equals(new PlayerGroup(new IPlayer[]{player, player2}))); //equals and throw exception on currentplayer
         assertFalse(playerGroup.equals(new IPlayerGroup.FakePlayerGroup()));
+        assertFalse(playerGroup.equals(new PlayerGroup(new IPlayer[]{player, player2}, new IPlayer.FakePlayer(), playerGroup.getRemainingPlayers(), playerGroup.getRemovedPlayers())));
+    }
+
+    @Test
+    public void testGetPlayerAt() throws Exception {
+        assertTrue(player.equals(playerGroup.getPlayerAt(0)));
+        assertTrue(player2.equals(playerGroup.getPlayerAt(1)));
+    }
+
+    @Test
+    public void testGetCurrentPlayer() throws Exception {
+        assertTrue(playerGroup.getCurrentPlayer().equals(player));
+    }
+
+    @Test
+    public void testSetCurrentPlayer() throws Exception {
+        IPlayerGroup newPlayerGroup = playerGroup.setCurrentPlayer(player2);
+        assertTrue(newPlayerGroup.getCurrentPlayer().equals(player2));
+    }
+
+    @Test(expected=NullPointerException.class)
+    public void testSetCurrentPlayer1() throws Exception {
+        IPlayerGroup newPlayerGroup = playerGroup.setCurrentPlayer(new IPlayer.FakePlayer());
     }
 }

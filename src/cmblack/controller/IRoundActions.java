@@ -1,6 +1,7 @@
 package cmblack.controller;
 
 import cmblack.card.ICard;
+import cmblack.card.playcard.IPlayCard;
 import cmblack.category.ICategory;
 import cmblack.player.IPlayer;
 
@@ -12,6 +13,7 @@ public interface IRoundActions {
     void playACard(ICard card);
     void removeAPlayer(IPlayer player);
     void nextPlayerTurn(IPlayer player);
+    void drawACard(IPlayer player);
 
     class FakeRoundActions implements IRoundActions {
 
@@ -38,6 +40,11 @@ public interface IRoundActions {
         @Override
         public void nextPlayerTurn(IPlayer player) {
             this.currentPlayer = player;
+        }
+
+        @Override
+        public void drawACard(IPlayer player) {
+            player.giveCard(new IPlayCard.FakePlayCard());
         }
 
         public ICategory getCategory() {

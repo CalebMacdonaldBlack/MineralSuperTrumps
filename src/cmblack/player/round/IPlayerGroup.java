@@ -15,7 +15,10 @@ public interface IPlayerGroup {
     ArrayList<IPlayer> getRemainingPlayers();
     ArrayList<IPlayer> getRemovedPlayers();
     IPlayer getRoundWinningPlayer();
+    IPlayer getPlayerAt(int index);
     boolean equals(IPlayerGroup playerGroup);
+    IPlayer getCurrentPlayer();
+    IPlayerGroup setCurrentPlayer(IPlayer player);
 
 
     class FakePlayerGroup implements IPlayerGroup {
@@ -51,9 +54,24 @@ public interface IPlayerGroup {
         }
 
         @Override
+        public IPlayer getPlayerAt(int index) {
+            return new IPlayer.FakePlayer();
+        }
+
+        @Override
         public boolean equals(IPlayerGroup playerGroup) {
             return playerGroup.getRemainingPlayers().size() == 0
                 && playerGroup.getRemovedPlayers().size() == 0;
+        }
+
+        @Override
+        public IPlayer getCurrentPlayer() {
+            return new IPlayer.FakePlayer();
+        }
+
+        @Override
+        public IPlayerGroup setCurrentPlayer(IPlayer player) {
+            return this;
         }
 
         public IPlayer getRemovedPlayer() {

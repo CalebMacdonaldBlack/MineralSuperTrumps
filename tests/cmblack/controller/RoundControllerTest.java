@@ -5,6 +5,7 @@ import cmblack.category.ICategory;
 import cmblack.player.IPlayer;
 import cmblack.player.round.IPlayerGroup;
 import cmblack.player.round.IRound;
+import cmblack.player.round.IRoundView;
 import cmblack.player.round.RoundState;
 import org.junit.Test;
 
@@ -15,7 +16,7 @@ import static org.junit.Assert.*;
  */
 public class RoundControllerTest {
     IRound round = new IRound.FakeRound();
-    IRoundActions roundActions = new RoundController(round);
+    IRoundActions roundActions = new RoundController(round, new IRoundView.FakeRoundView());
 
     @Test
     public void testChangeCategory() throws Exception {
