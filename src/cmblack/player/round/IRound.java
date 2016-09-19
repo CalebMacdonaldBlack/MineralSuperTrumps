@@ -1,8 +1,9 @@
 package cmblack.player.round;
 
-import cmblack.player.IPlayer;
-import cmblack.player.round.turn.IPlayerTurnResult;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+import cmblack.card.ICard;
+import cmblack.card.playcard.IPlayCard;
+import cmblack.category.ICategory;
+import cmblack.deck.IDeck;
 
 import java.util.ArrayList;
 
@@ -10,43 +11,44 @@ import java.util.ArrayList;
  * Created by calebmacdonaldblack on 11/09/2016.
  */
 public interface IRound {
-    IRoundResult haveRound();
-    RoundState getRoundState();
-    IPlayer getCurrentPlayer();
-    IPlayerTurnResult getPlayerTurnResult();
-    ArrayList<IPlayer> getWinners();
-    boolean equals(IRound round);
+    IPlayerGroup getPlayerGroup();
+    ICard getCurrentCard();
+    IDeck getDeck();
+    ICategory getCurrentCategory();
+
+    IRound setCurrentCard(ICard card);
+    IRound setCurrentCategory(ICategory category);
 
     class FakeRound implements IRound {
 
         @Override
-        public IRoundResult haveRound() {
-            return new IRoundResult.FakeRoundResult();
+        public IPlayerGroup getPlayerGroup() {
+            return new IPlayerGroup.FakePlayerGroup();
         }
 
         @Override
-        public RoundState getRoundState() {
-            return RoundState.START;
+        public ICard getCurrentCard() {
+            return new IPlayCard.FakeGoodPlayCard();
         }
 
         @Override
-        public IPlayer getCurrentPlayer() {
-            return new IPlayer.FakePlayer();
+        public IDeck getDeck() {
+            return new IDeck.FakeDeck();
         }
 
         @Override
-        public IPlayerTurnResult getPlayerTurnResult() {
-            return new IPlayerTurnResult.FakePlayerTurnResult();
+        public ICategory getCurrentCategory() {
+            return new ICategory.FakeCleavageCategory();
         }
 
         @Override
-        public ArrayList<IPlayer> getWinners() {
-            return new ArrayList<>();
+        public IRound setCurrentCard(ICard card) {
+            return null;
         }
 
         @Override
-        public boolean equals(IRound round) {
-            throw new NotImplementedException();
+        public IRound setCurrentCategory(ICategory category) {
+            return null;
         }
     }
 }

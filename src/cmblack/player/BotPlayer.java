@@ -9,6 +9,7 @@ import cmblack.card.stats.statscalculator.IAveragePercentOfRangeCalculator;
 import cmblack.card.stats.statscalculator.IAveragePercentOfRangeResult;
 import cmblack.category.EmptyCategory;
 import cmblack.category.ICategory;
+import cmblack.controller.IRoundActions;
 
 import java.util.ArrayList;
 
@@ -30,25 +31,25 @@ public class BotPlayer implements IPlayer {
     }
 
     @Override
-    public ICard playCard(ICard cardToBeat, ICategory currentTrumpCategory) {
+    public void playCard(ICard cardToBeat, ICategory currentTrumpCategory, IRoundActions roundActions) {
 
         if(currentTrumpCategory.equals(new EmptyCategory())){
             throw new NullPointerException("Cannot not choose card with empty category");
         }
-
-        ICard possibleTrumpCard = new EmptyCard();
         for(ICard card: cards){
             CategoryComparisonResult categoryComparisonResult = card.getStats().compareWith(cardToBeat.getStats());
             if(categoryComparisonResult.valueForCategory(currentTrumpCategory) > 0){
                 this.cards.remove(card);
-                return card;
+                roundActions.playACard(card);
+                return;
             }else if(card.getType().equals(CardType.TRUMP_CARD)){
-                possibleTrumpCard = card;
+                roundActions.playACard(card);
+                roundActions.changeCategory(chooseCategory());
+                return;
             }
 
         }
-        this.cards.remove(possibleTrumpCard);
-        return possibleTrumpCard;
+        roundActions.removeAPlayer(this);
     }
 
     @Override

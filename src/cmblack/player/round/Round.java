@@ -1,136 +1,52 @@
 package cmblack.player.round;
 
-import cmblack.card.EmptyCard;
 import cmblack.card.ICard;
-import cmblack.category.EmptyCategory;
 import cmblack.category.ICategory;
 import cmblack.deck.IDeck;
-import cmblack.player.EmptyPlayer;
-import cmblack.player.IPlayer;
-import cmblack.player.round.turn.EmptyTurnResult;
-import cmblack.player.round.turn.IPlayerTurnResult;
-import cmblack.player.round.turn.PlayerTurn;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
-import java.util.ArrayList;
 
 /**
  * Created by calebmacdonaldblack on 11/09/2016.
  */
-public class Round implements IRound, IObservableRound {
-
+public class Round implements IRound {
+    private final IPlayerGroup playerGroup;
+    private final ICard currentCard;
     private final IDeck deck;
-    private final IPlayer[] players;
-    private final IPlayer winnerOfLastRound;
-    private final ArrayList<IRoundObserver> roundObservers;
+    private final ICategory currentCategory;
 
-    // TODO: 15/09/2016 these should be final fix
-    private RoundState roundState = RoundState.START;
-    private IPlayer currentPlayer;
-    private IPlayerTurnResult playerTurnResult = new EmptyTurnResult();
-    ArrayList<IPlayer> winners = new ArrayList<>();
-
-    public Round(IDeck deck, IPlayer[] players, IPlayer winnerOfLastRound, ArrayList<IRoundObserver> roundObservers) {
+    public Round(IPlayerGroup playerGroup, ICard currentCard, IDeck deck, ICategory currentCategory) {
+        this.playerGroup = playerGroup;
+        this.currentCard = currentCard;
         this.deck = deck;
-        this.players = players;
-        this.winnerOfLastRound = winnerOfLastRound;
-        this.roundObservers = roundObservers;
-    }
-
-
-    //todo break this up
-    @Override
-    public IRoundResult haveRound() {
-
-        IPlayerGroup playerGroup = new PlayerGroup(players);
-
-        currentPlayer = this.winnerOfLastRound;
-
-        ICategory currentCategory = new EmptyCategory();
-        ICard currentCard = new EmptyCard();
-
-        while(playerGroup.getRoundWinningPlayer().equals(new EmptyPlayer())){
-            if(currentPlayer.equals(new EmptyPlayer())){
-                currentPlayer = playerGroup.getNextPlayer(currentPlayer);
-            }
-            changeState(RoundState.PLAYER_TURN);
-
-            if(currentCategory.equals(new EmptyCategory())){
-                currentCategory = currentPlayer.chooseCategory();
-            }
-
-            playerTurnResult = new PlayerTurn(currentCard, currentPlayer, currentCategory, deck).haveTurn();
-
-            currentPlayer = playerGroup.getNextPlayer(currentPlayer);
-
-            if(currentCard.equals(playerTurnResult.getCurrentCard())){
-                playerGroup.removePlayer(playerTurnResult.getCurrentPlayer());
-                changeState(RoundState.PLAYER_REMOVED);
-
-                playerTurnResult.getCurrentPlayer().giveCard(deck.takeCard());
-                changeState(RoundState.PLAYER_DREW_CARD);
-            }else{
-
-                currentCard = playerTurnResult.getCurrentCard();
-                changeState(RoundState.PLAYER_PLAYED_CARD);
-                currentCategory = playerTurnResult.getCurrentCategory();
-                changeState(RoundState.CATEGORY_UPDATED);
-                if(playerTurnResult.getCurrentPlayer().getCountOfCards() == 0){
-                    winners.add(playerTurnResult.getCurrentPlayer());
-                    playerGroup.removePlayer(playerTurnResult.getCurrentPlayer());
-                    changeState(RoundState.PLAYER_WON_GAME);
-                }
-            }
-
-        }
-
-
-        return new RoundResult(
-                winners.toArray(new IPlayer[winners.size()]),
-                playerGroup.getRoundWinningPlayer());
+        this.currentCategory = currentCategory;
     }
 
     @Override
-    public RoundState getRoundState() {
-        return this.roundState;
+    public IPlayerGroup getPlayerGroup() {
+        return this.playerGroup;
     }
 
     @Override
-    public IPlayer getCurrentPlayer() {
-        return this.currentPlayer;
+    public ICard getCurrentCard() {
+        return this.currentCard;
     }
 
     @Override
-    public IPlayerTurnResult getPlayerTurnResult() {
-        return this.playerTurnResult;
+    public IDeck getDeck() {
+        return this.deck;
     }
 
     @Override
-    public ArrayList<IPlayer> getWinners() {
-        return this.winners;
+    public ICategory getCurrentCategory() {
+        return this.currentCategory;
     }
 
     @Override
-    public boolean equals(IRound round) {
-        throw new NotImplementedException();
-    }
-
-    private void changeState(RoundState roundState) {
-        this.roundState = roundState;
-        this.notifyRoundObservers();
+    public IRound setCurrentCard(ICard card) {
+        return new Round(this.playerGroup, card, this.deck, this.currentCategory);
     }
 
     @Override
-    public void notifyRoundObservers() {
-        //TODO unit test this. make this provided
-        for(IRoundObserver roundObserver: roundObservers){
-            roundObserver.update(this);
-        }
-    }
-
-    @Override
-    public void addRoundObserver(IRoundObserver roundObserver) {
-        //TODO unit test this
-        this.roundObservers.add(roundObserver);
+    public IRound setCurrentCategory(ICategory category) {
+        return new Round(this.playerGroup, this.currentCard, this.deck, category);
     }
 }

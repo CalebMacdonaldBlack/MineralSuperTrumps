@@ -4,6 +4,7 @@ import cmblack.card.EmptyCard;
 import cmblack.card.ICard;
 import cmblack.category.EmptyCategory;
 import cmblack.category.ICategory;
+import cmblack.controller.IRoundActions;
 
 import java.util.ArrayList;
 
@@ -17,8 +18,7 @@ public class EmptyPlayer implements IPlayer {
     }
 
     @Override
-    public ICard playCard(ICard cardToBeat, ICategory currentTrumpCategory) {
-        return new EmptyCard();
+    public void playCard(ICard cardToBeat, ICategory currentTrumpCategory, IRoundActions roundActions) {
     }
 
     @Override

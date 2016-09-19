@@ -2,6 +2,7 @@ package cmblack.player.round;
 
 import cmblack.player.EmptyPlayer;
 import cmblack.player.IPlayer;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;
 
@@ -14,6 +15,7 @@ public interface IPlayerGroup {
     ArrayList<IPlayer> getRemainingPlayers();
     ArrayList<IPlayer> getRemovedPlayers();
     IPlayer getRoundWinningPlayer();
+    boolean equals(IPlayerGroup playerGroup);
 
 
     class FakePlayerGroup implements IPlayerGroup {
@@ -41,6 +43,12 @@ public interface IPlayerGroup {
         @Override
         public IPlayer getRoundWinningPlayer() {
             return new EmptyPlayer();
+        }
+
+        @Override
+        public boolean equals(IPlayerGroup playerGroup) {
+            return playerGroup.getRemainingPlayers().size() == 0
+                && playerGroup.getRemovedPlayers().size() == 0;
         }
     }
 }

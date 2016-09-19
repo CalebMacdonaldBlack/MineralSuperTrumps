@@ -68,4 +68,23 @@ public class PlayerGroup implements IPlayerGroup {
     public IPlayer getRoundWinningPlayer() {
         return remainingPlayers.size() > 1 ? new EmptyPlayer() : remainingPlayers.get(0);
     }
+
+    @Override
+    public boolean equals(IPlayerGroup playerGroup) {
+        try {
+            for (int i = remainingPlayers.size(); i > 0; i--) {
+                if (!remainingPlayers.get(i - 1).equals(playerGroup.getRemainingPlayers().get(i - 1))) {
+                    return false;
+                }
+            }
+            for (int i = removedPlayers.size(); i > 0; i--) {
+                if (!removedPlayers.get(i - 1).equals(playerGroup.getRemovedPlayers().get(i - 1))) {
+                    return false;
+                }
+            }
+            return true;
+        }catch (IndexOutOfBoundsException e){
+            return false;
+        }
+    }
 }

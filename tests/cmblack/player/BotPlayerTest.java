@@ -7,6 +7,7 @@ import cmblack.card.trumpcard.ITrumpCard;
 import cmblack.category.EmptyCategory;
 import cmblack.category.ICategory;
 import cmblack.category.cleavage.CleavageCategory;
+import cmblack.controller.IRoundActions;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -20,14 +21,16 @@ public class BotPlayerTest {
     public void testAddCard() throws Exception {
         IPlayer player = new BotPlayer("bot 11");
         ICard card = new IPlayCard.FakePlayCard1();
-        assertEquals(card, player.addCard(card).playCard(new IPlayCard.FakePlayCard(), new ICategory.FakeHardnessCategory()));
+        assertEquals(card, player.addCard(card).getCards().get(player.getCountOfCards() - 1));
     }
 
     @Test
     public void testPlayCard() throws Exception {
         IPlayer player = new BotPlayer("bot 11");
-        ICard card = new IPlayCard.FakePlayCard1();
-        assertEquals(card, player.addCard(card).playCard(new IPlayCard.FakePlayCard(), new ICategory.FakeHardnessCategory()));
+        IRoundActions.FakeRoundActions roundActions = new IRoundActions.FakeRoundActions();
+        player.addCard(new IPlayCard.FakeGoodPlayCard());
+        player.playCard(new IPlayCard.FakeBadPlayCard(), new ICategory.FakeCleavageCategory(), roundActions);
+        assertTrue(roundActions.getCard().equals(new IPlayCard.FakeGoodPlayCard()));
     }
 
     @Test
@@ -39,16 +42,20 @@ public class BotPlayerTest {
     @Test
     public void testPlayCard1() throws Exception {
         IPlayer player = new BotPlayer("bot 11");
-        ICard card = new IPlayCard.FakePlayCard1();
-        ICard card2 = new IPlayCard.FakePlayCard();
-        assertTrue(new EmptyCard().equals(player.addCard(card2).playCard(card, new ICategory.FakeHardnessCategory())));
+        IRoundActions.FakeRoundActions roundActions = new IRoundActions.FakeRoundActions();
+        player.playCard(new IPlayCard.FakeGoodPlayCard(), new ICategory.FakeCleavageCategory(), roundActions);
+        assertTrue(roundActions.getRemovedPlayer().equals(player));
+
     }
 
     @Test
     public void testPlayCard2() throws Exception {
-        IPlayer player = new BotPlayer("bot 11");
         ICard card = new IPlayCard.FakePlayCard1();
-        assertTrue(new ITrumpCard.FakeTrumpCard().equals(player.addCard(new ITrumpCard.FakeTrumpCard()).playCard(card, new ICategory.FakeHardnessCategory())));
+        IPlayer player = new BotPlayer("bot 11").addCard(card);
+        IRoundActions.FakeRoundActions fakeRoundActions = new IRoundActions.FakeRoundActions();
+        player.playCard(new ITrumpCard.FakeTrumpCard(), new ICategory.FakeCleavageCategory(), fakeRoundActions);
+
+        assertTrue(card.equals(fakeRoundActions.getCard()));
     }
 
     @Test
@@ -94,6 +101,6 @@ public class BotPlayerTest {
 
     @Test(expected=NullPointerException.class)
     public void testPlayCard3() throws Exception {
-        new BotPlayer("bot1").playCard(new IPlayCard.FakePlayCard(), new EmptyCategory());
+        new BotPlayer("bot1").playCard(new IPlayCard.FakePlayCard(), new EmptyCategory(), new IRoundActions.FakeRoundActions());
     }
 }

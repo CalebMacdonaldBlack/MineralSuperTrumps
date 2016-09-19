@@ -4,6 +4,7 @@ import cmblack.card.ICard;
 import cmblack.card.trumpcard.ITrumpCard;
 import cmblack.category.Category;
 import cmblack.category.ICategory;
+import cmblack.controller.IRoundActions;
 
 import java.util.ArrayList;
 
@@ -12,7 +13,7 @@ import java.util.ArrayList;
  */
 public interface IPlayer {
     IPlayer addCard(ICard card);
-    ICard playCard(ICard cardToBeat, ICategory currentTrumpCategory);
+    void playCard(ICard cardToBeat, ICategory currentTrumpCategory, IRoundActions roundActions);
     String getName();
     boolean equals(IPlayer player);
 
@@ -35,8 +36,8 @@ public interface IPlayer {
         }
 
         @Override
-        public ICard playCard(ICard cardToBeat, ICategory currentTrumpCategory) {
-            return new ITrumpCard.FakeTrumpCard();
+        public void playCard(ICard cardToBeat, ICategory currentTrumpCategory, IRoundActions roundActions) {
+
         }
 
         @Override
