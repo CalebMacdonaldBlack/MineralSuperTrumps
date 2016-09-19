@@ -10,25 +10,25 @@ import java.io.FileNotFoundException;
  * Created by calebmacdonaldblack on 11/09/2016.
  */
 public interface IRoundResult {
-    IPlayer roundWinningPlayer();
-    IPlayer[] playersStillIn();
-    IPlayer[] playersWithNoCards();
+    IPlayer getRoundWinningPlayer();
+    IPlayer[] getPlayersStillIn();
+    IPlayer[] getPlayersWithNoCards();
     boolean equals(IRoundResult roundResult);
 
     class FakeRoundResult implements IRoundResult {
 
         @Override
-        public IPlayer roundWinningPlayer() {
+        public IPlayer getRoundWinningPlayer() {
             return new IPlayer.FakePlayer();
         }
 
         @Override
-        public IPlayer[] playersStillIn() {
+        public IPlayer[] getPlayersStillIn() {
             return new IPlayer[]{new IPlayer.FakePlayer()};
         }
 
         @Override
-        public IPlayer[] playersWithNoCards() {
+        public IPlayer[] getPlayersWithNoCards() {
             return new IPlayer[]{new IPlayer.FakePlayer()};
         }
 

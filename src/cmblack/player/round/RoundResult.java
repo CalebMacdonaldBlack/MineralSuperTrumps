@@ -18,22 +18,24 @@ public class RoundResult implements IRoundResult {
     }
 
     @Override
-    public IPlayer roundWinningPlayer() {
-        return null;
+    public IPlayer getRoundWinningPlayer() {
+        return roundWinningPlayer;
     }
 
     @Override
-    public IPlayer[] playersStillIn() {
-        return new IPlayer[0];
+    public IPlayer[] getPlayersStillIn() {
+        return playersStillIn;
     }
 
     @Override
-    public IPlayer[] playersWithNoCards() {
-        return new IPlayer[0];
+    public IPlayer[] getPlayersWithNoCards() {
+        return playersWithNoCards;
     }
 
     @Override
     public boolean equals(IRoundResult roundResult) {
-        return false;
+        return this.playersStillIn.length == roundResult.getPlayersStillIn().length
+            && this.playersWithNoCards.length == roundResult.getPlayersWithNoCards().length
+            && this.roundWinningPlayer.equals(roundResult.getRoundWinningPlayer());
     }
 }

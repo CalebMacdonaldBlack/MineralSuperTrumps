@@ -21,19 +21,19 @@ public class RoundResultTest {
 
     @Test
     public void testRoundWinningPlayer() throws Exception {
-        assertTrue(roundWinngPlayer.equals(roundResult.roundWinningPlayer()));
+        assertTrue(roundWinngPlayer.equals(roundResult.getRoundWinningPlayer()));
     }
 
     @Test
     public void testPlayersStillIn() throws Exception {
-        assertEquals(2, roundResult.playersStillIn().length);
-        assertTrue(playersStillIn[0].equals(roundResult.playersStillIn()[0]));
-        assertTrue(playersStillIn[1].equals(roundResult.playersStillIn()[1]));
+        assertEquals(2, roundResult.getPlayersStillIn().length);
+        assertTrue(playersStillIn[0].equals(roundResult.getPlayersStillIn()[0]));
+        assertTrue(playersStillIn[1].equals(roundResult.getPlayersStillIn()[1]));
     }
 
     @Test
     public void testPlayersWithNoCards() throws Exception {
-        assertTrue(playersWithNoCards[0].equals(roundResult.playersWithNoCards()[0]));
+        assertTrue(playersWithNoCards[0].equals(roundResult.getPlayersWithNoCards()[0]));
     }
 
     @Test
