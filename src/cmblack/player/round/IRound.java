@@ -20,15 +20,18 @@ public interface IRound {
     IRound setCurrentCategory(ICategory category);
 
     class FakeRound implements IRound {
+        ICard currentCard = new IPlayCard.FakePlayCard();
+        ICategory currentCategory = new ICategory.FakeCleavageCategory();
+        IPlayerGroup playerGroup = new IPlayerGroup.FakePlayerGroup();
 
         @Override
         public IPlayerGroup getPlayerGroup() {
-            return new IPlayerGroup.FakePlayerGroup();
+            return playerGroup;
         }
 
         @Override
         public ICard getCurrentCard() {
-            return new IPlayCard.FakeGoodPlayCard();
+            return currentCard;
         }
 
         @Override
@@ -38,17 +41,19 @@ public interface IRound {
 
         @Override
         public ICategory getCurrentCategory() {
-            return new ICategory.FakeCleavageCategory();
+            return currentCategory;
         }
 
         @Override
         public IRound setCurrentCard(ICard card) {
-            return null;
+            this.currentCard = card;
+            return this;
         }
 
         @Override
         public IRound setCurrentCategory(ICategory category) {
-            return null;
+            this.currentCategory = category;
+            return this;
         }
     }
 }

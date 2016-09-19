@@ -20,13 +20,18 @@ public interface IPlayerGroup {
 
     class FakePlayerGroup implements IPlayerGroup {
 
+        private IPlayer removedPlayer;
+        private IPlayer nextPlayer;
+
         @Override
         public IPlayer getNextPlayer(IPlayer player) {
+            this.nextPlayer = player;
             return new IPlayer.FakePlayer();
         }
 
         @Override
         public IPlayerGroup removePlayer(IPlayer player) {
+            this.removedPlayer = player;
             return this;
         }
 
@@ -49,6 +54,14 @@ public interface IPlayerGroup {
         public boolean equals(IPlayerGroup playerGroup) {
             return playerGroup.getRemainingPlayers().size() == 0
                 && playerGroup.getRemovedPlayers().size() == 0;
+        }
+
+        public IPlayer getRemovedPlayer() {
+            return removedPlayer;
+        }
+
+        public IPlayer getNextPlayer() {
+            return nextPlayer;
         }
     }
 }
