@@ -49,4 +49,11 @@ public class PlayerGroupTest {
         assertTrue(playerGroup.equals(new PlayerGroup(players, players[0])));
         assertFalse(playerGroup.equals(new IPlayerGroup.FakePlayerGroup()));
     }
+
+    @Test
+    public void testRemovePlayerFromGame() throws Exception {
+        assertEquals(3, playerGroup.getAllPlayers().length);
+        IPlayerGroup playerGroup1 = playerGroup.removePlayerFromGame(players[0]);
+        assertEquals(2, playerGroup1.getAllPlayers().length);
+    }
 }

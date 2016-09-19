@@ -19,6 +19,8 @@ public interface IPlayerGroup {
     IPlayerGroup nextPlayerTurn();
     boolean equals(IPlayerGroup playerGroup);
     IPlayerGroup removePlayerFromRound(IPlayer player);
+    IPlayerGroup removePlayerFromGame(IPlayer player);
+
 
 
 
@@ -53,6 +55,11 @@ public interface IPlayerGroup {
 
         @Override
         public IPlayerGroup removePlayerFromRound(IPlayer player) {
+            return this;
+        }
+
+        @Override
+        public IPlayerGroup removePlayerFromGame(IPlayer player) {
             return this;
         }
     }
