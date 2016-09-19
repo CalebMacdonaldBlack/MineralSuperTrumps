@@ -55,6 +55,6 @@ public class RoundTest {
     public void testSetRoundState() throws Exception {
         assertTrue(round.getRoundState().equals(RoundState.START));
         IRound newRound = round.setRoundState(RoundState.CATEGORY_UPDATED);
-        assertTrue(newRound.getRoundState().equals(RoundState.PLAYER_DREW_CARD));
+        assertTrue(newRound.getRoundState().equals(RoundState.CATEGORY_UPDATED));
     }
 }
