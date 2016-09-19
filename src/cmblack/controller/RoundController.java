@@ -2,6 +2,7 @@ package cmblack.controller;
 
 import cmblack.card.ICard;
 import cmblack.category.ICategory;
+import cmblack.game.IGameActions;
 import cmblack.player.IPlayer;
 import cmblack.player.round.*;
 
@@ -12,10 +13,12 @@ public class RoundController implements IRoundActions{
     // TODO: 19/09/2016 Make final and unit test whole controller
     private IRound round;
     private final IRoundView roundView;
+    private final IGameActions gameActions;
 
-    public RoundController(IRound round, IRoundView roundView) {
+    public RoundController(IRound round, IRoundView roundView, IGameActions gameActions) {
         this.round = round;
         this.roundView = roundView;
+        this.gameActions = gameActions;
     }
 
     @Override
@@ -55,11 +58,13 @@ public class RoundController implements IRoundActions{
         } else {
             round = round.setRoundState(RoundState.ROUND_OVER);
             roundView.update(round);
+            gameActions.RoundFinished(new RoundResult(round.getPlayerGroup().getPlayersStillIn()[0], round.getPlayerGroup().getAllPlayers()));
         }
     }
 
     @Override
-    public IRound getRound() {
-        return round;
+    public void removePlayerFromGame(IPlayer player) {
+        round = round.setPlayerGroup(round.getPlayerGroup().removePlayerFromGame(player));
+        gameActions.playerRemovedFromGame(player);
     }
 }

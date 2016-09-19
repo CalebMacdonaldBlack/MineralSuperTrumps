@@ -11,8 +11,7 @@ import java.io.FileNotFoundException;
  */
 public interface IRoundResult {
     IPlayer getRoundWinningPlayer();
-    IPlayer[] getPlayersStillIn();
-    IPlayer[] getPlayersWithNoCards();
+    IPlayer[] getPlayers();
     boolean equals(IRoundResult roundResult);
 
     class FakeRoundResult implements IRoundResult {
@@ -23,12 +22,7 @@ public interface IRoundResult {
         }
 
         @Override
-        public IPlayer[] getPlayersStillIn() {
-            return new IPlayer[]{new IPlayer.FakePlayer()};
-        }
-
-        @Override
-        public IPlayer[] getPlayersWithNoCards() {
+        public IPlayer[] getPlayers() {
             return new IPlayer[]{new IPlayer.FakePlayer()};
         }
 

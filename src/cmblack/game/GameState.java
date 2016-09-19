@@ -6,5 +6,5 @@ package cmblack.game;
 public enum GameState {
     DEALING_CARDS,
     PLAYER_WON_ROUND,
-    START, PLAYER_ROUND
+    START, ROUND_OVER, PLAYER_WON_GAME, FINISHED, PLAYER_ROUND
 }

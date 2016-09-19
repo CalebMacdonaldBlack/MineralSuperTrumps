@@ -13,11 +13,10 @@ import static org.junit.Assert.*;
 public class RoundResultTest {
 
     IDeck deck = new IDeck.FakeDeck();
-    IPlayer[] playersStillIn = new IPlayer[]{new BotPlayer("bot1"), new BotPlayer("bot2")};
-    IPlayer roundWinngPlayer = playersStillIn[0];
-    IPlayer[] playersWithNoCards = new IPlayer[]{new BotPlayer("bot3")};
+    IPlayer[] players = new IPlayer[]{new BotPlayer("bot1"), new BotPlayer("bot2")};
+    IPlayer roundWinngPlayer = players[0];
 
-    IRoundResult roundResult = new RoundResult(roundWinngPlayer, playersStillIn, playersWithNoCards);
+    IRoundResult roundResult = new RoundResult(roundWinngPlayer, players);
 
     @Test
     public void testRoundWinningPlayer() throws Exception {
@@ -25,19 +24,14 @@ public class RoundResultTest {
     }
 
     @Test
-    public void testPlayersStillIn() throws Exception {
-        assertEquals(2, roundResult.getPlayersStillIn().length);
-        assertTrue(playersStillIn[0].equals(roundResult.getPlayersStillIn()[0]));
-        assertTrue(playersStillIn[1].equals(roundResult.getPlayersStillIn()[1]));
-    }
-
-    @Test
-    public void testPlayersWithNoCards() throws Exception {
-        assertTrue(playersWithNoCards[0].equals(roundResult.getPlayersWithNoCards()[0]));
+    public void testPlayers() throws Exception {
+        assertEquals(2, roundResult.getPlayers().length);
+        assertTrue(players[0].equals(roundResult.getPlayers()[0]));
+        assertTrue(players[1].equals(roundResult.getPlayers()[1]));
     }
 
     @Test
     public void testEquals() throws Exception {
-        assertTrue(roundResult.equals(new RoundResult(roundWinngPlayer, playersStillIn, playersWithNoCards)));
+        assertTrue(roundResult.equals(new RoundResult(roundWinngPlayer, players)));
     }
 }

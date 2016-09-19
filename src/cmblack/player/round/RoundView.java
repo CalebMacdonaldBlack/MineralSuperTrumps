@@ -15,6 +15,7 @@ public class RoundView implements IRoundView{
                 break;
             case PLAYER_PLAYED_CARD:
                 System.out.println(round.getPlayerGroup().getCurrentPlayer().getName() + " played the card: " + round.getCurrentCard().getTitle());
+                System.out.println(round.getPlayerGroup().getCurrentPlayer().getName() + " card count: " + round.getPlayerGroup().getCurrentPlayer().getCountOfCards());
                 break;
             case PLAYER_TURN:
                 System.out.println("It is now " + round.getPlayerGroup().getCurrentPlayer().getName() + "'s turn");
@@ -24,6 +25,7 @@ public class RoundView implements IRoundView{
                 break;
             case PLAYER_DREW_CARD:
                 System.out.println(round.getPlayerGroup().getCurrentPlayer().getName() + " drew " + round.getCurrentCard().getTitle());
+                System.out.println(round.getPlayerGroup().getCurrentPlayer().getName() + " card count: " + round.getPlayerGroup().getCurrentPlayer().getCountOfCards());
                 break;
             case PLAYER_FINISHED_TURN:
                 System.out.println(round.getPlayerGroup().getCurrentPlayer().getName() + " ended their turn\n==============="  );

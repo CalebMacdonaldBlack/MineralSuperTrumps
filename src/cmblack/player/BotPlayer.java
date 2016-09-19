@@ -58,6 +58,9 @@ public class BotPlayer implements IPlayer {
             roundActions.removeAPlayer(this);
             roundActions.drawACard(this);
         }
+        if(getCountOfCards() == 0){
+            roundActions.removePlayerFromGame(this);
+        }
         roundActions.turnEnded(this);
     }
 

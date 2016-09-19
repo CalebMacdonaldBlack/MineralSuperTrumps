@@ -24,6 +24,8 @@ public interface IRound {
 
     IRound setPlayerGroup(IPlayerGroup playerGroup);
 
+
+
     class FakeRound implements IRound {
         ICard currentCard = new IPlayCard.FakePlayCard();
         ICategory currentCategory = new ICategory.FakeCleavageCategory();

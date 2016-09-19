@@ -2,8 +2,8 @@ package cmblack.controller;
 
 import cmblack.card.playcard.IPlayCard;
 import cmblack.category.ICategory;
+import cmblack.game.IGameActions;
 import cmblack.player.IPlayer;
-import cmblack.player.round.IPlayerGroup;
 import cmblack.player.round.IRound;
 import cmblack.player.round.IRoundView;
 import cmblack.player.round.RoundState;
@@ -16,7 +16,7 @@ import static org.junit.Assert.*;
  */
 public class RoundControllerTest {
     IRound round = new IRound.FakeRound();
-    IRoundActions roundActions = new RoundController(round, new IRoundView.FakeRoundView());
+    IRoundActions roundActions = new RoundController(round, new IRoundView.FakeRoundView(), new IGameActions.FakeGameActions());
 
     @Test
     public void testChangeCategory() throws Exception {

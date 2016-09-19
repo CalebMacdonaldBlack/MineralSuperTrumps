@@ -15,7 +15,7 @@ public interface IRoundActions {
     void removeAPlayer(IPlayer player);
     void drawACard(IPlayer player);
     void turnEnded(IPlayer player);
-    IRound getRound();
+    void removePlayerFromGame(IPlayer player);
 
     class FakeRoundActions implements IRoundActions {
 
@@ -50,8 +50,8 @@ public interface IRoundActions {
         }
 
         @Override
-        public IRound getRound() {
-            return new IRound.FakeRound();
+        public void removePlayerFromGame(IPlayer player) {
+
         }
 
         public ICategory getCategory() {

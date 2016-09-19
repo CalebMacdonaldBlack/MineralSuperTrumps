@@ -8,13 +8,11 @@ import cmblack.player.IPlayer;
 public class RoundResult implements IRoundResult {
 
     private final IPlayer roundWinningPlayer;
-    private final IPlayer[] playersStillIn;
-    private final IPlayer[] playersWithNoCards;
+    private final IPlayer[] players;
 
-    public RoundResult(IPlayer roundWinningPlayer, IPlayer[] playersStillIn, IPlayer[] playersWithNoCards) {
+    public RoundResult(IPlayer roundWinningPlayer, IPlayer[] players) {
         this.roundWinningPlayer = roundWinningPlayer;
-        this.playersStillIn = playersStillIn;
-        this.playersWithNoCards = playersWithNoCards;
+        this.players = players;
     }
 
     @Override
@@ -23,19 +21,12 @@ public class RoundResult implements IRoundResult {
     }
 
     @Override
-    public IPlayer[] getPlayersStillIn() {
-        return playersStillIn;
+    public IPlayer[] getPlayers() {
+        return players;
     }
-
-    @Override
-    public IPlayer[] getPlayersWithNoCards() {
-        return playersWithNoCards;
-    }
-
     @Override
     public boolean equals(IRoundResult roundResult) {
-        return this.playersStillIn.length == roundResult.getPlayersStillIn().length
-            && this.playersWithNoCards.length == roundResult.getPlayersWithNoCards().length
+        return this.players.length == roundResult.getPlayers().length
             && this.roundWinningPlayer.equals(roundResult.getRoundWinningPlayer());
     }
 }
