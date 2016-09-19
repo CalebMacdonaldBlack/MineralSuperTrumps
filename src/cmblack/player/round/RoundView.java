@@ -1,5 +1,7 @@
 package cmblack.player.round;
 
+import cmblack.card.CardType;
+
 /**
  * Created by calebmacdonaldblack on 19/09/2016.
  */
@@ -24,7 +26,7 @@ public class RoundView implements IRoundView{
                 System.out.println(round.getPlayerGroup().getCurrentPlayer().getName() + " couldn't play a card and was removed");
                 break;
             case PLAYER_DREW_CARD:
-                System.out.println(round.getPlayerGroup().getCurrentPlayer().getName() + " drew " + round.getCurrentCard().getTitle());
+                System.out.println(round.getPlayerGroup().getCurrentPlayer().getName() + " drew " + round.getPlayerGroup().getCurrentPlayer().getCards().get(round.getPlayerGroup().getCurrentPlayer().getCards().size() - 1).getTitle());
                 System.out.println(round.getPlayerGroup().getCurrentPlayer().getName() + " card count: " + round.getPlayerGroup().getCurrentPlayer().getCountOfCards());
                 break;
             case PLAYER_FINISHED_TURN:

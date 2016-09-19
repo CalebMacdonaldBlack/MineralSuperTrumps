@@ -47,6 +47,7 @@ public class BotPlayer implements IPlayer {
                 cardPlayed = true;
                 break;
             }else if(card.getType().equals(CardType.TRUMP_CARD)){
+                this.cards.remove(card);
                 roundActions.playACard(card);
                 roundActions.changeCategory(chooseCategory());
                 cardPlayed = true;

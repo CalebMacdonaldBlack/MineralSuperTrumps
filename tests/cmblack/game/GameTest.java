@@ -2,9 +2,13 @@ package cmblack.game;
 
 import cmblack.controller.GameController;
 import cmblack.deck.IDeck;
+import cmblack.deck.ShuffledDeck;
+import cmblack.deck.deckbuilder.JSONDeckBuilder;
+import cmblack.deck.deckbuilder.JsonReaderFromFile;
 import cmblack.player.BotPlayer;
 import cmblack.player.IPlayer;
 import cmblack.player.round.*;
+import com.google.gson.stream.JsonReader;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -20,7 +24,7 @@ public class GameTest {
 
     @Test
     public void testStartGame1() throws Exception {
-        IGame game = new Game(players, new IDeck.FakeDeck(), new RoundView(), GameState.START, new RoundResult[0], new IPlayer[0]);
+        IGame game = new Game(players, new ShuffledDeck(new JSONDeckBuilder(new JsonReaderFromFile("cards.json").getReader()).build()), new RoundView(), GameState.START, new RoundResult[0], new IPlayer[0]);
         GameController gameController = new GameController(new GameView(), game);
         gameController.dealCards();
         gameController.startGame();

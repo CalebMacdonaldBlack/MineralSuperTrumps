@@ -106,6 +106,20 @@ public class PlayerGroup implements IPlayerGroup {
 
     @Override
     public IPlayerGroup removePlayerFromGame(IPlayer player) {
+
+        IPlayer currentPlayer = null;
+
+        for(int i=0;i<allPlayers.length;i++){
+            if(allPlayers[i].equals(player)){
+                if(i == 0){
+                    currentPlayer = allPlayers[allPlayers.length - 1];
+                    break;
+                } else {
+                    currentPlayer = allPlayers[i - 1];
+                }
+            }
+        }
+
         List<IPlayer> allPlayers = new ArrayList<>();
         for(IPlayer p: this.allPlayers){
             if(!player.equals(p)){
@@ -113,6 +127,6 @@ public class PlayerGroup implements IPlayerGroup {
             }
         }
         IPlayerGroup playerGroup = this.removePlayerFromRound(player);
-        return new PlayerGroup(allPlayers.toArray(new IPlayer[allPlayers.size()]), playerGroup.getPlayersStillIn(), playerGroup.getCurrentPlayer());
+        return new PlayerGroup(allPlayers.toArray(new IPlayer[allPlayers.size()]),playerGroup.getPlayersStillIn(), currentPlayer);
     }
 }

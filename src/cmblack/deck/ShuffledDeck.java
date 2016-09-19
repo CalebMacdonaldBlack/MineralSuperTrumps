@@ -1,5 +1,6 @@
 package cmblack.deck;
 
+import cmblack.card.EmptyCard;
 import cmblack.card.ICard;
 
 import java.util.ArrayList;
@@ -19,7 +20,11 @@ public class ShuffledDeck implements IDeck{
 
     @Override
     public ICard takeCard() {
-        return deck.takeCardAt(new Random().nextInt(deck.length()));
+        if(length() > 0){
+            return deck.takeCardAt(new Random().nextInt(deck.length()));
+        } else {
+            return new EmptyCard();
+        }
     }
 
     @Override
