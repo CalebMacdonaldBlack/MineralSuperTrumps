@@ -79,18 +79,12 @@ public class AveragePercentOfRangeResult implements IAveragePercentOfRangeResult
                 return new SpecificGravityCategory();
             }
         }
-
-        System.out.println(myArray[0] +" "+ myArray[1] +" "+ myArray[2] +" "+ myArray[3] +" "+ myArray[4]);
-        System.out.println(categories[0].getCategoryName());
-        System.out.println(cleavageAveragePercentOfRange);
         throw new NullPointerException("Cannot find a valid category in categories variable with length of " + categories.length + ". It could be possible that the player has no playcards and can't make a valid comparison");
     }
 
     private boolean categoriesContains(ICategory category, ICategory[] categories){
         for(ICategory c: categories){
-            System.out.println(c.getCategoryName() + " - " + category.getCategoryName());
             if(c.equals(category)){
-                System.out.println("true");
                 return true;
             }
         }
