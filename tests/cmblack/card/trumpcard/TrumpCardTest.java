@@ -18,16 +18,6 @@ public class TrumpCardTest {
             new ICategory[]{new ICategory.FakeSpecificGravityCategory()}
             );
 
-    @Test
-    public void testGetCategories() throws Exception {
-        assertTrue(this.areCategoryArraysEqual(
-                trumpCard.getCategories(),
-                new ICategory[]{new ICategory.FakeSpecificGravityCategory()}
-        ));
-
-
-    }
-
     private boolean areCategoryArraysEqual(ICategory[] a, ICategory[] a2){
         if (a==a2)
             return true;
@@ -68,5 +58,30 @@ public class TrumpCardTest {
     @Test
     public void testGetPlayCardStats() throws Exception {
         assertTrue(new TrumpCardStats().equals(trumpCard.getStats()));
+    }
+
+    @Test
+    public void testGetType() throws Exception {
+        assertEquals(CardType.TRUMP_CARD, trumpCard.getType());
+    }
+
+    @Test
+    public void testGetStats() throws Exception {
+        assertTrue(trumpCard.getStats().equals(new TrumpCardStats()));
+    }
+
+    @Test
+    public void testEquals() throws Exception {
+        assertTrue(trumpCard.equals(trumpCard = new TrumpCard(
+                "Geophysisist",
+                "Change the trump category to Specific gravity",
+                "Slide59.jpg",
+                new ICategory[]{new ICategory.FakeSpecificGravityCategory()}
+        )));
+    }
+
+    @Test
+    public void testChangeableTrumpCategories() throws Exception {
+        assertTrue(trumpCard.changeableTrumpCategories()[0].equals(new ICategory.FakeSpecificGravityCategory()));
     }
 }

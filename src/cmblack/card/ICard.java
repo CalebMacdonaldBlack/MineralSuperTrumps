@@ -1,6 +1,7 @@
 package cmblack.card;
 
 import cmblack.card.stats.IStats;
+import cmblack.category.ICategory;
 
 /**
  * Created by calebmacdonaldblack on 23/08/2016.
@@ -11,15 +12,11 @@ public interface ICard {
 
     String getImageFilename();
 
-    //Todo stats for both trump and playCard
-
-    //TODO comparing stats returns a statsResult with all comparison
-    //TODO return the comparingStats as an object
-
     CardType getType();
-
 
     IStats getStats();
 
     boolean equals(ICard card);
+
+    ICategory[] changeableTrumpCategories();
 }

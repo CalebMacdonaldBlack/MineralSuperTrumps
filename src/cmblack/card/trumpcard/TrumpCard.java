@@ -22,11 +22,6 @@ public class TrumpCard implements ITrumpCard {
     }
 
     @Override
-    public ICategory[] getCategories() {
-        return this.categories;
-    }
-
-    @Override
     public String getSubTitle() {
         return this.subTitle;
     }
@@ -57,6 +52,11 @@ public class TrumpCard implements ITrumpCard {
             && card.getTitle().equals(this.title)
             && card.getType().equals(CardType.TRUMP_CARD)
             && card.getStats().equals(this.getStats());
+    }
+
+    @Override
+    public ICategory[] changeableTrumpCategories() {
+        return categories;
     }
 
 }

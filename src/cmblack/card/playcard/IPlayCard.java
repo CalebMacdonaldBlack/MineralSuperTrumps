@@ -4,6 +4,7 @@ import cmblack.card.CardType;
 import cmblack.card.ICard;
 import cmblack.card.playcard.carddescription.ICardDescription;
 import cmblack.card.stats.IStats;
+import cmblack.category.ICategory;
 
 /**
  * Created by calebmacdonaldblack on 9/09/2016.
@@ -29,6 +30,11 @@ public interface IPlayCard extends ICard {
                     && this.getImageFilename().equals(card.getImageFilename())
                     && this.getStats().equals(card.getStats())
                     && card.getType().equals(CardType.PLAY_CARD);
+        }
+
+        @Override
+        public ICategory[] changeableTrumpCategories() {
+            return new ICategory[0];
         }
 
         @Override
@@ -64,6 +70,11 @@ public interface IPlayCard extends ICard {
                     && this.getImageFilename().equals(card.getImageFilename())
                     && this.getStats().equals(card.getStats())
                     && card.getType().equals(CardType.PLAY_CARD);
+        }
+
+        @Override
+        public ICategory[] changeableTrumpCategories() {
+            return new ICategory[0];
         }
 
         @Override
@@ -103,6 +114,11 @@ public interface IPlayCard extends ICard {
         }
 
         @Override
+        public ICategory[] changeableTrumpCategories() {
+            return new ICategory[0];
+        }
+
+        @Override
         public String getTitle() {
             return "Gold";
         }
@@ -136,6 +152,11 @@ public interface IPlayCard extends ICard {
                     && this.getImageFilename().equals(card.getImageFilename())
                     && this.getStats().equals(card.getStats())
                     && card.getType().equals(CardType.PLAY_CARD);
+        }
+
+        @Override
+        public ICategory[] changeableTrumpCategories() {
+            return new ICategory[0];
         }
 
         @Override

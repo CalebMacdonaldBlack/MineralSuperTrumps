@@ -11,7 +11,7 @@ public interface IAveragePercentOfRangeResult {
     double crustalAbundanceAveragePercentOfRange();
     double economicValueAveragePercentOfRange();
     double specificGravityAveragePercentOfRange();
-    ICategory getCategoryOfHighestPercentage();
+    ICategory getCategoryOfHighestPercentage(ICategory[] categories);
 
     class FakeAveragePercentOfRangeResult implements IAveragePercentOfRangeResult {
 
@@ -41,7 +41,7 @@ public interface IAveragePercentOfRangeResult {
         }
 
         @Override
-        public ICategory getCategoryOfHighestPercentage() {
+        public ICategory getCategoryOfHighestPercentage(ICategory[] categories) {
             return new ICategory.FakeEconomicValueCategory();
         }
     }

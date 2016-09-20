@@ -55,7 +55,7 @@ public class AveragePercentOfRangeResult implements IAveragePercentOfRangeResult
     }
 
     @Override
-    public ICategory getCategoryOfHighestPercentage() {
+    public ICategory getCategoryOfHighestPercentage(ICategory[] categories) {
 
         double[] myArray = new double[]{
                 this.hardnessAveragePercentOfRange,
@@ -65,18 +65,35 @@ public class AveragePercentOfRangeResult implements IAveragePercentOfRangeResult
                 this.specificGravityAveragePercentOfRange
         };
         Arrays.sort(myArray);
-        double max = myArray[myArray.length - 1];
 
-        if(this.hardnessAveragePercentOfRange == max){
-            return new HardnessCategory();
-        }else if(this.cleavageAveragePercentOfRange == max){
-            return new CleavageCategory();
-        }else if(this.crustalAbundanceAveragePercentOfRange == max){
-            return new CrustalAbundanceCategory();
-        }else if(this.economicValueAveragePercentOfRange == max){
-            return new EconomicValueCategory();
-        }else {
-            return new SpecificGravityCategory();
+        for(int count=1;count<myArray.length;count++){
+            if(this.hardnessAveragePercentOfRange == myArray[myArray.length - count] && categoriesContains(new HardnessCategory(), categories)){
+                return new HardnessCategory();
+            }else if(this.cleavageAveragePercentOfRange == myArray[myArray.length - count] && categoriesContains(new CleavageCategory(), categories)){
+                return new CleavageCategory();
+            }else if(this.crustalAbundanceAveragePercentOfRange == myArray[myArray.length - count] && categoriesContains(new CrustalAbundanceCategory(), categories)){
+                return new CrustalAbundanceCategory();
+            }else if(this.economicValueAveragePercentOfRange == myArray[myArray.length - count] && categoriesContains(new EconomicValueCategory(), categories)){
+                return new EconomicValueCategory();
+            }else if(this.specificGravityAveragePercentOfRange == myArray[myArray.length - count] && categoriesContains(new SpecificGravityCategory(), categories)){
+                return new SpecificGravityCategory();
+            }
         }
+
+        System.out.println(myArray[0] +" "+ myArray[1] +" "+ myArray[2] +" "+ myArray[3] +" "+ myArray[4]);
+        System.out.println(categories[0].getCategoryName());
+        System.out.println(cleavageAveragePercentOfRange);
+        throw new NullPointerException("Cannot find a valid category in categories variable with length of " + categories.length + ". It could be possible that the player has no playcards and can't make a valid comparison");
+    }
+
+    private boolean categoriesContains(ICategory category, ICategory[] categories){
+        for(ICategory c: categories){
+            System.out.println(c.getCategoryName() + " - " + category.getCategoryName());
+            if(c.equals(category)){
+                System.out.println("true");
+                return true;
+            }
+        }
+        return false;
     }
 }

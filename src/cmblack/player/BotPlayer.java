@@ -9,6 +9,11 @@ import cmblack.card.stats.statscalculator.IAveragePercentOfRangeCalculator;
 import cmblack.card.stats.statscalculator.IAveragePercentOfRangeResult;
 import cmblack.category.EmptyCategory;
 import cmblack.category.ICategory;
+import cmblack.category.cleavage.CleavageCategory;
+import cmblack.category.crustalabundance.CrustalAbundanceCategory;
+import cmblack.category.economicvalue.EconomicValueCategory;
+import cmblack.category.hardness.HardnessCategory;
+import cmblack.category.specificgravity.SpecificGravityCategory;
 import cmblack.controller.IRoundActions;
 
 import java.util.ArrayList;
@@ -49,7 +54,7 @@ public class BotPlayer implements IPlayer {
             }else if(card.getType().equals(CardType.TRUMP_CARD)){
                 this.cards.remove(card);
                 roundActions.playACard(card);
-                roundActions.changeCategory(chooseCategory());
+                roundActions.changeCategory(chooseCategory(card.changeableTrumpCategories()));
                 cardPlayed = true;
                 break;
             }
@@ -77,9 +82,20 @@ public class BotPlayer implements IPlayer {
     }
 
     @Override
-    public ICategory chooseCategory() {
+    public ICategory chooseCategory(ICategory[] changeableCategories) {
 
-        return this.pickCategoryWherePlayerHasHighestAverage();
+        return this.pickCategoryWherePlayerHasHighestAverage(changeableCategories);
+    }
+
+    @Override
+    public ICategory chooseCategory() {
+        return chooseCategory(new ICategory[]{
+                new CleavageCategory(),
+                new CrustalAbundanceCategory(),
+                new EconomicValueCategory(),
+                new HardnessCategory(),
+                new SpecificGravityCategory()
+        });
     }
 
     @Override
@@ -100,7 +116,7 @@ public class BotPlayer implements IPlayer {
         return this.cards;
     }
 
-    private ICategory pickCategoryWherePlayerHasHighestAverage() {
+    private ICategory pickCategoryWherePlayerHasHighestAverage(ICategory[] categories) {
         IAveragePercentOfRangeCalculator averagePercentOfRangeCalculator = new AveragePercentOfRangeCalculator();
         for(ICard card: cards){
             if(card.getType().equals(CardType.PLAY_CARD)){
@@ -110,6 +126,6 @@ public class BotPlayer implements IPlayer {
         IAveragePercentOfRangeResult averagePercentOfRangeResult = averagePercentOfRangeCalculator.calculateAverage();
 
 
-        return averagePercentOfRangeResult.getCategoryOfHighestPercentage();
+        return averagePercentOfRangeResult.getCategoryOfHighestPercentage(categories);
     }
 }

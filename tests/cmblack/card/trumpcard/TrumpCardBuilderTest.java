@@ -20,7 +20,7 @@ public class TrumpCardBuilderTest {
         ITrumpCard trumpCard = trumpCardBuilder.build(parsedCard);
         assertEquals("The Geophysist", trumpCard.getTitle());
         assertEquals("Changed the trump category to Specific gravity", trumpCard.getSubTitle());
-        assertTrue(trumpCard.getCategories()[0].equals(new ICategory.FakeSpecificGravityCategory()));
+        assertTrue(trumpCard.changeableTrumpCategories()[0].equals(new ICategory.FakeSpecificGravityCategory()));
         assertEquals("slide59.jpg", trumpCard.getImageFilename());
     }
 }

@@ -49,4 +49,19 @@ public class PlayCardTest {
         assertEquals(this.playCard.getType(), CardType.PLAY_CARD);
         assertNotEquals(this.playCard.getType(), CardType.TRUMP_CARD);
     }
+
+    @Test
+    public void testGetStats() throws Exception {
+        assertTrue(new IStats.FakePlayCardStats().equals(playCard.getStats()));
+    }
+
+    @Test
+    public void testChangeableTrumpCategories() throws Exception {
+        assertEquals(0, playCard.changeableTrumpCategories().length);
+    }
+
+    @Test
+    public void testGetType() throws Exception {
+        assertEquals(CardType.PLAY_CARD, playCard.getType());
+    }
 }

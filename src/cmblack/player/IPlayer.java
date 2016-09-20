@@ -17,6 +17,7 @@ public interface IPlayer {
     String getName();
     boolean equals(IPlayer player);
 
+    ICategory chooseCategory(ICategory[] changeableCategories);
     ICategory chooseCategory();
 
     int getCountOfCards();
@@ -49,6 +50,11 @@ public interface IPlayer {
         public boolean equals(IPlayer player) {
             // TODO not very accurate
             return this.getName().equals(player.getName());
+        }
+
+        @Override
+        public ICategory chooseCategory(ICategory[] changeableCategories) {
+            return chooseCategory();
         }
 
         @Override

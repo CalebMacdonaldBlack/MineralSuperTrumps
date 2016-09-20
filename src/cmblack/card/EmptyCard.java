@@ -2,6 +2,7 @@ package cmblack.card;
 
 import cmblack.card.stats.EmptyStats;
 import cmblack.card.stats.IStats;
+import cmblack.category.ICategory;
 
 /**
  * Created by calebmacdonaldblack on 10/09/2016.
@@ -33,5 +34,10 @@ public class EmptyCard implements ICard {
             && card.getType().equals(CardType.EMPTY_CARD)
             && card.getImageFilename().equals("")
             && card.getStats().equals(new EmptyStats());
+    }
+
+    @Override
+    public ICategory[] changeableTrumpCategories() {
+        return new ICategory[0];
     }
 }

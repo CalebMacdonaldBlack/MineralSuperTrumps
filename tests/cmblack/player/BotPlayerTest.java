@@ -107,7 +107,8 @@ public class BotPlayerTest {
     @Test
     public void testPlayCard4() throws Exception {
         IRoundActions roundActions = new IRoundActions.FakeRoundActions();
-        //new BotPlayer("bot1").giveCard().playCard(new IPlayCard.FakeGoodPlayCard(), new ICategory.FakeCleavageCategory(), roundActions);
+        new BotPlayer("bot1").giveCard(new IPlayCard.FakeBadPlayCard()).giveCard(new ITrumpCard.FakeTrumpCard2()).playCard(new IPlayCard.FakeGoodPlayCard(), new ICategory.FakeCleavageCategory(), roundActions);
+        assertTrue(((IRoundActions.FakeRoundActions)roundActions).getCategory().getCategoryName() + " != " + new ICategory.FakeHardnessCategory().getCategoryName(),((IRoundActions.FakeRoundActions)roundActions).getCategory().equals(new ICategory.FakeHardnessCategory()));
 
     }
 }

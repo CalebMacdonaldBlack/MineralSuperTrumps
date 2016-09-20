@@ -4,6 +4,7 @@ import cmblack.card.CardType;
 import cmblack.card.ICard;
 import cmblack.card.playcard.carddescription.ICardDescription;
 import cmblack.card.stats.IStats;
+import cmblack.category.ICategory;
 
 /**
  * Created by calebmacdonaldblack on 23/08/2016.
@@ -37,6 +38,11 @@ public class PlayCard implements IPlayCard {
             && this.imageFileName.equals(card.getImageFilename())
             && this.playCardStats.equals(card.getStats())
             && card.getType().equals(CardType.PLAY_CARD);
+    }
+
+    @Override
+    public ICategory[] changeableTrumpCategories() {
+        return new ICategory[0];
     }
 
     @Override

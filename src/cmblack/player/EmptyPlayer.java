@@ -18,7 +18,8 @@ public class EmptyPlayer implements IPlayer {
     }
 
     @Override
-    public void playCard(ICard cardToBeat, ICategory currentTrumpCategory, IRoundActions roundActions) {
+    public IPlayer playCard(ICard cardToBeat, ICategory currentTrumpCategory, IRoundActions roundActions) {
+        return this;
     }
 
     @Override
@@ -32,6 +33,11 @@ public class EmptyPlayer implements IPlayer {
     }
 
     @Override
+    public ICategory chooseCategory(ICategory[] changeableCategories) {
+        return chooseCategory();
+    }
+
+    @Override
     public ICategory chooseCategory() {
         return new EmptyCategory();
     }
@@ -42,8 +48,8 @@ public class EmptyPlayer implements IPlayer {
     }
 
     @Override
-    public void giveCard(ICard card) {
-
+    public IPlayer giveCard(ICard card) {
+        return this;
     }
 
     @Override
