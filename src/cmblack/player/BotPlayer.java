@@ -31,7 +31,7 @@ public class BotPlayer implements IPlayer {
     }
 
     @Override
-    public void playCard(ICard cardToBeat, ICategory currentTrumpCategory, IRoundActions roundActions) {
+    public IPlayer playCard(ICard cardToBeat, ICategory currentTrumpCategory, IRoundActions roundActions) {
 
         boolean cardPlayed = false;
 
@@ -63,6 +63,7 @@ public class BotPlayer implements IPlayer {
             roundActions.removePlayerFromGame(this);
         }
         roundActions.turnEnded(this);
+        return this;
     }
 
     @Override
@@ -87,10 +88,11 @@ public class BotPlayer implements IPlayer {
     }
 
     @Override
-    public void giveCard(ICard card) {
+    public IPlayer giveCard(ICard card) {
         if(!card.equals(new EmptyCard())){
             this.cards.add(card);
         }
+        return this;
     }
 
     @Override

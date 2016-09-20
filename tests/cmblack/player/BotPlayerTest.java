@@ -103,4 +103,11 @@ public class BotPlayerTest {
     public void testPlayCard3() throws Exception {
         new BotPlayer("bot1").playCard(new IPlayCard.FakePlayCard(), new EmptyCategory(), new IRoundActions.FakeRoundActions());
     }
+
+    @Test
+    public void testPlayCard4() throws Exception {
+        IRoundActions roundActions = new IRoundActions.FakeRoundActions();
+        //new BotPlayer("bot1").giveCard().playCard(new IPlayCard.FakeGoodPlayCard(), new ICategory.FakeCleavageCategory(), roundActions);
+
+    }
 }

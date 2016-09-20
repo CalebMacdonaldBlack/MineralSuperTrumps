@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public interface IPlayer {
     IPlayer addCard(ICard card);
-    void playCard(ICard cardToBeat, ICategory currentTrumpCategory, IRoundActions roundActions);
+    IPlayer playCard(ICard cardToBeat, ICategory currentTrumpCategory, IRoundActions roundActions);
     String getName();
     boolean equals(IPlayer player);
 
@@ -21,7 +21,7 @@ public interface IPlayer {
 
     int getCountOfCards();
 
-    void giveCard(ICard card);
+    IPlayer giveCard(ICard card);
 
     ArrayList<ICard> getCards();
 
@@ -36,8 +36,8 @@ public interface IPlayer {
         }
 
         @Override
-        public void playCard(ICard cardToBeat, ICategory currentTrumpCategory, IRoundActions roundActions) {
-
+        public IPlayer playCard(ICard cardToBeat, ICategory currentTrumpCategory, IRoundActions roundActions) {
+            return this;
         }
 
         @Override
@@ -62,8 +62,8 @@ public interface IPlayer {
         }
 
         @Override
-        public void giveCard(ICard card) {
-
+        public IPlayer giveCard(ICard card) {
+            return this;
         }
 
         @Override

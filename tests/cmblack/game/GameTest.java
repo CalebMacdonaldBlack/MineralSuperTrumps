@@ -28,6 +28,7 @@ public class GameTest {
         GameController gameController = new GameController(new GameView(), game);
         gameController.dealCards();
         gameController.startGame();
+        // TODO: 19/09/2016 trump card plays any category right now, add human player, add menu, create view for human player
     }
 
     @Test
