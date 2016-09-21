@@ -44,7 +44,7 @@ public class RoundController implements IRoundActions{
     public void drawACard(IPlayer player) {
         player.giveCard(round.getDeck().takeCard());
         round = round.setRoundState(RoundState.PLAYER_DREW_CARD);
-        roundView.update(round);
+         roundView.update(round);
     }
 
     // TODO: 19/09/2016 remove player parameter 
@@ -66,5 +66,10 @@ public class RoundController implements IRoundActions{
     public void removePlayerFromGame(IPlayer player) {
         round = round.setPlayerGroup(round.getPlayerGroup().removePlayerFromGame(player));
         gameActions.playerRemovedFromGame(player);
+    }
+
+    @Override
+    public ICard findCardToPlay(ICard[] cards) {
+        return roundView.getCardSelection(cards);
     }
 }
