@@ -11,18 +11,17 @@ import cmblack.player.round.IRound;
  * Created by calebmacdonaldblack on 16/09/2016.
  */
 public interface IRoundActions {
-    void selectCategory(String categoryName);
-    void selectCard(String cardName);
+    void selectedCategory(ICategory category);
+    void selectedCard(ICard card);
 
     class FakeRoundActions implements IRoundActions {
-
         @Override
-        public void selectCategory(String categoryName) {
+        public void selectedCategory(ICategory category) {
 
         }
 
         @Override
-        public void selectCard(String cardName) {
+        public void selectedCard(ICard card) {
 
         }
     }

@@ -3,6 +3,8 @@ package cmblack.player.round;
 import cmblack.card.playcard.IPlayCard;
 import cmblack.category.ICategory;
 import cmblack.deck.IDeck;
+import cmblack.player.BotPlayer;
+import cmblack.player.playerhand.PlayerHand;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -12,12 +14,7 @@ import static org.junit.Assert.*;
  */
 public class RoundTest {
     IDeck deck = new IDeck.FakeDeck();
-    IRound round = new Round(new IPlayerGroup.FakePlayerGroup(), new IPlayCard.FakeGoodPlayCard(), deck, new ICategory.FakeCleavageCategory());
-
-    @Test
-    public void testGetPlayerGroup() throws Exception {
-        assertTrue(round.getPlayerGroup().equals(new IPlayerGroup.FakePlayerGroup()));
-    }
+    IRound round = new Round(new IPlayCard.FakeGoodPlayCard(), deck, new ICategory.FakeCleavageCategory(), new BotPlayer("name", new PlayerHand()));
 
     @Test
     public void testGetCurrentCard() throws Exception {
@@ -47,8 +44,13 @@ public class RoundTest {
     }
 
     @Test
-    public void testSetPlayerGroup() throws Exception {
-        IPlayerGroup playerGroup = new IPlayerGroup.FakePlayerGroup();
-        assertTrue(round.setPlayerGroup(playerGroup).getPlayerGroup().equals(playerGroup));
+    public void testCurrentPlayer() throws Exception {
+        assertTrue(new BotPlayer("name", new PlayerHand()).equals(round.getCurrentPlayer()));
+    }
+
+    @Test
+    public void testSetCurrentPlayer() throws Exception {
+        IRound newRound = round.setCurrentPlayer(new BotPlayer("bot1", new PlayerHand()));
+        assertTrue(newRound.getCurrentPlayer().equals(new BotPlayer("bot1", new PlayerHand())));
     }
 }

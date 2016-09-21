@@ -3,26 +3,27 @@ package cmblack.player.round;
 import cmblack.card.ICard;
 import cmblack.category.ICategory;
 import cmblack.deck.IDeck;
+import cmblack.player.IPlayer;
 
 /**
  * Created by calebmacdonaldblack on 11/09/2016.
  */
 public class Round implements IRound {
-    private final IPlayerGroup playerGroup;
     private final ICard currentCard;
     private final IDeck deck;
     private final ICategory currentCategory;
+    private final IPlayer player;
 
-    public Round(IPlayerGroup playerGroup, ICard currentCard, IDeck deck, ICategory currentCategory) {
-        this.playerGroup = playerGroup;
+    public Round(ICard currentCard, IDeck deck, ICategory currentCategory, IPlayer player) {
         this.currentCard = currentCard;
         this.deck = deck;
         this.currentCategory = currentCategory;
+        this.player = player;
     }
 
     @Override
-    public IPlayerGroup getPlayerGroup() {
-        return this.playerGroup;
+    public IPlayer getCurrentPlayer() {
+        return player;
     }
 
     @Override
@@ -42,16 +43,16 @@ public class Round implements IRound {
 
     @Override
     public IRound setCurrentCard(ICard card) {
-        return new Round(this.playerGroup, card, this.deck, this.currentCategory);
+        return new Round(card, this.deck, this.currentCategory, player);
     }
 
     @Override
     public IRound setCurrentCategory(ICategory category) {
-        return new Round(this.playerGroup, this.currentCard, this.deck, category);
+        return new Round(this.currentCard, this.deck, category, player);
     }
 
     @Override
-    public IRound setPlayerGroup(IPlayerGroup playerGroup) {
-        return new Round(playerGroup, this.currentCard, this.deck, this.currentCategory);
+    public IRound setCurrentPlayer(IPlayer player) {
+        return new Round(this.currentCard, this.deck, this.currentCategory, player);
     }
 }

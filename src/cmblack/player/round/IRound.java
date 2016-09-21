@@ -12,15 +12,14 @@ import java.util.ArrayList;
  * Created by calebmacdonaldblack on 11/09/2016.
  */
 public interface IRound {
-    IPlayerGroup getPlayerGroup();
+    IPlayer getCurrentPlayer();
     ICard getCurrentCard();
     IDeck getDeck();
     ICategory getCurrentCategory();
 
     IRound setCurrentCard(ICard card);
     IRound setCurrentCategory(ICategory category);
-
-    IRound setPlayerGroup(IPlayerGroup playerGroup);
+    IRound setCurrentPlayer(IPlayer player);
 
 
 
@@ -28,10 +27,11 @@ public interface IRound {
         ICard currentCard = new IPlayCard.FakePlayCard();
         ICategory currentCategory = new ICategory.FakeCleavageCategory();
         IPlayerGroup playerGroup = new IPlayerGroup.FakePlayerGroup();
+        IPlayer player = new IPlayer.FakePlayer();
 
         @Override
-        public IPlayerGroup getPlayerGroup() {
-            return playerGroup;
+        public IPlayer getCurrentPlayer() {
+            return player;
         }
 
         @Override
@@ -62,8 +62,7 @@ public interface IRound {
         }
 
         @Override
-        public IRound setPlayerGroup(IPlayerGroup playerGroup) {
-            this.playerGroup = playerGroup;
+        public IRound setCurrentPlayer(IPlayer player) {
             return this;
         }
     }
