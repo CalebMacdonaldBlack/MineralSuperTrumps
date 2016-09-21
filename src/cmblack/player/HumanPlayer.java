@@ -1,82 +1,37 @@
 package cmblack.player;
 
-import cmblack.card.CardType;
-import cmblack.card.ICard;
-import cmblack.category.CategoryComparisonResult;
-import cmblack.category.ICategory;
-import cmblack.controller.IRoundActions;
-
-import java.util.ArrayList;
-import java.util.List;
+import cmblack.player.playerhand.IPlayerHand;
 
 /**
  * Created by calebmacdonaldblack on 20/09/2016.
  */
 public class HumanPlayer implements IPlayer {
-    private final ArrayList<ICard> cards = new ArrayList<>();
+
     private final String name;
+    private final IPlayerHand playerHand;
 
-    public HumanPlayer(String name) {
+    public HumanPlayer(String name, IPlayerHand playerHand) {
         this.name = name;
+        this.playerHand = playerHand;
     }
 
     @Override
-    public IPlayer addCard(ICard card) {
-        return null;
-    }
-
-    @Override
-    public IPlayer playCard(ICard cardToBeat, ICategory currentTrumpCategory, IRoundActions roundActions) {
-
-        List<ICard> validCards = new ArrayList<>();
-
-        for(ICard card: cards){
-            CategoryComparisonResult categoryComparisonResult = card.getStats().compareWith(cardToBeat.getStats());
-            if(categoryComparisonResult.valueForCategory(currentTrumpCategory) > 0 || card.getType().equals(CardType.TRUMP_CARD)){
-                validCards.add(card);
-            }
-        }
-
-        ICard card = roundActions.findCardToPlay(validCards.toArray(new ICard[validCards.size()]));
-
-        // TODO: 21/09/2016 make this a method that the controller calls
-        this.cards.remove(card);
-        return this;
+    public IPlayerHand getPlayerHand() {
+        return this.playerHand;
     }
 
     @Override
     public String getName() {
-        return this.name;
+        return name;
     }
 
     @Override
     public boolean equals(IPlayer player) {
-        return false;
+        return name.equals(player.getName());
     }
 
     @Override
-    public ICategory chooseCategory(ICategory[] changeableCategories) {
-        return null;
-    }
-
-    @Override
-    public ICategory chooseCategory() {
-        return null;
-    }
-
-    @Override
-    public int getCountOfCards() {
-        return this.cards.size();
-    }
-
-    @Override
-    public IPlayer giveCard(ICard card) {
-        this.cards.add(card);
-        return this;
-    }
-
-    @Override
-    public ArrayList<ICard> getCards() {
-        return null;
+    public PlayerType getPlayerType() {
+        return PlayerType.HUMAN;
     }
 }

@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
  */
 public class RoundTest {
     IDeck deck = new IDeck.FakeDeck();
-    IRound round = new Round(new IPlayerGroup.FakePlayerGroup(), new IPlayCard.FakeGoodPlayCard(), deck, new ICategory.FakeCleavageCategory(), RoundState.START);
+    IRound round = new Round(new IPlayerGroup.FakePlayerGroup(), new IPlayCard.FakeGoodPlayCard(), deck, new ICategory.FakeCleavageCategory());
 
     @Test
     public void testGetPlayerGroup() throws Exception {
@@ -44,18 +44,6 @@ public class RoundTest {
     public void testSetCurrentCategory() throws Exception {
         IRound newRound = round.setCurrentCategory(new ICategory.FakeHardnessCategory());
         assertTrue(newRound.getCurrentCategory().equals(new ICategory.FakeHardnessCategory()));
-    }
-
-    @Test
-    public void testGetRoundState() throws Exception {
-        assertTrue(round.getRoundState().equals(RoundState.START));
-    }
-
-    @Test
-    public void testSetRoundState() throws Exception {
-        assertTrue(round.getRoundState().equals(RoundState.START));
-        IRound newRound = round.setRoundState(RoundState.CATEGORY_UPDATED);
-        assertTrue(newRound.getRoundState().equals(RoundState.CATEGORY_UPDATED));
     }
 
     @Test

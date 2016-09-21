@@ -11,71 +11,19 @@ import cmblack.player.round.IRound;
  * Created by calebmacdonaldblack on 16/09/2016.
  */
 public interface IRoundActions {
-    void changeCategory(ICategory category);
-    void playACard(ICard card);
-    void removeAPlayer(IPlayer player);
-    void drawACard(IPlayer player);
-    void turnEnded(IPlayer player);
-    void removePlayerFromGame(IPlayer player);
-
-    ICard findCardToPlay(ICard[] cards);
+    void selectCategory(String categoryName);
+    void selectCard(String cardName);
 
     class FakeRoundActions implements IRoundActions {
 
-        private ICategory category;
-        private ICard card;
-        private IPlayer removedPlayer;
-        private IPlayer currentPlayer;
-
         @Override
-        public void changeCategory(ICategory category) {
-            this.category = category;
-        }
-
-        @Override
-        public void playACard(ICard card) {
-            this.card = card;
-        }
-
-        @Override
-        public void removeAPlayer(IPlayer player) {
-            this.removedPlayer = player;
-        }
-
-        @Override
-        public void drawACard(IPlayer player) {
-            player.giveCard(new IPlayCard.FakePlayCard());
-        }
-
-        @Override
-        public void turnEnded(IPlayer player) {
+        public void selectCategory(String categoryName) {
 
         }
 
         @Override
-        public void removePlayerFromGame(IPlayer player) {
+        public void selectCard(String cardName) {
 
-        }
-
-        @Override
-        public ICard findCardToPlay(ICard[] cards) {
-            return new EmptyCard();
-        }
-
-        public ICategory getCategory() {
-            return category;
-        }
-
-        public ICard getCard() {
-            return card;
-        }
-
-        public IPlayer getRemovedPlayer() {
-            return removedPlayer;
-        }
-
-        public IPlayer getCurrentPlayer() {
-            return currentPlayer;
         }
     }
 }

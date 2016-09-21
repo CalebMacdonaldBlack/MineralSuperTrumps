@@ -12,14 +12,12 @@ public class Round implements IRound {
     private final ICard currentCard;
     private final IDeck deck;
     private final ICategory currentCategory;
-    private final RoundState roundState;
 
-    public Round(IPlayerGroup playerGroup, ICard currentCard, IDeck deck, ICategory currentCategory, RoundState roundState) {
+    public Round(IPlayerGroup playerGroup, ICard currentCard, IDeck deck, ICategory currentCategory) {
         this.playerGroup = playerGroup;
         this.currentCard = currentCard;
         this.deck = deck;
         this.currentCategory = currentCategory;
-        this.roundState = roundState;
     }
 
     @Override
@@ -43,27 +41,17 @@ public class Round implements IRound {
     }
 
     @Override
-    public RoundState getRoundState() {
-        return this.roundState;
-    }
-
-    @Override
     public IRound setCurrentCard(ICard card) {
-        return new Round(this.playerGroup, card, this.deck, this.currentCategory, roundState);
+        return new Round(this.playerGroup, card, this.deck, this.currentCategory);
     }
 
     @Override
     public IRound setCurrentCategory(ICategory category) {
-        return new Round(this.playerGroup, this.currentCard, this.deck, category, roundState);
-    }
-
-    @Override
-    public IRound setRoundState(RoundState roundState) {
-        return new Round(this.playerGroup, this.currentCard, this.deck, this.currentCategory, roundState);
+        return new Round(this.playerGroup, this.currentCard, this.deck, category);
     }
 
     @Override
     public IRound setPlayerGroup(IPlayerGroup playerGroup) {
-        return new Round(playerGroup, this.currentCard, this.deck, this.currentCategory, this.roundState);
+        return new Round(playerGroup, this.currentCard, this.deck, this.currentCategory);
     }
 }

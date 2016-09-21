@@ -5,6 +5,8 @@ import cmblack.card.ICard;
 import cmblack.category.EmptyCategory;
 import cmblack.category.ICategory;
 import cmblack.controller.IRoundActions;
+import cmblack.player.playerhand.IPlayerHand;
+import cmblack.player.playerhand.PlayerHand;
 
 import java.util.ArrayList;
 
@@ -13,13 +15,8 @@ import java.util.ArrayList;
  */
 public class EmptyPlayer implements IPlayer {
     @Override
-    public IPlayer addCard(ICard card) {
-        return this;
-    }
-
-    @Override
-    public IPlayer playCard(ICard cardToBeat, ICategory currentTrumpCategory, IRoundActions roundActions) {
-        return this;
+    public IPlayerHand getPlayerHand() {
+        return new PlayerHand();
     }
 
     @Override
@@ -29,31 +26,11 @@ public class EmptyPlayer implements IPlayer {
 
     @Override
     public boolean equals(IPlayer player) {
-        return this.getName().equals(player.getName());
+        return player.getName().equals("");
     }
 
     @Override
-    public ICategory chooseCategory(ICategory[] changeableCategories) {
-        return chooseCategory();
-    }
-
-    @Override
-    public ICategory chooseCategory() {
-        return new EmptyCategory();
-    }
-
-    @Override
-    public int getCountOfCards() {
-        return 0;
-    }
-
-    @Override
-    public IPlayer giveCard(ICard card) {
-        return this;
-    }
-
-    @Override
-    public ArrayList<ICard> getCards() {
-        return new ArrayList<>();
+    public PlayerType getPlayerType() {
+        return PlayerType.EMPTY;
     }
 }

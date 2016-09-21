@@ -2,6 +2,7 @@ package cmblack.player.round;
 
 import cmblack.player.BotPlayer;
 import cmblack.player.IPlayer;
+import cmblack.player.playerhand.PlayerHand;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -10,7 +11,7 @@ import static org.junit.Assert.*;
  * Created by calebmacdonaldblack on 12/09/2016.
  */
 public class PlayerGroupTest {
-    IPlayer[] players = new IPlayer[]{new BotPlayer("bot1"), new BotPlayer("bot2"), new BotPlayer("bot3")};
+    IPlayer[] players = new IPlayer[]{new BotPlayer("bot1", new PlayerHand()), new BotPlayer("bot2", new PlayerHand()), new BotPlayer("bot3", new PlayerHand())};
     IPlayerGroup playerGroup = new PlayerGroup(players, players[0]);
 
 

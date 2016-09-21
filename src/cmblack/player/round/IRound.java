@@ -16,11 +16,9 @@ public interface IRound {
     ICard getCurrentCard();
     IDeck getDeck();
     ICategory getCurrentCategory();
-    RoundState getRoundState();
 
     IRound setCurrentCard(ICard card);
     IRound setCurrentCategory(ICategory category);
-    IRound setRoundState(RoundState roundState);
 
     IRound setPlayerGroup(IPlayerGroup playerGroup);
 
@@ -30,7 +28,6 @@ public interface IRound {
         ICard currentCard = new IPlayCard.FakePlayCard();
         ICategory currentCategory = new ICategory.FakeCleavageCategory();
         IPlayerGroup playerGroup = new IPlayerGroup.FakePlayerGroup();
-        RoundState roundState = RoundState.START;
 
         @Override
         public IPlayerGroup getPlayerGroup() {
@@ -53,11 +50,6 @@ public interface IRound {
         }
 
         @Override
-        public RoundState getRoundState() {
-            return roundState;
-        }
-
-        @Override
         public IRound setCurrentCard(ICard card) {
             this.currentCard = card;
             return this;
@@ -66,12 +58,6 @@ public interface IRound {
         @Override
         public IRound setCurrentCategory(ICategory category) {
             this.currentCategory = category;
-            return this;
-        }
-
-        @Override
-        public IRound setRoundState(RoundState roundState) {
-            this.roundState = roundState;
             return this;
         }
 
