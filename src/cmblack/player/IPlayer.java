@@ -1,6 +1,7 @@
 package cmblack.player;
 
 import cmblack.player.playerhand.IPlayerHand;
+import cmblack.player.playerhand.PlayerHand;
 
 /**
  * Created by calebmacdonaldblack on 10/09/2016.
@@ -13,24 +14,26 @@ public interface IPlayer {
 
     class FakePlayer implements IPlayer {
 
+        private final IPlayerHand playerHand = new PlayerHand();
+
         @Override
         public IPlayerHand getPlayerHand() {
-            return null;
+            return playerHand;
         }
 
         @Override
         public String getName() {
-            return null;
+            return "Fake Bot";
         }
 
         @Override
         public boolean equals(IPlayer player) {
-            return false;
+            return player.getName().equals(getName());
         }
 
         @Override
         public PlayerType getPlayerType() {
-            return null;
+            return PlayerType.BOT;
         }
     }
 }

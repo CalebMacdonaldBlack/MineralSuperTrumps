@@ -15,24 +15,28 @@ public interface IPlayerHand {
 
     class FakePlayerHand implements IPlayerHand{
 
+        private final ArrayList<ICard> cards = new ArrayList<>();
+
         @Override
         public IPlayerHand giveCard(ICard card) {
-            return null;
+            cards.add(card);
+            return this;
         }
 
         @Override
         public IPlayerHand removeCard(ICard card) {
-            return null;
+            cards.remove(card);
+            return this;
         }
 
         @Override
         public ArrayList<ICard> getCards() {
-            return null;
+            return cards;
         }
 
         @Override
         public int getCountOfCards() {
-            return 0;
+            return cards.size();
         }
     }
 }
