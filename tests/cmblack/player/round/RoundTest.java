@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
  */
 public class RoundTest {
     IDeck deck = new IDeck.FakeDeck();
-    IRound round = new Round(new IPlayCard.FakeGoodPlayCard(), deck, new ICategory.FakeCleavageCategory(), new BotPlayer("name", new PlayerHand()));
+    ITurn round = new Turn(new IPlayCard.FakeGoodPlayCard(), deck, new ICategory.FakeCleavageCategory(), new BotPlayer("name", new PlayerHand()));
 
     @Test
     public void testGetCurrentCard() throws Exception {
@@ -33,13 +33,13 @@ public class RoundTest {
 
     @Test
     public void testSetCurrentCard() throws Exception {
-        IRound newRound = round.setCurrentCard(new IPlayCard.FakeBadPlayCard());
+        ITurn newRound = round.setCurrentCard(new IPlayCard.FakeBadPlayCard());
         assertTrue(newRound.getCurrentCard().equals(new IPlayCard.FakeBadPlayCard()));
     }
 
     @Test
     public void testSetCurrentCategory() throws Exception {
-        IRound newRound = round.setCurrentCategory(new ICategory.FakeHardnessCategory());
+        ITurn newRound = round.setCurrentCategory(new ICategory.FakeHardnessCategory());
         assertTrue(newRound.getCurrentCategory().equals(new ICategory.FakeHardnessCategory()));
     }
 
@@ -50,7 +50,7 @@ public class RoundTest {
 
     @Test
     public void testSetCurrentPlayer() throws Exception {
-        IRound newRound = round.setCurrentPlayer(new BotPlayer("bot1", new PlayerHand()));
+        ITurn newRound = round.setCurrentPlayer(new BotPlayer("bot1", new PlayerHand()));
         assertTrue(newRound.getCurrentPlayer().equals(new BotPlayer("bot1", new PlayerHand())));
     }
 }

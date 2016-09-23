@@ -1,7 +1,7 @@
 package cmblack.controller;
 
 import cmblack.player.IPlayer;
-import cmblack.player.round.IRound;
+import cmblack.player.round.ITurn;
 
 /**
  * Created by calebmacdonaldblack on 21/9/16.
@@ -11,7 +11,7 @@ public interface IRoundController {
     void findCardFromPlayer();
     void nextPlayerTurn(IPlayer player);
     void checkWin(IPlayer player);
-    IRound getRound();
+    ITurn getTurn();
 
     class FakeRoundController implements IRoundController {
 
@@ -35,8 +35,7 @@ public interface IRoundController {
 
         }
 
-        @Override
-        public IRound getRound() {
+        public ITurn getTurn() {
             return null;
         }
     }

@@ -10,23 +10,23 @@ import cmblack.category.hardness.HardnessCategory;
 import cmblack.category.specificgravity.SpecificGravityCategory;
 import cmblack.player.IBotAI;
 import cmblack.player.IPlayer;
-import cmblack.player.round.IRound;
+import cmblack.player.round.ITurn;
 
 /**
  * Created by calebmacdonaldblack on 16/09/2016.
  */
 public class RoundController implements IRoundActions, IRoundController{
-    private IRound round;
+    private ITurn turn;
     private final IBotAI botAI;
 
-    public RoundController(IRound round, IBotAI botAI){
-        this.round = round;
+    public RoundController(ITurn round, IBotAI botAI){
+        this.turn = round;
         this.botAI = botAI;
     }
 
     @Override
     public void findCategoryFromPlayer() {
-        round = round.setCurrentCategory(botAI.findBestCategory(round.getCurrentPlayer(), new ICategory[]{
+        turn = turn.setCurrentCategory(botAI.findBestCategory(turn.getCurrentPlayer(), new ICategory[]{
                 new CleavageCategory(),
                 new HardnessCategory(),
                 new SpecificGravityCategory(),
@@ -37,9 +37,9 @@ public class RoundController implements IRoundActions, IRoundController{
 
     @Override
     public void findCardFromPlayer() {
-        ICard card = botAI.findBestCard(round.getCurrentPlayer(), round.getCurrentCard(), round.getCurrentCategory());
+        ICard card = botAI.findBestCard(turn.getCurrentPlayer(), turn.getCurrentCard(), turn.getCurrentCategory());
         if(card.getType().equals(CardType.TRUMP_CARD) || card.getType().equals(CardType.PLAY_CARD)){
-            round = round.setCurrentCard(card);
+            turn = turn.setCurrentCard(card);
         }
     }
 
@@ -53,19 +53,18 @@ public class RoundController implements IRoundActions, IRoundController{
 
     }
 
-    @Override
-    public IRound getRound() {
-        return round;
+    public ITurn getTurn() {
+        return turn;
     }
 
     @Override
     public void selectedCategory(ICategory category) {
-        round = round.setCurrentCategory(category);
+        turn = turn.setCurrentCategory(category);
     }
 
     @Override
     public void selectedCard(ICard card) {
-        round = round.setCurrentCard(card);
-        round.getCurrentPlayer().getPlayerHand().removeCard(card);
+        turn = turn.setCurrentCard(card);
+        turn.getCurrentPlayer().getPlayerHand().removeCard(card);
     }
 }

@@ -6,24 +6,22 @@ import cmblack.category.ICategory;
 import cmblack.deck.IDeck;
 import cmblack.player.IPlayer;
 
-import java.util.ArrayList;
-
 /**
  * Created by calebmacdonaldblack on 11/09/2016.
  */
-public interface IRound {
+public interface ITurn {
     IPlayer getCurrentPlayer();
     ICard getCurrentCard();
     IDeck getDeck();
     ICategory getCurrentCategory();
 
-    IRound setCurrentCard(ICard card);
-    IRound setCurrentCategory(ICategory category);
-    IRound setCurrentPlayer(IPlayer player);
+    ITurn setCurrentCard(ICard card);
+    ITurn setCurrentCategory(ICategory category);
+    ITurn setCurrentPlayer(IPlayer player);
 
 
 
-    class FakeRound implements IRound {
+    class FakeTurn implements ITurn {
         ICard currentCard = new IPlayCard.FakePlayCard();
         ICategory currentCategory = new ICategory.FakeCleavageCategory();
         IPlayerGroup playerGroup = new IPlayerGroup.FakePlayerGroup();
@@ -50,19 +48,19 @@ public interface IRound {
         }
 
         @Override
-        public IRound setCurrentCard(ICard card) {
+        public ITurn setCurrentCard(ICard card) {
             this.currentCard = card;
             return this;
         }
 
         @Override
-        public IRound setCurrentCategory(ICategory category) {
+        public ITurn setCurrentCategory(ICategory category) {
             this.currentCategory = category;
             return this;
         }
 
         @Override
-        public IRound setCurrentPlayer(IPlayer player) {
+        public ITurn setCurrentPlayer(IPlayer player) {
             return this;
         }
     }
