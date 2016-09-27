@@ -42,4 +42,10 @@ public class SpecificGravity implements ISpecificGravity {
             && this.getMaximumValue() == specificGravity.getMaximumValue()
             && this.category.equals(specificGravity.getCategory());
     }
+
+    @Override
+    public String toString(){
+        return
+                category.getCategoryName() + "\t- " + minimumValue + "-" + maximumValue;
+    }
 }

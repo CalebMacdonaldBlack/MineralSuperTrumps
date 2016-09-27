@@ -1,14 +1,7 @@
 package cmblack.player;
 
-import cmblack.card.EmptyCard;
-import cmblack.card.ICard;
-import cmblack.category.EmptyCategory;
-import cmblack.category.ICategory;
-import cmblack.controller.IRoundActions;
 import cmblack.player.playerhand.IPlayerHand;
 import cmblack.player.playerhand.PlayerHand;
-
-import java.util.ArrayList;
 
 /**
  * Created by calebmacdonaldblack on 11/09/2016.

@@ -42,4 +42,10 @@ public class Hardness implements IHardness {
             && this.minimumValue == hardness.getMinimumValue()
             && this.category.equals(hardness.getCategory());
     }
+
+    @Override
+    public String toString(){
+        return
+                category.getCategoryName() + "\t- " + minimumValue + "-" + maximumValue;
+    }
 }

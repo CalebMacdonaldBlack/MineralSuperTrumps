@@ -59,4 +59,22 @@ public class TrumpCard implements ITrumpCard {
         return categories;
     }
 
+    @Override
+    public String toString() {
+        return
+            "\n--------Trump Card--------\n" +
+            title + " \n" +
+            subTitle + "\n" +
+            "Categories: " + changeableTrumpCategoriesAsString()
+            + "\n------------------------\n";
+    }
+
+    private String changeableTrumpCategoriesAsString() {
+        String returnString = "";
+        for (ICategory category: categories) {
+            returnString += category.getCategoryName() + ", ";
+        }
+        returnString += "\b\b";
+        return returnString;
+    }
 }

@@ -1,13 +1,5 @@
 package cmblack.player;
 
-import cmblack.card.EmptyCard;
-import cmblack.card.ICard;
-import cmblack.card.playcard.IPlayCard;
-import cmblack.card.trumpcard.ITrumpCard;
-import cmblack.category.EmptyCategory;
-import cmblack.category.ICategory;
-import cmblack.category.cleavage.CleavageCategory;
-import cmblack.controller.IRoundActions;
 import cmblack.player.playerhand.IPlayerHand;
 import cmblack.player.playerhand.PlayerHand;
 import org.junit.Test;

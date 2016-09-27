@@ -3,23 +3,21 @@ package cmblack.player.round;
 import cmblack.player.IPlayer;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by calebmacdonaldblack on 12/09/2016.
  */
 public class PlayerGroup implements IPlayerGroup {
 
-    private final IPlayer[] allPlayers;
-    private final IPlayer[] playersStillIn;
+    private final IPlayer[] playersStillInGame;
+    private final IPlayer[] playersStillInRound;
     private final IPlayer currentPlayer;
 
 
     public PlayerGroup(IPlayer[] allPlayers, IPlayer[] playersStillIn, IPlayer player) {
-        this.allPlayers = allPlayers;
-        this.playersStillIn = playersStillIn;
+        this.playersStillInGame = allPlayers;
+        this.playersStillInRound = playersStillIn;
         currentPlayer = player;
     }
 
@@ -31,14 +29,12 @@ public class PlayerGroup implements IPlayerGroup {
         this(players, players[0]);
     }
 
-    @Override
-    public IPlayer[] getAllPlayers() {
-        return allPlayers;
+    public IPlayer[] getPlayersStillInGame() {
+        return playersStillInGame;
     }
 
-    @Override
-    public IPlayer[] getPlayersStillIn() {
-        return playersStillIn;
+    public IPlayer[] getPlayersStillInRound() {
+        return playersStillInRound;
     }
 
     @Override
@@ -48,21 +44,21 @@ public class PlayerGroup implements IPlayerGroup {
 
     @Override
     public IPlayerGroup nextPlayerTurn() {
-        if(getPlayersStillIn().length < 2){
+        if(getPlayersStillInRound().length < 2){
             throw new NullPointerException("You need at least 2 players to find the next player");
         }
 
-        return new PlayerGroup(allPlayers, getPlayersStillIn(), findNextPlayerAfter(currentPlayer));
+        return new PlayerGroup(playersStillInGame, getPlayersStillInRound(), findNextPlayerAfter(currentPlayer));
     }
 
     private IPlayer findNextPlayerAfter(IPlayer player) {
         IPlayer nextPlayerInArray = null;
-        for(int i=0;i<allPlayers.length;i++){
-            if(player.equals(allPlayers[i])){
-                if(i == allPlayers.length - 1){
-                    nextPlayerInArray = allPlayers[0];
+        for(int i = 0; i< playersStillInGame.length; i++){
+            if(player.equals(playersStillInGame[i])){
+                if(i == playersStillInGame.length - 1){
+                    nextPlayerInArray = playersStillInGame[0];
                 } else {
-                    nextPlayerInArray = allPlayers[i + 1];
+                    nextPlayerInArray = playersStillInGame[i + 1];
                 }
                 break;
             }
@@ -78,7 +74,7 @@ public class PlayerGroup implements IPlayerGroup {
     }
 
     private boolean playerIsStillIn(IPlayer player) {
-        for(IPlayer p: playersStillIn){
+        for(IPlayer p: playersStillInRound){
             if(p.equals(player)){
                 return true;
             }
@@ -89,19 +85,19 @@ public class PlayerGroup implements IPlayerGroup {
     @Override
     public boolean equals(IPlayerGroup playerGroup) {
         // TODO: 19/09/2016 Not accurate fix it
-        return playerGroup.getAllPlayers().length == allPlayers.length
-            && playerGroup.getPlayersStillIn().length == playersStillIn.length;
+        return playerGroup.getPlayersStillInGame().length == playersStillInGame.length
+            && playerGroup.getPlayersStillInRound().length == playersStillInRound.length;
     }
 
     @Override
     public IPlayerGroup removePlayerFromRound(IPlayer player) {
         List<IPlayer> playersStillIn = new ArrayList<>();
-        for(IPlayer p: this.playersStillIn){
+        for(IPlayer p: this.playersStillInRound){
             if(!player.equals(p)){
                 playersStillIn.add(p);
             }
         }
-        return new PlayerGroup(allPlayers, playersStillIn.toArray(new IPlayer[playersStillIn.size()]), currentPlayer);
+        return new PlayerGroup(playersStillInGame, playersStillIn.toArray(new IPlayer[playersStillIn.size()]), currentPlayer);
     }
 
     @Override
@@ -109,24 +105,24 @@ public class PlayerGroup implements IPlayerGroup {
 
         IPlayer currentPlayer = null;
 
-        for(int i=0;i<allPlayers.length;i++){
-            if(allPlayers[i].equals(player)){
+        for(int i = 0; i< playersStillInGame.length; i++){
+            if(playersStillInGame[i].equals(player)){
                 if(i == 0){
-                    currentPlayer = allPlayers[allPlayers.length - 1];
+                    currentPlayer = playersStillInGame[playersStillInGame.length - 1];
                     break;
                 } else {
-                    currentPlayer = allPlayers[i - 1];
+                    currentPlayer = playersStillInGame[i - 1];
                 }
             }
         }
 
         List<IPlayer> allPlayers = new ArrayList<>();
-        for(IPlayer p: this.allPlayers){
+        for(IPlayer p: this.playersStillInGame){
             if(!player.equals(p)){
                 allPlayers.add(p);
             }
         }
         IPlayerGroup playerGroup = this.removePlayerFromRound(player);
-        return new PlayerGroup(allPlayers.toArray(new IPlayer[allPlayers.size()]),playerGroup.getPlayersStillIn(), currentPlayer);
+        return new PlayerGroup(allPlayers.toArray(new IPlayer[allPlayers.size()]),playerGroup.getPlayersStillInRound(), currentPlayer);
     }
 }

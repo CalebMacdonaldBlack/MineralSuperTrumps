@@ -17,13 +17,13 @@ public class PlayerGroupTest {
 
     @Test
     public void testGetAllPlayers() throws Exception {
-        assertEquals(3, playerGroup.getAllPlayers().length);
+        assertEquals(3, playerGroup.getPlayersStillInGame().length);
     }
 
     @Test
     public void testGetPlayersStillIn() throws Exception {
         playerGroup = playerGroup.removePlayerFromRound(players[0]);
-        assertEquals(2, playerGroup.getPlayersStillIn().length);
+        assertEquals(2, playerGroup.getPlayersStillInRound().length);
     }
 
     @Test
@@ -53,8 +53,8 @@ public class PlayerGroupTest {
 
     @Test
     public void testRemovePlayerFromGame() throws Exception {
-        assertEquals(3, playerGroup.getAllPlayers().length);
+        assertEquals(3, playerGroup.getPlayersStillInGame().length);
         IPlayerGroup playerGroup1 = playerGroup.removePlayerFromGame(players[0]);
-        assertEquals(2, playerGroup1.getAllPlayers().length);
+        assertEquals(2, playerGroup1.getPlayersStillInGame().length);
     }
 }

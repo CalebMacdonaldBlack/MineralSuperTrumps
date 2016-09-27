@@ -1,5 +1,6 @@
 package cmblack.player;
 
+import cmblack.card.EmptyCard;
 import cmblack.card.playcard.IPlayCard;
 import cmblack.category.ICategory;
 import cmblack.category.cleavage.CleavageCategory;
@@ -20,6 +21,13 @@ public class BotAITest {
         IPlayer player = new IPlayer.FakePlayer();
         player.getPlayerHand().giveCard(new IPlayCard.FakeGoodPlayCard());
         assertTrue(new IPlayCard.FakeGoodPlayCard().equals(botAI.findBestCard(player, new IPlayCard.FakeBadPlayCard(), new CleavageCategory())));
+    }
+
+    @Test
+    public void testFindBestCard1() throws Exception {
+        IPlayer player = new IPlayer.FakePlayer();
+        player.getPlayerHand().giveCard(new IPlayCard.FakeGoodPlayCard());
+        assertTrue(new IPlayCard.FakeGoodPlayCard().equals(botAI.findBestCard(player, new EmptyCard(), new CleavageCategory())));
     }
 
     @Test

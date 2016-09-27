@@ -1,5 +1,6 @@
 package cmblack.player.playerhand;
 
+import cmblack.card.CardType;
 import cmblack.card.ICard;
 import cmblack.player.playerhand.IPlayerHand;
 

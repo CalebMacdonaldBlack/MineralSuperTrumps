@@ -1,4 +1,4 @@
-package cmblack.card;
+package cmblack.card.playcard.carddescription;
 
 import cmblack.card.playcard.carddescription.ICardDescription;
 
@@ -45,5 +45,18 @@ public class CardDescription implements ICardDescription {
                 && this.classification.equals(cardDescription.getClassification())
                 && this.crystalSystem.equals(cardDescription.getCrystalSystem())
                 && Arrays.equals(this.occurrences, cardDescription.getOccurrences());
+    }
+
+    private String occurancesToString(){
+        return String.join(", " + getOccurrences());
+    }
+
+    @Override
+    public String toString() {
+        return
+        getChemicalCompound() + "\n" +
+        getClassification() + "\n" +
+        getCrystalSystem() + "\n" +
+        occurancesToString() + "\n";
     }
 }

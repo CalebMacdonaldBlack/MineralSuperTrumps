@@ -35,4 +35,10 @@ public class EconomicValue implements IEconomicValue {
     public ICategory getCategory() {
         return this.category;
     }
+
+    @Override
+    public String toString(){
+        return
+                category.getCategoryName() + "\t- " + value.getText();
+    }
 }

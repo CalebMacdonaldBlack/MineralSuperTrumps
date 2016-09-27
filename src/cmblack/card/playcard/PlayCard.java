@@ -59,4 +59,17 @@ public class PlayCard implements IPlayCard {
     public CardType getType() {
         return CardType.PLAY_CARD;
     }
+
+    @Override
+    public String toString(){
+        return
+                "\n-----------Card-----------\n" +
+                title + "\n" +
+                cardDescription.toString() +
+                playCardStats.toString() +
+                "--------------------------\n";
+
+    }
+
+
 }

@@ -1,6 +1,5 @@
 package cmblack.card.playcard.carddescription;
 
-import cmblack.card.CardDescription;
 import cmblack.deck.deckbuilder.IParsedCard;
 
 /**

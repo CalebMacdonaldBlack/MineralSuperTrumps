@@ -9,11 +9,14 @@ import cmblack.category.cleavage.CleavageCategory;
 import cmblack.category.hardness.HardnessCategory;
 import cmblack.deck.IDeck;
 import cmblack.player.BotAI;
+import cmblack.player.BotPlayer;
 import cmblack.player.HumanPlayer;
 import cmblack.player.IPlayer;
+import cmblack.player.playerhand.IPlayerHand;
 import cmblack.player.playerhand.PlayerHand;
 import cmblack.player.round.ITurn;
 import cmblack.player.round.Turn;
+import cmblack.view.IView;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -30,7 +33,7 @@ public class RoundControllerTest {
             new EmptyCategory(),
             currentPlayer
             );
-    RoundController roundController = new RoundController(turn, new BotAI());
+    TurnController roundController = new TurnController(turn, new BotAI(), new IView.FakeView());
 
     @Test
     public void testGetRound() throws Exception {
@@ -102,5 +105,13 @@ public class RoundControllerTest {
         //also note that higher up class is managing the players now and passing current player in turn
         //higher up class will get turn result and maybe call another game/menu whatever controller for other things
         
+    }
+
+    @Test
+    public void testNextPlayerTurn() throws Exception {
+        assertTrue(currentPlayer.equals(roundController.getTurn().getCurrentPlayer()));
+        IPlayer bot = new BotPlayer("new bot", new IPlayerHand.FakePlayerHand());
+        roundController.nextPlayerTurn(bot);
+        assertTrue(bot.equals(roundController.getTurn().getCurrentPlayer()));
     }
 }

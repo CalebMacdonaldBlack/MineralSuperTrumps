@@ -1,20 +1,13 @@
 package cmblack.player.round;
 
-import cmblack.player.EmptyPlayer;
 import cmblack.player.IPlayer;
-import com.sun.org.apache.xpath.internal.operations.Bool;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by calebmacdonaldblack on 12/09/2016.
  */
 public interface IPlayerGroup {
-    IPlayer[] getAllPlayers();
-    IPlayer[] getPlayersStillIn();
+    IPlayer[] getPlayersStillInGame();
+    IPlayer[] getPlayersStillInRound();
     IPlayer getCurrentPlayer();
     IPlayerGroup nextPlayerTurn();
     boolean equals(IPlayerGroup playerGroup);
@@ -27,13 +20,11 @@ public interface IPlayerGroup {
 
     class FakePlayerGroup implements IPlayerGroup {
 
-        @Override
-        public IPlayer[] getAllPlayers() {
+        public IPlayer[] getPlayersStillInGame() {
             return new IPlayer[0];
         }
 
-        @Override
-        public IPlayer[] getPlayersStillIn() {
+        public IPlayer[] getPlayersStillInRound() {
             return new IPlayer[0];
         }
 
@@ -49,8 +40,8 @@ public interface IPlayerGroup {
 
         @Override
         public boolean equals(IPlayerGroup playerGroup) {
-            return playerGroup.getPlayersStillIn().length == 0
-                && playerGroup.getAllPlayers().length == 0;
+            return playerGroup.getPlayersStillInRound().length == 0
+                && playerGroup.getPlayersStillInGame().length == 0;
         }
 
         @Override

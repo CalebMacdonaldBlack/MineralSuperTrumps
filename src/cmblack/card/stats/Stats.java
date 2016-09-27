@@ -77,4 +77,14 @@ public class Stats implements IStats {
                 specificGravity
         );
     }
+
+    @Override
+    public String toString() {
+        return
+            cleavage.toString() + "\n" +
+            crustalAbundance.toString() + "\n" +
+            economicValue.toString() + "\n" +
+            hardness.toString() + "\n" +
+            specificGravity.toString() + "\n";
+    }
 }

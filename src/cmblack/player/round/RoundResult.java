@@ -1,32 +1,28 @@
 package cmblack.player.round;
 
-import cmblack.player.IPlayer;
+import cmblack.category.ICategory;
 
 /**
  * Created by calebmacdonaldblack on 11/09/2016.
  */
 public class RoundResult implements IRoundResult {
 
-    private final IPlayer roundWinningPlayer;
-    private final IPlayer[] players;
+    private final IPlayerGroup playerGroup;
+    private final ICategory nextRoundCategory;
 
-    public RoundResult(IPlayer roundWinningPlayer, IPlayer[] players) {
-        this.roundWinningPlayer = roundWinningPlayer;
-        this.players = players;
+    public RoundResult(IPlayerGroup playerGroup, ICategory nextRoundCategory) {
+        this.playerGroup = playerGroup;
+        this.nextRoundCategory = nextRoundCategory;
+    }
+
+
+    @Override
+    public IPlayerGroup getPlayerGroup() {
+        return playerGroup;
     }
 
     @Override
-    public IPlayer getRoundWinningPlayer() {
-        return roundWinningPlayer;
-    }
-
-    @Override
-    public IPlayer[] getPlayers() {
-        return players;
-    }
-    @Override
-    public boolean equals(IRoundResult roundResult) {
-        return this.players.length == roundResult.getPlayers().length
-            && this.roundWinningPlayer.equals(roundResult.getRoundWinningPlayer());
+    public ICategory getNextRoundCategory() {
+        return nextRoundCategory;
     }
 }
