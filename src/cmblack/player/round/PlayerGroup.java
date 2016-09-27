@@ -102,27 +102,13 @@ public class PlayerGroup implements IPlayerGroup {
 
     @Override
     public IPlayerGroup removePlayerFromGame(IPlayer player) {
-
-        IPlayer currentPlayer = null;
-
-        for(int i = 0; i< playersStillInGame.length; i++){
-            if(playersStillInGame[i].equals(player)){
-                if(i == 0){
-                    currentPlayer = playersStillInGame[playersStillInGame.length - 1];
-                    break;
-                } else {
-                    currentPlayer = playersStillInGame[i - 1];
-                }
-            }
-        }
-
-        List<IPlayer> allPlayers = new ArrayList<>();
+        List<IPlayer> playersStillIn = new ArrayList<>();
         for(IPlayer p: this.playersStillInGame){
             if(!player.equals(p)){
-                allPlayers.add(p);
+                playersStillIn.add(p);
             }
         }
         IPlayerGroup playerGroup = this.removePlayerFromRound(player);
-        return new PlayerGroup(allPlayers.toArray(new IPlayer[allPlayers.size()]),playerGroup.getPlayersStillInRound(), currentPlayer);
+        return new PlayerGroup(playersStillIn.toArray(new IPlayer[playersStillIn.size()]),playerGroup.getPlayersStillInRound(), currentPlayer);
     }
 }

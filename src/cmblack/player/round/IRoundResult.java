@@ -6,6 +6,7 @@ import cmblack.player.IPlayer;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.io.FileNotFoundException;
+import java.util.List;
 
 /**
  * Created by calebmacdonaldblack on 11/09/2016.
@@ -13,4 +14,5 @@ import java.io.FileNotFoundException;
 public interface IRoundResult {
     IPlayerGroup getPlayerGroup();
     ICategory getNextRoundCategory();
+    List<IPlayer> getPlayersToRemoveFromGame();
 }

@@ -1,7 +1,6 @@
 package cmblack.controller;
 
 import cmblack.card.CardType;
-import cmblack.card.EmptyCard;
 import cmblack.card.ICard;
 import cmblack.category.CategoryComparisonResult;
 import cmblack.category.ICategory;
@@ -87,13 +86,24 @@ public class TurnController implements ITurnActions, ITurnController {
     }
 
     @Override
-    public void humanGetCard() {
+    public void humanFindCard() {
         view.askHumanForCard(turn, this);
     }
 
     @Override
-    public void humanGetCategory() {
+    public void humanFindCategory(ICategory[] categories) {
+        view.askHumanForCategory(turn, this, categories);
+    }
 
+    @Override
+    public void humanFindCategory() {
+        humanFindCategory(new ICategory[]{
+                new CleavageCategory(),
+                new HardnessCategory(),
+                new SpecificGravityCategory(),
+                new CrustalAbundanceCategory(),
+                new EconomicValueCategory()
+        });
     }
 
     @Override
@@ -108,7 +118,7 @@ public class TurnController implements ITurnActions, ITurnController {
         if(!card.getType().equals(CardType.EMPTY_CARD) && categoryComparisonResult.valueForCategory(turn.getCurrentCategory()) <= 0 && !card.getType().equals(CardType.TRUMP_CARD)){
             if(turn.getCurrentPlayer().getPlayerType().equals(PlayerType.HUMAN)){
                 view.humanPlayedWrongCard(turn);
-                humanGetCard();
+                humanFindCard();
             }
         } else if(card.getType().equals(CardType.EMPTY_CARD)){
             view.currentPlayerRemoved(turn);

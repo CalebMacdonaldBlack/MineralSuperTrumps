@@ -1,9 +1,9 @@
 package cmblack.view;
 
+import cmblack.category.ICategory;
 import cmblack.controller.ITurnActions;
 import cmblack.controller.TurnController;
 import cmblack.player.IPlayer;
-import cmblack.player.round.IPlayerGroup;
 import cmblack.player.round.IRoundResult;
 import cmblack.player.round.ITurn;
 
@@ -31,6 +31,8 @@ public interface IView {
     void askHumanForCard(ITurn turn, ITurnActions turnController);
 
     void humanPlayedWrongCard(ITurn turn);
+
+    void askHumanForCategory(ITurn turn, TurnController turnController, ICategory[] categories);
 
     class FakeView implements IView{
 
@@ -81,6 +83,11 @@ public interface IView {
 
         @Override
         public void humanPlayedWrongCard(ITurn turn) {
+
+        }
+
+        @Override
+        public void askHumanForCategory(ITurn turn, TurnController turnController, ICategory[] categories) {
 
         }
     }

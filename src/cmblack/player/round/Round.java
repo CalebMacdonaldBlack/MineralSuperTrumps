@@ -8,7 +8,6 @@ import cmblack.category.ICategory;
 import cmblack.controller.ITurnController;
 import cmblack.controller.TurnController;
 import cmblack.deck.IDeck;
-import cmblack.deck.ShuffledDeck;
 import cmblack.player.BotAI;
 import cmblack.player.EmptyPlayer;
 import cmblack.player.IPlayer;
@@ -49,14 +48,26 @@ public class Round implements IRound {
         if (turnController.getTurn().getCurrentPlayer().equals(new EmptyPlayer())) {
             turnController.nextPlayerTurn(playerGroup.getCurrentPlayer());
         }
+        if(turnController.getTurn().getCurrentPlayer().getPlayerHand().getCountOfCards() != 0) {
+            if (turnController.getTurn().getCurrentCategory().equals(new EmptyCategory())) {
+                if (turnController.getTurn().getCurrentPlayer().getPlayerType().equals(PlayerType.HUMAN)) {
+                    turnController.humanFindCategory();
+                } else {
+                    turnController.findCategoryFromPlayer();
+                }
 
-        if (turnController.getTurn().getCurrentCategory().equals(new EmptyCategory())) {
-            turnController.findCategoryFromPlayer();
+            }
+        }else {
+            playerGroup = playerGroup.removePlayerFromGame(playerGroup.getCurrentPlayer());
+            List<IPlayer> winners = new ArrayList<>();
+            winners.add(playerGroup.getCurrentPlayer());
+            return new RoundResult(playerGroup, new EmptyCategory(), winners);
         }
 
+        List<IPlayer> playersToRemoveFromGame = new ArrayList<>();
         while (playerGroup.getPlayersStillInRound().length > 1) {
             IPlayer player = playerGroup.getCurrentPlayer();
-            List<IPlayer> playersToRemoveFromGame = new ArrayList<>();
+            playersToRemoveFromGame = new ArrayList<>();
 
 
             ICard currentCard = turnController.getTurn().getCurrentCard();
@@ -64,7 +75,7 @@ public class Round implements IRound {
             if (player.getPlayerType().equals(PlayerType.BOT)) {
                 turnController.findCardFromPlayer();
             } else if (player.getPlayerType().equals(PlayerType.HUMAN)) {
-                turnController.humanGetCard();
+                turnController.humanFindCard();
             }
 
             ICard newCard = turnController.getTurn().getCurrentCard();
@@ -79,11 +90,14 @@ public class Round implements IRound {
                 view.playerDrewCard(turnController.getTurn());
             } else if (newCard.getType().equals(CardType.TRUMP_CARD)) {
                 turnController.findCategoryFromPlayer(newCard.changeableTrumpCategories());
-                return new RoundResult(playerGroup, turnController.getTurn().getCurrentCategory());
+                return new RoundResult(playerGroup, turnController.getTurn().getCurrentCategory(), playersToRemoveFromGame);
             }
 
             if (turnController.getTurn().getCurrentPlayer().equals(new EmptyPlayer())) {
                 playersToRemoveFromGame.add(playerGroup.getCurrentPlayer());
+                if(playerGroup.getPlayersStillInGame().length - 1 < 2 || playerGroup.getPlayersStillInGame().length - 1 < 2){
+                    break;
+                }
             }
             if (playerGroup.getPlayersStillInRound().length < 2) {
                 break;
@@ -97,6 +111,6 @@ public class Round implements IRound {
             }
 
         }
-        return new RoundResult(playerGroup, new EmptyCategory());
+        return new RoundResult(playerGroup, new EmptyCategory(), playersToRemoveFromGame);
     }
 }

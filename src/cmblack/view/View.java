@@ -3,21 +3,23 @@ package cmblack.view;
 import cmblack.card.CardType;
 import cmblack.card.EmptyCard;
 import cmblack.card.ICard;
-import cmblack.card.playcard.IPlayCard;
-import cmblack.card.playcard.PlayCard;
 import cmblack.category.EmptyCategory;
+import cmblack.category.ICategory;
 import cmblack.controller.ITurnActions;
+import cmblack.controller.TurnController;
 import cmblack.player.IPlayer;
 import cmblack.player.round.IRoundResult;
 import cmblack.player.round.ITurn;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
  * Created by calebmacdonaldblack on 23/9/16.
  */
 public class View implements IView {
+
     @Override
     public void currentCardUpdated(ITurn turn) {
         sleep();
@@ -85,7 +87,6 @@ public class View implements IView {
 
     @Override
     public void askHumanForCard(ITurn turn, ITurnActions turnController) {
-        Scanner scanner = new Scanner(System.in);
         ArrayList<ICard> cards = turn.getCurrentPlayer().getPlayerHand().getCards();
 
         System.out.println("options\n=============================\n");
@@ -104,15 +105,20 @@ public class View implements IView {
         }
         System.out.println("Current Category: " + turn.getCurrentCategory().getCategoryName());
 
+        int selection = -1;
         System.out.println("\n Please enter an option: ");
-
-
-        int selection = scanner.nextInt();
         while(selection < 0 || selection > cards.size()){
-            selection = scanner.nextInt();
+            try{
+                selection = new Scanner(System.in).nextInt();
+            }catch(InputMismatchException e){
+                System.out.println("That is not a number!");
+            }
+            if(selection < 0 || selection > cards.size()){
+                System.out.println("\n Please enter a valid option: ");
+            }
         }
 
-        if(selection < cards.size()){
+        if(selection < cards.size() && cards.size() != 0){
             turnController.selectedCard(turn.getCurrentPlayer().getPlayerHand().getCards().get(selection));
         }else{
             turnController.selectedCard(new EmptyCard());
@@ -123,6 +129,33 @@ public class View implements IView {
     public void humanPlayedWrongCard(ITurn turn) {
         System.out.println("This card is not better than " + turn.getCurrentCard().getTitle() + " in the category: " + turn.getCurrentCategory().getCategoryName());
         sleep();
+    }
+
+    @Override
+    public void askHumanForCategory(ITurn turn, TurnController turnController, ICategory[] categories) {
+        System.out.println("Your hand:\n");
+        for(ICard card: turn.getCurrentPlayer().getPlayerHand().getCards()){
+            System.out.println(card.toString());
+        }
+        System.out.println("\nPlease choose a category. ");
+        for(int i=0;i<categories.length;i++){
+            System.out.println(i+")\t" + categories[i].getCategoryName());
+        }
+
+        int selection = -1;
+        System.out.println("\n Please enter an option: ");
+        while(selection < 0 || selection > categories.length){
+            try{
+                selection = new Scanner(System.in).nextInt();
+            }catch(InputMismatchException e){
+                System.out.println("That is not a number!");
+            }
+            if(selection < 0 || selection > categories.length){
+                System.out.println("\n Please enter a valid option: ");
+            }
+        }
+
+        turnController.selectedCategory(categories[selection]);
     }
 
     private void sleep(){

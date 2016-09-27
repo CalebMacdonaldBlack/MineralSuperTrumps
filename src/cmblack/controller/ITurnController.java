@@ -17,8 +17,9 @@ public interface ITurnController extends ITurnActions {
     void checkWin(IPlayer player);
     ITurn getTurn();
     IView getView();
-    void humanGetCard();
-    void humanGetCategory();
+    void humanFindCard();
+    void humanFindCategory(ICategory[] categories);
+    void humanFindCategory();
 
     class FakeTurnController implements ITurnController {
 
@@ -57,12 +58,17 @@ public interface ITurnController extends ITurnActions {
         }
 
         @Override
-        public void humanGetCard() {
+        public void humanFindCard() {
 
         }
 
         @Override
-        public void humanGetCategory() {
+        public void humanFindCategory(ICategory[] categories) {
+
+        }
+
+        @Override
+        public void humanFindCategory() {
 
         }
 
