@@ -24,5 +24,15 @@ public class Game implements GameController {
 
     public void begin() {
         gameView.gameStarted();
+        distributeCardsToPlayers();
+        System.out.println(players.get(0).getCards().size());
+    }
+
+    private void distributeCardsToPlayers() {
+        for(Player player: players){
+            for(int count=0; count<6;count++){
+                player.getCards().add(deck.takeRandomCard());
+            }
+        }
     }
 }
