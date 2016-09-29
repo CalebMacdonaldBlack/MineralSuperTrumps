@@ -18,12 +18,20 @@ public class Player {
         this.cards = new ArrayList<>();
     }
 
+    public ArrayList<Card> getCards() {
+        return cards;
+    }
+
+    public PlayerType getPlayerType() {
+        return playerType;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     public enum PlayerType {
         BOT,
         HUMAN
-    }
-
-    public ArrayList<Card> getCards() {
-        return cards;
     }
 }

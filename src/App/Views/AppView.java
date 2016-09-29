@@ -20,6 +20,7 @@ public class AppView {
     public void showMenu(){
         System.out.print("0:\tNew Game\n1:\tQuit\n\nOption: ");
 
+
         String input = scanner.nextLine();
         while(!input.equals("0") && input.equals("1")){
             System.out.print("Please select a valid option (0 or 1): ");

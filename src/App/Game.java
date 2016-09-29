@@ -7,6 +7,7 @@ import App.Models.StaticDeckBuilder;
 import App.Views.GameView;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Created by calebmacdonaldblack on 29/09/2016.
@@ -25,7 +26,11 @@ public class Game implements GameController {
     public void begin() {
         gameView.gameStarted();
         distributeCardsToPlayers();
-        System.out.println(players.get(0).getCards().size());
+        Player startingPlayer = players.get(new Random().nextInt(players.size()));
+        while(players.size() > 1){
+            new Round(players, deck).begin(startingPlayer);
+
+        }
     }
 
     private void distributeCardsToPlayers() {
@@ -34,5 +39,6 @@ public class Game implements GameController {
                 player.getCards().add(deck.takeRandomCard());
             }
         }
+
     }
 }

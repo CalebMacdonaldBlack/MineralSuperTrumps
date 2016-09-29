@@ -64,8 +64,24 @@ public abstract class Card {
         return cardType;
     }
 
+    public boolean isBetterThan(Card currentCard, TrumpCategory currentCategory){
+        switch (currentCategory){
+            case HARDNESS:
+                return this.hardness.getHighValue() > currentCard.hardness.getHighValue();
+            case CLEAVAGE:
+                return this.cleavage.ordinal() > currentCard.cleavage.ordinal();
+            case CRUSTAL_ABUNDANCE:
+                return this.crustalAbundance.ordinal() > currentCard.crustalAbundance.ordinal();
+            case SPECIFIC_GRAVITY:
+                return this.specificGravity.getHighValue() > currentCard.specificGravity.getHighValue();
+            case ECONOMIC_VALUE:
+                return this.economicValue.ordinal() > currentCard.economicValue.ordinal();
+        }
+        throw new NullPointerException("Trump category doesn't exist");
+    }
+
     public enum CardType {
         REGULAR,
-        TRUMP
+        EmptyCard, TRUMP
     }
 }
