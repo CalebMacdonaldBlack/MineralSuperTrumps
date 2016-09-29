@@ -15,11 +15,13 @@ public class BotAI {
     public Card getCard(Player player, TrumpCategory currentCategory, Card currentCard){
         for(Card card: player.getCards().toArray(new Card[player.getCards().size()])){
             if(card.isBetterThan(currentCard, currentCategory)){
+                player.getCards().remove(card);
                 return card;
             }
         }
         for(Card card: player.getCards().toArray(new Card[player.getCards().size()])){
             if(card.getCardType().equals(Card.CardType.TRUMP)){
+                player.getCards().remove(card);
                 return card;
             }
         }

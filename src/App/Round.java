@@ -36,13 +36,35 @@ public class Round implements RoundController{
         startRound(startingPlayer);
         Collections.rotate(players, players.indexOf(startingPlayer));
         while (players.size() > 1){
-            for(Player player: players.toArray(new Player[players.size()])){
+            Collections.rotate(players, 1);
 
+            Card oldCard = currentCard;
+            Player player = players.get(0);
+            if(player.getPlayerType().equals(Player.PlayerType.BOT)){
+                currentCard = botAI.getCard(player, currentTrumpCategory, currentCard);
+                roundView.cardSelected(player, currentCard);
+            }else{
+                roundView.card(player, currentCard, currentTrumpCategory);
+                roundView.cardSelected(player, currentCard);
             }
+
+            if(oldCard.equals(currentCard)){
+                players.remove(player);
+                roundView.playerRemoved(player);
+            } else if(currentCard.getCardType().equals(Card.CardType.TRUMP)){
+                if(player.getPlayerType().equals(Player.PlayerType.BOT)){
+                    currentTrumpCategory = botAI.getCategory(currentCard.getTrumpCategories());
+                } else {
+                    roundView.category(currentCard.getTrumpCategories());
+                }
+            }
+
+
         }
     }
 
     private void startRound(Player startingPlayer) {
+        roundView.playerTurn(startingPlayer);
         TrumpCategory[] categories = new TrumpCategory[]{TrumpCategory.ECONOMIC_VALUE, TrumpCategory.SPECIFIC_GRAVITY, TrumpCategory.CLEAVAGE, TrumpCategory.HARDNESS, TrumpCategory.CRUSTAL_ABUNDANCE};
 
         if(startingPlayer.getPlayerType().equals(Player.PlayerType.BOT)){

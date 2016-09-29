@@ -53,14 +53,16 @@ public class RoundView {
 
         System.out.println(player.getCards().size() + ": \n" + ConsoleColor.colorText("Don't play a card", ConsoleColor.ANSI_BLUE));
 
+        System.out.println("\nCategory: " + currentTrumpCategory.getText() + "\ncurrentCard\n" + currentCard.toString());
+        
         int input = -1;
         System.out.print("Option: ");
-        while (input < 0 || input >= player.getCards().size()) {
+        while (input < 0 || input > player.getCards().size()) {
             try {
                 input = Integer.parseInt(scanner.nextLine());
                 if(input < 0 || input > player.getCards().size()){
                     System.out.print("please enter a valid option:");
-                }else if(input != player.getCards().size() && !player.getCards().get(input).isBetterThan(currentCard, currentTrumpCategory) && player.getCards().get(input).getCardType().equals(Card.CardType.TRUMP)){
+                }else if(input != player.getCards().size() && !player.getCards().get(input).isBetterThan(currentCard, currentTrumpCategory) && !player.getCards().get(input).getCardType().equals(Card.CardType.TRUMP)){
                     System.out.println("please choose a card that is better (blue)");
                     input = -1;
                 }
@@ -82,5 +84,13 @@ public class RoundView {
 
     public void cardSelected(Player player, Card currentCard) {
         System.out.println(ConsoleColor.colorText(player.getName() + " played the card " + currentCard.getTitle(), ConsoleColor.ANSI_PURPLE));
+    }
+
+    public void playerTurn(Player player) {
+        System.out.println(ConsoleColor.colorText("It is " + player.getName() + "'s turn.", ConsoleColor.ANSI_PURPLE));
+    }
+
+    public void playerRemoved(Player player) {
+        System.out.println(ConsoleColor.colorText(player.getName() + " could not play a card and was removed", ConsoleColor.ANSI_PURPLE));
     }
 }
