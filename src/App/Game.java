@@ -1,9 +1,15 @@
+package App;
+
+import App.Controllers.GameController;
+import App.Models.Player;
+import App.Views.GameView;
+
 import java.util.ArrayList;
 
 /**
  * Created by calebmacdonaldblack on 29/09/2016.
  */
-public class Game implements GameController{
+public class Game implements GameController {
     private final ArrayList<Player> players;
     private final GameView gameView;
 

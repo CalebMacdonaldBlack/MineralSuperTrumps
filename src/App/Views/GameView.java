@@ -1,3 +1,7 @@
+package App.Views;
+
+import App.App;
+
 /**
  * Created by calebmacdonaldblack on 29/09/2016.
  */

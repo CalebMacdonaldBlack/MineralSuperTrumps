@@ -1,3 +1,8 @@
+package App;
+
+import App.Controllers.AppController;
+import App.Views.AppView;
+
 /**
  * Created by calebmacdonaldblack on 29/09/2016.
  */
