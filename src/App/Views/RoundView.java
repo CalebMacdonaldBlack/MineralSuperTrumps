@@ -47,7 +47,7 @@ public class RoundView {
             if(!player.getCards().get(i).isBetterThan(currentCard, currentTrumpCategory) && !player.getCards().get(i).getCardType().equals(Card.CardType.TRUMP)){
                 System.out.println(ConsoleColor.colorText(i + ": \n" + player.getCards().get(i).toString(), ConsoleColor.ANSI_RED));
             } else {
-                System.out.println(ConsoleColor.colorText(i + ": \n" + player.getCards().get(i).toString(), ConsoleColor.ANSI_BLUE));
+                System.out.println(ConsoleColor.colorText(i + ": \n" + player.getCards().get(i).toString(), ConsoleColor.ANSI_GREEN));
             }
         }
 
@@ -92,5 +92,13 @@ public class RoundView {
 
     public void playerRemoved(Player player) {
         System.out.println(ConsoleColor.colorText(player.getName() + " could not play a card and was removed", ConsoleColor.ANSI_PURPLE));
+    }
+
+    public void noCardsLeftInDeck(Player player) {
+        System.out.println(ConsoleColor.colorText(player.getName() + " could not draw a card because there are no cards left in the deck", ConsoleColor.ANSI_YELLOW));
+    }
+
+    public void drawCard(Player player) {
+        System.out.println(ConsoleColor.colorText(player.getName() + " drew a card", ConsoleColor.ANSI_YELLOW));
     }
 }

@@ -27,10 +27,27 @@ public class Game implements GameController {
         gameView.gameStarted();
         distributeCardsToPlayers();
         Player startingPlayer = players.get(new Random().nextInt(players.size()));
-        while(players.size() > 1){
-            new Round(players, deck).begin(startingPlayer);
-
+        ArrayList<Player> playersInGame = getNewArrayList(players);
+        ArrayList<Player> winners = new ArrayList<>();
+        while(playersInGame.size() > 1){
+            startingPlayer = new Round(getNewArrayList(playersInGame), deck).begin(startingPlayer);
+            for (Player player: playersInGame.toArray(new Player[playersInGame.size()])){
+                if(player.getCards().size() == 0){
+                    playersInGame.remove(player);
+                    winners.add(player);
+                    gameView.winner(player);
+                }
+            }
         }
+        gameView.listWinners(winners);
+    }
+
+    private ArrayList<Player> getNewArrayList(ArrayList<Player> players) {
+        ArrayList<Player> newList = new ArrayList<>();
+        for(int i=0;i<players.size();i++){
+            newList.add(players.get(i));
+        }
+        return newList;
     }
 
     private void distributeCardsToPlayers() {

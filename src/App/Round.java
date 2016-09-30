@@ -31,7 +31,7 @@ public class Round implements RoundController{
         this.botAI = new BotAI();
     }
 
-    public void begin(Player startingPlayer) {
+    public Player begin(Player startingPlayer) {
         roundView.roundBegan();
         startRound(startingPlayer);
         Collections.rotate(players, players.indexOf(startingPlayer));
@@ -40,6 +40,12 @@ public class Round implements RoundController{
 
             Card oldCard = currentCard;
             Player player = players.get(0);
+
+            if(player.getCards().size() == 0){
+                players.remove(player);
+                continue;
+            }
+
             if(player.getPlayerType().equals(Player.PlayerType.BOT)){
                 currentCard = botAI.getCard(player, currentTrumpCategory, currentCard);
                 roundView.cardSelected(player, currentCard);
@@ -51,6 +57,12 @@ public class Round implements RoundController{
             if(oldCard.equals(currentCard)){
                 players.remove(player);
                 roundView.playerRemoved(player);
+                try {
+                    player.getCards().add(deck.takeRandomCard());
+                    roundView.drawCard(player);
+                }catch(NullPointerException e){
+                    roundView.noCardsLeftInDeck(player);
+                }
             } else if(currentCard.getCardType().equals(Card.CardType.TRUMP)){
                 if(player.getPlayerType().equals(Player.PlayerType.BOT)){
                     currentTrumpCategory = botAI.getCategory(currentCard.getTrumpCategories());
@@ -58,9 +70,8 @@ public class Round implements RoundController{
                     roundView.category(currentCard.getTrumpCategories());
                 }
             }
-
-
         }
+        return players.get(0);
     }
 
     private void startRound(Player startingPlayer) {
