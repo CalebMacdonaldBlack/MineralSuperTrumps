@@ -48,10 +48,8 @@ public class Round implements RoundController{
 
             if(player.getPlayerType().equals(Player.PlayerType.BOT)){
                 currentCard = botAI.getCard(player, currentTrumpCategory, currentCard);
-                roundView.cardSelected(player, currentCard);
             }else{
                 roundView.card(player, currentCard, currentTrumpCategory);
-                roundView.cardSelected(player, currentCard);
             }
 
             if(oldCard.equals(currentCard)){
@@ -64,11 +62,14 @@ public class Round implements RoundController{
                     roundView.noCardsLeftInDeck(player);
                 }
             } else if(currentCard.getCardType().equals(Card.CardType.TRUMP)){
+                roundView.trumpCardSelected(player, currentCard);
                 if(player.getPlayerType().equals(Player.PlayerType.BOT)){
                     currentTrumpCategory = botAI.getCategory(currentCard.getTrumpCategories());
                 } else {
                     roundView.category(currentCard.getTrumpCategories());
                 }
+            } else {
+                roundView.cardSelected(player, currentCard);
             }
         }
         return players.get(0);

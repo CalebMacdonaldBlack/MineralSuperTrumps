@@ -84,4 +84,6 @@ public abstract class Card {
         REGULAR,
         EmptyCard, TRUMP
     }
+
+    public abstract String toString();
 }

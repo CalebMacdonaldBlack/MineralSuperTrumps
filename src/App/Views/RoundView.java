@@ -101,4 +101,8 @@ public class RoundView {
     public void drawCard(Player player) {
         System.out.println(ConsoleColor.colorText(player.getName() + " drew a card", ConsoleColor.ANSI_YELLOW));
     }
+
+    public void trumpCardSelected(Player player, Card currentCard) {
+        System.out.println(ConsoleColor.colorText(player.getName() + " played the trump card " + currentCard.getTitle(), ConsoleColor.ANSI_PURPLE));
+    }
 }

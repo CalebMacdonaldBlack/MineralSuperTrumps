@@ -9,4 +9,9 @@ public class EmptyCard extends Card {
     public EmptyCard() {
         super("", "", new Range(-1,-1), new Range(-1,-1), Cleavage.TRUMPCARD, CrustalAbundance.TRUMPCARD, EconomicValue.TRUMPCARD, new TrumpCategory[]{}, CardType.EmptyCard);
     }
+
+    @Override
+    public String toString() {
+        return "No current card. Play any card.";
+    }
 }
