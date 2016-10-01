@@ -52,7 +52,7 @@ public class Game implements GameController {
 
     private void distributeCardsToPlayers() {
         for(Player player: players){
-            for(int count=0; count<6;count++){
+            for(int count=0; count<8;count++){
                 player.getCards().add(deck.takeRandomCard());
             }
         }
