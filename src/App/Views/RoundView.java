@@ -73,7 +73,7 @@ public class RoundView {
                 if (input < 0 || input > player.getCards().size()) {
                     System.out.print("please enter a valid option:");
                 } else if (input != player.getCards().size() && !player.getCards().get(input).isBetterThan(currentCard, currentTrumpCategory) && !player.getCards().get(input).getCardType().equals(Card.CardType.TRUMP)) {
-                    System.out.println("please choose a card that is better (blue)");
+                    System.out.println("please choose a card that is better (Green)");
                     input = -1;
                 }
             } catch (NumberFormatException e) {
