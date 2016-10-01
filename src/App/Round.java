@@ -88,7 +88,7 @@ public class Round implements RoundController{
             currentCard = botAI.getCard(startingPlayer, currentTrumpCategory, new EmptyCard());
             roundView.cardSelected(startingPlayer, currentCard);
         }else{
-            roundView.category(currentCard.getTrumpCategories(), startingPlayer, currentCard);
+            roundView.category(categories, startingPlayer, currentCard);
             roundView.categorySelected(startingPlayer, currentTrumpCategory);
 
             roundView.card(startingPlayer, currentCard, currentTrumpCategory);
