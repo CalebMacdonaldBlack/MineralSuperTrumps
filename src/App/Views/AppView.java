@@ -22,7 +22,7 @@ public class AppView {
 
 
         String input = scanner.nextLine();
-        while(!input.equals("0") && input.equals("1")){
+        while(!input.equals("0") && !input.equals("1")){
             System.out.print("Please select a valid option (0 or 1): ");
             input = scanner.nextLine();
         }
