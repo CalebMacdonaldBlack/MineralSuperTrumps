@@ -34,9 +34,9 @@ public class Round implements RoundController{
     public Player begin(Player startingPlayer) {
         roundView.roundBegan();
         startRound(startingPlayer);
-        Collections.rotate(players, players.indexOf(startingPlayer));
+        Collections.rotate(players, players.indexOf(startingPlayer) * -1);
         while (players.size() > 1){
-            Collections.rotate(players, 1);
+            Collections.rotate(players, -1);
 
             Card oldCard = currentCard;
             Player player = players.get(0);
@@ -54,6 +54,7 @@ public class Round implements RoundController{
 
             if(oldCard.equals(currentCard)){
                 players.remove(player);
+                Collections.rotate(players, 1);
                 roundView.playerRemoved(player);
                 try {
                     player.getCards().add(deck.takeRandomCard());
