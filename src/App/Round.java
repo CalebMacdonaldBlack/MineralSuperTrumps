@@ -86,7 +86,7 @@ public class Round implements RoundController {
                 if (player.getPlayerType().equals(Player.PlayerType.BOT)) {
                     return new RoundResult(player, botAI.getCategory(new TrumpCategory[]{TrumpCategory.ECONOMIC_VALUE, TrumpCategory.SPECIFIC_GRAVITY, TrumpCategory.CLEAVAGE, TrumpCategory.HARDNESS, TrumpCategory.CRUSTAL_ABUNDANCE}), RoundResult.RoundResultType.TRUMP);
                 } else {
-                    roundView.category(new TrumpCategory[]{TrumpCategory.ECONOMIC_VALUE, TrumpCategory.SPECIFIC_GRAVITY, TrumpCategory.CLEAVAGE, TrumpCategory.HARDNESS, TrumpCategory.CRUSTAL_ABUNDANCE}, player, currentCard);
+                    roundView.category(new TrumpCategory[]{TrumpCategory.ECONOMIC_VALUE, TrumpCategory.SPECIFIC_GRAVITY, TrumpCategory.CLEAVAGE, TrumpCategory.HARDNESS, TrumpCategory.CRUSTAL_ABUNDANCE}, player);
                     roundView.categorySelected(player, currentTrumpCategory);
                     return new RoundResult(player, currentTrumpCategory, RoundResult.RoundResultType.NORMAL);
                 }
@@ -101,7 +101,7 @@ public class Round implements RoundController {
         if (players.get(0).getPlayerType().equals(Player.PlayerType.BOT)) {
             return new RoundResult(players.get(0), botAI.getCategory(new TrumpCategory[]{TrumpCategory.ECONOMIC_VALUE, TrumpCategory.SPECIFIC_GRAVITY, TrumpCategory.CLEAVAGE, TrumpCategory.HARDNESS, TrumpCategory.CRUSTAL_ABUNDANCE}), RoundResult.RoundResultType.NORMAL);
         } else {
-            roundView.category(new TrumpCategory[]{TrumpCategory.ECONOMIC_VALUE, TrumpCategory.SPECIFIC_GRAVITY, TrumpCategory.CLEAVAGE, TrumpCategory.HARDNESS, TrumpCategory.CRUSTAL_ABUNDANCE}, players.get(0), currentCard);
+            roundView.category(new TrumpCategory[]{TrumpCategory.ECONOMIC_VALUE, TrumpCategory.SPECIFIC_GRAVITY, TrumpCategory.CLEAVAGE, TrumpCategory.HARDNESS, TrumpCategory.CRUSTAL_ABUNDANCE}, players.get(0));
             roundView.categorySelected(players.get(0), currentTrumpCategory);
             return new RoundResult(players.get(0), currentTrumpCategory, RoundResult.RoundResultType.NORMAL);
         }
@@ -115,13 +115,12 @@ public class Round implements RoundController {
      */
     private void startRound(Player startingPlayer, RoundResult roundResult) {
         roundView.playerTurn(startingPlayer);
-        TrumpCategory[] categories = new TrumpCategory[]{TrumpCategory.ECONOMIC_VALUE, TrumpCategory.SPECIFIC_GRAVITY, TrumpCategory.CLEAVAGE, TrumpCategory.HARDNESS, TrumpCategory.CRUSTAL_ABUNDANCE};
 
         if (roundResult.getRoundResultType().equals(RoundResult.RoundResultType.START)) {
             if (startingPlayer.getPlayerType().equals(Player.PlayerType.BOT)) {
                 currentTrumpCategory = botAI.getCategory(new TrumpCategory[]{TrumpCategory.ECONOMIC_VALUE, TrumpCategory.SPECIFIC_GRAVITY, TrumpCategory.CLEAVAGE, TrumpCategory.HARDNESS, TrumpCategory.CRUSTAL_ABUNDANCE});
             } else {
-                roundView.category(new TrumpCategory[]{TrumpCategory.ECONOMIC_VALUE, TrumpCategory.SPECIFIC_GRAVITY, TrumpCategory.CLEAVAGE, TrumpCategory.HARDNESS, TrumpCategory.CRUSTAL_ABUNDANCE}, startingPlayer, currentCard);
+                roundView.category(new TrumpCategory[]{TrumpCategory.ECONOMIC_VALUE, TrumpCategory.SPECIFIC_GRAVITY, TrumpCategory.CLEAVAGE, TrumpCategory.HARDNESS, TrumpCategory.CRUSTAL_ABUNDANCE}, startingPlayer);
             }
             roundView.categorySelected(startingPlayer, currentTrumpCategory);
         }

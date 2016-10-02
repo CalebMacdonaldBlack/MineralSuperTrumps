@@ -28,17 +28,15 @@ public class RegularCard extends Card{
      */
     @Override
     public String toString() {
-        StringBuilder output = new StringBuilder();
-        output.append("===========Card==========\n");
-        output.append("Title: " + getTitle() + "\n");
-        output.append(getDescription() + "\n");
-        output.append("-------------------------\n");
-        output.append("Hardness: " + getHardness().getLowValue() + " - " + getHardness().getHighValue() + "\n");
-        output.append("Specific Gravity: " + getSpecificGravity().getLowValue() + " - " + getSpecificGravity().getHighValue() + "\n");
-        output.append("Cleavage: " + getCleavage().getText() + "\n");
-        output.append("Crustal Abundance: " + getCrustalAbundance().getText() + "\n");
-        output.append("Economic Value: " + getEconomicValue().getText() + "\n");
-        output.append("=========================\n");
-        return output.toString();
+        return "===========Card==========\n" +
+                "Title: " + getTitle() + "\n" +
+                getDescription() + "\n" +
+                "-------------------------\n" +
+                "Hardness: " + getHardness().getLowValue() + " - " + getHardness().getHighValue() + "\n" +
+                "Specific Gravity: " + getSpecificGravity().getLowValue() + " - " + getSpecificGravity().getHighValue() + "\n" +
+                "Cleavage: " + getCleavage().getText() + "\n" +
+                "Crustal Abundance: " + getCrustalAbundance().getText() + "\n" +
+                "Economic Value: " + getEconomicValue().getText() + "\n" +
+                "=========================\n";
     }
 }

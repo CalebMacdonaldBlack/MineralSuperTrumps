@@ -33,12 +33,14 @@ public class Deck {
         return cards.remove(index);
     }
 
-    /**
-     * Gets the size of the deck
-     *
-     * @return
-     */
-    public int sizeOfDeck() {
-        return cards.size();
-    }
+// --Commented out by Inspection START (2/10/16, 7:34 PM):
+//    /**
+//     * Gets the size of the deck
+//     *
+//     * @return
+//     */
+//    public int sizeOfDeck() {
+//        return cards.size();
+//    }
+// --Commented out by Inspection STOP (2/10/16, 7:34 PM)
 }

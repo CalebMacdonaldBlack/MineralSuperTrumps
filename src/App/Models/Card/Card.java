@@ -19,8 +19,8 @@ public abstract class Card {
     /**
      * Creates a new instance
      *
-     * @param title
-     * @param description
+     * @param title            Card title
+     * @param description      Card description
      * @param hardness         range
      * @param specificGravity  range
      * @param cleavage         enum value
@@ -29,7 +29,7 @@ public abstract class Card {
      * @param trumpCategories  enum value
      * @param cardType         enum value
      */
-    protected Card(String title, String description, Range hardness, Range specificGravity, Cleavage cleavage, CrustalAbundance crustalAbundance, EconomicValue economicValue, TrumpCategory[] trumpCategories, CardType cardType) {
+    Card(String title, String description, Range hardness, Range specificGravity, Cleavage cleavage, CrustalAbundance crustalAbundance, EconomicValue economicValue, TrumpCategory[] trumpCategories, CardType cardType) {
         this.title = title;
         this.description = description;
         this.hardness = hardness;
@@ -55,7 +55,7 @@ public abstract class Card {
      *
      * @return Card description
      */
-    public String getDescription() {
+    String getDescription() {
         return description;
     }
 
@@ -64,7 +64,7 @@ public abstract class Card {
      *
      * @return Hardness range
      */
-    public Range getHardness() {
+    Range getHardness() {
         return hardness;
     }
 
@@ -73,7 +73,7 @@ public abstract class Card {
      *
      * @return Specific Gravity Range
      */
-    public Range getSpecificGravity() {
+    Range getSpecificGravity() {
         return specificGravity;
     }
 
@@ -82,7 +82,7 @@ public abstract class Card {
      *
      * @return Cleavage enum value
      */
-    public Cleavage getCleavage() {
+    Cleavage getCleavage() {
         return cleavage;
     }
 
@@ -91,7 +91,7 @@ public abstract class Card {
      *
      * @return Crustal abundance enum value
      */
-    public CrustalAbundance getCrustalAbundance() {
+    CrustalAbundance getCrustalAbundance() {
         return crustalAbundance;
     }
 
@@ -100,7 +100,7 @@ public abstract class Card {
      *
      * @return Economic value enum value
      */
-    public EconomicValue getEconomicValue() {
+    EconomicValue getEconomicValue() {
         return economicValue;
     }
 
@@ -109,7 +109,7 @@ public abstract class Card {
      *
      * @return Array of trump categories
      */
-    public TrumpCategory[] getTrumpCategories() {
+    TrumpCategory[] getTrumpCategories() {
         return TrumpCategories;
     }
 

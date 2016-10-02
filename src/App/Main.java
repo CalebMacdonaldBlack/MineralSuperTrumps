@@ -3,7 +3,7 @@ package App;
 /**
  * Created by calebmacdonaldblack on 29/09/2016.
  */
-public class Main {
+class Main {
 
     /**
      * Starts the game

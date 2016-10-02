@@ -9,6 +9,7 @@ import App.Views.GameView;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 /**
  * Created by calebmacdonaldblack on 29/09/2016.
@@ -63,11 +64,7 @@ public class Game implements GameController {
      * @return An arraylist at a different reference
      */
     private ArrayList<Player> getNewArrayList(ArrayList<Player> players) {
-        ArrayList<Player> newList = new ArrayList<>();
-        for(int i=0;i<players.size();i++){
-            newList.add(players.get(i));
-        }
-        return newList;
+        return players.stream().collect(Collectors.toCollection(ArrayList::new));
     }
 
     /**

@@ -26,12 +26,12 @@ public class TrumpCard extends Card {
     public String toString() {
         StringBuilder output = new StringBuilder();
         output.append("========Trump Card=======\n");
-        output.append("Title: " + getTitle() + "\n");
-        output.append(getDescription() + "\n");
+        output.append("Title: ").append(getTitle()).append("\n");
+        output.append(getDescription()).append("\n");
         output.append("-------------------------\n");
         output.append("Changes category to: \n");
         for(TrumpCategory category: getTrumpCategories()){
-            output.append("- " + category.getText() + "\n");
+            output.append("- ").append(category.getText()).append("\n");
         }
         output.append("========================\n");
         return output.toString();

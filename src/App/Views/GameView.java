@@ -1,6 +1,5 @@
 package App.Views;
 
-import App.App;
 import App.Models.Player;
 
 import java.util.ArrayList;
