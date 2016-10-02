@@ -1,12 +1,9 @@
 package App;
 
 import App.Controllers.RoundController;
-import App.Models.BotAI;
+import App.Models.*;
 import App.Models.Card.Card;
 import App.Models.Card.EmptyCard;
-import App.Models.Deck;
-import App.Models.Player;
-import App.Models.TrumpCategory;
 import App.Views.RoundView;
 
 import java.util.ArrayList;
@@ -31,9 +28,11 @@ public class Round implements RoundController{
         this.botAI = new BotAI();
     }
 
-    public Player begin(Player startingPlayer) {
+    public RoundResult begin(RoundResult roundResult) {
+        currentTrumpCategory = roundResult.getCategory();
+        Player startingPlayer = roundResult.getCurrentPlayer();
         roundView.roundBegan();
-        startRound(startingPlayer);
+        startRound(startingPlayer, roundResult);
         Collections.rotate(players, players.indexOf(startingPlayer) * -1);
         while (players.size() > 1){
             Collections.rotate(players, -1);
@@ -65,35 +64,48 @@ public class Round implements RoundController{
             } else if(currentCard.getCardType().equals(Card.CardType.TRUMP)){
                 roundView.trumpCardSelected(player, currentCard);
                 if(player.getPlayerType().equals(Player.PlayerType.BOT)){
-                    currentTrumpCategory = botAI.getCategory(currentCard.getTrumpCategories());
-                } else {
-                    roundView.category(currentCard.getTrumpCategories(), player, currentCard);
+                    return new RoundResult(player, botAI.getCategory(new TrumpCategory[]{TrumpCategory.ECONOMIC_VALUE, TrumpCategory.SPECIFIC_GRAVITY, TrumpCategory.CLEAVAGE, TrumpCategory.HARDNESS, TrumpCategory.CRUSTAL_ABUNDANCE}), RoundResult.RoundResultType.TRUMP);
+                }else{
+                    roundView.category(new TrumpCategory[]{TrumpCategory.ECONOMIC_VALUE, TrumpCategory.SPECIFIC_GRAVITY, TrumpCategory.CLEAVAGE, TrumpCategory.HARDNESS, TrumpCategory.CRUSTAL_ABUNDANCE}, player, currentCard);
+                    roundView.categorySelected(player, currentTrumpCategory);
+                    return new RoundResult(player, currentTrumpCategory, RoundResult.RoundResultType.NORMAL);
                 }
-                roundView.categorySelected(player, currentTrumpCategory);
             } else {
                 roundView.cardSelected(player, currentCard);
             }
         }
         roundView.roundWinner(players.get(0));
-        return players.get(0);
+        if(players.get(0).getPlayerType().equals(Player.PlayerType.BOT)){
+            return new RoundResult(players.get(0), botAI.getCategory(new TrumpCategory[]{TrumpCategory.ECONOMIC_VALUE, TrumpCategory.SPECIFIC_GRAVITY, TrumpCategory.CLEAVAGE, TrumpCategory.HARDNESS, TrumpCategory.CRUSTAL_ABUNDANCE}), RoundResult.RoundResultType.NORMAL);
+        }else{
+            roundView.category(new TrumpCategory[]{TrumpCategory.ECONOMIC_VALUE, TrumpCategory.SPECIFIC_GRAVITY, TrumpCategory.CLEAVAGE, TrumpCategory.HARDNESS, TrumpCategory.CRUSTAL_ABUNDANCE}, players.get(0), currentCard);
+            roundView.categorySelected(players.get(0), currentTrumpCategory);
+            return new RoundResult(players.get(0), currentTrumpCategory, RoundResult.RoundResultType.NORMAL);
+        }
     }
 
-    private void startRound(Player startingPlayer) {
+    private void startRound(Player startingPlayer, RoundResult roundResult) {
         roundView.playerTurn(startingPlayer);
         TrumpCategory[] categories = new TrumpCategory[]{TrumpCategory.ECONOMIC_VALUE, TrumpCategory.SPECIFIC_GRAVITY, TrumpCategory.CLEAVAGE, TrumpCategory.HARDNESS, TrumpCategory.CRUSTAL_ABUNDANCE};
 
-        if(startingPlayer.getPlayerType().equals(Player.PlayerType.BOT)){
-            currentTrumpCategory = botAI.getCategory(categories);
+        if(roundResult.getRoundResultType().equals(RoundResult.RoundResultType.START)){
+            if(startingPlayer.getPlayerType().equals(Player.PlayerType.BOT)){
+                currentTrumpCategory = botAI.getCategory(new TrumpCategory[]{TrumpCategory.ECONOMIC_VALUE, TrumpCategory.SPECIFIC_GRAVITY, TrumpCategory.CLEAVAGE, TrumpCategory.HARDNESS, TrumpCategory.CRUSTAL_ABUNDANCE});
+            }else{
+                roundView.category(new TrumpCategory[]{TrumpCategory.ECONOMIC_VALUE, TrumpCategory.SPECIFIC_GRAVITY, TrumpCategory.CLEAVAGE, TrumpCategory.HARDNESS, TrumpCategory.CRUSTAL_ABUNDANCE}, startingPlayer, currentCard);
+            }
             roundView.categorySelected(startingPlayer, currentTrumpCategory);
+        }
 
-            currentCard = botAI.getCard(startingPlayer, currentTrumpCategory, new EmptyCard());
-            roundView.cardSelected(startingPlayer, currentCard);
-        }else{
-            roundView.category(categories, startingPlayer, currentCard);
-            roundView.categorySelected(startingPlayer, currentTrumpCategory);
+        if(roundResult.getRoundResultType().equals(RoundResult.RoundResultType.NORMAL) || roundResult.getRoundResultType().equals(RoundResult.RoundResultType.START)){
+            if(startingPlayer.getPlayerType().equals(Player.PlayerType.BOT)){
 
-            roundView.card(startingPlayer, currentCard, currentTrumpCategory);
-            roundView.cardSelected(startingPlayer, currentCard);
+                currentCard = botAI.getCard(startingPlayer, currentTrumpCategory, new EmptyCard());
+                roundView.cardSelected(startingPlayer, currentCard);
+            }else{
+                roundView.card(startingPlayer, currentCard, currentTrumpCategory);
+                roundView.cardSelected(startingPlayer, currentCard);
+            }
         }
     }
 

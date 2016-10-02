@@ -3,6 +3,7 @@ package App;
 import App.Controllers.GameController;
 import App.Models.Deck;
 import App.Models.Player;
+import App.Models.RoundResult;
 import App.Models.StaticDeckBuilder;
 import App.Views.GameView;
 
@@ -29,8 +30,9 @@ public class Game implements GameController {
         Player startingPlayer = players.get(new Random().nextInt(players.size()));
         ArrayList<Player> playersInGame = getNewArrayList(players);
         ArrayList<Player> winners = new ArrayList<>();
+        RoundResult roundResult = new RoundResult(startingPlayer, null, RoundResult.RoundResultType.START);
         while(playersInGame.size() > 1){
-            startingPlayer = new Round(getNewArrayList(playersInGame), deck).begin(startingPlayer);
+            roundResult = new Round(getNewArrayList(playersInGame), deck).begin(roundResult);
             for (Player player: playersInGame.toArray(new Player[playersInGame.size()])){
                 if(player.getCards().size() == 0){
                     playersInGame.remove(player);

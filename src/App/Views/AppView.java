@@ -18,7 +18,7 @@ public class AppView {
 
 
     public void showMenu(){
-        System.out.print("0:\tNew Game\n1:\tQuit\n\nOption: ");
+        System.out.print("\n0:\tNew Game\n1:\tQuit\n\nOption: ");
 
 
         String input = scanner.nextLine();
