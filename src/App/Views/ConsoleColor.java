@@ -14,7 +14,14 @@ public class ConsoleColor {
     public static final String ANSI_CYAN = "\u001B[36m";
     public static final String ANSI_WHITE = "\u001B[37m";
 
-    public static String colorText(String text, String ansiColor){
+    /**
+     * Wraps text with color and escapes with original color
+     *
+     * @param text      Text to wrap
+     * @param ansiColor Color to change text to
+     * @return The final colored text
+     */
+    public static String colorText(String text, String ansiColor) {
         return ansiColor + text + ANSI_RESET;
     }
 }

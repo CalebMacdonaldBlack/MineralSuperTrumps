@@ -6,15 +6,28 @@ package App.Models.Card;
 public class Range {
     private final double lowValue, HighValue;
 
+    /**
+     * Creates a new instance
+     * @param lowValue The low value in the range
+     * @param highValue The high value in the range
+     */
     public Range(double lowValue, double highValue) {
         this.lowValue = lowValue;
         HighValue = highValue;
     }
 
+    /**
+     * Low value
+     * @return Low Value
+     */
     public double getLowValue() {
         return lowValue;
     }
 
+    /**
+     * Low value
+     * @return Low value
+     */
     public double getHighValue() {
         return HighValue;
     }

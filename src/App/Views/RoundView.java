@@ -14,15 +14,27 @@ public class RoundView {
     private final RoundController roundController;
     private final Scanner scanner = new Scanner(System.in);
 
+    /**
+     * Creates a new instance of roundview
+     * @param roundController The controller with the callback methods
+     */
     public RoundView(RoundController roundController) {
         this.roundController = roundController;
     }
 
+    /**
+     * Display round began
+     */
     public void roundBegan() {
         System.out.println("ROUND STARTED");
     }
 
-    public void category(TrumpCategory[] categories, Player player, Card currentCard) {
+    /**
+     * Gets category from human player
+     * @param categories The categories to choose from
+     * @param player The human player to select the categories
+     */
+    public void category(TrumpCategory[] categories, Player player) {
         displayCards(player);
         for (int i = 0; i < categories.length; i++) {
             System.out.println(i + ": " + categories[i].getText());
@@ -42,6 +54,12 @@ public class RoundView {
         roundController.selectCategory(categories[input]);
     }
 
+    /**
+     * Display all the players cards with colors showing ones that can be played
+     * @param player The current human player
+     * @param currentCard The current card
+     * @param currentTrumpCategory The current trump category
+     */
     private void displayCardsWithComarisonColor(Player player, Card currentCard, TrumpCategory currentTrumpCategory) {
         for (int i = 0; i < player.getCards().size(); i++) {
             if (!player.getCards().get(i).isBetterThan(currentCard, currentTrumpCategory) && !player.getCards().get(i).getCardType().equals(Card.CardType.TRUMP)) {
@@ -52,12 +70,22 @@ public class RoundView {
         }
     }
 
+    /**
+     * Displays all cards without color
+     * @param player The human player
+     */
     private void displayCards(Player player) {
         for (int i = 0; i < player.getCards().size(); i++) {
-            System.out.println(ConsoleColor.colorText(player.getCards().get(i).toString(), ConsoleColor.ANSI_BLACK));
+            System.out.println(player.getCards().get(i).toString());
         }
     }
 
+    /**
+     * Gets a card from the human player
+     * @param player The human player
+     * @param currentCard The current card
+     * @param currentTrumpCategory The current trump category
+     */
     public void card(Player player, Card currentCard, TrumpCategory currentTrumpCategory) {
         displayCardsWithComarisonColor(player, currentCard, currentTrumpCategory);
 
@@ -88,34 +116,69 @@ public class RoundView {
         }
     }
 
+    /**
+     * Display a category was selected
+     * @param player The player who selected the category
+     * @param currentTrumpCategory The trump category selected
+     */
     public void categorySelected(Player player, TrumpCategory currentTrumpCategory) {
         System.out.println(ConsoleColor.colorText(player.getName() + " changed the category to " + currentTrumpCategory.getText(), ConsoleColor.ANSI_PURPLE));
     }
 
+    /**
+     * Display a card was selected
+     * @param player The player who selected the card
+     * @param currentCard The card selected by the player
+     */
     public void cardSelected(Player player, Card currentCard) {
         System.out.println(ConsoleColor.colorText(player.getName() + " played the card " + currentCard.getTitle(), ConsoleColor.ANSI_PURPLE));
     }
 
+    /**
+     * Display player turn
+     * @param player The player who's turn it is
+     */
     public void playerTurn(Player player) {
         System.out.println(ConsoleColor.colorText("It is " + player.getName() + "'s turn.", ConsoleColor.ANSI_PURPLE));
     }
 
+    /**
+     * Display a removed player
+     * @param player The player who got removed
+     */
     public void playerRemoved(Player player) {
         System.out.println(ConsoleColor.colorText(player.getName() + " could not play a card and was removed", ConsoleColor.ANSI_PURPLE));
     }
 
+    /**
+     * Display there are no cards in the deck
+     * @param player The player who tried to draw a card
+     */
     public void noCardsLeftInDeck(Player player) {
         System.out.println(ConsoleColor.colorText(player.getName() + " could not draw a card because there are no cards left in the deck", ConsoleColor.ANSI_YELLOW));
     }
 
+    /**
+     * Display a player drawed a card
+     * @param player The player who drew the card
+     */
     public void drawCard(Player player) {
         System.out.println(ConsoleColor.colorText(player.getName() + " drew a card", ConsoleColor.ANSI_YELLOW));
     }
 
+    /**
+     * Display a trump card was selected
+     * @param player The player who drew the card
+     * @param currentCard The trump card that was played
+     */
     public void trumpCardSelected(Player player, Card currentCard) {
         System.out.println(ConsoleColor.colorText(player.getName() + " played the trump card " + currentCard.getTitle(), ConsoleColor.ANSI_PURPLE));
     }
 
+    /**
+     * Display the round winner
+     * @param player The player who won the round
+     */
     public void roundWinner(Player player) {
         System.out.println(ConsoleColor.colorText(player.getName() + " won the round.", ConsoleColor.ANSI_BLUE));
     }

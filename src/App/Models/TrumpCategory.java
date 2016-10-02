@@ -12,10 +12,20 @@ public enum TrumpCategory {
 
     private final String text;
 
+    /**
+     * Creates a new instance of trump category
+     *
+     * @param text Trump category display text
+     */
     TrumpCategory(String text) {
         this.text = text;
     }
 
+    /**
+     * Display text for category
+     *
+     * @return Display text
+     */
     public String getText() {
         return text;
     }

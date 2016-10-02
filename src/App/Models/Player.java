@@ -12,20 +12,41 @@ public class Player {
     private final PlayerType playerType;
     private final ArrayList<Card> cards;
 
-    public Player(String name, PlayerType playerType ) {
+    /**
+     * Creates a new instance of player
+     *
+     * @param name       The players name
+     * @param playerType The type of player. Bot or Human
+     */
+    public Player(String name, PlayerType playerType) {
         this.name = name;
         this.playerType = playerType;
         this.cards = new ArrayList<>();
     }
 
+    /**
+     * Gets the players cards in their hand
+     *
+     * @return List of cards
+     */
     public ArrayList<Card> getCards() {
         return cards;
     }
 
+    /**
+     * Gets the player's type
+     *
+     * @return Player type enum
+     */
     public PlayerType getPlayerType() {
         return playerType;
     }
 
+    /**
+     * Gets the player's name
+     *
+     * @return Player's name
+     */
     public String getName() {
         return name;
     }

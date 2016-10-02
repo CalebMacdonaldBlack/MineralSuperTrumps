@@ -11,19 +11,34 @@ import java.util.Random;
 public class Deck {
     private final ArrayList<Card> cards = new ArrayList<>();
 
-    public void addCard(Card card){
+    /**
+     * Adds a card to the deck
+     *
+     * @param card The card to add
+     */
+    public void addCard(Card card) {
         cards.add(card);
     }
 
-    public Card takeRandomCard(){
-        if(cards.size() == 0){
+    /**
+     * Takes a random card from the deck
+     *
+     * @return Randomly selected card
+     */
+    public Card takeRandomCard() {
+        if (cards.size() == 0) {
             throw new NullPointerException("No cards left in deck");
         }
         int index = new Random().nextInt(cards.size());
         return cards.remove(index);
     }
 
-    public int sizeOfDeck(){
+    /**
+     * Gets the size of the deck
+     *
+     * @return
+     */
+    public int sizeOfDeck() {
         return cards.size();
     }
 }

@@ -14,11 +14,21 @@ public enum EconomicValue {
 
     private final String text;
 
+    /**
+     * Creates a new instance
+     *
+     * @param text The text to return when displaying the value
+     */
     EconomicValue(String text) {
         this.text = text;
     }
 
-    public String getText(){
+    /**
+     * The text on the card for the value
+     *
+     * @return The text on the card
+     */
+    public String getText() {
         return this.text;
     }
 }

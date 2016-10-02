@@ -23,10 +23,19 @@ public enum Cleavage {
 
     private final String text;
 
+    /**
+     * Creates a new instance
+     * @param text The text to return when displaying the value
+     */
     Cleavage(String text) {
         this.text = text;
     }
 
+    /**
+     * The text on the card for the value
+     *
+     * @return The text on the card
+     */
     public String getText(){
         return this.text;
     }

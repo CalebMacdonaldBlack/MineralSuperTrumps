@@ -18,21 +18,34 @@ public class Game implements GameController {
     private final Deck deck;
     private final GameView gameView;
 
+    /**
+     * Creates a new instance of a game
+     * @param players The players in the game
+     */
     public Game(ArrayList<Player> players) {
         this.players = players;
         this.gameView = new GameView();
         deck = new StaticDeckBuilder().buildDeck();
     }
 
+    /**
+     * Begins a new game
+     */
     public void begin() {
+        // Starts the game up
         gameView.gameStarted();
         distributeCardsToPlayers();
         Player startingPlayer = players.get(new Random().nextInt(players.size()));
         ArrayList<Player> playersInGame = getNewArrayList(players);
         ArrayList<Player> winners = new ArrayList<>();
         RoundResult roundResult = new RoundResult(startingPlayer, null, RoundResult.RoundResultType.START);
+
+        // Loops over the rounds in a game
         while(playersInGame.size() > 1){
+            // Begin round
             roundResult = new Round(getNewArrayList(playersInGame), deck).begin(roundResult);
+
+            //check to see if player won
             for (Player player: playersInGame.toArray(new Player[playersInGame.size()])){
                 if(player.getCards().size() == 0){
                     playersInGame.remove(player);
@@ -44,6 +57,11 @@ public class Game implements GameController {
         gameView.listWinners(winners);
     }
 
+    /**
+     * Copies an arraylist without reference
+     * @param players The arraylist to copy
+     * @return An arraylist at a different reference
+     */
     private ArrayList<Player> getNewArrayList(ArrayList<Player> players) {
         ArrayList<Player> newList = new ArrayList<>();
         for(int i=0;i<players.size();i++){
@@ -52,6 +70,9 @@ public class Game implements GameController {
         return newList;
     }
 
+    /**
+     * distributes cards to each player
+     */
     private void distributeCardsToPlayers() {
         for(Player player: players){
             for(int count=0; count<8;count++){

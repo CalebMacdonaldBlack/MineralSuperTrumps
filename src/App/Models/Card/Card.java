@@ -16,6 +16,19 @@ public abstract class Card {
     private final TrumpCategory[] TrumpCategories;
     private final CardType cardType;
 
+    /**
+     * Creates a new instance
+     *
+     * @param title
+     * @param description
+     * @param hardness         range
+     * @param specificGravity  range
+     * @param cleavage         enum value
+     * @param crustalAbundance enum value
+     * @param economicValue    enum value
+     * @param trumpCategories  enum value
+     * @param cardType         enum value
+     */
     protected Card(String title, String description, Range hardness, Range specificGravity, Cleavage cleavage, CrustalAbundance crustalAbundance, EconomicValue economicValue, TrumpCategory[] trumpCategories, CardType cardType) {
         this.title = title;
         this.description = description;
@@ -28,44 +41,96 @@ public abstract class Card {
         this.cardType = cardType;
     }
 
+    /**
+     * Title
+     *
+     * @return Card title
+     */
     public String getTitle() {
         return title;
     }
 
+    /**
+     * Description
+     *
+     * @return Card description
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     * Hardness
+     *
+     * @return Hardness range
+     */
     public Range getHardness() {
         return hardness;
     }
 
+    /**
+     * Specific Gravity
+     *
+     * @return Specific Gravity Range
+     */
     public Range getSpecificGravity() {
         return specificGravity;
     }
 
+    /**
+     * Cleavage
+     *
+     * @return Cleavage enum value
+     */
     public Cleavage getCleavage() {
         return cleavage;
     }
 
+    /**
+     * Crustal abundance
+     *
+     * @return Crustal abundance enum value
+     */
     public CrustalAbundance getCrustalAbundance() {
         return crustalAbundance;
     }
 
+    /**
+     * Economic value
+     *
+     * @return Economic value enum value
+     */
     public EconomicValue getEconomicValue() {
         return economicValue;
     }
 
+    /**
+     * Trump categories this card can change to. Only used for trump card
+     *
+     * @return Array of trump categories
+     */
     public TrumpCategory[] getTrumpCategories() {
         return TrumpCategories;
     }
 
+    /**
+     * Card type enum. TRUMP or PLAYCARD
+     *
+     * @return Card type
+     */
     public CardType getCardType() {
         return cardType;
     }
 
-    public boolean isBetterThan(Card currentCard, TrumpCategory currentCategory){
-        switch (currentCategory){
+    /**
+     * Determines if this card is better than the one passed in for a specific category
+     *
+     * @param currentCard     The comparing card
+     * @param currentCategory The comparing trump category
+     * @return true if this card is better
+     */
+    public boolean isBetterThan(Card currentCard, TrumpCategory currentCategory) {
+        switch (currentCategory) {
             case HARDNESS:
                 return this.hardness.getHighValue() > currentCard.hardness.getHighValue();
             case CLEAVAGE:
@@ -80,10 +145,16 @@ public abstract class Card {
         throw new NullPointerException("Trump category doesn't exist");
     }
 
+
     public enum CardType {
         REGULAR,
         EmptyCard, TRUMP
     }
 
+    /**
+     * Used for outputting the card to the console
+     *
+     * @return String representation of a card
+     */
     public abstract String toString();
 }
