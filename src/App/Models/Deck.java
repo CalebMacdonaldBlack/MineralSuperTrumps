@@ -8,6 +8,7 @@ import java.util.Random;
 /**
  * Created by calebmacdonaldblack on 29/09/2016.
  */
+@SuppressWarnings("ALL")
 public class Deck {
     private final ArrayList<Card> cards = new ArrayList<>();
 
