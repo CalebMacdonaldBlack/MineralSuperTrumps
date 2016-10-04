@@ -4,6 +4,7 @@ import App.Controllers.RoundController;
 import App.Models.*;
 import App.Models.Card.Card;
 import App.Models.Card.EmptyCard;
+import App.Views.Round.IRoundView;
 import App.Views.Round.RoundView;
 
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ import java.util.Collections;
 public class Round implements RoundController {
     private final ArrayList<Player> players;
     private final Deck deck;
-    private final RoundView roundView;
+    private final IRoundView roundView;
     private final BotAI botAI;
 
     private Card currentCard = new EmptyCard();
@@ -23,15 +24,15 @@ public class Round implements RoundController {
 
     /**
      * Creates a new instance of a round
-     *
-     * @param players The players in the round
+     *  @param players The players in the round
      * @param deck    The deck instance
+     * @param roundView
      */
-    public Round(ArrayList<Player> players, Deck deck) {
+    public Round(ArrayList<Player> players, Deck deck, IRoundView roundView) {
         this.players = players;
         this.deck = deck;
-        this.roundView = new RoundView(this);
         this.botAI = new BotAI();
+        this.roundView = roundView;
     }
 
     /**

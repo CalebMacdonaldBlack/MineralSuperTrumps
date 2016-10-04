@@ -8,6 +8,8 @@ import App.Models.StaticDeckBuilder;
 import App.Views.Game.GameView;
 import App.Views.Game.GameViewGui;
 import App.Views.Game.IGameView;
+import App.Views.Round.IRoundView;
+import App.Views.Round.RoundViewGui;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -43,11 +45,12 @@ public class Game implements GameController {
         ArrayList<Player> playersInGame = getNewArrayList(players);
         ArrayList<Player> winners = new ArrayList<>();
         RoundResult roundResult = new RoundResult(startingPlayer, null, RoundResult.RoundResultType.START);
+        IRoundView roundView = new RoundViewGui();
 
         // Loops over the rounds in a game
         while(playersInGame.size() > 1){
             // Begin round
-            roundResult = new Round(getNewArrayList(playersInGame), deck).begin(roundResult);
+            roundResult = new Round(getNewArrayList(playersInGame), deck, roundView).begin(roundResult);
 
             //check to see if player won
             for (Player player: playersInGame.toArray(new Player[playersInGame.size()])){

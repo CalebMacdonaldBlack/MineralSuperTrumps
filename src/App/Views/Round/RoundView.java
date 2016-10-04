@@ -11,17 +11,8 @@ import java.util.Scanner;
 /**
  * Created by calebmacdonaldblack on 29/09/2016.
  */
-public class RoundView {
-    private final RoundController roundController;
+public class RoundView implements IRoundView{
     private final Scanner scanner = new Scanner(System.in);
-
-    /**
-     * Creates a new instance of roundview
-     * @param roundController The controller with the callback methods
-     */
-    public RoundView(RoundController roundController) {
-        this.roundController = roundController;
-    }
 
     /**
      * Display round began
@@ -35,7 +26,7 @@ public class RoundView {
      * @param categories The categories to choose from
      * @param player The human player to select the categories
      */
-    public void category(TrumpCategory[] categories, Player player) {
+    public void category(TrumpCategory[] categories, Player player, RoundController roundController) {
         displayCards(player);
         for (int i = 0; i < categories.length; i++) {
             System.out.println(i + ": " + categories[i].getText());
@@ -87,7 +78,7 @@ public class RoundView {
      * @param currentCard The current card
      * @param currentTrumpCategory The current trump category
      */
-    public void card(Player player, Card currentCard, TrumpCategory currentTrumpCategory) {
+    public void card(Player player, Card currentCard, TrumpCategory currentTrumpCategory, RoundController roundController) {
         displayCardsWithComarisonColor(player, currentCard, currentTrumpCategory);
 
         System.out.println(player.getCards().size() + ": \n" + ConsoleColor.colorText("Don't play a card", ConsoleColor.ANSI_BLUE));

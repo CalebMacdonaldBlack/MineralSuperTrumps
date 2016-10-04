@@ -1,5 +1,6 @@
 package App.Views.Round;
 
+import App.Controllers.RoundController;
 import App.Models.Card.Card;
 import App.Models.Player;
 import App.Models.TrumpCategory;
@@ -17,10 +18,11 @@ public interface IRoundView {
     /**
      * Gets category from human player
      *
-     * @param categories The categories to choose from
-     * @param player     The human player to select the categories
+     * @param categories      The categories to choose from
+     * @param player          The human player to select the categories
+     * @param roundController The controller for the round
      */
-    void category(TrumpCategory[] categories, Player player);
+    void category(TrumpCategory[] categories, Player player, RoundController roundController);
 
     /**
      * Gets a card from the human player
@@ -28,8 +30,9 @@ public interface IRoundView {
      * @param player               The human player
      * @param currentCard          The current card
      * @param currentTrumpCategory The current trump category
+     * @param roundController      The controller for the round
      */
-    void card(Player player, Card currentCard, TrumpCategory currentTrumpCategory);
+    void card(Player player, Card currentCard, TrumpCategory currentTrumpCategory, RoundController roundController);
 
     /**
      * Display a category was selected
