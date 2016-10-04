@@ -2,18 +2,21 @@ package App;
 
 import App.Controllers.AppController;
 import App.Views.AppView;
+import App.Views.AppViewGui;
+import App.Views.IAppView;
 
 /**
  * Created by calebmacdonaldblack on 29/09/2016.
  */
 public class App implements AppController {
-    private final AppView appView;
+    private final IAppView appView;
 
     /**
      * Creates a new instance of app
      */
     public App(){
-        this.appView = new AppView(this);
+//        this.appView = new AppView(this);
+        this.appView = new AppViewGui(this);
     }
 
     /**
