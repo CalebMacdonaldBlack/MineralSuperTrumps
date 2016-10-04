@@ -6,6 +6,7 @@ import App.Models.Player;
 import App.Models.RoundResult;
 import App.Models.StaticDeckBuilder;
 import App.Views.GameView;
+import App.Views.IGameView;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -17,7 +18,7 @@ import java.util.stream.Collectors;
 public class Game implements GameController {
     private final ArrayList<Player> players;
     private final Deck deck;
-    private final GameView gameView;
+    private final IGameView gameView;
 
     /**
      * Creates a new instance of a game
