@@ -17,7 +17,7 @@ public class RoundView implements IRoundView{
     /**
      * Display round began
      */
-    public void roundBegan() {
+    public void roundBegan(RoundStatus roundStatus) {
         System.out.println("ROUND STARTED");
     }
 

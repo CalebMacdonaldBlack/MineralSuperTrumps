@@ -5,6 +5,7 @@ import App.Models.*;
 import App.Models.Card.Card;
 import App.Models.Card.EmptyCard;
 import App.Views.Round.IRoundView;
+import App.Views.Round.RoundStatus;
 import App.Views.Round.RoundView;
 
 import java.util.ArrayList;
@@ -45,7 +46,7 @@ public class Round implements RoundController {
         // Initialize round
         currentTrumpCategory = roundResult.getCategory();
         Player startingPlayer = roundResult.getPlayer();
-        roundView.roundBegan();
+        roundView.roundBegan(new RoundStatus(players));
         startRound(startingPlayer, roundResult);
 
         // Put starting player in the first index
@@ -67,7 +68,7 @@ public class Round implements RoundController {
             if (player.getPlayerType().equals(Player.PlayerType.BOT)) {
                 currentCard = botAI.getCard(player, currentTrumpCategory, currentCard);
             } else {
-                roundView.card(player, currentCard, currentTrumpCategory);
+                roundView.card(player, currentCard, currentTrumpCategory, this);
             }
 
             // They didn't play a card
@@ -87,7 +88,7 @@ public class Round implements RoundController {
                 if (player.getPlayerType().equals(Player.PlayerType.BOT)) {
                     return new RoundResult(player, botAI.getCategory(new TrumpCategory[]{TrumpCategory.ECONOMIC_VALUE, TrumpCategory.SPECIFIC_GRAVITY, TrumpCategory.CLEAVAGE, TrumpCategory.HARDNESS, TrumpCategory.CRUSTAL_ABUNDANCE}), RoundResult.RoundResultType.TRUMP);
                 } else {
-                    roundView.category(new TrumpCategory[]{TrumpCategory.ECONOMIC_VALUE, TrumpCategory.SPECIFIC_GRAVITY, TrumpCategory.CLEAVAGE, TrumpCategory.HARDNESS, TrumpCategory.CRUSTAL_ABUNDANCE}, player);
+                    roundView.category(new TrumpCategory[]{TrumpCategory.ECONOMIC_VALUE, TrumpCategory.SPECIFIC_GRAVITY, TrumpCategory.CLEAVAGE, TrumpCategory.HARDNESS, TrumpCategory.CRUSTAL_ABUNDANCE}, player, this);
                     roundView.categorySelected(player, currentTrumpCategory);
                     return new RoundResult(player, currentTrumpCategory, RoundResult.RoundResultType.NORMAL);
                 }
@@ -102,7 +103,7 @@ public class Round implements RoundController {
         if (players.get(0).getPlayerType().equals(Player.PlayerType.BOT)) {
             return new RoundResult(players.get(0), botAI.getCategory(new TrumpCategory[]{TrumpCategory.ECONOMIC_VALUE, TrumpCategory.SPECIFIC_GRAVITY, TrumpCategory.CLEAVAGE, TrumpCategory.HARDNESS, TrumpCategory.CRUSTAL_ABUNDANCE}), RoundResult.RoundResultType.NORMAL);
         } else {
-            roundView.category(new TrumpCategory[]{TrumpCategory.ECONOMIC_VALUE, TrumpCategory.SPECIFIC_GRAVITY, TrumpCategory.CLEAVAGE, TrumpCategory.HARDNESS, TrumpCategory.CRUSTAL_ABUNDANCE}, players.get(0));
+            roundView.category(new TrumpCategory[]{TrumpCategory.ECONOMIC_VALUE, TrumpCategory.SPECIFIC_GRAVITY, TrumpCategory.CLEAVAGE, TrumpCategory.HARDNESS, TrumpCategory.CRUSTAL_ABUNDANCE}, players.get(0), this);
             roundView.categorySelected(players.get(0), currentTrumpCategory);
             return new RoundResult(players.get(0), currentTrumpCategory, RoundResult.RoundResultType.NORMAL);
         }
@@ -121,7 +122,7 @@ public class Round implements RoundController {
             if (startingPlayer.getPlayerType().equals(Player.PlayerType.BOT)) {
                 currentTrumpCategory = botAI.getCategory(new TrumpCategory[]{TrumpCategory.ECONOMIC_VALUE, TrumpCategory.SPECIFIC_GRAVITY, TrumpCategory.CLEAVAGE, TrumpCategory.HARDNESS, TrumpCategory.CRUSTAL_ABUNDANCE});
             } else {
-                roundView.category(new TrumpCategory[]{TrumpCategory.ECONOMIC_VALUE, TrumpCategory.SPECIFIC_GRAVITY, TrumpCategory.CLEAVAGE, TrumpCategory.HARDNESS, TrumpCategory.CRUSTAL_ABUNDANCE}, startingPlayer);
+                roundView.category(new TrumpCategory[]{TrumpCategory.ECONOMIC_VALUE, TrumpCategory.SPECIFIC_GRAVITY, TrumpCategory.CLEAVAGE, TrumpCategory.HARDNESS, TrumpCategory.CRUSTAL_ABUNDANCE}, startingPlayer, this);
             }
             roundView.categorySelected(startingPlayer, currentTrumpCategory);
         }
@@ -132,7 +133,7 @@ public class Round implements RoundController {
                 currentCard = botAI.getCard(startingPlayer, currentTrumpCategory, new EmptyCard());
                 roundView.cardSelected(startingPlayer, currentCard);
             } else {
-                roundView.card(startingPlayer, currentCard, currentTrumpCategory);
+                roundView.card(startingPlayer, currentCard, currentTrumpCategory, this);
                 roundView.cardSelected(startingPlayer, currentCard);
             }
         }

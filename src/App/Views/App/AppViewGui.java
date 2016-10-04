@@ -126,8 +126,8 @@ public class AppViewGui extends JFrame implements IAppView{
         JButton startGameButton = new JButton("Start Game");
         addPlayersJFrame.add(startGameButton);
         startGameButton.addActionListener(e -> {
-            startGame(yourName, bot1Name, bot2Name, bot3Name, bot4Name);
             addPlayersJFrame.setVisible(false);
+            startGame(yourName, bot1Name, bot2Name, bot3Name, bot4Name);
         });
         addPlayersJFrame.setVisible(true);
     }
@@ -139,6 +139,7 @@ public class AppViewGui extends JFrame implements IAppView{
         players.add(new Player(bot2Name.getText(), Player.PlayerType.BOT));
         players.add(new Player(bot3Name.getText(), Player.PlayerType.BOT));
         players.add(new Player(bot4Name.getText(), Player.PlayerType.BOT));
+
         appController.startGame(new App.Game(players));
     }
 

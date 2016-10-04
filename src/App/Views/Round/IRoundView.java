@@ -13,7 +13,7 @@ public interface IRoundView {
     /**
      * Display round began
      */
-    void roundBegan();
+    void roundBegan(RoundStatus roundStatus);
 
     /**
      * Gets category from human player

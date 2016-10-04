@@ -44,24 +44,28 @@ public class Game implements GameController {
         Player startingPlayer = players.get(new Random().nextInt(players.size()));
         ArrayList<Player> playersInGame = getNewArrayList(players);
         ArrayList<Player> winners = new ArrayList<>();
-        RoundResult roundResult = new RoundResult(startingPlayer, null, RoundResult.RoundResultType.START);
         IRoundView roundView = new RoundViewGui();
 
-        // Loops over the rounds in a game
-        while(playersInGame.size() > 1){
-            // Begin round
-            roundResult = new Round(getNewArrayList(playersInGame), deck, roundView).begin(roundResult);
+        Thread thread = new Thread(() -> {
+            RoundResult roundResult = new RoundResult(startingPlayer, null, RoundResult.RoundResultType.START);
+            // Loops over the rounds in a game
+            while(playersInGame.size() > 1){
+                // Begin round
+                roundResult = new Round(getNewArrayList(playersInGame), deck, roundView).begin(roundResult);
 
-            //check to see if player won
-            for (Player player: playersInGame.toArray(new Player[playersInGame.size()])){
-                if(player.getCards().size() == 0){
-                    playersInGame.remove(player);
-                    winners.add(player);
-                    gameView.winner(player);
+                //check to see if player won
+                for (Player player: playersInGame.toArray(new Player[playersInGame.size()])){
+                    if(player.getCards().size() == 0){
+                        playersInGame.remove(player);
+                        winners.add(player);
+                        gameView.winner(player);
+                    }
                 }
             }
-        }
-        gameView.listWinners(winners);
+            gameView.listWinners(winners);
+        });
+
+        thread.start();
     }
 
     /**
