@@ -1,6 +1,7 @@
-package App.Views;
+package App.Views.Game;
 
 import App.Models.Player;
+import App.Views.ConsoleColor;
 
 import java.util.ArrayList;
 

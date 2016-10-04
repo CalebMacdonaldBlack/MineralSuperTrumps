@@ -1,9 +1,10 @@
-package App.Views;
+package App.Views.Round;
 
 import App.Controllers.RoundController;
 import App.Models.Card.Card;
 import App.Models.Player;
 import App.Models.TrumpCategory;
+import App.Views.ConsoleColor;
 
 import java.util.Scanner;
 

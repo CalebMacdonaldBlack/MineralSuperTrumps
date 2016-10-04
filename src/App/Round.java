@@ -4,7 +4,7 @@ import App.Controllers.RoundController;
 import App.Models.*;
 import App.Models.Card.Card;
 import App.Models.Card.EmptyCard;
-import App.Views.RoundView;
+import App.Views.Round.RoundView;
 
 import java.util.ArrayList;
 import java.util.Collections;

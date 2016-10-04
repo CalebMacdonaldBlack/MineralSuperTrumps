@@ -1,9 +1,8 @@
 package App;
 
 import App.Controllers.AppController;
-import App.Views.AppView;
-import App.Views.AppViewGui;
-import App.Views.IAppView;
+import App.Views.App.AppViewGui;
+import App.Views.App.IAppView;
 
 /**
  * Created by calebmacdonaldblack on 29/09/2016.

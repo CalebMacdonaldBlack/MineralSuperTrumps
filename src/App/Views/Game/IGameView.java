@@ -1,4 +1,4 @@
-package App.Views;
+package App.Views.Game;
 
 import App.Models.Player;
 

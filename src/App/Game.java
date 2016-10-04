@@ -5,8 +5,8 @@ import App.Models.Deck;
 import App.Models.Player;
 import App.Models.RoundResult;
 import App.Models.StaticDeckBuilder;
-import App.Views.GameView;
-import App.Views.IGameView;
+import App.Views.Game.GameView;
+import App.Views.Game.IGameView;
 
 import java.util.ArrayList;
 import java.util.Random;

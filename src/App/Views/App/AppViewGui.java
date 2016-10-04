@@ -1,4 +1,4 @@
-package App.Views;
+package App.Views.App;
 
 import App.Controllers.AppController;
 import App.Models.Player;

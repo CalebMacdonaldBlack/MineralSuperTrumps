@@ -1,13 +1,9 @@
-package App.Views;
+package App.Views.App;
 
 import App.Controllers.AppController;
 import App.Models.Player;
 
 import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.EmptyBorder;
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
