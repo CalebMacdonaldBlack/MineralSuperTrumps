@@ -6,6 +6,7 @@ import App.Models.Player;
 import App.Models.RoundResult;
 import App.Models.StaticDeckBuilder;
 import App.Views.Game.GameView;
+import App.Views.Game.GameViewGui;
 import App.Views.Game.IGameView;
 
 import java.util.ArrayList;
@@ -26,7 +27,8 @@ public class Game implements GameController {
      */
     public Game(ArrayList<Player> players) {
         this.players = players;
-        this.gameView = new GameView();
+//        this.gameView = new GameView();
+        this.gameView = new GameViewGui();
         deck = new StaticDeckBuilder().buildDeck();
     }
 
