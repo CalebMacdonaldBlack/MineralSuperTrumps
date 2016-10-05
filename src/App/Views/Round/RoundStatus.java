@@ -1,5 +1,6 @@
 package App.Views.Round;
 
+import App.Models.Card.Card;
 import App.Models.Player;
 
 import java.util.ArrayList;
@@ -9,9 +10,15 @@ import java.util.ArrayList;
  */
 public class RoundStatus {
     private final ArrayList<Player> players;
+    private final Card currentCard;
 
-    public RoundStatus(ArrayList<Player> players) {
+    public RoundStatus(ArrayList<Player> players, Card currentCard) {
         this.players = players;
+        this.currentCard = currentCard;
+    }
+
+    public Card getCurrentCard() {
+        return currentCard;
     }
 
     public ArrayList<Player> getPlayers() {

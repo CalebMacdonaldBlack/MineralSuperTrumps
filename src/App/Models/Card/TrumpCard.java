@@ -13,8 +13,8 @@ public class TrumpCard extends Card {
      * @param description Card Subtitle
      * @param trumpCategories Categories the card can it change to
      */
-    public TrumpCard(String title, String description, TrumpCategory[] trumpCategories) {
-        super(title, description, new Range(-1,-1), new Range(-1,-1), Cleavage.TRUMPCARD, CrustalAbundance.TRUMPCARD, EconomicValue.TRUMPCARD, trumpCategories, CardType.TRUMP);
+    public TrumpCard(String fileName, String title, String description, TrumpCategory[] trumpCategories) {
+        super(title, description, new Range(-1,-1), new Range(-1,-1), Cleavage.TRUMPCARD, CrustalAbundance.TRUMPCARD, EconomicValue.TRUMPCARD, trumpCategories, CardType.TRUMP, fileName);
     }
 
     /**

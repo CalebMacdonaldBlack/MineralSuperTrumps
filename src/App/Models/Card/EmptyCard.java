@@ -11,7 +11,7 @@ public class EmptyCard extends Card {
      * Creates a new instance of an empty card. Used instead of null to assist in debugging
      */
     public EmptyCard() {
-        super("", "", new Range(-1, -1), new Range(-1, -1), Cleavage.TRUMPCARD, CrustalAbundance.TRUMPCARD, EconomicValue.TRUMPCARD, new TrumpCategory[]{}, CardType.EmptyCard);
+        super("", "", new Range(-1, -1), new Range(-1, -1), Cleavage.TRUMPCARD, CrustalAbundance.TRUMPCARD, EconomicValue.TRUMPCARD, new TrumpCategory[]{}, CardType.EmptyCard, "slide66.jpg");
     }
 
     /**

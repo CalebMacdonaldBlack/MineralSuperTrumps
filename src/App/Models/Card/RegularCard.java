@@ -17,8 +17,8 @@ public class RegularCard extends Card{
      * @param crustalAbundance Crustal abundance range
      * @param economicValue Economic value range
      */
-    public RegularCard(String title, String description, Range hardness, Range specificGravity, Cleavage cleavage, CrustalAbundance crustalAbundance, EconomicValue economicValue) {
-        super(title, description, hardness, specificGravity, cleavage, crustalAbundance, economicValue, new TrumpCategory[]{}, CardType.REGULAR);
+    public RegularCard(String fileName, String title, String description, Range hardness, Range specificGravity, Cleavage cleavage, CrustalAbundance crustalAbundance, EconomicValue economicValue) {
+        super(title, description, hardness, specificGravity, cleavage, crustalAbundance, economicValue, new TrumpCategory[]{}, CardType.REGULAR, fileName);
     }
 
     /**

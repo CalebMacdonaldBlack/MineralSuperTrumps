@@ -15,10 +15,10 @@ public abstract class Card {
     private final EconomicValue economicValue;
     private final TrumpCategory[] TrumpCategories;
     private final CardType cardType;
+    private final String fileName;
 
     /**
      * Creates a new instance
-     *
      * @param title            Card title
      * @param description      Card description
      * @param hardness         range
@@ -28,8 +28,9 @@ public abstract class Card {
      * @param economicValue    enum value
      * @param trumpCategories  enum value
      * @param cardType         enum value
+     * @param fileName         Card image filename
      */
-    Card(String title, String description, Range hardness, Range specificGravity, Cleavage cleavage, CrustalAbundance crustalAbundance, EconomicValue economicValue, TrumpCategory[] trumpCategories, CardType cardType) {
+    Card(String title, String description, Range hardness, Range specificGravity, Cleavage cleavage, CrustalAbundance crustalAbundance, EconomicValue economicValue, TrumpCategory[] trumpCategories, CardType cardType, String fileName) {
         this.title = title;
         this.description = description;
         this.hardness = hardness;
@@ -39,6 +40,16 @@ public abstract class Card {
         this.economicValue = economicValue;
         TrumpCategories = trumpCategories;
         this.cardType = cardType;
+        this.fileName = fileName;
+    }
+
+    /**
+     * Card
+     *
+     * @return Card's image filename
+     */
+    public String getFileName() {
+        return fileName;
     }
 
     /**

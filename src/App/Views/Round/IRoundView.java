@@ -47,8 +47,9 @@ public interface IRoundView {
      *
      * @param player      The player who selected the card
      * @param currentCard The card selected by the player
+     * @param roundStatus The status of the round
      */
-    void cardSelected(Player player, Card currentCard);
+    void cardSelected(Player player, Card currentCard, RoundStatus roundStatus);
 
     /**
      * Display player turn

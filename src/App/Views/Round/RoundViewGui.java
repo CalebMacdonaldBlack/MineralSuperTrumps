@@ -40,7 +40,7 @@ public class RoundViewGui implements IRoundView {
         frame.setVisible(true);
         addTitle("Mineral Super Trumps", frame);
         addPlayersPanel();
-        addCurrentCard();
+        addCurrentCard("slide66.jpg");
         addLabelBox(currentCategoryLabel, "<html><font color='white'><center>Category<br>Specific Gravity</center></font></html>", Color.red, createGridBagConstraints(2, 1, 1, 1));
         addHumansCards();
         addLabelBox(currentPlayerLabel, "<html><font color='white'><center>Current Player<br>Dave</center></font></html>", Color.black, createGridBagConstraints(3, 1, 1, 1));
@@ -76,9 +76,9 @@ public class RoundViewGui implements IRoundView {
         roundJFrame.add(label, gridBagConstraints);
     }
 
-    private void addCurrentCard() {
+    private void addCurrentCard(String fileName) {
         try {
-            currentCardLabel.setIcon(new ImageIcon(getScaledImage(ImageIO.read(new File("images/slide66.jpg")), 171, 239)));
+            currentCardLabel.setIcon(new ImageIcon(getScaledImage(ImageIO.read(new File("images/" + fileName)), 171, 239)));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -99,13 +99,19 @@ public class RoundViewGui implements IRoundView {
     private void addPlayersPanel() {
         playersPanel.setLayout(new BoxLayout(playersPanel, BoxLayout.Y_AXIS));
         roundJFrame.add(playersPanel, createGridBagConstraints(0, 1, 1,1));
+        for(int i=0;i<5;i++){
+            playersPanel.add(new JLabel("Player " + 1));
+        }
     }
 
-    private void UpdatePlayersPanel(ArrayList<Player> players){
-        for(Player player: players){
-            JLabel label = new JLabel(player.getName() + " - Cards: " + player.getCards().size());
-            label.setFont(label.getFont().deriveFont(32f));
-            playersPanel.add(label);
+    private void updatePlayersPanel(ArrayList<Player> players){
+        for(int i=0;i<5;i++){
+            try {
+                Player player = players.get(i);
+                ((JLabel) playersPanel.getComponent(i)).setText(player.getName() + " - Cards: " + player.getCards().size());
+            }catch(ArrayIndexOutOfBoundsException e){
+                ((JLabel) playersPanel.getComponent(i)).setText("");
+            }
         }
     }
 
@@ -132,7 +138,12 @@ public class RoundViewGui implements IRoundView {
     }
 
     private void updateView(RoundStatus roundStatus){
-        UpdatePlayersPanel(roundStatus.getPlayers());
+        updatePlayersPanel(roundStatus.getPlayers());
+        updateCurrentCard(roundStatus.getCurrentCard());
+    }
+
+    private void updateCurrentCard(Card currentCard) {
+        this.addCurrentCard(currentCard.getFileName());
     }
 
     @Override
@@ -194,8 +205,8 @@ public class RoundViewGui implements IRoundView {
     }
 
     @Override
-    public void cardSelected(Player player, Card currentCard) {
-
+    public void cardSelected(Player player, Card currentCard, RoundStatus roundStatus) {
+        updateView(roundStatus);
     }
 
     @Override

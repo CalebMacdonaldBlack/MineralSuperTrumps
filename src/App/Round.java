@@ -6,7 +6,6 @@ import App.Models.Card.Card;
 import App.Models.Card.EmptyCard;
 import App.Views.Round.IRoundView;
 import App.Views.Round.RoundStatus;
-import App.Views.Round.RoundView;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -46,7 +45,7 @@ public class Round implements RoundController {
         // Initialize round
         currentTrumpCategory = roundResult.getCategory();
         Player startingPlayer = roundResult.getPlayer();
-        roundView.roundBegan(new RoundStatus(players));
+        roundView.roundBegan(new RoundStatus(players, currentCard));
         startRound(startingPlayer, roundResult);
 
         // Put starting player in the first index
@@ -94,7 +93,7 @@ public class Round implements RoundController {
                 }
                 // They played a regular card
             } else {
-                roundView.cardSelected(player, currentCard);
+                roundView.cardSelected(player, currentCard, new RoundStatus(players, currentCard));
             }
         }
         roundView.roundWinner(players.get(0));
@@ -131,10 +130,10 @@ public class Round implements RoundController {
             if (startingPlayer.getPlayerType().equals(Player.PlayerType.BOT)) {
 
                 currentCard = botAI.getCard(startingPlayer, currentTrumpCategory, new EmptyCard());
-                roundView.cardSelected(startingPlayer, currentCard);
+                roundView.cardSelected(startingPlayer, currentCard, new RoundStatus(players, currentCard));
             } else {
                 roundView.card(startingPlayer, currentCard, currentTrumpCategory, this);
-                roundView.cardSelected(startingPlayer, currentCard);
+                roundView.cardSelected(startingPlayer, currentCard, new RoundStatus(players, currentCard));
             }
         }
     }

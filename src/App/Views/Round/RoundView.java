@@ -122,7 +122,7 @@ public class RoundView implements IRoundView{
      * @param player The player who selected the card
      * @param currentCard The card selected by the player
      */
-    public void cardSelected(Player player, Card currentCard) {
+    public void cardSelected(Player player, Card currentCard, RoundStatus roundStatus) {
         System.out.println(ConsoleColor.colorText(player.getName() + " played the card " + currentCard.getTitle(), ConsoleColor.ANSI_PURPLE));
     }
 
