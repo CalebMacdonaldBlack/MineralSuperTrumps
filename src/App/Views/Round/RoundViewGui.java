@@ -10,6 +10,8 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -49,8 +51,8 @@ public class RoundViewGui implements IRoundView {
     private void addHumansCards() {
         JPanel panel = new JPanel();
 
-        for(int i=0;i<18;i++){
-            JLabel card = new JLabel();
+        for(int i=0;i<6;i++){
+            JButton card = new JButton();
             card.setBorder(new LineBorder(Color.white, 25));
             try {
                 card.setIcon(new ImageIcon(getScaledImage(ImageIO.read(new File("images/slide66.jpg")), 171, 239)));
@@ -109,7 +111,7 @@ public class RoundViewGui implements IRoundView {
             try {
                 Player player = players.get(i);
                 ((JLabel) playersPanel.getComponent(i)).setText(player.getName() + " - Cards: " + player.getCards().size());
-            }catch(ArrayIndexOutOfBoundsException e){
+            }catch(IndexOutOfBoundsException e){
                 ((JLabel) playersPanel.getComponent(i)).setText("");
             }
         }
@@ -179,8 +181,15 @@ public class RoundViewGui implements IRoundView {
 
     @Override
     public void card(Player player, Card currentCard, TrumpCategory currentTrumpCategory, RoundController roundController) {
+        updateHumansCards(player, roundController);
         for(Card card: player.getCards()){
             System.out.println(card.toString());
+        }
+
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
 
         System.out.println(player.getCards().size() + ": \n" + ConsoleColor.colorText("Don't play a card", ConsoleColor.ANSI_BLUE));
@@ -208,6 +217,29 @@ public class RoundViewGui implements IRoundView {
         } else {
             roundController.selectCard(player.getCards().remove(input));
         }
+    }
+
+    private void updateHumansCards(Player player, RoundController roundController) {
+        JPanel panel = new JPanel();
+
+        for(Card c: player.getCards()){
+            JButton card = new JButton();
+            card.setBorder(new LineBorder(Color.white, 25));
+            try {
+                card.setIcon(new ImageIcon(getScaledImage(ImageIO.read(new File("images/" + c.getFileName())), 171, 239)));
+                card.addActionListener(e -> {
+                    System.out.println(c.getTitle());
+                });
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            panel.add(card);
+        }
+        panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
+        jScrollPane.setViewportView(panel);
+
+        roundJFrame.revalidate();
+        roundJFrame.repaint();
     }
 
     @Override

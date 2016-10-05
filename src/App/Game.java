@@ -64,7 +64,6 @@ public class Game implements GameController {
             }
             gameView.listWinners(winners);
         });
-
         thread.start();
     }
 
