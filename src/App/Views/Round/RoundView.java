@@ -130,7 +130,7 @@ public class RoundView implements IRoundView{
      * Display player turn
      * @param player The player who's turn it is
      */
-    public void playerTurn(Player player) {
+    public void playerTurn(Player player, RoundStatus roundStatus) {
         System.out.println(ConsoleColor.colorText("It is " + player.getName() + "'s turn.", ConsoleColor.ANSI_PURPLE));
     }
 

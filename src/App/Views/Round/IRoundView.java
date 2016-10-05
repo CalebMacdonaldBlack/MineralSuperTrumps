@@ -57,7 +57,7 @@ public interface IRoundView {
      *
      * @param player The player who's turn it is
      */
-    void playerTurn(Player player);
+    void playerTurn(Player player, RoundStatus roundStatus);
 
     /**
      * Display a removed player

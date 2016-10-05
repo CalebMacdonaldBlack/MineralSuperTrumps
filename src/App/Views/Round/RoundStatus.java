@@ -13,11 +13,13 @@ public class RoundStatus {
     private final ArrayList<Player> players;
     private final Card currentCard;
     private final TrumpCategory currentTrumpCategory;
+    private final Player currentPlayer;
 
-    public RoundStatus(ArrayList<Player> players, Card currentCard, TrumpCategory currentTrumpCategory) {
+    public RoundStatus(ArrayList<Player> players, Card currentCard, TrumpCategory currentTrumpCategory, Player currentPlayer) {
         this.players = players;
         this.currentCard = currentCard;
         this.currentTrumpCategory = currentTrumpCategory;
+        this.currentPlayer = currentPlayer;
     }
 
     public Card getCurrentCard() {
@@ -30,5 +32,9 @@ public class RoundStatus {
 
     public ArrayList<Player> getPlayers() {
         return players;
+    }
+
+    public Player getCurrentPlayer(){
+        return this.currentPlayer;
     }
 }

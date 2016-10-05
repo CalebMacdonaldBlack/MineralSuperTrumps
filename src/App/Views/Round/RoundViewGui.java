@@ -141,6 +141,11 @@ public class RoundViewGui implements IRoundView {
         updatePlayersPanel(roundStatus.getPlayers());
         updateCurrentCard(roundStatus.getCurrentCard());
         updateCurrentCategory(roundStatus.getCurrentTrumpCategory());
+        updateCurrentPlayer(roundStatus.getCurrentPlayer());
+    }
+
+    private void updateCurrentPlayer(Player currentPlayer) {
+        currentPlayerLabel.setText("<html><font color='white'><center>Current Player<br>"+currentPlayer.getName()+"</center></font></html>");
     }
 
     private void updateCurrentCategory(TrumpCategory currentTrumpCategory) {
@@ -216,7 +221,8 @@ public class RoundViewGui implements IRoundView {
     }
 
     @Override
-    public void playerTurn(Player player) {
+    public void playerTurn(Player player, RoundStatus roundStatus) {
+        updateView(roundStatus);
 
     }
 
