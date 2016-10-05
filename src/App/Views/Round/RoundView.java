@@ -113,7 +113,7 @@ public class RoundView implements IRoundView{
      * @param player The player who selected the category
      * @param currentTrumpCategory The trump category selected
      */
-    public void categorySelected(Player player, TrumpCategory currentTrumpCategory) {
+    public void categorySelected(Player player, TrumpCategory currentTrumpCategory, RoundStatus roundStatus) {
         System.out.println(ConsoleColor.colorText(player.getName() + " changed the category to " + currentTrumpCategory.getText(), ConsoleColor.ANSI_PURPLE));
     }
 

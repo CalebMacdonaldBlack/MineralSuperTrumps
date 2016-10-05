@@ -39,8 +39,9 @@ public interface IRoundView {
      *
      * @param player               The player who selected the category
      * @param currentTrumpCategory The trump category selected
+     * @param roundStatus          The status of the round
      */
-    void categorySelected(Player player, TrumpCategory currentTrumpCategory);
+    void categorySelected(Player player, TrumpCategory currentTrumpCategory, RoundStatus roundStatus);
 
     /**
      * Display a card was selected

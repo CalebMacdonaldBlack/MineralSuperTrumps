@@ -140,6 +140,12 @@ public class RoundViewGui implements IRoundView {
     private void updateView(RoundStatus roundStatus){
         updatePlayersPanel(roundStatus.getPlayers());
         updateCurrentCard(roundStatus.getCurrentCard());
+        updateCurrentCategory(roundStatus.getCurrentTrumpCategory());
+    }
+
+    private void updateCurrentCategory(TrumpCategory currentTrumpCategory) {
+        if(currentTrumpCategory != null)
+        this.currentCategoryLabel.setText("<html><font color='white'><center>Category<br>"+ currentTrumpCategory.getText()+"</center></font></html>");
     }
 
     private void updateCurrentCard(Card currentCard) {
@@ -200,8 +206,8 @@ public class RoundViewGui implements IRoundView {
     }
 
     @Override
-    public void categorySelected(Player player, TrumpCategory currentTrumpCategory) {
-
+    public void categorySelected(Player player, TrumpCategory currentTrumpCategory, RoundStatus roundStatus) {
+        updateView(roundStatus);
     }
 
     @Override
