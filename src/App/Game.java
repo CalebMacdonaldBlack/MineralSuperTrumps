@@ -5,7 +5,6 @@ import App.Models.Deck;
 import App.Models.Player;
 import App.Models.RoundResult;
 import App.Models.StaticDeckBuilder;
-import App.Views.Game.GameView;
 import App.Views.Game.GameViewGui;
 import App.Views.Game.IGameView;
 import App.Views.Round.IRoundView;
@@ -22,13 +21,16 @@ public class Game implements GameController {
     private final ArrayList<Player> players;
     private final Deck deck;
     private final IGameView gameView;
+    private final Player humanPlayer;
 
     /**
      * Creates a new instance of a game
      * @param players The players in the game
+     * @param humanPlayer
      */
-    public Game(ArrayList<Player> players) {
+    public Game(ArrayList<Player> players, Player humanPlayer) {
         this.players = players;
+        this.humanPlayer = humanPlayer;
 //        this.gameView = new GameView();
         this.gameView = new GameViewGui();
         deck = new StaticDeckBuilder().buildDeck();
@@ -51,7 +53,7 @@ public class Game implements GameController {
             // Loops over the rounds in a game
             while(playersInGame.size() > 1){
                 // Begin round
-                roundResult = new Round(getNewArrayList(playersInGame), deck, roundView).begin(roundResult);
+                roundResult = new Round(getNewArrayList(playersInGame), deck, roundView, humanPlayer).begin(roundResult);
 
                 //check to see if player won
                 for (Player player: playersInGame.toArray(new Player[playersInGame.size()])){

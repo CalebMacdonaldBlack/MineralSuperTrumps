@@ -140,7 +140,7 @@ public class AppViewGui extends JFrame implements IAppView{
         players.add(new Player(bot3Name.getText(), Player.PlayerType.BOT));
         players.add(new Player(bot4Name.getText(), Player.PlayerType.BOT));
 
-        appController.startGame(new App.Game(players));
+        appController.startGame(new App.Game(players, players.get(0)));
     }
 
     private GridBagConstraints modifiedGridBagConstraint(int x, int y, GridBagConstraints gridBagConstraints) {

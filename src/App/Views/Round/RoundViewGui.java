@@ -4,14 +4,10 @@ import App.Controllers.RoundController;
 import App.Models.Card.Card;
 import App.Models.Player;
 import App.Models.TrumpCategory;
-import App.Views.ConsoleColor;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -29,6 +25,7 @@ public class RoundViewGui implements IRoundView {
     private JLabel currentCategoryLabel = new JLabel();
     private JLabel currentPlayerLabel = new JLabel();
     private JScrollPane jScrollPane;
+    private boolean canRespondWithCard = false;
 
     public RoundViewGui(){
         this.roundJFrame = new JFrame("Mineral Super Trumps");
@@ -144,6 +141,7 @@ public class RoundViewGui implements IRoundView {
         updateCurrentCard(roundStatus.getCurrentCard());
         updateCurrentCategory(roundStatus.getCurrentTrumpCategory());
         updateCurrentPlayer(roundStatus.getCurrentPlayer());
+        updateHumansCards(roundStatus.getHumanPlayer(), roundStatus.getRoundController(), roundStatus.getCurrentCard(), roundStatus.getCurrentTrumpCategory());
     }
 
     private void updateCurrentPlayer(Player currentPlayer) {
@@ -181,45 +179,11 @@ public class RoundViewGui implements IRoundView {
 
     @Override
     public void card(Player player, Card currentCard, TrumpCategory currentTrumpCategory, RoundController roundController) {
-        updateHumansCards(player, roundController);
-        for(Card card: player.getCards()){
-            System.out.println(card.toString());
-        }
-
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        System.out.println(player.getCards().size() + ": \n" + ConsoleColor.colorText("Don't play a card", ConsoleColor.ANSI_BLUE));
-
-        System.out.println("\nCategory: " + currentTrumpCategory.getText() + "\ncurrentCard\n" + currentCard.toString());
-
-        int input = -1;
-        System.out.print("Option: ");
-        while (input < 0 || input > player.getCards().size()) {
-            try {
-                input = Integer.parseInt(new Scanner(System.in).nextLine());
-                if (input < 0 || input > player.getCards().size()) {
-                    System.out.print("please enter a valid option:");
-                } else if (input != player.getCards().size() && !player.getCards().get(input).isBetterThan(currentCard, currentTrumpCategory) && !player.getCards().get(input).getCardType().equals(Card.CardType.TRUMP)) {
-                    System.out.println("please choose a card that is better (Green)");
-                    input = -1;
-                }
-            } catch (NumberFormatException e) {
-                System.out.print("please enter a valid option:");
-            }
-        }
-
-        if (input == player.getCards().size()) {
-            roundController.selectCard(currentCard);
-        } else {
-            roundController.selectCard(player.getCards().remove(input));
-        }
+        canRespondWithCard = true;
+        System.out.println(canRespondWithCard + " CAN RESPPODN");
     }
 
-    private void updateHumansCards(Player player, RoundController roundController) {
+    private void updateHumansCards(Player player, RoundController roundController, Card currentCard, TrumpCategory currentTrumpCategory) {
         JPanel panel = new JPanel();
 
         for(Card c: player.getCards()){
@@ -228,13 +192,32 @@ public class RoundViewGui implements IRoundView {
             try {
                 card.setIcon(new ImageIcon(getScaledImage(ImageIO.read(new File("images/" + c.getFileName())), 171, 239)));
                 card.addActionListener(e -> {
-                    System.out.println(c.getTitle());
+                    if(canRespondWithCard && c.isBetterThan(currentCard, currentTrumpCategory)){
+                        System.out.println("RESPONDED");
+                        roundController.selectCard(c);
+                        canRespondWithCard = false;
+                    } else {
+                        System.out.println("not better or not ur turn");
+                        System.out.println(canRespondWithCard);
+                        System.out.println(currentCard);
+                        System.out.println("is better that: " + c.isBetterThan(currentCard, currentTrumpCategory));
+                        System.out.println(c.getTitle());
+                        System.out.println(currentTrumpCategory);
+                    }
                 });
             } catch (IOException e) {
                 e.printStackTrace();
             }
             panel.add(card);
         }
+
+        JButton button = new JButton("Dont play a card");
+        button.addActionListener(e -> {
+            if(canRespondWithCard){
+                roundController.selectCard(currentCard);
+            }
+        });
+        panel.add(button);
         panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
         jScrollPane.setViewportView(panel);
 

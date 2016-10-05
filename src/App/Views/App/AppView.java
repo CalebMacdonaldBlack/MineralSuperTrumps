@@ -54,7 +54,7 @@ public class AppView extends JFrame implements IAppView{
         for (int count = 0; count < 4; count++) {
             players.add(askForBot(count));
         }
-        appController.startGame(new App.Game(players));
+        appController.startGame(new App.Game(players, players.get(0)));
     }
 
     /**
