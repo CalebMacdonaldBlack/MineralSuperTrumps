@@ -177,5 +177,6 @@ public class Round implements RoundController {
         this.respondedWithCard = true;
         System.out.println("REspONSED WITH CARD " + respondedWithCard);
         this.currentCard = currentCard;
+        this.humanPlayer.getCards().remove(currentCard);
     }
 }

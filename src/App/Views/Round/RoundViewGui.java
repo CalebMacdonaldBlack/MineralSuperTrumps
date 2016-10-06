@@ -35,7 +35,7 @@ public class RoundViewGui implements IRoundView {
     private void setUpWindow(JFrame frame) {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new GridBagLayout());
-        frame.setSize(1920, 1080);
+        frame.setSize(1200, 1200);
         frame.setVisible(true);
         addTitle("Mineral Super Trumps", frame);
         addPlayersPanel();
@@ -50,7 +50,7 @@ public class RoundViewGui implements IRoundView {
 
         for(int i=0;i<6;i++){
             JButton card = new JButton();
-            card.setBorder(new LineBorder(Color.white, 25));
+            card.setBorder(new LineBorder(Color.white, 10));
             try {
                 card.setIcon(new ImageIcon(getScaledImage(ImageIO.read(new File("images/slide66.jpg")), 171, 239)));
             } catch (IOException e) {
@@ -60,7 +60,7 @@ public class RoundViewGui implements IRoundView {
         }
         panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
         jScrollPane = new JScrollPane(panel);
-        jScrollPane.setPreferredSize(new Dimension(1700, 400));
+        jScrollPane.setPreferredSize(new Dimension(roundJFrame.getWidth(), 320));
         jScrollPane.setBackground(Color.white);
         roundJFrame.add(jScrollPane, createGridBagConstraints(0,2,4,1));
     }
@@ -187,6 +187,7 @@ public class RoundViewGui implements IRoundView {
         JPanel panel = new JPanel();
 
         for(Card c: player.getCards()){
+            System.out.println("CARDNAME: " + c.getTitle());
             JButton card = new JButton();
             card.setBorder(new LineBorder(Color.white, 25));
             try {
@@ -220,6 +221,8 @@ public class RoundViewGui implements IRoundView {
         panel.add(button);
         panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
         jScrollPane.setViewportView(panel);
+        jScrollPane.setSize(new Dimension(1700, 400));
+        System.out.println("SIZE: " + panel.getComponentCount());
 
         roundJFrame.revalidate();
         roundJFrame.repaint();
