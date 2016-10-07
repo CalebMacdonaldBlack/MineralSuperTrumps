@@ -26,6 +26,7 @@ public class RoundViewGui implements IRoundView {
     private JLabel currentPlayerLabel = new JLabel();
     private JScrollPane jScrollPane;
     private boolean canRespondWithCard = false;
+    private boolean canRespondWithCategory = false;
 
     public RoundViewGui(){
         this.roundJFrame = new JFrame("Mineral Super Trumps");
@@ -159,22 +160,30 @@ public class RoundViewGui implements IRoundView {
 
     @Override
     public void category(TrumpCategory[] categories, Player player, RoundController roundController) {
-        for (int i = 0; i < categories.length; i++) {
-            System.out.println(i + ": " + categories[i].getText());
-        }
-        int input = -1;
-        System.out.print("Option: ");
-        while (input < 0 || input >= categories.length) {
-            try {
-                input = Integer.parseInt(new Scanner(System.in).nextLine());
-                if (input < 0 || input >= categories.length) {
-                    System.out.print("please enter a valid option:");
-                }
-            } catch (NumberFormatException e) {
-                System.out.print("please enter a valid option:");
+        canRespondWithCard = true;
+        if(categories.length == 1){
+            roundController.selectCategory(categories[0]);
+        }else{
+            JPanel panel = new JPanel();
+
+            for(TrumpCategory category: categories){
+                JButton button = new JButton(category.getText());
+                button.addActionListener(e -> {
+                    if(canRespondWithCategory) {
+                        canRespondWithCategory = false;
+                        roundController.selectCategory(category);
+                    }
+                });
+                panel.add(button);
             }
+            panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
+            jScrollPane.setViewportView(panel);
+            jScrollPane.setSize(new Dimension(1700, 400));
+            System.out.println("SIZE: " + panel.getComponentCount());
+
+            roundJFrame.revalidate();
+            roundJFrame.repaint();
         }
-        roundController.selectCategory(categories[input]);
     }
 
     @Override
@@ -193,17 +202,10 @@ public class RoundViewGui implements IRoundView {
             try {
                 card.setIcon(new ImageIcon(getScaledImage(ImageIO.read(new File("images/" + c.getFileName())), 171, 239)));
                 card.addActionListener(e -> {
-                    if(canRespondWithCard && c.isBetterThan(currentCard, currentTrumpCategory)){
+                    if(canRespondWithCard && c.getCardType().equals(Card.CardType.TRUMP) || canRespondWithCard && c.isBetterThan(currentCard, currentTrumpCategory)){
                         System.out.println("RESPONDED");
                         roundController.selectCard(c);
                         canRespondWithCard = false;
-                    } else {
-                        System.out.println("not better or not ur turn");
-                        System.out.println(canRespondWithCard);
-                        System.out.println(currentCard);
-                        System.out.println("is better that: " + c.isBetterThan(currentCard, currentTrumpCategory));
-                        System.out.println(c.getTitle());
-                        System.out.println(currentTrumpCategory);
                     }
                 });
             } catch (IOException e) {

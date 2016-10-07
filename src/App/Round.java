@@ -23,6 +23,7 @@ public class Round implements RoundController {
 
     private Card currentCard = new EmptyCard();
     private TrumpCategory currentTrumpCategory;
+    private boolean respondedWithCategory = false;
 
     /**
      * Creates a new instance of a round
@@ -94,6 +95,7 @@ public class Round implements RoundController {
                     return new RoundResult(player, botAI.getCategory(new TrumpCategory[]{TrumpCategory.ECONOMIC_VALUE, TrumpCategory.SPECIFIC_GRAVITY, TrumpCategory.CLEAVAGE, TrumpCategory.HARDNESS, TrumpCategory.CRUSTAL_ABUNDANCE}), RoundResult.RoundResultType.TRUMP);
                 } else {
                     roundView.category(new TrumpCategory[]{TrumpCategory.ECONOMIC_VALUE, TrumpCategory.SPECIFIC_GRAVITY, TrumpCategory.CLEAVAGE, TrumpCategory.HARDNESS, TrumpCategory.CRUSTAL_ABUNDANCE}, player, this);
+                    waitForResponseCategory();
                     roundView.categorySelected(player, currentTrumpCategory, new RoundStatus(players, currentCard, currentTrumpCategory, player, humanPlayer, this));
                     return new RoundResult(player, currentTrumpCategory, RoundResult.RoundResultType.NORMAL);
                 }
@@ -126,6 +128,18 @@ public class Round implements RoundController {
         respondedWithCard = false;
     }
 
+    private void waitForResponseCategory() {
+        while(!respondedWithCategory){
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println("sleep: " + respondedWithCategory);
+        }
+        respondedWithCategory = false;
+    }
+
     /**
      * Initializes the round
      *
@@ -140,6 +154,7 @@ public class Round implements RoundController {
                 currentTrumpCategory = botAI.getCategory(new TrumpCategory[]{TrumpCategory.ECONOMIC_VALUE, TrumpCategory.SPECIFIC_GRAVITY, TrumpCategory.CLEAVAGE, TrumpCategory.HARDNESS, TrumpCategory.CRUSTAL_ABUNDANCE});
             } else {
                 roundView.category(new TrumpCategory[]{TrumpCategory.ECONOMIC_VALUE, TrumpCategory.SPECIFIC_GRAVITY, TrumpCategory.CLEAVAGE, TrumpCategory.HARDNESS, TrumpCategory.CRUSTAL_ABUNDANCE}, startingPlayer, this);
+                waitForResponseCategory();
             }
             roundView.categorySelected(startingPlayer, currentTrumpCategory, new RoundStatus(players, currentCard, currentTrumpCategory, startingPlayer, humanPlayer, this));
         }
@@ -164,6 +179,7 @@ public class Round implements RoundController {
      */
     @Override
     public void selectCategory(TrumpCategory category) {
+        this.respondedWithCategory = true;
         this.currentTrumpCategory = category;
     }
 
