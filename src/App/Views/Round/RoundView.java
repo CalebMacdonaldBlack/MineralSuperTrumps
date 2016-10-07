@@ -4,6 +4,7 @@ import App.Controllers.RoundController;
 import App.Models.Card.Card;
 import App.Models.Player;
 import App.Models.TrumpCategory;
+import App.Round;
 import App.Views.ConsoleColor;
 
 import java.util.Scanner;
@@ -163,7 +164,7 @@ public class RoundView implements IRoundView{
      * @param player The player who drew the card
      * @param currentCard The trump card that was played
      */
-    public void trumpCardSelected(Player player, Card currentCard) {
+    public void trumpCardSelected(Player player, Card currentCard, RoundStatus roundStatus) {
         System.out.println(ConsoleColor.colorText(player.getName() + " played the trump card " + currentCard.getTitle(), ConsoleColor.ANSI_PURPLE));
     }
 

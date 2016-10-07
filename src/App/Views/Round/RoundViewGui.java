@@ -181,7 +181,7 @@ public class RoundViewGui implements IRoundView {
 
     @Override
     public void category(TrumpCategory[] categories, Player player, RoundController roundController) {
-        canRespondWithCard = true;
+        canRespondWithCategory = true;
         if(categories.length == 1){
             roundController.selectCategory(categories[0]);
             return;
@@ -237,6 +237,7 @@ public class RoundViewGui implements IRoundView {
         }
 
         JButton button = new JButton("Dont play a card");
+        button.setPreferredSize(new Dimension(171, 239));
         button.addActionListener(e -> {
             if(canRespondWithCard){
                 roundController.selectCard(currentCard);
@@ -284,8 +285,8 @@ public class RoundViewGui implements IRoundView {
     }
 
     @Override
-    public void trumpCardSelected(Player player, Card currentCard) {
-
+    public void trumpCardSelected(Player player, Card currentCard, RoundStatus roundStatus) {
+        updateView(roundStatus);
     }
 
     @Override

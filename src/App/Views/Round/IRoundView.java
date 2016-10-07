@@ -85,8 +85,9 @@ public interface IRoundView {
      *
      * @param player      The player who drew the card
      * @param currentCard The trump card that was played
+     * @param roundStatus The status of the round
      */
-    void trumpCardSelected(Player player, Card currentCard);
+    void trumpCardSelected(Player player, Card currentCard, RoundStatus roundStatus);
 
     /**
      * Display the round winner

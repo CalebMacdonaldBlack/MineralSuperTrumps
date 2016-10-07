@@ -93,7 +93,7 @@ public class Round implements RoundController {
                 }
                 // They played a trump card
             } else if (currentCard.getCardType().equals(Card.CardType.TRUMP)) {
-                roundView.trumpCardSelected(player, currentCard);
+                roundView.trumpCardSelected(player, currentCard, new RoundStatus(players, currentCard, currentTrumpCategory, player, humanPlayer, this));
                 if (player.getPlayerType().equals(Player.PlayerType.BOT)) {
                     return new RoundResult(player, botAI.getCategory(currentCard.getTrumpCategories()), RoundResult.RoundResultType.TRUMP, currentCard);
                 } else {
