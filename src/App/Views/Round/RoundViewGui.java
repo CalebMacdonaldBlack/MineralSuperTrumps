@@ -41,7 +41,7 @@ public class RoundViewGui implements IRoundView {
         addTitle("Mineral Super Trumps", frame);
         addPlayersPanel();
         addCurrentCard("slide66.jpg");
-        addLabelBox(currentCategoryLabel, "<html><font color='white'><center>Category<br>Specific Gravity</center></font></html>", Color.red, createGridBagConstraints(2, 1, 1, 1));
+        addLabelBox(currentCategoryLabel, "<html><font color='white'><center>Category<br>Specific Gravity</center></font></html>", Color.WHITE, createGridBagConstraints(2, 1, 1, 1));
         addHumansCards();
         addLabelBox(currentPlayerLabel, "<html><font color='white'><center>Current Player<br>Dave</center></font></html>", Color.black, createGridBagConstraints(3, 1, 1, 1));
     }
@@ -150,7 +150,28 @@ public class RoundViewGui implements IRoundView {
     }
 
     private void updateCurrentCategory(TrumpCategory currentTrumpCategory) {
-        if(currentTrumpCategory != null)
+        if(currentTrumpCategory == null)
+            return;
+        Color color;
+        switch (currentTrumpCategory.getText()){
+            case "Cleavage":
+                color = Color.GREEN;
+                break;
+            case "Crustal abundance":
+                color = Color.black;
+                break;
+            case "Hardness":
+                color = Color.BLUE;
+                break;
+            case "Economic value":
+                color = Color.orange;
+                break;
+            default:
+                color = Color.red;
+
+        }
+        this.currentCategoryLabel.setBackground(color);
+        this.currentCategoryLabel.setBorder(new LineBorder(color, 50));
         this.currentCategoryLabel.setText("<html><font color='white'><center>Category<br>"+ currentTrumpCategory.getText()+"</center></font></html>");
     }
 
@@ -163,6 +184,7 @@ public class RoundViewGui implements IRoundView {
         canRespondWithCard = true;
         if(categories.length == 1){
             roundController.selectCategory(categories[0]);
+            return;
         }else{
             JPanel panel = new JPanel();
 

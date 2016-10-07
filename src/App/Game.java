@@ -1,6 +1,8 @@
 package App;
 
 import App.Controllers.GameController;
+import App.Models.Card.Card;
+import App.Models.Card.EmptyCard;
 import App.Models.Deck;
 import App.Models.Player;
 import App.Models.RoundResult;
@@ -47,9 +49,10 @@ public class Game implements GameController {
         ArrayList<Player> playersInGame = getNewArrayList(players);
         ArrayList<Player> winners = new ArrayList<>();
         IRoundView roundView = new RoundViewGui();
+        Card oldCard = new EmptyCard();
 
         Thread thread = new Thread(() -> {
-            RoundResult roundResult = new RoundResult(startingPlayer, null, RoundResult.RoundResultType.START);
+            RoundResult roundResult = new RoundResult(startingPlayer, null, RoundResult.RoundResultType.START, oldCard);
             // Loops over the rounds in a game
             while(playersInGame.size() > 1){
                 // Begin round

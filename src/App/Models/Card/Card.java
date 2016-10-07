@@ -30,7 +30,7 @@ public abstract class Card {
      * @param cardType         enum value
      * @param fileName         Card image filename
      */
-    Card(String title, String description, Range hardness, Range specificGravity, Cleavage cleavage, CrustalAbundance crustalAbundance, EconomicValue economicValue, TrumpCategory[] trumpCategories, CardType cardType, String fileName) {
+    public Card(String title, String description, Range hardness, Range specificGravity, Cleavage cleavage, CrustalAbundance crustalAbundance, EconomicValue economicValue, TrumpCategory[] trumpCategories, CardType cardType, String fileName) {
         this.title = title;
         this.description = description;
         this.hardness = hardness;
@@ -66,7 +66,7 @@ public abstract class Card {
      *
      * @return Card description
      */
-    String getDescription() {
+    public String getDescription() {
         return description;
     }
 
@@ -75,7 +75,7 @@ public abstract class Card {
      *
      * @return Hardness range
      */
-    Range getHardness() {
+    public Range getHardness() {
         return hardness;
     }
 
@@ -84,7 +84,7 @@ public abstract class Card {
      *
      * @return Specific Gravity Range
      */
-    Range getSpecificGravity() {
+    public Range getSpecificGravity() {
         return specificGravity;
     }
 
@@ -93,7 +93,7 @@ public abstract class Card {
      *
      * @return Cleavage enum value
      */
-    Cleavage getCleavage() {
+    public Cleavage getCleavage() {
         return cleavage;
     }
 
@@ -102,7 +102,7 @@ public abstract class Card {
      *
      * @return Crustal abundance enum value
      */
-    CrustalAbundance getCrustalAbundance() {
+    public CrustalAbundance getCrustalAbundance() {
         return crustalAbundance;
     }
 
@@ -111,7 +111,7 @@ public abstract class Card {
      *
      * @return Economic value enum value
      */
-    EconomicValue getEconomicValue() {
+    public EconomicValue getEconomicValue() {
         return economicValue;
     }
 
@@ -120,7 +120,7 @@ public abstract class Card {
      *
      * @return Array of trump categories
      */
-    TrumpCategory[] getTrumpCategories() {
+    public TrumpCategory[] getTrumpCategories() {
         return TrumpCategories;
     }
 
