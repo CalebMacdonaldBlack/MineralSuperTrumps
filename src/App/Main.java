@@ -7,6 +7,7 @@ class Main {
 
     /**
      * Starts the game
+     *
      * @param args required start up args (not used)
      */
     public static void main(String[] args) {

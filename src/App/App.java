@@ -13,7 +13,7 @@ public class App implements AppController {
     /**
      * Creates a new instance of app
      */
-    public App(){
+    public App() {
 //        this.appView = new AppView(this);
         this.appView = new AppViewGui(this);
     }
@@ -27,6 +27,7 @@ public class App implements AppController {
 
     /**
      * View Callback method for starting a game
+     *
      * @param game The game instance
      */
     @Override

@@ -1,7 +1,5 @@
 package App.Views.App;
 
-import App.Models.Player;
-
 /**
  * Created by calebmacdonaldblack on 5/10/2016.
  */

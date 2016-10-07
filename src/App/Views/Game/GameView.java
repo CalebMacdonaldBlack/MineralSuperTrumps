@@ -8,7 +8,7 @@ import java.util.ArrayList;
 /**
  * Created by calebmacdonaldblack on 29/09/2016.
  */
-public class GameView implements IGameView{
+public class GameView implements IGameView {
 
     /**
      * Display game started

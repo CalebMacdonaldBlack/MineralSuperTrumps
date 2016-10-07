@@ -4,6 +4,7 @@ import App.Controllers.RoundController;
 import App.Models.Card.Card;
 import App.Models.Player;
 import App.Models.TrumpCategory;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -14,7 +15,6 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
  * Created by calebmacdonaldblack on 5/10/2016.
@@ -30,11 +30,19 @@ public class RoundViewGui implements IRoundView {
     private boolean canRespondWithCard = false;
     private boolean canRespondWithCategory = false;
 
-    public RoundViewGui(){
+    /**
+     * Creates a new instance
+     */
+    public RoundViewGui() {
         this.roundJFrame = new JFrame("Mineral Super Trumps");
         this.setUpWindow(roundJFrame);
     }
 
+    /**
+     * Sets up the round window
+     *
+     * @param frame the jframe to apply the settings to
+     */
     private void setUpWindow(JFrame frame) {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new GridBagLayout());
@@ -68,10 +76,13 @@ public class RoundViewGui implements IRoundView {
         });
     }
 
+    /**
+     * Adds the human cards to the gui
+     */
     private void addHumansCards() {
         JPanel panel = new JPanel();
 
-        for(int i=0;i<6;i++){
+        for (int i = 0; i < 6; i++) {
             JButton card = new JButton();
             card.setBorder(new LineBorder(Color.white, 10));
             try {
@@ -85,9 +96,17 @@ public class RoundViewGui implements IRoundView {
         jScrollPane = new JScrollPane(panel);
         jScrollPane.setPreferredSize(new Dimension(roundJFrame.getWidth(), 320));
         jScrollPane.setBackground(Color.white);
-        roundJFrame.add(jScrollPane, createGridBagConstraints(0,2,4,1));
+        roundJFrame.add(jScrollPane, createGridBagConstraints(0, 2, 4, 1));
     }
 
+    /**
+     * Adds a label box to the gui
+     *
+     * @param label              The J component
+     * @param text               The text for the label
+     * @param color              The background color for the label
+     * @param gridBagConstraints The layout configuration for the label
+     */
     private void addLabelBox(JLabel label, String text, Color color, GridBagConstraints gridBagConstraints) {
         label.setText(text);
         label.setFont(new Font(label.getFont().getName(), label.getFont().getStyle(), 20));
@@ -98,16 +117,29 @@ public class RoundViewGui implements IRoundView {
         roundJFrame.add(label, gridBagConstraints);
     }
 
+    /**
+     * Adds the component for the current card
+     *
+     * @param fileName the filename for the image to display
+     */
     private void addCurrentCard(String fileName) {
         try {
             currentCardLabel.setIcon(new ImageIcon(getScaledImage(ImageIO.read(new File("images/" + fileName)), 171, 239)));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        roundJFrame.add(currentCardLabel, createGridBagConstraints(1, 1 , 1, 1));
+        roundJFrame.add(currentCardLabel, createGridBagConstraints(1, 1, 1, 1));
     }
 
-    private Image getScaledImage(Image srcImg, int w, int h){
+    /**
+     * Scales an image
+     *
+     * @param srcImg The image
+     * @param w      Width of the image
+     * @param h      Height of the image
+     * @return A new scaled image
+     */
+    private Image getScaledImage(Image srcImg, int w, int h) {
         BufferedImage resizedImg = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2 = resizedImg.createGraphics();
 
@@ -118,26 +150,40 @@ public class RoundViewGui implements IRoundView {
         return resizedImg;
     }
 
+    /**
+     * Adds the panel for showing the players
+     */
     private void addPlayersPanel() {
         playersPanel.setLayout(new BoxLayout(playersPanel, BoxLayout.Y_AXIS));
         playersPanel.setBorder(new LineBorder(Color.white, 50));
-        roundJFrame.add(playersPanel, createGridBagConstraints(0, 1, 1,1));
-        for(int i=0;i<5;i++){
+        roundJFrame.add(playersPanel, createGridBagConstraints(0, 1, 1, 1));
+        for (int i = 0; i < 5; i++) {
             playersPanel.add(new JLabel("Player " + 1));
         }
     }
 
-    private void updatePlayersPanel(ArrayList<Player> players){
-        for(int i=0;i<5;i++){
+    /**
+     * Updates the player panel
+     *
+     * @param players The list of players
+     */
+    private void updatePlayersPanel(ArrayList<Player> players) {
+        for (int i = 0; i < 5; i++) {
             try {
                 Player player = players.get(i);
                 ((JLabel) playersPanel.getComponent(i)).setText(player.getName() + " - Cards: " + player.getCards().size());
-            }catch(IndexOutOfBoundsException e){
+            } catch (IndexOutOfBoundsException e) {
                 ((JLabel) playersPanel.getComponent(i)).setText("");
             }
         }
     }
 
+    /**
+     * Adds a title to the window
+     *
+     * @param titleText The text for the title
+     * @param jFrame    The frame to apply the title to
+     */
     private void addTitle(String titleText, JFrame jFrame) {
         JLabel title = new JLabel(titleText);
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -145,7 +191,16 @@ public class RoundViewGui implements IRoundView {
         title.setFont(title.getFont().deriveFont(64f));
     }
 
-    private GridBagConstraints createGridBagConstraints(int x, int y, int width, int height){
+    /**
+     * Creates a GridBagConstraints object
+     *
+     * @param x      The x position
+     * @param y      The y position
+     * @param width  The grid witdth
+     * @param height The grid height
+     * @return The created GridBagConstraints object
+     */
+    private GridBagConstraints createGridBagConstraints(int x, int y, int width, int height) {
         GridBagConstraints gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = x;
         gridBagConstraints.gridy = y;
@@ -154,12 +209,22 @@ public class RoundViewGui implements IRoundView {
         return gridBagConstraints;
     }
 
+    /**
+     * Called when a round begins. Updates view.
+     *
+     * @param roundStatus The status/state of the round.
+     */
     @Override
     public void roundBegan(RoundStatus roundStatus) {
         updateView(roundStatus);
     }
 
-    private void updateView(RoundStatus roundStatus){
+    /**
+     * Updates the whole view
+     *
+     * @param roundStatus The status/state of the round
+     */
+    private void updateView(RoundStatus roundStatus) {
         updatePlayersPanel(roundStatus.getPlayers());
         updateCurrentCard(roundStatus.getCurrentCard());
         updateCurrentCategory(roundStatus.getCurrentTrumpCategory());
@@ -167,15 +232,25 @@ public class RoundViewGui implements IRoundView {
         updateHumansCards(roundStatus.getHumanPlayer(), roundStatus.getRoundController(), roundStatus.getCurrentCard(), roundStatus.getCurrentTrumpCategory());
     }
 
+    /**
+     * Updates who the current player is
+     *
+     * @param currentPlayer The current player
+     */
     private void updateCurrentPlayer(Player currentPlayer) {
-        currentPlayerLabel.setText("<html><font color='white'><center>Current Player<br>"+currentPlayer.getName()+"</center></font></html>");
+        currentPlayerLabel.setText("<html><font color='white'><center>Current Player<br>" + currentPlayer.getName() + "</center></font></html>");
     }
 
+    /**
+     * Updates the currrent category label
+     *
+     * @param currentTrumpCategory The current category
+     */
     private void updateCurrentCategory(TrumpCategory currentTrumpCategory) {
-        if(currentTrumpCategory == null)
+        if (currentTrumpCategory == null)
             return;
         Color color;
-        switch (currentTrumpCategory.getText()){
+        switch (currentTrumpCategory.getText()) {
             case "Cleavage":
                 color = Color.GREEN;
                 break;
@@ -194,26 +269,38 @@ public class RoundViewGui implements IRoundView {
         }
         this.currentCategoryLabel.setBackground(color);
         this.currentCategoryLabel.setBorder(new LineBorder(color, 50));
-        this.currentCategoryLabel.setText("<html><font color='white'><center>Category<br>"+ currentTrumpCategory.getText()+"</center></font></html>");
+        this.currentCategoryLabel.setText("<html><font color='white'><center>Category<br>" + currentTrumpCategory.getText() + "</center></font></html>");
     }
 
+    /**
+     * Updates the current card image
+     *
+     * @param currentCard The current card
+     */
     private void updateCurrentCard(Card currentCard) {
         this.addCurrentCard(currentCard.getFileName());
     }
 
+    /**
+     * allows the player to select a category
+     *
+     * @param categories      The categories to choose from
+     * @param player          The human player to select the categories
+     * @param roundController The controller for the round
+     */
     @Override
     public void category(TrumpCategory[] categories, Player player, RoundController roundController) {
         canRespondWithCategory = true;
-        if(categories.length == 1){
+        if (categories.length == 1) {
             roundController.selectCategory(categories[0]);
             return;
-        }else{
+        } else {
             JPanel panel = new JPanel();
 
-            for(TrumpCategory category: categories){
+            for (TrumpCategory category : categories) {
                 JButton button = new JButton(category.getText());
                 button.addActionListener(e -> {
-                    if(canRespondWithCategory) {
+                    if (canRespondWithCategory) {
                         canRespondWithCategory = false;
                         roundController.selectCategory(category);
                     }
@@ -228,21 +315,37 @@ public class RoundViewGui implements IRoundView {
         }
     }
 
+    /**
+     * Allows the player to select a card
+     *
+     * @param player               The human player
+     * @param currentCard          The current card
+     * @param currentTrumpCategory The current trump category
+     * @param roundController      The controller for the round
+     */
     @Override
     public void card(Player player, Card currentCard, TrumpCategory currentTrumpCategory, RoundController roundController) {
         canRespondWithCard = true;
     }
 
+    /**
+     * Updates The cards in the human players hand view
+     *
+     * @param player               The human player
+     * @param roundController      The round controller
+     * @param currentCard          The current card
+     * @param currentTrumpCategory The current trump category
+     */
     private void updateHumansCards(Player player, RoundController roundController, Card currentCard, TrumpCategory currentTrumpCategory) {
         JPanel panel = new JPanel();
 
-        for(Card c: player.getCards()){
+        for (Card c : player.getCards()) {
             JButton card = new JButton();
             card.setBorder(new LineBorder(Color.white, 25));
             try {
                 card.setIcon(new ImageIcon(getScaledImage(ImageIO.read(new File("images/" + c.getFileName())), 171, 239)));
                 card.addActionListener(e -> {
-                    if(canRespondWithCard && c.getCardType().equals(Card.CardType.TRUMP) || canRespondWithCard && c.isBetterThan(currentCard, currentTrumpCategory)){
+                    if (canRespondWithCard && c.getCardType().equals(Card.CardType.TRUMP) || canRespondWithCard && c.isBetterThan(currentCard, currentTrumpCategory)) {
                         roundController.selectCard(c);
                         canRespondWithCard = false;
                     }
@@ -256,7 +359,7 @@ public class RoundViewGui implements IRoundView {
         JButton button = new JButton("Dont play a card");
         button.setPreferredSize(new Dimension(171, 239));
         button.addActionListener(e -> {
-            if(canRespondWithCard){
+            if (canRespondWithCard) {
                 roundController.selectCard(currentCard);
             }
         });
@@ -268,47 +371,97 @@ public class RoundViewGui implements IRoundView {
         roundJFrame.repaint();
     }
 
+    /**
+     * Updates view
+     *
+     * @param player               The player who selected the category
+     * @param currentTrumpCategory The trump category selected
+     * @param roundStatus          The status of the round
+     */
     @Override
     public void categorySelected(Player player, TrumpCategory currentTrumpCategory, RoundStatus roundStatus) {
         updateView(roundStatus);
     }
 
+    /**
+     * Updates view
+     *
+     * @param player      The player who selected the card
+     * @param currentCard The card selected by the player
+     * @param roundStatus The status of the round
+     */
     @Override
     public void cardSelected(Player player, Card currentCard, RoundStatus roundStatus) {
         updateView(roundStatus);
     }
 
+    /**
+     * Updates view
+     *
+     * @param player      The player who's turn it is
+     * @param roundStatus
+     */
     @Override
     public void playerTurn(Player player, RoundStatus roundStatus) {
         updateView(roundStatus);
 
     }
 
+    /**
+     * not used
+     *
+     * @param player The player who got removed
+     */
     @Override
     public void playerRemoved(Player player) {
 
     }
 
+    /**
+     * Not used
+     *
+     * @param player The player who tried to draw a card
+     */
     @Override
     public void noCardsLeftInDeck(Player player) {
 
     }
 
+    /**
+     * Not used
+     *
+     * @param player The player who drew the card
+     */
     @Override
     public void drawCard(Player player) {
 
     }
 
+    /**
+     * updates the view
+     *
+     * @param player      The player who drew the card
+     * @param currentCard The trump card that was played
+     * @param roundStatus The status of the round
+     */
     @Override
     public void trumpCardSelected(Player player, Card currentCard, RoundStatus roundStatus) {
         updateView(roundStatus);
     }
 
+    /**
+     * not used
+     *
+     * @param player The player who won the round
+     */
     @Override
     public void roundWinner(Player player) {
 
     }
 
+    /**
+     * displays a dialog box and hides the current window
+     */
     @Override
     public void gameOver() {
         JOptionPane.showMessageDialog(null, "Game Over");

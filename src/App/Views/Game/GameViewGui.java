@@ -10,16 +10,29 @@ import java.util.ArrayList;
  */
 public class GameViewGui implements IGameView {
 
+    /**
+     * not used
+     */
     @Override
     public void gameStarted() {
 
     }
 
+    /**
+     * Shows winner in dialog box
+     *
+     * @param player The player who won
+     */
     @Override
     public void winner(Player player) {
         JOptionPane.showMessageDialog(null, player.getName() + " has no cards left and was added as a winner!", "Mineral Super Trumps", JOptionPane.INFORMATION_MESSAGE);
     }
 
+    /**
+     * shows the list of winners and their place in a dialog box
+     *
+     * @param winners The list of winners
+     */
     @Override
     public void listWinners(ArrayList<Player> winners) {
         String winnersNames = "Winners\n";

@@ -27,8 +27,9 @@ public class Round implements RoundController {
 
     /**
      * Creates a new instance of a round
-     * @param players The players in the round
-     * @param deck    The deck instance
+     *
+     * @param players     The players in the round
+     * @param deck        The deck instance
      * @param roundView
      * @param humanPlayer
      */
@@ -50,7 +51,7 @@ public class Round implements RoundController {
         // Initialize round
         currentTrumpCategory = roundResult.getCategory();
         Player startingPlayer = roundResult.getPlayer();
-        if(roundResult.getCurrentCard().getCardType().equals(Card.CardType.TRUMP)){
+        if (roundResult.getCurrentCard().getCardType().equals(Card.CardType.TRUMP)) {
             currentCard = roundResult.getCurrentCard();
         }
         roundView.roundBegan(new RoundStatus(players, currentCard, currentTrumpCategory, startingPlayer, humanPlayer, this));
@@ -119,10 +120,13 @@ public class Round implements RoundController {
         }
     }
 
+    /**
+     * Wait for user to respond with card
+     */
     private void waitForResponse() {
-        while(!respondedWithCard){
+        while (!respondedWithCard) {
             try {
-                Thread.sleep(1000);
+                Thread.sleep(1001);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -131,10 +135,13 @@ public class Round implements RoundController {
         respondedWithCard = false;
     }
 
+    /**
+     * Wait for user to respond with category
+     */
     private void waitForResponseCategory() {
-        while(!respondedWithCategory){
+        while (!respondedWithCategory) {
             try {
-                Thread.sleep(1000);
+                Thread.sleep(1002);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

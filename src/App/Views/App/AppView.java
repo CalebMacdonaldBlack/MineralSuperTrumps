@@ -10,7 +10,7 @@ import java.util.Scanner;
 /**
  * Created by calebmacdonaldblack on 29/09/2016.
  */
-public class AppView extends JFrame implements IAppView{
+public class AppView extends JFrame implements IAppView {
     private final AppController appController;
     private final Scanner scanner = new Scanner(System.in);
 

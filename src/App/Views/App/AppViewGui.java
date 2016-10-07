@@ -14,7 +14,7 @@ import java.util.Scanner;
 /**
  * Created by calebmacdonaldblack on 5/10/2016.
  */
-public class AppViewGui extends JFrame implements IAppView{
+public class AppViewGui extends JFrame implements IAppView {
     private final AppController appController;
     private final Scanner scanner = new Scanner(System.in);
     private final String ABOUT_TEXT = "<html>Mineral Supertrumps is a game designed to help players learn about the properties and uses of common rock-forming materials. The pack consists of 54 mineral cards, and 6 \"supertrump\" cards. Each mineral card includes information about the mineral such as the generic chemical formula, the classification, crystal system, the geological environment where the mineral is commonly found or formed, as well as information in the five playing categories (or trumps) of hardness, specific gravity, cleavage, crustal abundance, and economic value. The first three playing categories relate to distinct physical properties of the mineral, while the last two categories rate the importance of the mineral in terms of abundance in the earths crust (continental and oceanic) and value to modern societies.</html>";
@@ -37,6 +37,9 @@ public class AppViewGui extends JFrame implements IAppView{
         this.appController = gameController;
     }
 
+    /**
+     * Creates the menu
+     */
     private void showMenuGui() {
 
         setUpWindow(this);
@@ -47,12 +50,20 @@ public class AppViewGui extends JFrame implements IAppView{
         this.setVisible(true);
     }
 
-    private void setUpWindow(JFrame frame){
+    /**
+     * Sets up the window
+     *
+     * @param frame Frame to apply the setup to
+     */
+    private void setUpWindow(JFrame frame) {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
         frame.setSize(1000, 1200);
     }
 
+    /**
+     * Adds all the menu buttons to the jframe
+     */
     private void addMenuButtons() {
         JButton newGameButton = new JButton("New Game");
         JButton instructionsButton = new JButton("Instructions");
@@ -94,6 +105,9 @@ public class AppViewGui extends JFrame implements IAppView{
         });
     }
 
+    /**
+     * Opens gui for submitting player names
+     */
     private void openPlayersGui() {
         this.setVisible(false);
         JFrame addPlayersJFrame = new JFrame("Mineral Super Trumps");
@@ -112,16 +126,16 @@ public class AppViewGui extends JFrame implements IAppView{
         JTextField bot3Name = new JTextField("bot 3");
         JTextField bot4Name = new JTextField("bot 4");
 
-        panel.add(new JLabel("Your name: "), modifiedGridBagConstraint(0,0, gridBagConstraints));
-        panel.add(yourName, modifiedGridBagConstraint(1,0, gridBagConstraints));
-        panel.add(new JLabel("Bot 1: "), modifiedGridBagConstraint(0,1, gridBagConstraints));
-        panel.add(bot1Name, modifiedGridBagConstraint(1,1, gridBagConstraints));
-        panel.add(new JLabel("Bot 2: "), modifiedGridBagConstraint(0,2, gridBagConstraints));
-        panel.add(bot2Name, modifiedGridBagConstraint(1,2, gridBagConstraints));
-        panel.add(new JLabel("Bot 3: "), modifiedGridBagConstraint(0,3, gridBagConstraints));
-        panel.add(bot3Name, modifiedGridBagConstraint(1,3, gridBagConstraints));
-        panel.add(new JLabel("Bot 4: "), modifiedGridBagConstraint(0,4, gridBagConstraints));
-        panel.add(bot4Name, modifiedGridBagConstraint(1,4, gridBagConstraints));
+        panel.add(new JLabel("Your name: "), modifiedGridBagConstraint(0, 0, gridBagConstraints));
+        panel.add(yourName, modifiedGridBagConstraint(1, 0, gridBagConstraints));
+        panel.add(new JLabel("Bot 1: "), modifiedGridBagConstraint(0, 1, gridBagConstraints));
+        panel.add(bot1Name, modifiedGridBagConstraint(1, 1, gridBagConstraints));
+        panel.add(new JLabel("Bot 2: "), modifiedGridBagConstraint(0, 2, gridBagConstraints));
+        panel.add(bot2Name, modifiedGridBagConstraint(1, 2, gridBagConstraints));
+        panel.add(new JLabel("Bot 3: "), modifiedGridBagConstraint(0, 3, gridBagConstraints));
+        panel.add(bot3Name, modifiedGridBagConstraint(1, 3, gridBagConstraints));
+        panel.add(new JLabel("Bot 4: "), modifiedGridBagConstraint(0, 4, gridBagConstraints));
+        panel.add(bot4Name, modifiedGridBagConstraint(1, 4, gridBagConstraints));
         addPlayersJFrame.add(panel);
         JButton startGameButton = new JButton("Start Game");
         addPlayersJFrame.add(startGameButton);
@@ -132,6 +146,15 @@ public class AppViewGui extends JFrame implements IAppView{
         addPlayersJFrame.setVisible(true);
     }
 
+    /**
+     * Starts a game
+     *
+     * @param yourName human name
+     * @param bot1Name bot name
+     * @param bot2Name bot name
+     * @param bot3Name bot name
+     * @param bot4Name bot name
+     */
     private void startGame(JTextField yourName, JTextField bot1Name, JTextField bot2Name, JTextField bot3Name, JTextField bot4Name) {
         ArrayList<Player> players = new ArrayList();
         players.add(new Player(yourName.getText(), Player.PlayerType.HUMAN));
@@ -143,6 +166,14 @@ public class AppViewGui extends JFrame implements IAppView{
         appController.startGame(new App.Game(players, players.get(0)));
     }
 
+    /**
+     * Creates gridbagConstraints instance
+     *
+     * @param x
+     * @param y
+     * @param gridBagConstraints
+     * @return
+     */
     private GridBagConstraints modifiedGridBagConstraint(int x, int y, GridBagConstraints gridBagConstraints) {
         gridBagConstraints.gridx = x;
         gridBagConstraints.gridy = y;
@@ -151,6 +182,9 @@ public class AppViewGui extends JFrame implements IAppView{
         return gridBagConstraints;
     }
 
+    /**
+     * Displays the instructions gui
+     */
     private void showInstructions() {
         this.setVisible(false);
 
@@ -179,19 +213,37 @@ public class AppViewGui extends JFrame implements IAppView{
         instructionsJFrame.add(backButton);
     }
 
-    private JComponent componentWithMargin(JComponent component){
+    /**
+     * adds margin to component
+     *
+     * @param component
+     * @return the component
+     */
+    private JComponent componentWithMargin(JComponent component) {
         Border border = component.getBorder();
-        Border margin = new EmptyBorder(20,100,0,100);
+        Border margin = new EmptyBorder(20, 100, 0, 100);
         component.setBorder(new CompoundBorder(border, margin));
         return component;
     }
 
+    /**
+     * Centers jlabel
+     *
+     * @param about_text
+     * @return the label
+     */
     private Component jLabelWithModifers(String about_text) {
         JLabel jLabel = new JLabel(about_text);
         jLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         return componentWithMargin(jLabel);
     }
 
+    /**
+     * Adds title to frame
+     *
+     * @param titleText Text for the title
+     * @param jFrame    The jframe to add the title to
+     */
     private void addTitle(String titleText, JFrame jFrame) {
         JLabel title = new JLabel(titleText);
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -199,6 +251,12 @@ public class AppViewGui extends JFrame implements IAppView{
         title.setFont(title.getFont().deriveFont(64f));
     }
 
+    /**
+     * Adds subtitle to jframe
+     *
+     * @param subTitleText Text for the subtitle
+     * @param jFrame       The jframe to add the subtitle to
+     */
     private void addSubTitle(String subTitleText, JFrame jFrame) {
         JLabel menuTitle = new JLabel(subTitleText);
         menuTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -221,6 +279,9 @@ public class AppViewGui extends JFrame implements IAppView{
 
     }
 
+    /**
+     * displays the menu again
+     */
     @Override
     public void reShowMenu() {
         setVisible(true);

@@ -4,7 +4,6 @@ import App.Controllers.RoundController;
 import App.Models.Card.Card;
 import App.Models.Player;
 import App.Models.TrumpCategory;
-import App.Round;
 import App.Views.ConsoleColor;
 
 import java.util.Scanner;
@@ -12,7 +11,7 @@ import java.util.Scanner;
 /**
  * Created by calebmacdonaldblack on 29/09/2016.
  */
-public class RoundViewCommandLine implements IRoundView{
+public class RoundViewCommandLine implements IRoundView {
     private final Scanner scanner = new Scanner(System.in);
 
     /**
@@ -24,8 +23,9 @@ public class RoundViewCommandLine implements IRoundView{
 
     /**
      * Gets category from human player
+     *
      * @param categories The categories to choose from
-     * @param player The human player to select the categories
+     * @param player     The human player to select the categories
      */
     public void category(TrumpCategory[] categories, Player player, RoundController roundController) {
         displayCards(player);
@@ -49,8 +49,9 @@ public class RoundViewCommandLine implements IRoundView{
 
     /**
      * Display all the players cards with colors showing ones that can be played
-     * @param player The current human player
-     * @param currentCard The current card
+     *
+     * @param player               The current human player
+     * @param currentCard          The current card
      * @param currentTrumpCategory The current trump category
      */
     private void displayCardsWithComarisonColor(Player player, Card currentCard, TrumpCategory currentTrumpCategory) {
@@ -65,6 +66,7 @@ public class RoundViewCommandLine implements IRoundView{
 
     /**
      * Displays all cards without color
+     *
      * @param player The human player
      */
     private void displayCards(Player player) {
@@ -75,8 +77,9 @@ public class RoundViewCommandLine implements IRoundView{
 
     /**
      * Gets a card from the human player
-     * @param player The human player
-     * @param currentCard The current card
+     *
+     * @param player               The human player
+     * @param currentCard          The current card
      * @param currentTrumpCategory The current trump category
      */
     public void card(Player player, Card currentCard, TrumpCategory currentTrumpCategory, RoundController roundController) {
@@ -111,7 +114,8 @@ public class RoundViewCommandLine implements IRoundView{
 
     /**
      * Display a category was selected
-     * @param player The player who selected the category
+     *
+     * @param player               The player who selected the category
      * @param currentTrumpCategory The trump category selected
      */
     public void categorySelected(Player player, TrumpCategory currentTrumpCategory, RoundStatus roundStatus) {
@@ -120,7 +124,8 @@ public class RoundViewCommandLine implements IRoundView{
 
     /**
      * Display a card was selected
-     * @param player The player who selected the card
+     *
+     * @param player      The player who selected the card
      * @param currentCard The card selected by the player
      */
     public void cardSelected(Player player, Card currentCard, RoundStatus roundStatus) {
@@ -129,6 +134,7 @@ public class RoundViewCommandLine implements IRoundView{
 
     /**
      * Display player turn
+     *
      * @param player The player who's turn it is
      */
     public void playerTurn(Player player, RoundStatus roundStatus) {
@@ -137,6 +143,7 @@ public class RoundViewCommandLine implements IRoundView{
 
     /**
      * Display a removed player
+     *
      * @param player The player who got removed
      */
     public void playerRemoved(Player player) {
@@ -145,6 +152,7 @@ public class RoundViewCommandLine implements IRoundView{
 
     /**
      * Display there are no cards in the deck
+     *
      * @param player The player who tried to draw a card
      */
     public void noCardsLeftInDeck(Player player) {
@@ -153,6 +161,7 @@ public class RoundViewCommandLine implements IRoundView{
 
     /**
      * Display a player drawed a card
+     *
      * @param player The player who drew the card
      */
     public void drawCard(Player player) {
@@ -161,7 +170,8 @@ public class RoundViewCommandLine implements IRoundView{
 
     /**
      * Display a trump card was selected
-     * @param player The player who drew the card
+     *
+     * @param player      The player who drew the card
      * @param currentCard The trump card that was played
      */
     public void trumpCardSelected(Player player, Card currentCard, RoundStatus roundStatus) {
@@ -170,6 +180,7 @@ public class RoundViewCommandLine implements IRoundView{
 
     /**
      * Display the round winner
+     *
      * @param player The player who won the round
      */
     public void roundWinner(Player player) {

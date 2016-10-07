@@ -39,7 +39,7 @@ public class RoundStatus {
         return players;
     }
 
-    public Player getCurrentPlayer(){
+    public Player getCurrentPlayer() {
         return this.currentPlayer;
     }
 
