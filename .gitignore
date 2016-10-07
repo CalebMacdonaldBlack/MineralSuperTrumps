@@ -3,3 +3,5 @@ SuperTrumps.iml
 out/
 *.iml
 *.class
+.DS_STORE
+.DS_Store
