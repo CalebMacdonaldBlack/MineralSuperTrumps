@@ -16,4 +16,6 @@ public interface IAppView {
      * farewell player
      */
     void farewell();
+
+    void reShowMenu();
 }

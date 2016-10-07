@@ -95,4 +95,9 @@ public class AppView extends JFrame implements IAppView{
     public void farewell() {
         System.out.println("Goodbye");
     }
+
+    @Override
+    public void reShowMenu() {
+
+    }
 }

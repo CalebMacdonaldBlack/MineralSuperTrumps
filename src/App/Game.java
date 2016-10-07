@@ -7,11 +7,13 @@ import App.Models.Deck;
 import App.Models.Player;
 import App.Models.RoundResult;
 import App.Models.StaticDeckBuilder;
+import App.Views.App.IAppView;
 import App.Views.Game.GameViewGui;
 import App.Views.Game.IGameView;
 import App.Views.Round.IRoundView;
 import App.Views.Round.RoundViewGui;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -40,8 +42,9 @@ public class Game implements GameController {
 
     /**
      * Begins a new game
+     * @param appView
      */
-    public void begin() {
+    public void begin(IAppView appView) {
         // Starts the game up
         gameView.gameStarted();
         distributeCardsToPlayers();
@@ -68,8 +71,12 @@ public class Game implements GameController {
                 }
             }
             gameView.listWinners(winners);
+            roundView.gameOver();
+            gameView.winner(winners.get(0));
+            appView.reShowMenu();
         });
         thread.start();
+
     }
 
     /**

@@ -31,7 +31,7 @@ public class App implements AppController {
      */
     @Override
     public void startGame(Game game) {
-        game.begin();
+        game.begin(appView);
     }
 
     /**

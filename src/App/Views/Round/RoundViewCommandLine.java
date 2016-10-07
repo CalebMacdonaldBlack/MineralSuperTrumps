@@ -12,7 +12,7 @@ import java.util.Scanner;
 /**
  * Created by calebmacdonaldblack on 29/09/2016.
  */
-public class RoundView implements IRoundView{
+public class RoundViewCommandLine implements IRoundView{
     private final Scanner scanner = new Scanner(System.in);
 
     /**
@@ -174,5 +174,10 @@ public class RoundView implements IRoundView{
      */
     public void roundWinner(Player player) {
         System.out.println(ConsoleColor.colorText(player.getName() + " won the round.", ConsoleColor.ANSI_BLUE));
+    }
+
+    @Override
+    public void gameOver() {
+
     }
 }

@@ -220,4 +220,9 @@ public class AppViewGui extends JFrame implements IAppView{
     public void farewell() {
 
     }
+
+    @Override
+    public void reShowMenu() {
+        setVisible(true);
+    }
 }

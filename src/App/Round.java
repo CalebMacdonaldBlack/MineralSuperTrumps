@@ -50,10 +50,10 @@ public class Round implements RoundController {
         // Initialize round
         currentTrumpCategory = roundResult.getCategory();
         Player startingPlayer = roundResult.getPlayer();
-        roundView.roundBegan(new RoundStatus(players, currentCard, currentTrumpCategory, startingPlayer, humanPlayer, this));
         if(roundResult.getCurrentCard().getCardType().equals(Card.CardType.TRUMP)){
             currentCard = roundResult.getCurrentCard();
         }
+        roundView.roundBegan(new RoundStatus(players, currentCard, currentTrumpCategory, startingPlayer, humanPlayer, this));
         startRound(startingPlayer, roundResult);
 
         // Put starting player in the first index

@@ -8,6 +8,8 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -44,6 +46,26 @@ public class RoundViewGui implements IRoundView {
         addLabelBox(currentCategoryLabel, "<html><font color='white'><center>Category<br>Specific Gravity</center></font></html>", Color.WHITE, createGridBagConstraints(2, 1, 1, 1));
         addHumansCards();
         addLabelBox(currentPlayerLabel, "<html><font color='white'><center>Current Player<br>Dave</center></font></html>", Color.black, createGridBagConstraints(3, 1, 1, 1));
+        roundJFrame.addComponentListener(new ComponentListener() {
+            public void componentResized(ComponentEvent e) {
+                jScrollPane.setPreferredSize(new Dimension(roundJFrame.getWidth(), 320));
+            }
+
+            @Override
+            public void componentMoved(ComponentEvent e) {
+
+            }
+
+            @Override
+            public void componentShown(ComponentEvent e) {
+
+            }
+
+            @Override
+            public void componentHidden(ComponentEvent e) {
+
+            }
+        });
     }
 
     private void addHumansCards() {
@@ -98,6 +120,7 @@ public class RoundViewGui implements IRoundView {
 
     private void addPlayersPanel() {
         playersPanel.setLayout(new BoxLayout(playersPanel, BoxLayout.Y_AXIS));
+        playersPanel.setBorder(new LineBorder(Color.white, 50));
         roundJFrame.add(playersPanel, createGridBagConstraints(0, 1, 1,1));
         for(int i=0;i<5;i++){
             playersPanel.add(new JLabel("Player " + 1));
@@ -133,7 +156,6 @@ public class RoundViewGui implements IRoundView {
 
     @Override
     public void roundBegan(RoundStatus roundStatus) {
-        System.out.println("ROUND BEGAN");
         updateView(roundStatus);
     }
 
@@ -201,8 +223,6 @@ public class RoundViewGui implements IRoundView {
             panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
             jScrollPane.setViewportView(panel);
             jScrollPane.setSize(new Dimension(1700, 400));
-            System.out.println("SIZE: " + panel.getComponentCount());
-
             roundJFrame.revalidate();
             roundJFrame.repaint();
         }
@@ -211,21 +231,18 @@ public class RoundViewGui implements IRoundView {
     @Override
     public void card(Player player, Card currentCard, TrumpCategory currentTrumpCategory, RoundController roundController) {
         canRespondWithCard = true;
-        System.out.println(canRespondWithCard + " CAN RESPPODN");
     }
 
     private void updateHumansCards(Player player, RoundController roundController, Card currentCard, TrumpCategory currentTrumpCategory) {
         JPanel panel = new JPanel();
 
         for(Card c: player.getCards()){
-            System.out.println("CARDNAME: " + c.getTitle());
             JButton card = new JButton();
             card.setBorder(new LineBorder(Color.white, 25));
             try {
                 card.setIcon(new ImageIcon(getScaledImage(ImageIO.read(new File("images/" + c.getFileName())), 171, 239)));
                 card.addActionListener(e -> {
                     if(canRespondWithCard && c.getCardType().equals(Card.CardType.TRUMP) || canRespondWithCard && c.isBetterThan(currentCard, currentTrumpCategory)){
-                        System.out.println("RESPONDED");
                         roundController.selectCard(c);
                         canRespondWithCard = false;
                     }
@@ -247,8 +264,6 @@ public class RoundViewGui implements IRoundView {
         panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
         jScrollPane.setViewportView(panel);
         jScrollPane.setSize(new Dimension(1700, 400));
-        System.out.println("SIZE: " + panel.getComponentCount());
-
         roundJFrame.revalidate();
         roundJFrame.repaint();
     }
@@ -292,5 +307,11 @@ public class RoundViewGui implements IRoundView {
     @Override
     public void roundWinner(Player player) {
 
+    }
+
+    @Override
+    public void gameOver() {
+        JOptionPane.showMessageDialog(null, "Game Over");
+        roundJFrame.setVisible(false);
     }
 }

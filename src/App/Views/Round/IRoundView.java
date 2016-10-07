@@ -95,4 +95,9 @@ public interface IRoundView {
      * @param player The player who won the round
      */
     void roundWinner(Player player);
+
+    /**
+     * Display game over
+     */
+    void gameOver();
 }
